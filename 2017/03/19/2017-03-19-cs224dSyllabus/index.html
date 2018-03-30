@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CS224d," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Intro to NLP and Deep LearningSuggested Readings [Linear Algebra Review] [Probability Review] [Convex Optimization Review] [More Optimization (SGD) Review] [From Frequency to Meaning: Vector Space Mod">
+<meta name="keywords" content="CS224d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS224d学习过程记录">
+<meta property="og:url" content="http://yoursite.com/2017/03/19/2017-03-19-cs224dSyllabus/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="Intro to NLP and Deep LearningSuggested Readings [Linear Algebra Review] [Probability Review] [Convex Optimization Review] [More Optimization (SGD) Review] [From Frequency to Meaning: Vector Space Mod">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-30T14:40:51.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS224d学习过程记录">
+<meta name="twitter:description" content="Intro to NLP and Deep LearningSuggested Readings [Linear Algebra Review] [Probability Review] [Convex Optimization Review] [More Optimization (SGD) Review] [From Frequency to Meaning: Vector Space Mod">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/19/2017-03-19-cs224dSyllabus/"/>
+
+
+
+
+
+  <title>CS224d学习过程记录 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/2017-03-19-cs224dSyllabus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CS224d学习过程记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/公开课/" itemprop="url" rel="index">
+                    <span itemprop="name">公开课</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/公开课/CS224d/" itemprop="url" rel="index">
+                    <span itemprop="name">CS224d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Intro-to-NLP-and-Deep-Learning"><a href="#Intro-to-NLP-and-Deep-Learning" class="headerlink" title="Intro to NLP and Deep Learning"></a>Intro to NLP and Deep Learning</h1><h2 id="Suggested-Readings"><a href="#Suggested-Readings" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Linear Algebra Review]</li>
+<li>[Probability Review]</li>
+<li>[Convex Optimization Review]</li>
+<li>[More Optimization (SGD) Review]</li>
+<li>[From Frequency to Meaning: Vector Space Models of Semantics]<h2 id="Lecture-Notes-1"><a href="#Lecture-Notes-1" class="headerlink" title="[Lecture Notes 1]"></a>[Lecture Notes 1]</h2><h2 id="python-tutorial"><a href="#python-tutorial" class="headerlink" title="[python tutorial]"></a>[python tutorial]</h2><h2 id="slides"><a href="#slides" class="headerlink" title="[slides]"></a><del>[slides]</del></h2><h2 id="Video"><a href="#Video" class="headerlink" title="Video"></a><del><a href="https://www.youtube.com/watch?v=Qy0oEkCZkBI&amp;list=PLlJy-eBtNFt4CSVWYqscHDdP58M3zFHIG" target="_blank" rel="external">Video</a></del></h2><h1 id="Simple-Word-Vector-representations-word2vec-GloVe"><a href="#Simple-Word-Vector-representations-word2vec-GloVe" class="headerlink" title="Simple Word Vector representations: word2vec, GloVe"></a>Simple Word Vector representations: word2vec, GloVe</h1><h2 id="Suggested-Readings-1"><a href="#Suggested-Readings-1" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2></li>
+<li>[Distributed Representations of Words and Phrases and their Compositionality]</li>
+<li>[Efficient Estimation of Word Representations in Vector Space]<h2 id="slides-1"><a href="#slides-1" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Pset1"><a href="#Pset1" class="headerlink" title="Pset1"></a>Pset1</h1><ol>
+<li>[Pset 1] </li>
+<li>[Pset 1 Solutions] </li>
+<li>[Pset 1 Solutions Code]</li>
+</ol>
+<h1 id="Advanced-word-vector-representations-language-models-softmax-single-layer-networks"><a href="#Advanced-word-vector-representations-language-models-softmax-single-layer-networks" class="headerlink" title="Advanced word vector representations: language models, softmax, single layer networks"></a>Advanced word vector representations: language models, softmax, single layer networks</h1><h2 id="Suggested-Readings-2"><a href="#Suggested-Readings-2" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[GloVe: Global Vectors for Word Representation]</li>
+<li>[Improving Word Representations via Global Context and Multiple Word Prototypes]<h2 id="Lecture-Notes-2"><a href="#Lecture-Notes-2" class="headerlink" title="[Lecture Notes 2]"></a>[Lecture Notes 2]</h2><h2 id="slides-2"><a href="#slides-2" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Neural-Networks-and-backpropagation-–-for-named-entity-recognition"><a href="#Neural-Networks-and-backpropagation-–-for-named-entity-recognition" class="headerlink" title="Neural Networks and backpropagation – for named entity recognition"></a>Neural Networks and backpropagation – for named entity recognition</h1><h2 id="Suggested-Readings-3"><a href="#Suggested-Readings-3" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[UFLDL tutorial]</li>
+<li>[Learning Representations by Backpropogating Errors]<h2 id="Lecture-Notes-3"><a href="#Lecture-Notes-3" class="headerlink" title="[Lecture Notes 3]"></a>[Lecture Notes 3]</h2><h2 id="slides-3"><a href="#slides-3" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Project-Advice-Neural-Networks-and-Back-Prop-in-full-gory-detail"><a href="#Project-Advice-Neural-Networks-and-Back-Prop-in-full-gory-detail" class="headerlink" title="Project Advice, Neural Networks and Back-Prop (in full gory detail)"></a>Project Advice, Neural Networks and Back-Prop (in full gory detail)</h1><h2 id="Suggested-Readings-4"><a href="#Suggested-Readings-4" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Natural Language Processing (almost) from Scratch]</li>
+<li>[A Neural Network for Factoid Question Answering over Paragraphs]</li>
+<li>[Grounded Compositional Semantics for Finding and Describing Images with Sentences]</li>
+<li>[Deep Visual-Semantic Alignments for Generating Image Descriptions]</li>
+<li>[Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank]<h1 id="slides-4"><a href="#slides-4" class="headerlink" title="[slides]"></a>[slides]</h1></li>
+</ol>
+<h1 id="Practical-tips-gradient-checks-overfitting-regularization-activation-functions-details"><a href="#Practical-tips-gradient-checks-overfitting-regularization-activation-functions-details" class="headerlink" title="Practical tips: gradient checks, overfitting, regularization, activation functions, details"></a>Practical tips: gradient checks, overfitting, regularization, activation functions, details</h1><h2 id="Suggested-Readings-5"><a href="#Suggested-Readings-5" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Practical recommendations for gradient-based training of deep architectures]</li>
+<li>[UFLDL page on gradient checking]<h2 id="slides-5"><a href="#slides-5" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Introduction-to-Tensorflow"><a href="#Introduction-to-Tensorflow" class="headerlink" title="Introduction to Tensorflow"></a>Introduction to Tensorflow</h1><h2 id="Suggested-Readings-6"><a href="#Suggested-Readings-6" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems]<h2 id="slides-6"><a href="#slides-6" class="headerlink" title="[slides]"></a>[slides]</h2><h2 id="AWS"><a href="#AWS" class="headerlink" title="AWS"></a>AWS</h2></li>
+<li>[AWS Tutorial] </li>
+<li>[AWS Tutorial Supplementary] </li>
+<li>[AWS Tutorial Video] </li>
+</ol>
+<h1 id="Pset2"><a href="#Pset2" class="headerlink" title="Pset2"></a>Pset2</h1><ol>
+<li>[Pset 2]</li>
+<li>[Pset 2 Solutions] </li>
+<li>[Pset 2 Solutions Code]</li>
+</ol>
+<h1 id="Recurrent-neural-networks-–-for-language-modeling-and-other-tasks"><a href="#Recurrent-neural-networks-–-for-language-modeling-and-other-tasks" class="headerlink" title="Recurrent neural networks – for language modeling and other tasks"></a>Recurrent neural networks – for language modeling and other tasks</h1><h2 id="Suggested-Readings-7"><a href="#Suggested-Readings-7" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Recurrent neural network based language model]</li>
+<li>[Extensions of recurrent neural network language model]</li>
+<li>[Opinion Mining with Deep Recurrent Neural Networks]<h2 id="slides-7"><a href="#slides-7" class="headerlink" title="[slides]"></a>[slides]</h2><h2 id="minimal-net-example-karpathy"><a href="#minimal-net-example-karpathy" class="headerlink" title="[minimal net example (karpathy)]"></a>[minimal net example (karpathy)]</h2><h2 id="vanishing-grad"><a href="#vanishing-grad" class="headerlink" title="vanishing grad"></a>vanishing grad</h2></li>
+<li>[vanishing grad example] </li>
+<li>[vanishing grad notebook] </li>
+</ol>
+<h1 id="GRUs-and-LSTMs-–-for-machine-translation"><a href="#GRUs-and-LSTMs-–-for-machine-translation" class="headerlink" title="GRUs and LSTMs – for machine translation"></a>GRUs and LSTMs – for machine translation</h1><h2 id="Suggested-Readings-8"><a href="#Suggested-Readings-8" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Long Short-Term Memory]</li>
+<li>[Gated Feedback Recurrent Neural Networks]</li>
+<li>[Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling]<h2 id="slides-8"><a href="#slides-8" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Recursive-neural-networks-–-for-parsing"><a href="#Recursive-neural-networks-–-for-parsing" class="headerlink" title="Recursive neural networks – for parsing"></a>Recursive neural networks – for parsing</h1><h2 id="Suggested-Readings-9"><a href="#Suggested-Readings-9" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Parsing with Compositional Vector Grammars]</li>
+<li>[Subgradient Methods for Structured Prediction]</li>
+<li>[Parsing Natural Scenes and Natural Language with Recursive Neural Networks]<h2 id="Lecture-Notes-5"><a href="#Lecture-Notes-5" class="headerlink" title="[Lecture Notes 5]"></a>[Lecture Notes 5]</h2><h2 id="slides-9"><a href="#slides-9" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Recursive-neural-networks-–-for-different-tasks-e-g-sentiment-analysis"><a href="#Recursive-neural-networks-–-for-different-tasks-e-g-sentiment-analysis" class="headerlink" title="Recursive neural networks – for different tasks (e.g. sentiment analysis)"></a>Recursive neural networks – for different tasks (e.g. sentiment analysis)</h1><h2 id="Suggested-Readings-10"><a href="#Suggested-Readings-10" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank]</li>
+<li>[Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection]</li>
+<li>[Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks]<h2 id="slides-10"><a href="#slides-10" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Review-Session-for-Midterm"><a href="#Review-Session-for-Midterm" class="headerlink" title="Review Session for Midterm"></a>Review Session for Midterm</h1><h2 id="slides-11"><a href="#slides-11" class="headerlink" title="[slides]"></a>[slides]</h2><h1 id="In-class-midterm"><a href="#In-class-midterm" class="headerlink" title="In-class midterm"></a>In-class midterm</h1><ol>
+<li>[midterm solutions]</li>
+</ol>
+<h1 id="Pset3"><a href="#Pset3" class="headerlink" title="Pset3"></a>Pset3</h1><ol>
+<li>[Pset 3] </li>
+<li>[Pset 3 Solutions] </li>
+<li>[Pset 3 Solutions Code]</li>
+</ol>
+<h1 id="Convolutional-neural-networks-–-for-sentence-classification"><a href="#Convolutional-neural-networks-–-for-sentence-classification" class="headerlink" title="Convolutional neural networks – for sentence classification"></a>Convolutional neural networks – for sentence classification</h1><h2 id="Suggested-Readings-11"><a href="#Suggested-Readings-11" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[A Convolutional Neural Network for Modelling Sentences]<h2 id="slides-12"><a href="#slides-12" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<p>#Course Project Milestone    </p>
+<ol>
+<li>[milestone description]</li>
+</ol>
+<h1 id="Guest-Lecture-with-Andrew-Maas-Speech-recognition"><a href="#Guest-Lecture-with-Andrew-Maas-Speech-recognition" class="headerlink" title="Guest Lecture with Andrew Maas: Speech recognition"></a>Guest Lecture with Andrew Maas: Speech recognition</h1><h2 id="Suggested-Readings-12"><a href="#Suggested-Readings-12" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[ Deep Neural Networks for Acoustic Modeling in Speech Recognition]<h2 id="slides-13"><a href="#slides-13" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Guest-Lecture-with-Thang-Luong-Machine-Translation"><a href="#Guest-Lecture-with-Thang-Luong-Machine-Translation" class="headerlink" title="Guest Lecture with Thang Luong: Machine Translation"></a>Guest Lecture with Thang Luong: Machine Translation</h1><h2 id="Suggested-Readings-13"><a href="#Suggested-Readings-13" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[ Achieving Open Vocabulary Neural Machine Translation with Hybrid Word-Character Models]</li>
+<li>[ Addressing the Rare Word Problem in Neural Machine Translation]</li>
+<li>[ Advances in natural language processing]</li>
+<li>[ Neural machine translation by jointly learning to align and translate]<h2 id="slides-14"><a href="#slides-14" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="Guest-Lecture-with-Quoc-Le-Seq2Seq-and-Large-Scale-DL"><a href="#Guest-Lecture-with-Quoc-Le-Seq2Seq-and-Large-Scale-DL" class="headerlink" title="Guest Lecture with Quoc Le: Seq2Seq and Large Scale DL"></a>Guest Lecture with Quoc Le: Seq2Seq and Large Scale DL</h1><h2 id="Suggested-Readings-14"><a href="#Suggested-Readings-14" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[ Sequence to Sequence with Neural Networks]</li>
+<li>[ Neural Machine Translation by Jointly Learning to Align and Translate]</li>
+<li>[ A Neural Conversation Model]</li>
+<li>[ Neural Programmer: Include Latent Programs with Gradient Descent]<h2 id="slides-15"><a href="#slides-15" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+<h1 id="The-future-of-Deep-Learning-for-NLP-Dynamic-Memory-Networks"><a href="#The-future-of-Deep-Learning-for-NLP-Dynamic-Memory-Networks" class="headerlink" title="The future of Deep Learning for NLP: Dynamic Memory Networks"></a>The future of Deep Learning for NLP: Dynamic Memory Networks</h1><h2 id="Suggested-Readings-15"><a href="#Suggested-Readings-15" class="headerlink" title="Suggested Readings"></a>Suggested Readings</h2><ol>
+<li>[Ask me anthing: Dynamic Memory Networks for NLP]<h2 id="slides-16"><a href="#slides-16" class="headerlink" title="[slides]"></a>[slides]</h2></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CS224d/" rel="tag"># CS224d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/2017-03-15-SemEval2010Task8数据集介绍/" rel="next" title="SemEval2010Task8数据集介绍">
+                <i class="fa fa-chevron-left"></i> SemEval2010Task8数据集介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/19/2017-03-19-DeepLearningTutorialLHYNOTE/" rel="prev" title="Deep Learning Tutorial李宏毅 笔记">
+                Deep Learning Tutorial李宏毅 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro-to-NLP-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Intro to NLP and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings"><span class="nav-number">1.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-Notes-1"><span class="nav-number">1.2.</span> <span class="nav-text">[Lecture Notes 1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-tutorial"><span class="nav-number">1.3.</span> <span class="nav-text">[python tutorial]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides"><span class="nav-number">1.4.</span> <span class="nav-text">[slides]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video"><span class="nav-number">1.5.</span> <span class="nav-text">Video</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Simple-Word-Vector-representations-word2vec-GloVe"><span class="nav-number">2.</span> <span class="nav-text">Simple Word Vector representations: word2vec, GloVe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-1"><span class="nav-number">2.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-1"><span class="nav-number">2.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pset1"><span class="nav-number">3.</span> <span class="nav-text">Pset1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Advanced-word-vector-representations-language-models-softmax-single-layer-networks"><span class="nav-number">4.</span> <span class="nav-text">Advanced word vector representations: language models, softmax, single layer networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-2"><span class="nav-number">4.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-Notes-2"><span class="nav-number">4.2.</span> <span class="nav-text">[Lecture Notes 2]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-2"><span class="nav-number">4.3.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Neural-Networks-and-backpropagation-–-for-named-entity-recognition"><span class="nav-number">5.</span> <span class="nav-text">Neural Networks and backpropagation – for named entity recognition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-3"><span class="nav-number">5.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-Notes-3"><span class="nav-number">5.2.</span> <span class="nav-text">[Lecture Notes 3]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-3"><span class="nav-number">5.3.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-Advice-Neural-Networks-and-Back-Prop-in-full-gory-detail"><span class="nav-number">6.</span> <span class="nav-text">Project Advice, Neural Networks and Back-Prop (in full gory detail)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-4"><span class="nav-number">6.1.</span> <span class="nav-text">Suggested Readings</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#slides-4"><span class="nav-number">7.</span> <span class="nav-text">[slides]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practical-tips-gradient-checks-overfitting-regularization-activation-functions-details"><span class="nav-number">8.</span> <span class="nav-text">Practical tips: gradient checks, overfitting, regularization, activation functions, details</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-5"><span class="nav-number">8.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-5"><span class="nav-number">8.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-Tensorflow"><span class="nav-number">9.</span> <span class="nav-text">Introduction to Tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-6"><span class="nav-number">9.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-6"><span class="nav-number">9.2.</span> <span class="nav-text">[slides]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS"><span class="nav-number">9.3.</span> <span class="nav-text">AWS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pset2"><span class="nav-number">10.</span> <span class="nav-text">Pset2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recurrent-neural-networks-–-for-language-modeling-and-other-tasks"><span class="nav-number">11.</span> <span class="nav-text">Recurrent neural networks – for language modeling and other tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-7"><span class="nav-number">11.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-7"><span class="nav-number">11.2.</span> <span class="nav-text">[slides]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimal-net-example-karpathy"><span class="nav-number">11.3.</span> <span class="nav-text">[minimal net example (karpathy)]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vanishing-grad"><span class="nav-number">11.4.</span> <span class="nav-text">vanishing grad</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUs-and-LSTMs-–-for-machine-translation"><span class="nav-number">12.</span> <span class="nav-text">GRUs and LSTMs – for machine translation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-8"><span class="nav-number">12.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-8"><span class="nav-number">12.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursive-neural-networks-–-for-parsing"><span class="nav-number">13.</span> <span class="nav-text">Recursive neural networks – for parsing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-9"><span class="nav-number">13.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-Notes-5"><span class="nav-number">13.2.</span> <span class="nav-text">[Lecture Notes 5]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-9"><span class="nav-number">13.3.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursive-neural-networks-–-for-different-tasks-e-g-sentiment-analysis"><span class="nav-number">14.</span> <span class="nav-text">Recursive neural networks – for different tasks (e.g. sentiment analysis)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-10"><span class="nav-number">14.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-10"><span class="nav-number">14.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review-Session-for-Midterm"><span class="nav-number">15.</span> <span class="nav-text">Review Session for Midterm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-11"><span class="nav-number">15.1.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#In-class-midterm"><span class="nav-number">16.</span> <span class="nav-text">In-class midterm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pset3"><span class="nav-number">17.</span> <span class="nav-text">Pset3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Convolutional-neural-networks-–-for-sentence-classification"><span class="nav-number">18.</span> <span class="nav-text">Convolutional neural networks – for sentence classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-11"><span class="nav-number">18.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-12"><span class="nav-number">18.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guest-Lecture-with-Andrew-Maas-Speech-recognition"><span class="nav-number">19.</span> <span class="nav-text">Guest Lecture with Andrew Maas: Speech recognition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-12"><span class="nav-number">19.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-13"><span class="nav-number">19.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guest-Lecture-with-Thang-Luong-Machine-Translation"><span class="nav-number">20.</span> <span class="nav-text">Guest Lecture with Thang Luong: Machine Translation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-13"><span class="nav-number">20.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-14"><span class="nav-number">20.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guest-Lecture-with-Quoc-Le-Seq2Seq-and-Large-Scale-DL"><span class="nav-number">21.</span> <span class="nav-text">Guest Lecture with Quoc Le: Seq2Seq and Large Scale DL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-14"><span class="nav-number">21.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-15"><span class="nav-number">21.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-future-of-Deep-Learning-for-NLP-Dynamic-Memory-Networks"><span class="nav-number">22.</span> <span class="nav-text">The future of Deep Learning for NLP: Dynamic Memory Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggested-Readings-15"><span class="nav-number">22.1.</span> <span class="nav-text">Suggested Readings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slides-16"><span class="nav-number">22.2.</span> <span class="nav-text">[slides]</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

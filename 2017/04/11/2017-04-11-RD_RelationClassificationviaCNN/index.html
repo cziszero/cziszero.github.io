@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Relation Extraction," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="作者：中科院赵军研究组年份：2014 Abstract 现在的先进方式是用统计机器学习，效果依赖于提取的特征，特征主要预先的NLP系统得到，导致了误差传导并阻碍了性能。 使用CDNN提取词语和句子级别的特征， 查表变换成vector，不是用POS、语法分析等其他手段，只用所有的词向量 词汇级别的特征通过给定的名词提取，句子级别的特征通过卷积方法提取 使用softmax对名词对进行分类预测  Int">
+<meta name="keywords" content="Relation Extraction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Relation classification via convolutional DNN 阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2017/04/11/2017-04-11-RD_RelationClassificationviaCNN/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="作者：中科院赵军研究组年份：2014 Abstract 现在的先进方式是用统计机器学习，效果依赖于提取的特征，特征主要预先的NLP系统得到，导致了误差传导并阻碍了性能。 使用CDNN提取词语和句子级别的特征， 查表变换成vector，不是用POS、语法分析等其他手段，只用所有的词向量 词汇级别的特征通过给定的名词提取，句子级别的特征通过卷积方法提取 使用softmax对名词对进行分类预测  Int">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/NRE/ArchitectureofNN.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/FrameworkforSentenceFeature.jpg">
+<meta property="og:updated_time" content="2018-03-30T14:40:51.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Relation classification via convolutional DNN 阅读笔记">
+<meta name="twitter:description" content="作者：中科院赵军研究组年份：2014 Abstract 现在的先进方式是用统计机器学习，效果依赖于提取的特征，特征主要预先的NLP系统得到，导致了误差传导并阻碍了性能。 使用CDNN提取词语和句子级别的特征， 查表变换成vector，不是用POS、语法分析等其他手段，只用所有的词向量 词汇级别的特征通过给定的名词提取，句子级别的特征通过卷积方法提取 使用softmax对名词对进行分类预测  Int">
+<meta name="twitter:image" content="http://yoursite.com/images/NRE/ArchitectureofNN.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/11/2017-04-11-RD_RelationClassificationviaCNN/"/>
+
+
+
+
+
+  <title>Relation classification via convolutional DNN 阅读笔记 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/2017-04-11-RD_RelationClassificationviaCNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Relation classification via convolutional DNN 阅读笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T00:00:00+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/Relation-Extraction/" itemprop="url" rel="index">
+                    <span itemprop="name">Relation Extraction</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作者：中科院赵军研究组<br>年份：2014</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
+<li>现在的先进方式是用统计机器学习，效果依赖于提取的特征，特征主要预先的NLP系统得到，导致了误差传导并阻碍了性能。</li>
+<li>使用CDNN提取词语和句子级别的特征，</li>
+<li>查表变换成vector，不是用POS、语法分析等其他手段，只用所有的词向量</li>
+<li>词汇级别的特征通过给定的名词提取，句子级别的特征通过卷积方法提取</li>
+<li>使用softmax对名词对进行分类预测</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>定义：given a sentence S with the annotated（标注的） pairs of nominals e1 and e2, we aim to identify the relations between e1 and e2 (Hendrickx et al., 2010) 给定一个句子S及标注好的名词对e1 和 e1，我们的目标是明确e1 和 e2 的关系。</li>
+<li>相关研究：<br> 有监督学习 (Zelenko et al., 2003; Bunescu and Mooney, 2005; Zhou et al., 2005; Mintz et al., 2009)<br>   基于特征的<br>   基于核的<br> 缺陷：误差传播和不准确(Bach and Badaskar, 2007)</li>
+<li>使用CDNN提取特征的idea:Collobert et al. (2011) 做过POS tagging, chunking (CHUNK), Named Entity Recognition (NER) and Semantic Role Labeling (SRL)等任务</li>
+<li>提出了position features (PF) 用来编码两个名词之间的相对距离（encode the relative distances to the target noun pairs）</li>
+<li>使用SemEval-2010 Task 8 dataset测试</li>
+</ul>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><ul>
+<li>unsupervised方法，主要是利用上下文信息。<ul>
+<li>理论基础：分布假设理论，Distributional hypothesis theory (Harris, 1954)，有相同上下文的词有类似的含义。<br>==&gt; 上下文结构相似的名词对有相似的关系。 </li>
+<li>Hasegawa et al. (2004) 使用层次聚类法（hierarchical clustering method），将名词上下文聚类，然后简单的选出上下文中出现最多的单词来表示这个关系。</li>
+<li>Chen et al. (2005) 提出了基于 <u>model order selection 和 discriminative label identification</u> 来解决这个问题。</li>
+</ul>
+</li>
+<li>supervised方法，作为一个多类别分类问题<ul>
+<li>基于特征的(feature-based)<ul>
+<li>问题主要在于如何把结构信息转化成特征。</li>
+</ul>
+</li>
+<li>基于核的的(kernel-based)<ul>
+<li>多种多样的树convolution tree kernel (Qian et al., 2008), subsequence kernel (Mooney and Bunescu, 2005) and dependency tree kernel (Bunescu and Mooney, 2005)</li>
+</ul>
+</li>
+<li>主要问题是缺乏训练数据<ul>
+<li>Mintz et al. (2009) 提出了远程学习 distant supervision (DS) 来解决这个问题。DS就是利用知识库（knowledge base）中的知识作为训练的正样本。DS的主要问题是有wrong labels，容易导致噪音。为了解决这个问题，有下面的两个工作。</li>
+<li>Riedel et al. (2010) 和 Hoffmann et al. (2011) 提出了<u>the relaxed DS assumption as multi-instance learning</u></li>
+<li>Takamatsu et al. (2012) 指出 relaxed DS assumption在某些情况下可能会失效，并提出了一个生成模型（generative model）来进行 the heuristic（启发式的） labeling process.</li>
+</ul>
+</li>
+<li>DNN的应用<ul>
+<li>word embeddings (Turian et al., 2010)词向量</li>
+<li>Socher et al. (2012) 使用RNN在语法树上提取特征来做Relation Classification。</li>
+<li>Hashimoto et al. (2013) 也使用了RNN来做Relation Classification。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h2><h3 id="The-Neural-Network-Architecture-神经网络结构"><a href="#The-Neural-Network-Architecture-神经网络结构" class="headerlink" title="The Neural Network Architecture 神经网络结构"></a>The Neural Network Architecture 神经网络结构</h3><p>包含Word Representation, Feature Extraction and Output三层结构。如图所示。  </p>
+<p><img src="/images/NRE/ArchitectureofNN.jpg" alt=""></p>
+<h3 id="Word-Representation-单词表示"><a href="#Word-Representation-单词表示" class="headerlink" title="Word Representation 单词表示"></a>Word Representation 单词表示</h3><p>直接使用了可免费获得的（freely available）的(Turian et al., 2010)的词向量。</p>
+<h3 id="Lexical-Level-Features-词语级别的特征"><a href="#Lexical-Level-Features-词语级别的特征" class="headerlink" title="Lexical Level Features 词语级别的特征"></a>Lexical Level Features 词语级别的特征</h3><ul>
+<li>以前经常使用nouns themselves, the types of the pairs of nominals and word sequences between the entities，要从NLP工具中得到。</li>
+<li>本文中只使用词向量和<u>WordNet hypernyms of nouns</u> , the WordNet hypernyms使用了<a href="https://sourceforge.net/projects/supersensetag/" target="_blank" rel="external">MVRNN (Socher et al., 2012)</a>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Features</th>
+<th style="text-align:center">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">L1</td>
+<td style="text-align:center">Noun 1</td>
+</tr>
+<tr>
+<td style="text-align:center">L2</td>
+<td style="text-align:center">Noun 2</td>
+</tr>
+<tr>
+<td style="text-align:center">L3</td>
+<td style="text-align:center">Left and right tokens of noun 1</td>
+</tr>
+<tr>
+<td style="text-align:center">L4</td>
+<td style="text-align:center">Left and right tokens of noun 2</td>
+</tr>
+<tr>
+<td style="text-align:center">L5</td>
+<td style="text-align:center">WordNet hypernyms of nouns</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Sentence-Level-Features-句子级别的特征"><a href="#Sentence-Level-Features-句子级别的特征" class="headerlink" title="Sentence Level Features 句子级别的特征"></a>Sentence Level Features 句子级别的特征</h3><ul>
+<li>虽然词向量已经能够很好的表示词语间的相似性，但无法提取到长距离的特征和语义合成性（semantic compositionality）。</li>
+<li>本文中使用max-pooled convolutional neural network来提取句子级别的特征。</li>
+<li>提取句子级别特征的框架如图所示。<br><img src="/images/NRE/FrameworkforSentenceFeature.jpg" alt=""><ul>
+<li>Window Processing component部分，每一个单词进一步表示成Word Features (WF) 和 Position Features (PF) </li>
+<li>convolutional component. </li>
+<li>Sentence level features. 通过一个非线性变换（a non-linear transformation）tanh得到。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Word-Features-单词特征"><a href="#Word-Features-单词特征" class="headerlink" title="Word Features 单词特征"></a>Word Features 单词特征</h4><p>就是直接把窗口内的词向量连接起来。</p>
+<h4 id="Position-Features-位置特征"><a href="#Position-Features-位置特征" class="headerlink" title="Position Features 位置特征"></a>Position Features 位置特征</h4><ul>
+<li>(Bunescu and Mooney, 2005) 使用过结构信息（tructure features） (e.g., 最短路径依赖the shortest dependency path between nominals)来解决Relation Classification。</li>
+<li>本文中的PF指的是句子中每个单词到名词对（w1，w2）中的两个词的距离， PF = [d1,d2]，并且d1和d2也都被映射到一个$d_e$维的向量空间，和上面的WF连接起来一起投入到下面的CNN中。</li>
+</ul>
+<h4 id="Convolution-卷积"><a href="#Convolution-卷积" class="headerlink" title="Convolution 卷积"></a>Convolution 卷积</h4><ul>
+<li>每个单词的特征向量只能表示它附近的上下文信息，对于Relation Classification，需要把整个句子都组合起来，<u>自然的想到卷积方法</u></li>
+<li>和Collobert et al. (2011)类似，首先把从window process中得到的向量做一个线性变换。<br>$$Z = W_1X$$<br>其中，$X$是一个n0 x t 的矩阵，n0 = w x n，n是每个单词特征向量的维度[WF PF]。w是窗口大小。t是输入句子中单词的个数。<br>$W_1$是一个n1 x n0 的矩阵，n1是第一个隐藏层的输出个数。<br><u>We can see that the features share the same weights across all times</u><br>输出$Z$是一个n1 × t的向量，使用max-pooling只记录影响最大的那个，如下式所示。<br>$$ m_i = \max Z(i,\cdot) \qquad   0 \leq i \leq n1 $$  </li>
+<li>然后我们获得了$m = \{m_1,m_2,···,m_n1\}$向量，与t没有关系了。</li>
+</ul>
+<h4 id="Sentence-Level-Feature-Vector-句子级别的特征向量"><a href="#Sentence-Level-Feature-Vector-句子级别的特征向量" class="headerlink" title="Sentence Level Feature Vector 句子级别的特征向量"></a>Sentence Level Feature Vector 句子级别的特征向量</h4><ul>
+<li>添加一个全连接层，使用双曲正切tanh作为激活函数，tanh具有一个良好的性质，如下式所示，在BP算法时容易计算导数。<br>$$ \frac{d}{dx}\tanh x  = 1 - \tanh^2x$$</li>
+<li>全连接层的表示为<br>$$ g = \tanh(W_2 m) $$<br>其中$W_2$是一个 n2 x n1 的矩阵，n2是本层的输出个数。</li>
+<li>输出g是一个n2维的向量，可以认为是一个高级别向量（句子级别向量）– higher level features (sentence level features)。</li>
+</ul>
+<h3 id="output-输出"><a href="#output-输出" class="headerlink" title="output 输出"></a>output 输出</h3><ul>
+<li>组合词语级别的向量l和上面得到的句子级别的向量g，得到向量f，$f = [l,g]$，其维度为n3。</li>
+<li>添加一个softmax层来计算最后的概率。<br>$$ o = W_3 f$$<br>$$ p = softmax(o) $$<br>其中$W_3$是一个n4 x n3 维的变换矩阵，n4是关系类别个数。o可以看作对应的类别的confidence score，最后使用softmax计算出条件概率。</li>
+</ul>
+<h3 id="Backpropagation-Training-BP训练"><a href="#Backpropagation-Training-BP训练" class="headerlink" title="Backpropagation Training BP训练"></a>Backpropagation Training BP训练</h3><ul>
+<li>本文假设各个句子是相互独立的。</li>
+<li>涉及的参数有<br>$\Theta = (X,N,W_1,W_2,W_3)$，其中$N$是the word embeddings of WordNet hypernyms。</li>
+<li>本模型就是输入一个句子s，输出其中名词对所属类别的概率。</li>
+<li>目标函数是对数似然值log likelihood $ J(\Theta) $，使用随机梯度下降法（stochastic gradient descent (SGD)）进行训练。</li>
+<li>N,W1,W2 and W3 随机初始化， X 初始为词向量。</li>
+</ul>
+<h2 id="Dataset-and-Evaluation-Metrics-数据集和评测"><a href="#Dataset-and-Evaluation-Metrics-数据集和评测" class="headerlink" title="Dataset and Evaluation Metrics 数据集和评测"></a>Dataset and Evaluation Metrics 数据集和评测</h2><ul>
+<li>使用SemEval-2010 Task 8 dataset (Hendrickx et al., 2010)数据集（免费开放），其中包含10717个标注实例，<br>有8000个训练样本和2717个测试样本，包含9个带方向的关系类型和1个不带方向的关系类型。</li>
+<li>使用9个带方向的关系类型的the macro-averaged F1-scores来评测。</li>
+</ul>
+<h2 id="Experiments-实验"><a href="#Experiments-实验" class="headerlink" title="Experiments 实验"></a>Experiments 实验</h2><p>做了三组实验：</p>
+<ul>
+<li>测试三个超参数窗口大小w，第一个隐藏层神经元个数n1，第二个隐藏层神经元个数n2对性能的影响。</li>
+<li>将本方法与其他传统方法的性能对比。</li>
+<li>测试各个特征的影响。</li>
+</ul>
+<h3 id="Parameter-Settings-参数设置"><a href="#Parameter-Settings-参数设置" class="headerlink" title="Parameter Settings 参数设置"></a>Parameter Settings 参数设置</h3><ul>
+<li>使用 5-fold cross-validation</li>
+<li>w，n1，n2太大的时候参数太多，容易over fitting，所以太大的时候性能差了。</li>
+<li><u>heuristically（启发式的） choose $d_e$ = 5</u> 词向量大小和学习速率与 Collobert et al. (2011)相同。</li>
+<li>下表为超参数的值。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Hyperparameter</th>
+<th style="text-align:center">Window size</th>
+<th style="text-align:center">Word dim.</th>
+<th style="text-align:center">Distance dim.</th>
+<th style="text-align:center">Hidden layer 1</th>
+<th style="text-align:center">Hidden layer 2</th>
+<th style="text-align:center">Learning rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Value</td>
+<td style="text-align:center">w =3</td>
+<td style="text-align:center">n =50</td>
+<td style="text-align:center">de =5</td>
+<td style="text-align:center">n1 =200</td>
+<td style="text-align:center">n2 =100</td>
+<td style="text-align:center">λ =0.01</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Results-of-Comparison-Experiments-对比实验结果"><a href="#Results-of-Comparison-Experiments-对比实验结果" class="headerlink" title="Results of Comparison Experiments 对比实验结果"></a>Results of Comparison Experiments 对比实验结果</h3><ul>
+<li>使用了7个对照组，前五个使用SVM和MaxEnt在Hendrickx et al. (2010)中出现，RNN使用Socher et al. (2012)中的模型，还有MVRNN。<br>实验结果如表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Classifier</th>
+<th style="text-align:center">Feature Sets</th>
+<th style="text-align:center">F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SVM</td>
+<td style="text-align:center">POS, stemming, syntactic patterns</td>
+<td style="text-align:center">60.1</td>
+</tr>
+<tr>
+<td style="text-align:center">SVM</td>
+<td style="text-align:center">word pair, words in between</td>
+<td style="text-align:center">72.5</td>
+</tr>
+<tr>
+<td style="text-align:center">SVM</td>
+<td style="text-align:center">POS, stemming, syntactic patterns, WordNet</td>
+<td style="text-align:center">74.8</td>
+</tr>
+<tr>
+<td style="text-align:center">MaxEnt</td>
+<td style="text-align:center">POS, morphological, noun compound, thesauri, Google n-grams, WordNet</td>
+<td style="text-align:center">77.6</td>
+</tr>
+<tr>
+<td style="text-align:center">SVM</td>
+<td style="text-align:center">POS, prefixes, morphological, WordNet, dependency parse, Levin classed, ProBank, FrameNet, NomLex-Plus, Google n-gram, paraphrases, TextRunner</td>
+<td style="text-align:center">82.2</td>
+</tr>
+<tr>
+<td style="text-align:center">RNN</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">74.8</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">POS, NER, WordNet</td>
+<td style="text-align:center">77.6</td>
+</tr>
+<tr>
+<td style="text-align:center">MVRNN</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">79.1</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">POS, NER, WordNet</td>
+<td style="text-align:center">82.4</td>
+</tr>
+<tr>
+<td style="text-align:center">Proposed</td>
+<td style="text-align:center">word pair, words around word pair, WordNet</td>
+<td style="text-align:center">82.7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>结论  <ul>
+<li>使用传统方法时，特征越多越有效。  </li>
+<li>使用RNN时，语法树处理时的误差阻止了性能的提高。MVRNN有效的提取了意义组合meaning combination，性能更好。  </li>
+<li>我们的模型最好。</li>
+</ul>
+</li>
+</ul>
+<h3 id="The-Effect-of-Learned-Features-不同特征的影响"><a href="#The-Effect-of-Learned-Features-不同特征的影响" class="headerlink" title="The Effect of Learned Features 不同特征的影响"></a>The Effect of Learned Features 不同特征的影响</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">Lexical</th>
+<th style="text-align:center">L1</th>
+<th style="text-align:center">34.7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">+L2</td>
+<td style="text-align:center">53.1</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">+L3</td>
+<td style="text-align:center">59.4</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">+L4</td>
+<td style="text-align:center">65.9</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">+L5</td>
+<td style="text-align:center">73.3</td>
+</tr>
+<tr>
+<td style="text-align:center">Sentence</td>
+<td style="text-align:center">WF</td>
+<td style="text-align:center">69.7</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">+PF</td>
+<td style="text-align:center">78.9</td>
+</tr>
+<tr>
+<td style="text-align:center">Combination</td>
+<td style="text-align:center">all</td>
+<td style="text-align:center">82.7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Conclusion-总结"><a href="#Conclusion-总结" class="headerlink" title="Conclusion 总结"></a>Conclusion 总结</h2><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li style="list-style: none"><input type="checkbox"> bag-of-words model</li>
+<li style="list-style: none"><input type="checkbox"> WordNet hypernyms</li>
+</ul>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
+<li>到底在哪里使用了卷积？文中写卷积的地方是一个矩阵相乘啊</li>
+<li>X为什么也是一个参数？</li>
+<li>为什么要把PF映射成一个向量？</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Relation-Extraction/" rel="tag"># Relation Extraction</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/09/2017-10-11-chromeuse/" rel="next" title="chrome使用">
+                <i class="fa fa-chevron-left"></i> chrome使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/17/2017-04-17-RelationExtractionPerspectivefromCNN/" rel="prev" title="Relation Extraction Perspective from Convolutional Neural Networks 阅读笔记">
+                Relation Extraction Perspective from Convolutional Neural Networks 阅读笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">3.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methodology"><span class="nav-number">4.</span> <span class="nav-text">Methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Neural-Network-Architecture-神经网络结构"><span class="nav-number">4.1.</span> <span class="nav-text">The Neural Network Architecture 神经网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Word-Representation-单词表示"><span class="nav-number">4.2.</span> <span class="nav-text">Word Representation 单词表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lexical-Level-Features-词语级别的特征"><span class="nav-number">4.3.</span> <span class="nav-text">Lexical Level Features 词语级别的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sentence-Level-Features-句子级别的特征"><span class="nav-number">4.4.</span> <span class="nav-text">Sentence Level Features 句子级别的特征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Word-Features-单词特征"><span class="nav-number">4.4.1.</span> <span class="nav-text">Word Features 单词特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Position-Features-位置特征"><span class="nav-number">4.4.2.</span> <span class="nav-text">Position Features 位置特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convolution-卷积"><span class="nav-number">4.4.3.</span> <span class="nav-text">Convolution 卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sentence-Level-Feature-Vector-句子级别的特征向量"><span class="nav-number">4.4.4.</span> <span class="nav-text">Sentence Level Feature Vector 句子级别的特征向量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output-输出"><span class="nav-number">4.5.</span> <span class="nav-text">output 输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backpropagation-Training-BP训练"><span class="nav-number">4.6.</span> <span class="nav-text">Backpropagation Training BP训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset-and-Evaluation-Metrics-数据集和评测"><span class="nav-number">5.</span> <span class="nav-text">Dataset and Evaluation Metrics 数据集和评测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiments-实验"><span class="nav-number">6.</span> <span class="nav-text">Experiments 实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-Settings-参数设置"><span class="nav-number">6.1.</span> <span class="nav-text">Parameter Settings 参数设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Results-of-Comparison-Experiments-对比实验结果"><span class="nav-number">6.2.</span> <span class="nav-text">Results of Comparison Experiments 对比实验结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Effect-of-Learned-Features-不同特征的影响"><span class="nav-number">6.3.</span> <span class="nav-text">The Effect of Learned Features 不同特征的影响</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion-总结"><span class="nav-number">7.</span> <span class="nav-text">Conclusion 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">8.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question"><span class="nav-number">9.</span> <span class="nav-text">Question</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

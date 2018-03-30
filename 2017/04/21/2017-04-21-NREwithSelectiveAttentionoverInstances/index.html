@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Relation Extraction," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Abstract 远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。 为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多">
+<meta name="keywords" content="Relation Extraction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neural Relation Extraction with Selective Attention over Instances 阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/2017-04-21-NREwithSelectiveAttentionoverInstances/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="Abstract 远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。 为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/04/21/images/NRE/NREwithSelectiveAttention.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/04/21/images/NRE/sentenceEncoder.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/reult.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/differentSeeting.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/pcopmatm.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/casetest.jpg">
+<meta property="og:updated_time" content="2018-03-30T14:40:51.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neural Relation Extraction with Selective Attention over Instances 阅读笔记">
+<meta name="twitter:description" content="Abstract 远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。 为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多">
+<meta name="twitter:image" content="http://yoursite.com/2017/04/21/images/NRE/NREwithSelectiveAttention.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/21/2017-04-21-NREwithSelectiveAttentionoverInstances/"/>
+
+
+
+
+
+  <title>Neural Relation Extraction with Selective Attention over Instances 阅读笔记 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/2017-04-21-NREwithSelectiveAttentionoverInstances/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Neural Relation Extraction with Selective Attention over Instances 阅读笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T00:00:00+08:00">
+                2017-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/Relation-Extraction/" itemprop="url" rel="index">
+                    <span itemprop="name">Relation Extraction</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
+<li>远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。</li>
+<li>为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多个实例上应用了sentence-level attention，以期能够动态的减少噪音的权值。</li>
+<li>实验结果显示，我们的方法可以保留所有信息并且有效的减少噪音的影响。</li>
+<li>实验代码可以在<a href="https://github.com/thunlp/NRE" target="_blank" rel="external">https://github.com/thunlp/NRE</a>找到.</li>
+</ul>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><ul>
+<li>知识库knowledge bases (KBs) eg. Freebase (Bollacker et al., 2008), DBpedia (Auer et al., 2007) and YAGO (Suchanek et al., 2007)越来越多的被应用与NLP问题。</li>
+<li>知识库KB主要是由三元组（e1,e2,relation）构成的，虽然这些关系库都很大了，但还远远不够大，所以想自动地提取关系。</li>
+<li>(Mintz et al., 2009) 提出了distant supervision 通过对其KB和文本来自动的生成训练数据。</li>
+<li>假设如果在KB中两个实体有某种关系，则认为在所有包含这两个实体的句子中也表达了这种关系。<br>==&gt; 很容易导致错误标注。</li>
+<li>(Riedel et al., 2010; Hoffmann et al., 2011; Surdeanu et al., 2012) 使用多实例学习(multi-instance learning)减少错误标注的影响。这些方法的问题在于他们使用了NLP工具例如POS标注等，工具产生的误差会传导到分类中。</li>
+<li>(Socher et al., 2012; Zeng et al., 2014; dos Santos et al., 2015)尝试在RE中使用DNN而不是人工提取特征，但这些工作是基于标注好的语句上的，没法大规模扩展到KBs上。</li>
+<li>(Zeng et al., 2015) 之后将 DS multi-instance learning 应用到了CDNN中。 该方法假设包含两个实体的句子中至少有一个表示了他们的关系，然后只选择这个最可能的句子来作为实体对的训练和预测样本。</li>
+<li>本文提出了一个句子级别的attention-based的CNN来做远程监督的关系提取（sentence-level attention-based convolutional neural network (CNN) for distant supervised relation extraction），如下图所示。<br><img src="../images/NRE/NREwithSelectiveAttention.jpg" alt="image"><br>图中$x_i$代表一个原始的句子，<br>$X_i$代表表示这个句子的向量，<br>$\alpha_i$代表第i个句子的权值，即Attention模型，<br>$s$代表最终形成的训练样本。</li>
+<li>创新点<ul>
+<li>与现有的NRE模型比较，我们的模型能够利用所有包含有效信息的句子。</li>
+<li>为了减少远程学习中错误标注的问题，我们使用selective attention来降低噪音的影响。</li>
+<li>在实验中，我们验证了selective attention 对NRE问题中的两种 CNN 模型都有效。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2. Related Work"></a>2. Related Work</h2><ul>
+<li>关系抽取Relation extraction 和 远程监督 distant supervision<ul>
+<li>监督学习需要大量标注好的训练样本 ==&gt; (Mintz et al., 2009)提出远程监督（distant supervision），将文本和freebase对齐。==&gt; 出现了错误标注问题。</li>
+<li>为了解决错误标注问题，(Riedel et al., 2010)提出了multi-instance single-label learing，(Hoffmann et al., 2011; Surdeanu et al., 2012) 提出了multi-instance multi-label learning。</li>
+<li>(Zeng et al., 2015)将 multi-instance learning 和 CNN 和 DS 结合起来</li>
+</ul>
+</li>
+<li>多实例学习Multi-instance learning <ul>
+<li>基本原理就是考虑没有示例的可靠性（the reliability of the labels for each instance）。</li>
+<li>最开始是为了解决训练数据的歧义标注问题ambiguously-labelled training data when predicting the activity of drugs (Dietterich et al., 1997)</li>
+<li>之后(Bunescu and Mooney, 2007)将弱监督学习（weak supervision）和多实例（muti-instance）结合起来应用于关系提取。</li>
+<li>但是这些基于特征的方法都依赖于NLP工具提取的特征，带来了错误的传递。</li>
+</ul>
+</li>
+<li>深度学习deep learning (Bengio, 2009)已经应用于很多其他的NLP问题<ul>
+<li>词性批注 part-of-speech tagging (Collobert et al., 2011),</li>
+<li>语义分析 sentiment analysis (dos Santos and Gatti, 2014)</li>
+<li>语法分析 parsing (Socher et al., 2013), </li>
+<li>机器翻译 machine translation (Sutskever et al., 2014)</li>
+<li>关系提取 使用RNN自动提取特征(Socher et al., 2012)，首先构建语法树然后把树上的节点用向量表示。</li>
+<li>关系提取 (Zeng et al., 2014; dos Santos et al., 2015)使用CNN来做RE</li>
+<li>(Xie et al., 2016) 尝试把文本信息包含进关系提取中。</li>
+</ul>
+</li>
+<li>基于注意力的模型 attention-based models<ul>
+<li>attention-based modes的权重可以使用多种方式学习。</li>
+<li>图像分类 image classification (Mnih et al., 2014), </li>
+<li>语音识别 speech recognition (Chorowski et al., 2014), </li>
+<li>图像注释生成 image caption generation (Xu et al., 2015),</li>
+<li>机器翻译 machine translation (Bahdanau et al., 2014).</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3. Methodology"></a>3. Methodology</h2><p>概述：给定一个句子集合<a href="">$S=\{x_1,x_2,··· ,x_n\}$</a>和两个对应的实体，我们想要评价对于每一个可能关系<a href="">$r$</a>的概率。<br>分为两个部分：  </p>
+<ul>
+<li>Sentence Encoder : 给定一个句子<a href="">${x}$</a>和两个对应实体，通过一个CNN来构建一个语句向量<a href="">$X$</a>。</li>
+<li>Selective Attention Over Instances。</li>
+</ul>
+<h3 id="3-1-Sentence-Encoder"><a href="#3-1-Sentence-Encoder" class="headerlink" title="3.1 Sentence Encoder"></a>3.1 Sentence Encoder</h3><p><img src="../images/NRE/sentenceEncoder.jpg" alt="Sentence Encoder"></p>
+<h4 id="3-1-1-Input-Representation"><a href="#3-1-1-Input-Representation" class="headerlink" title="3.1.1 Input Representation"></a>3.1.1 Input Representation</h4><ul>
+<li><p>输入是raw句子<a href="">$x$</a>，类似上一篇文章(Zeng et al., 2014)，同时使用单词向量WF和位置向量PF。</p>
+<ul>
+<li>单词向量WF <a href="">$w$</a> ：提取单词的语义和语法信息，维度是<a href="">$d^a$</a></li>
+<li>位置向量PF : 靠近实体的通常更有意义。维度是<a href="">$d^b x 2$</a></li>
+<li>总长度为 <a href="">$d$</a> $d=d^a+d^b$<h4 id="3-1-2-Convolution-Max-pooling-and-Non-linear-Layers"><a href="#3-1-2-Convolution-Max-pooling-and-Non-linear-Layers" class="headerlink" title="3.1.2 Convolution, Max-pooling and Non-linear Layers"></a>3.1.2 Convolution, Max-pooling and Non-linear Layers</h4></li>
+</ul>
+</li>
+<li><p>在关系提取这个问题中，一个主要的挑战是句子长度是变换的，重要的信息可能出现在句子的任何地方。我们应该应用局部特征（Local Features）然后做一个整体的预测（Prediction globally），本文使用卷积层来合并所有的这些特征。</p>
+</li>
+<li>卷积层首先提取长度为$l$的滑动窗口内的局部特征(Local features)，然后使用max-pooling操作提取出一个大小固定的向量。</li>
+<li>使用<a href="">$W$</a>来表示卷积矩阵，其维度为$d^cx(lxd)$,其中<a href="">$d^c$</a>是句子向量的长度。</li>
+<li>使用<a href="">$q_i$</a>代表第$i$个窗口的单词连接成的向量，超出范围的使用0向量扩展padding。</li>
+<li>卷积第$i$个通道filter的计算就是<br>$$p_i = [Wq + b]_i$$<br>其中$b$是偏置向量。</li>
+<li>然后对每一个维度做max-pooling得到句子向量<a href="">$x$</a></li>
+<li>PCNN(Zeng et al., 2015)，是CNN的一种变体，就是用两个实体把句子分成三段，每一段有一个单独的卷积核$(p_{i1},p_{i2},p_{i3})$，然后再对每一段分别进行max-pooling操作，每个维度得到3个值然后连接扩展该维。</li>
+<li>使用一个非线性激活函数$\tanh$</li>
+</ul>
+<h3 id="3-2-Selective-Attention-over-Instances"><a href="#3-2-Selective-Attention-over-Instances" class="headerlink" title="3.2 Selective Attention over Instances"></a>3.2 Selective Attention over Instances</h3><ul>
+<li>在包含两个相同实体的句子集合<a href="">$S=\{x_1,x_2,··· ,x_n\}$</a>表示成一个向量$s$，用来代表这个集合用来预测关系$r$。</li>
+<li>$s$是$S$中句子向量的加权和。<br>$$s=\sum\limits_i {\alpha_i w_i}$$<br>$\alpha_i$就是每个句子的权值，也正是本文中Selective Attention的含义。</li>
+<li><p>本文使用两种方法来定义权值$\alpha$</p>
+<ul>
+<li>平均：Average</li>
+<li>Selective Attention<br>计算公式为<br>$$\alpha_i = \frac{exp(e_i)}{\sum_k{exp(e_k)}}$$<br>$e_i$是用来度量输入的句子<br>$x_i$和预测的关系$r$匹配的得分，我们选择bilinear form（双线性形式）。<br>$$e_i = x_i A r$$<br>$A$是一个weighted diagonal matrix，$r$是对应关系的向量表示。<br>最后，我们使用softmax定义一个条件概率$p(r|S,\theta)$，公式为：</li>
+</ul>
+<p>$$p(r|S,\theta ) =  \frac {exp(o_r)}{\sum_{k=1}^{n_r}{exp(o_k)}}$$</p>
+<p>$n_r$表示关系总数。</p>
+<p>$o$代表神经网络的最后输出，定义为</p>
+<p>$$o=Ms+d$$</p>
+<p>$d$ 是偏置向量， $M$ 是<u>关系矩阵（representation matrix of relations）</u></p>
+<p>即在最后添加两个一个softmax层。</p>
+</li>
+</ul>
+<h3 id="3-3-Optimization-and-Implementation-Details"><a href="#3-3-Optimization-and-Implementation-Details" class="headerlink" title="3.3 Optimization and Implementation Details"></a>3.3 Optimization and Implementation Details</h3><ul>
+<li>使用交叉熵cross-entropy 作为目标函数。</li>
+<li>使用随机梯度下降SGD最小化目标函数。</li>
+<li>在输出层应用了 dropout (Srivastava et al., 2014)技术来防止过拟合，dropout就是在输出层定义一个概率$p$，把输出结果呈上按照概率为$p$的伯努利分布。所以，输出公式应该写为<br>$$o=M(s h)+d$$</li>
+</ul>
+<h2 id="4-Experiments"><a href="#4-Experiments" class="headerlink" title="4. Experiments"></a>4. Experiments</h2><h3 id="4-1-Dataset-and-Evaluation-Metrics"><a href="#4-1-Dataset-and-Evaluation-Metrics" class="headerlink" title="4.1 Dataset and Evaluation Metrics"></a>4.1 Dataset and Evaluation Metrics</h3><ul>
+<li>使用(Riedel et al., 2010)开发的，(Hoffmann et al., 2011; Surdeanu et al., 2012)也使用的一个数据集。</li>
+<li>这个数据集是将NYT和freebase对齐，使用Stanford named entity tagger (Finkel et al., 2005)来识别实体，然后和freebase中的实体进行对齐。</li>
+<li>使用语料库中2005-2006年的句子作为训练集，使用2007年的作为测试集。</li>
+<li>规模<ul>
+<li>共有53中关系，其中包含一种特殊的NA，表示两个实体没有关系。</li>
+<li>训练集：522611个句子，281270个实体对，18252个关系实例</li>
+<li>测试集：172448个句子，96678 个实体对，1950 个关系示例</li>
+</ul>
+</li>
+<li><u>使用held-out evaluation(可行性存疑)</u> <ul>
+<li>将从语料库中语句提取的关系和相应实体对在freebase中的语句提取的关系进行对比。</li>
+<li>基于这样一个假设：关系示例在freebase内外的结构应该是类似的。</li>
+<li>提供了一个不用耗费时间和经历的近似评价。 </li>
+</ul>
+</li>
+<li>在试验中使用 precision/recall 曲线和 recision@N (P@N) 评价。  </li>
+</ul>
+<h3 id="4-2-Experimental-Settings"><a href="#4-2-Experimental-Settings" class="headerlink" title="4.2 Experimental Settings"></a>4.2 Experimental Settings</h3><h4 id="4-2-1-Word-Embeddings"><a href="#4-2-1-Word-Embeddings" class="headerlink" title="4.2.1 Word Embeddings"></a>4.2.1 Word Embeddings</h4><p>使用google的word2vec训练NYT语料库，把出现次数大于100次的添加到词典中，同时把包含多个单词的实体连接起来，作为一个单词。</p>
+<h4 id="4-2-2-Parameter-Settings"><a href="#4-2-2-Parameter-Settings" class="headerlink" title="4.2.2 Parameter Settings"></a>4.2.2 Parameter Settings</h4><ul>
+<li>参数设置如下表所示</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">窗口大小 Window size</td>
+<td style="text-align:center">$l$</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">句子向量维度 Sentence embedding size</td>
+<td style="text-align:center">$d^c$</td>
+<td style="text-align:center">230</td>
+</tr>
+<tr>
+<td style="text-align:center">词向量维度 Word dimension</td>
+<td style="text-align:center">$d^a$</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">位置向量维度 Position dimension</td>
+<td style="text-align:center">$d^b$</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">每批次大小 Batch size</td>
+<td style="text-align:center">$B$</td>
+<td style="text-align:center">160</td>
+</tr>
+<tr>
+<td style="text-align:center">学习速率 Learning rate</td>
+<td style="text-align:center">$\lambda$</td>
+<td style="text-align:center">0.01</td>
+</tr>
+<tr>
+<td style="text-align:center">Dropout概率 Dropout probability</td>
+<td style="text-align:center">$p$</td>
+<td style="text-align:center">0.5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-Effect-of-Sentence-level-Selective-Attention"><a href="#4-3-Effect-of-Sentence-level-Selective-Attention" class="headerlink" title="4.3 Effect of Sentence-level Selective Attention"></a>4.3 Effect of Sentence-level Selective Attention</h3><ul>
+<li>我们选择了CNN (Zeng et al.,2014)和PCNN(Zeng et al., 2015) 作为我们的句子编码器，并且自己实现了，然后得到了可以和我们方法比较的数据。</li>
+<li>我们分别对CNN和PCNN应用ATT(Sentence-Level Attention)、AVE(Average)、ONE(at-least-one multi-instance learning (Zeng et al., 2015).)<br>实验结果如图所示<br><img src="/images/NRE/reult.jpg" alt=""></li>
+<li>从图中我们可以看出<ul>
+<li>不管是CNN还是PCNN，加了个ONE方法之后表现都比原来的好，因为原始的远程监督会包含很多噪音，损害了性能。</li>
+<li>不管是CNN还是PCNN，加了AVE之后都是有益的，因为这些噪音相互抵消。</li>
+<li>不管是CNN还是PCNN，ONE和AVE的性能差不多，因为AVE把每个句子看成相同的，还是引入了错误标记</li>
+<li>不管是CNN还是PCNN，ATT方法都是最高性能的方法。ATT方法可以过滤出没有意义的语句，减少DS带来的错误标记的问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-4-Effect-of-Sentence-Number-句子数量的影响"><a href="#4-4-Effect-of-Sentence-Number-句子数量的影响" class="headerlink" title="4.4 Effect of Sentence Number 句子数量的影响"></a>4.4 Effect of Sentence Number 句子数量的影响</h3><ul>
+<li>在原先的测试集中，有74,857个实体对只有一个句子包含，接近总数的3/4。因为我们方法的有点主要在从多个句子中选择注意力，所以我们比较了CNN/PCNN+ONE, CNN/PCNN+AVE and CNN/PCNN+ATT 在不只有一个句子时的性能，我们使用了下面的三种设置。<ul>
+<li>One： 随机选择一个句子，使用这个句子来预测关系。</li>
+<li>Two： 随机选择两个句子来预测关系。</li>
+<li>All： 使用包含该实体对的所有句子来预测关系。<br>注意：我们使用了所有的句子进行训练。我们分别使用<u>100, 200, 300</u>个测试。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/NRE/differentSeeting.jpg" alt=""></p>
+<ul>
+<li>从结果中我们可以发现<ul>
+<li>不管对CNN还是PCNN，在不同设置中，ATT方法都取得了最好的性能，证明我们的方法是有效的。</li>
+<li>在使用One设置时，不管对CNN还是PCNN，AVE和ATT差不多，</li>
+<li>CNN+AVE和CNN+ATT比CNN+ONE在One的测试中都有5%-8%的提高，此时唯一的区别就是训练过程中有没有使用所有的样本，试验中证明使用所有的样本可以带来更多的信息。</li>
+<li>不管是CNN还是PCNN，在Two和All中，ATT方法比另外两个高5%，9%。正说明把更多的句子考虑进来对关系提取很有帮助，</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-5-Comparison-with-Feature-based-Approaches"><a href="#4-5-Comparison-with-Feature-based-Approaches" class="headerlink" title="4.5 Comparison with Feature-based Approaches"></a>4.5 Comparison with Feature-based Approaches</h3><ul>
+<li><p>选择3个基于特征的方法进行比较（都有代码）</p>
+<ul>
+<li>Mintz (Mintz et al., 2009)传统的DS模型</li>
+<li>MultiR (Hoffmann et al., 2011)多实例概率图，并且处理了重叠关系</li>
+<li>MIML (Surdeanu et al., 2012) 联合多例和多关系模型。<br><img src="/images/NRE/pcopmatm.jpg" alt=""></li>
+</ul>
+</li>
+<li><p>实验现实</p>
+<ul>
+<li>CNN/PCNN+ATT 明显比基于特征的模型好很多。recall高于0.1时，基于特征的方法的准确率就快速下降了，而我们的方法直到recall到0.3的时候准确率还是比较高的。这证明人设计的特征不能很好的表达语句的意义，NLP工具带来的必然误差损害了关系提取的性能。相比之下，CNN/PCNN+ATT自动学习句子的表达可以很好地表示一个句子。</li>
+<li>整个曲线，PCNN+ATT比CNN+ATT表现的都好很多。这说明selective attention 是考虑的所有句子的信息而不是每一个句子内部的信息。这说明如果换一个更好的sentence encoder会取得更好的结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-6-Case-Study"><a href="#4-6-Case-Study" class="headerlink" title="4.6 Case Study"></a>4.6 Case Study</h3><p><img src="/images/NRE/casetest.jpg" alt=""></p>
+<h2 id="5-Conclusion-and-Future-Works"><a href="#5-Conclusion-and-Future-Works" class="headerlink" title="5. Conclusion and Future Works"></a>5. Conclusion and Future Works</h2><p>未来工作  </p>
+<ul>
+<li>我们的模型把multi-instance learning 和 neural network 通过 instance-level selective attention 结合起来，这不仅可以应用于远程监督的关系提取，还可以应用于其他的多实例学习任务。我们将会在其他领域例如文本分类拓展我们的模型。</li>
+<li>CNN对于NRE来说是一个有效的工具。研究者也提出过很多的其他模型，将来我们将我们的instance-level selective attention和其他的模型集合起来。</li>
+</ul>
+<h2 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><span id="s1"></span>窗口大小 Window size</td>
+<td style="text-align:center">$l$</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center"><span id="s2"></span>句子向量维度 Sentence embedding size</td>
+<td style="text-align:center">$d^c$</td>
+<td style="text-align:center">230</td>
+</tr>
+<tr>
+<td style="text-align:center"><span id="s3"></span>词向量维度 Word dimension</td>
+<td style="text-align:center">$d^a$</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center"><span id="s4"></span>位置向量维度 Position dimension</td>
+<td style="text-align:center">$d^b$</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center"><span id="s5"></span>每批次大小 Batch size</td>
+<td style="text-align:center">$B$</td>
+<td style="text-align:center">160</td>
+</tr>
+<tr>
+<td style="text-align:center"><span id="s6"></span>学习速率 Learning rate</td>
+<td style="text-align:center">$\lambda$</td>
+<td style="text-align:center">0.01</td>
+</tr>
+<tr>
+<td style="text-align:center"><span id="s7"></span>Dropout概率 Dropout probability</td>
+<td style="text-align:center">$p$</td>
+<td style="text-align:center">0.5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li style="list-style: none"><input type="checkbox"> 设置参数的时候可以使用测试集么？</li>
+<li style="list-style: none"><input type="checkbox"> 以实体对为单位还是以句子为单位？</li>
+<li style="list-style: none"><input type="checkbox"> Attention的权值向量是不是不是参数，只是句子向量s的一个函数？</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Relation-Extraction/" rel="tag"># Relation Extraction</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/17/2017-04-17-RelationExtractionPerspectivefromCNN/" rel="next" title="Relation Extraction Perspective from Convolutional Neural Networks 阅读笔记">
+                <i class="fa fa-chevron-left"></i> Relation Extraction Perspective from Convolutional Neural Networks 阅读笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/21/2018-01-20-DPG/" rel="prev" title="Deterministic Policy Gradient Algorithms 阅读笔记">
+                Deterministic Policy Gradient Algorithms 阅读笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">2.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Related-Work"><span class="nav-number">3.</span> <span class="nav-text">2. Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Methodology"><span class="nav-number">4.</span> <span class="nav-text">3. Methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Sentence-Encoder"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 Sentence Encoder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-Input-Representation"><span class="nav-number">4.1.1.</span> <span class="nav-text">3.1.1 Input Representation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-Convolution-Max-pooling-and-Non-linear-Layers"><span class="nav-number">4.1.2.</span> <span class="nav-text">3.1.2 Convolution, Max-pooling and Non-linear Layers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Selective-Attention-over-Instances"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 Selective Attention over Instances</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Optimization-and-Implementation-Details"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 Optimization and Implementation Details</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Experiments"><span class="nav-number">5.</span> <span class="nav-text">4. Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Dataset-and-Evaluation-Metrics"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 Dataset and Evaluation Metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Experimental-Settings"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 Experimental Settings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-Word-Embeddings"><span class="nav-number">5.2.1.</span> <span class="nav-text">4.2.1 Word Embeddings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-Parameter-Settings"><span class="nav-number">5.2.2.</span> <span class="nav-text">4.2.2 Parameter Settings</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Effect-of-Sentence-level-Selective-Attention"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 Effect of Sentence-level Selective Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Effect-of-Sentence-Number-句子数量的影响"><span class="nav-number">5.4.</span> <span class="nav-text">4.4 Effect of Sentence Number 句子数量的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-Comparison-with-Feature-based-Approaches"><span class="nav-number">5.5.</span> <span class="nav-text">4.5 Comparison with Feature-based Approaches</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Case-Study"><span class="nav-number">5.6.</span> <span class="nav-text">4.6 Case Study</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Conclusion-and-Future-Works"><span class="nav-number">6.</span> <span class="nav-text">5. Conclusion and Future Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表"><span class="nav-number">7.</span> <span class="nav-text">符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">8.</span> <span class="nav-text">TODO</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

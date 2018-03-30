@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据库," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="存储和文件结构存储磁盘时间寻道时间**+旋转延迟+传输时间 SSD写SSD的时间比读SSD的时间大很多 文件组织固定长的record变长recordSlotted Page Structurerecord的组织形式  heap sequentialoverflow block hashing multitable clustering file organization  Lec3 索引Order">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB课堂总结">
+<meta property="og:url" content="http://yoursite.com/2018/01/01/2018-01-01-DB/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="存储和文件结构存储磁盘时间寻道时间**+旋转延迟+传输时间 SSD写SSD的时间比读SSD的时间大很多 文件组织固定长的record变长recordSlotted Page Structurerecord的组织形式  heap sequentialoverflow block hashing multitable clustering file organization  Lec3 索引Order">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/slot.png">
+<meta property="og:image" content="http://yoursite.com/images/dblec411.png">
+<meta property="og:image" content="http://yoursite.com/images/lockCompa.png">
+<meta property="og:image" content="http://yoursite.com/images/lockCompaI.png">
+<meta property="og:image" content="http://yoursite.com/images/lockCompaIxs.png">
+<meta property="og:image" content="http://yoursite.com/images/2pcpath.png">
+<meta property="og:image" content="http://yoursite.com/images/2pcabort.png">
+<meta property="og:image" content="http://yoursite.com/images/3pcpath.png">
+<meta property="og:updated_time" content="2018-03-30T14:50:27.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DB课堂总结">
+<meta name="twitter:description" content="存储和文件结构存储磁盘时间寻道时间**+旋转延迟+传输时间 SSD写SSD的时间比读SSD的时间大很多 文件组织固定长的record变长recordSlotted Page Structurerecord的组织形式  heap sequentialoverflow block hashing multitable clustering file organization  Lec3 索引Order">
+<meta name="twitter:image" content="http://yoursite.com/images/slot.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/01/2018-01-01-DB/"/>
+
+
+
+
+
+  <title>DB课堂总结 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/01/2018-01-01-DB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DB课堂总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T00:00:00+08:00">
+                2018-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/" itemprop="url" rel="index">
+                    <span itemprop="name">课程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="存储和文件结构"><a href="#存储和文件结构" class="headerlink" title="存储和文件结构"></a>存储和文件结构</h1><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><h3 id="磁盘时间"><a href="#磁盘时间" class="headerlink" title="磁盘时间"></a>磁盘时间</h3><p>寻道时间**+旋转延迟+传输时间</p>
+<h3 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h3><p>写SSD的时间比读SSD的时间大很多</p>
+<h2 id="文件组织"><a href="#文件组织" class="headerlink" title="文件组织"></a>文件组织</h2><h3 id="固定长的record"><a href="#固定长的record" class="headerlink" title="固定长的record"></a>固定长的record</h3><h3 id="变长record"><a href="#变长record" class="headerlink" title="变长record"></a>变长record</h3><p>Slotted Page Structure<br><img src="/images/slot.png" alt=""><br>record的组织形式</p>
+<ol>
+<li>heap</li>
+<li>sequential<br>overflow block</li>
+<li>hashing</li>
+<li>multitable clustering file organization</li>
+</ol>
+<h1 id="Lec3-索引"><a href="#Lec3-索引" class="headerlink" title="Lec3 索引"></a>Lec3 索引</h1><h2 id="Ordered-Indices"><a href="#Ordered-Indices" class="headerlink" title="Ordered Indices"></a>Ordered Indices</h2><p>Primary index (clustering index)<br>Secondary index (non-clustering index)<br>ISAM(Indexed Sequential Access Method)<br>静态结构，leaf节点按照顺序在磁盘中中顺序存放</p>
+<h2 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+ Tree"></a>B+ Tree</h2><ol>
+<li>所有叶子结点的深度相同</li>
+<li>除根节点和叶子结点外有|n/2|到n个孩子</li>
+<li>叶子节点有|(n-1)/2| ~ n-1个值<br>如果根节点不是也自己点，至少有两个孩子，如果根节点是叶子节点，有0~n-1个值<br>叶子结点到第一层内部节点，是Copy Up<br>内部节点的调整，是Push Up<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><h3 id="动态Dynamic-Hash"><a href="#动态Dynamic-Hash" class="headerlink" title="动态Dynamic Hash"></a>动态Dynamic Hash</h3>地址表不断扩大hash值的位数，地址表二倍的增长<h3 id="Linear-Hashing"><a href="#Linear-Hashing" class="headerlink" title="Linear Hashing"></a>Linear Hashing</h3></li>
+</ol>
+<h1 id="Lec4-操作实现"><a href="#Lec4-操作实现" class="headerlink" title="Lec4 操作实现"></a>Lec4 操作实现</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Cost计算：</p>
+<ol>
+<li>忽略CPU代价</li>
+<li>最终结果的写代价不算，操作符号实现过程中的输出是算的，实现结束后，有可能是流水线，就不算。</li>
+<li>忽略对index块的读取代价<br>表示：</li>
+<li>B(R):R关系占用的块数</li>
+<li>T(R):R中的元组个数</li>
+<li>V(R,A):R中属性A的值的个数</li>
+<li>M:可用的内存块数<br>Cluster概念辨析：</li>
+<li>Clustered file Organization：不同关系的元组可以被放在一起存储</li>
+<li>Clustered relation：每个块只存储相同关系的元组</li>
+<li>Clustering index：按照index来顺序存储<br>要处理的操作</li>
+<li>选择selection</li>
+<li>投影projection</li>
+<li>连接join</li>
+<li>集合求差 set-difference</li>
+<li>union集合求并</li>
+<li>聚合函数 aggregation（group by sum min等）</li>
+<li>排序 sort</li>
+<li>去重 duplicate elimination<br><img src="/images/dblec411.png" alt=""><h2 id="One-Pass-scan"><a href="#One-Pass-scan" class="headerlink" title="One Pass scan"></a>One Pass scan</h2><h3 id="One-Block-in-Memory"><a href="#One-Block-in-Memory" class="headerlink" title="One Block in Memory"></a>One Block in Memory</h3>一个一个读进来处理了再丢出去，做选择、投影、集合并（bag多重结果聚合）都可以<br>Cost=B(R)<h3 id="Multiple-Blocks-in-Memory"><a href="#Multiple-Blocks-in-Memory" class="headerlink" title="Multiple Blocks in Memory"></a>Multiple Blocks in Memory</h3></li>
+<li>去重 Cost=B(R)</li>
+<li>某一个元组可以放入主存，set union（set 单重集合）、difference、intersection、prodect<br>Cost=B(R)+B(S)、M=Min(B(R),B(S))+2<h2 id="Loop"><a href="#Loop" class="headerlink" title="Loop"></a>Loop</h2>两个元组都无法放入主存，join，set操作</li>
+<li>tuple based Nested loop join占用两块buffer<br>Cost=T(s)+T(R)*T(S) </li>
+<li>page oriented nested loop join占用两块buffer<br>Cost=B(s)+B(R)*B(S) </li>
+<li>block nested loop join占满buffer<br>Cost= B(s)+B(s)/M*B(R) s在外层循环，r在内层循环，所以小的放外层有点优化<h2 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h2></li>
+<li>单纯的二路归并排序：Cost=2N(|log_2 N|+1)</li>
+<li>最内层使用其他排序，可以利用所有的内存块，然后进行多路归并<br>Cost=2N*(|log_{B-1}|N/B||+1) 计算了最后的输出</li>
+<li>2-Phase Sort<br>限制|log_{B-1}|N/B||为1，即N&lt;=(B-1)*B时。此时代价为3B(R)（忽略了最后输出的代价）</li>
+<li>Sort Join<br>Cost: 5(B(R)+B(S)) ;sort用4(B(R)+B(s))（包括最后输出），最后join使用类似归并排序的方法，两个关系只扫描一次,需要sqrt(max(B(R),B(S)))</li>
+<li>取消sort结果的输出，直接对很多个小的有序列表进行merge join<br>则效率提高为3(B(R)+B(S)),需要M&gt;sqrt(B(R)+B(s))</li>
+<li>集合并交差、去重操作与上面的类似。<h2 id="Hash-1"><a href="#Hash-1" class="headerlink" title="Hash"></a>Hash</h2>Hash join Cost=3(B(R)+B(S))<br>所需buffer B(R)/(M-1)<m， 每个table在第一阶段进行尽可能多的划分，产生尽可能小的sublist，="" 在第二阶段，只要保证两个表相对较小的sublist放入内存即可="" 实际上，要求m="">sqrt(min(B(R),B(S)))比sortjoin需要的buffer少<h3 id="Hash-Join和Sort-Join比较"><a href="#Hash-Join和Sort-Join比较" class="headerlink" title="Hash Join和Sort Join比较"></a>Hash Join和Sort Join比较</h3></m，></li>
+<li>有充足buffer的时候，hash join和sort join的cost 都是3(B(R)+B(S))，但此时所需的buffer数目是不一致的， sqrt(min(B(R), B(S)) &lt; sqrt(B(R) + B(S))</li>
+<li>hash可以高度并行</li>
+<li>hash的性能依赖于hash函数的质量</li>
+<li>sort join可以应用于非等值连接</li>
+<li>如果已经有序了sort join更有利</li>
+<li>sort join的结果也是有序的</li>
+<li>sort join对数据偏斜不敏感<h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2>selection的代价是T(R)/V(R,X)或B(R)/V(R,X)<br>index join的代价是B(R)+T(R)<em>T(S)/V(S,X)或B(R)+T(R)</em>B(S)/V(S,X)<br>看S是不是clusted的<h1 id="Lec5-查询优化"><a href="#Lec5-查询优化" class="headerlink" title="Lec5 查询优化"></a>Lec5 查询优化</h1>启发式规则：</li>
+<li>尽早做断言</li>
+<li>尽可能避免笛卡儿积</li>
+<li>尽早做投影</li>
+<li>把子查询转化为join操作</li>
+<li>使用左深树<h1 id="Lec7-并发控制"><a href="#Lec7-并发控制" class="headerlink" title="Lec7 并发控制"></a>Lec7 并发控制</h1><h2 id="基于锁的协议"><a href="#基于锁的协议" class="headerlink" title="基于锁的协议"></a>基于锁的协议</h2>两种锁</li>
+<li>排他锁X（exclusive）：可以应用与读写</li>
+<li>共享锁S（shared）：只能应用与读操作<br>锁的相容性<br><img src="/images/lockCompa.png" alt=""><h3 id="两阶段锁协议"><a href="#两阶段锁协议" class="headerlink" title="两阶段锁协议"></a>两阶段锁协议</h3></li>
+<li>Phase 1：Growing Phase 不断获得锁</li>
+<li>Phase 2：Shrinking Phase 不断释放锁<br>可以按照Lock point（获取最后一个点的时间）串行化<br>能保证可串行化，但可能导致级联回滚，无法避免死锁<h4 id="strict-两阶段锁"><a href="#strict-两阶段锁" class="headerlink" title="strict 两阶段锁"></a>strict 两阶段锁</h4>x锁必须在commit/abort的时候才能释放<h4 id="rigorous-两阶段锁"><a href="#rigorous-两阶段锁" class="headerlink" title="rigorous 两阶段锁"></a>rigorous 两阶段锁</h4>s，x锁都必须在commit/abort的时候才能释放<h4 id="锁提升协议"><a href="#锁提升协议" class="headerlink" title="锁提升协议"></a>锁提升协议</h4>P1. 获取s，x锁或s锁提升为x锁<br>P2. 释放s，x锁或者讲x锁降低为s锁<br>允许更多的并发事物，实现简单<h4 id="锁机制的实现"><a href="#锁机制的实现" class="headerlink" title="锁机制的实现"></a>锁机制的实现</h4>所表，使用数据项的hash来索引，并维护每个事务所拥有的锁的列表<h4 id="Increment-Lock自增自减锁"><a href="#Increment-Lock自增自减锁" class="headerlink" title="Increment Lock自增自减锁"></a>Increment Lock自增自减锁</h4>即两个自增自减操作不区分先后<br><img src="/images/lockCompaI.png" alt=""><h3 id="基于图的锁协议"><a href="#基于图的锁协议" class="headerlink" title="基于图的锁协议"></a>基于图的锁协议</h3>将先后关系表示为一个有向无环图<h4 id="Tree-协议"><a href="#Tree-协议" class="headerlink" title="Tree 协议"></a>Tree 协议</h4></li>
+<li>只允许x锁</li>
+<li>只能获取已拥有的锁的数据的子孙节点的锁，如果该事物还没有锁，则可以获取任意没有锁的数据</li>
+<li>可以在任何时间释放锁</li>
+<li>释放锁之后该事物无法再获取这个数据的锁<br>优点：可以保证冲突可串行化，并且没有死锁，可以更早的释放锁<br>缺点：不能保证可恢复性和不级联回滚，可能需要获取他们不会访问数据的锁<h3 id="多粒度"><a href="#多粒度" class="headerlink" title="多粒度"></a>多粒度</h3>Intention锁模型<br>IS（Intention Shared）：意向共享锁<br>IX：（Intention Exclusive）<br>SIX（shared and intention exclusive）<br><img src="/images/lockCompaIxs.png" alt=""><h3 id="死锁处理"><a href="#死锁处理" class="headerlink" title="死锁处理"></a>死锁处理</h3><h4 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h4></li>
+<li>一次获取所有资源</li>
+<li>wait-die 老的抢年轻的</li>
+<li>wound-wait 年轻的抢老的</li>
+<li>Timeout，没有了死锁，但可能被饿死<h4 id="死锁检测"><a href="#死锁检测" class="headerlink" title="死锁检测"></a>死锁检测</h4>等待图有了环则出现了死锁<h4 id="死锁恢复"><a href="#死锁恢复" class="headerlink" title="死锁恢复"></a>死锁恢复</h4><h2 id="乐观协议"><a href="#乐观协议" class="headerlink" title="乐观协议"></a>乐观协议</h2><h3 id="基于验证的协议"><a href="#基于验证的协议" class="headerlink" title="基于验证的协议"></a>基于验证的协议</h3></li>
+<li>执行并写在临时文件上Start</li>
+<li>检验Validation</li>
+<li>写入或者回滚Finish</li>
+</ol>
+<h3 id="机遇时间戳的协议"><a href="#机遇时间戳的协议" class="headerlink" title="机遇时间戳的协议"></a>机遇时间戳的协议</h3><h3 id="多版本协议"><a href="#多版本协议" class="headerlink" title="多版本协议"></a>多版本协议</h3><h1 id="Lec9-并行和分布式数据库"><a href="#Lec9-并行和分布式数据库" class="headerlink" title="Lec9 并行和分布式数据库"></a>Lec9 并行和分布式数据库</h1><p>Speedup和Scaleup<br>限制Speedup和Scaleup的因素</p>
+<h2 id="并行数据库结构"><a href="#并行数据库结构" class="headerlink" title="并行数据库结构"></a>并行数据库结构</h2><ol>
+<li>shared memory<br>数据共享很快，但可扩展性不高，总线成为瓶颈</li>
+<li>shared disk<br>连接到磁盘系统的传输网络成为瓶颈</li>
+<li>shared nothing</li>
+<li>Hierarchical<h2 id="IO并行"><a href="#IO并行" class="headerlink" title="IO并行"></a>IO并行</h2>Range、Hash、Round robin Partition<br>主要的三个功能</li>
+<li>扫描全表</li>
+<li>等值查询</li>
+<li>range查询：处理数据偏斜，排序或者构造直方图（可以抽样）<h2 id="操作并行"><a href="#操作并行" class="headerlink" title="操作并行"></a>操作并行</h2>选择<br>排序<br>连接：Fragment and Replicate join (n vs 1 ; n vs m)<br>实际上就是用硬件实现循环<br>group by 和聚集函数<br>去重<br>投影<h2 id="plan并行和优化"><a href="#plan并行和优化" class="headerlink" title="plan并行和优化"></a>plan并行和优化</h2></li>
+</ol>
+<ul>
+<li>Inter query</li>
+<li>Intra Query<ul>
+<li>Intra operation</li>
+<li>Inter operation<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2>SemiJoin<br>主拷贝Primary Copy 设定一个Primary site<br>基于时间戳的并发控制可以应用于分布式系统，全局唯一的时间戳的实现将成为一个问题。使用local unique timestamp+site identifier构成global unique identifier<br>local unique timestamp随接本地时钟和收到的事物的时间戳确定<h3 id="两阶段提交协议2-PC"><a href="#两阶段提交协议2-PC" class="headerlink" title="两阶段提交协议2 PC"></a>两阶段提交协议2 PC</h3><img src="/images/2pcpath.png" alt=""><br><img src="/images/2pcabort.png" alt=""><br>阻塞：</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>coordinator挂了</li>
+</ol>
+<p><img src="/images/3pcpath.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/24/2017-12-24-MLsummary/" rel="next" title="ML课程总结">
+                <i class="fa fa-chevron-left"></i> ML课程总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/02/2018-02-02-english/" rel="prev" title="英语积累">
+                英语积累 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存储和文件结构"><span class="nav-number">1.</span> <span class="nav-text">存储和文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储"><span class="nav-number">1.1.</span> <span class="nav-text">存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘时间"><span class="nav-number">1.1.1.</span> <span class="nav-text">磁盘时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSD"><span class="nav-number">1.1.2.</span> <span class="nav-text">SSD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件组织"><span class="nav-number">1.2.</span> <span class="nav-text">文件组织</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定长的record"><span class="nav-number">1.2.1.</span> <span class="nav-text">固定长的record</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变长record"><span class="nav-number">1.2.2.</span> <span class="nav-text">变长record</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lec3-索引"><span class="nav-number">2.</span> <span class="nav-text">Lec3 索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ordered-Indices"><span class="nav-number">2.1.</span> <span class="nav-text">Ordered Indices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree"><span class="nav-number">2.2.</span> <span class="nav-text">B+ Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">2.3.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态Dynamic-Hash"><span class="nav-number">2.3.1.</span> <span class="nav-text">动态Dynamic Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Hashing"><span class="nav-number">2.3.2.</span> <span class="nav-text">Linear Hashing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lec4-操作实现"><span class="nav-number">3.</span> <span class="nav-text">Lec4 操作实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">3.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-Pass-scan"><span class="nav-number">3.2.</span> <span class="nav-text">One Pass scan</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#One-Block-in-Memory"><span class="nav-number">3.2.1.</span> <span class="nav-text">One Block in Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Blocks-in-Memory"><span class="nav-number">3.2.2.</span> <span class="nav-text">Multiple Blocks in Memory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loop"><span class="nav-number">3.3.</span> <span class="nav-text">Loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sort"><span class="nav-number">3.4.</span> <span class="nav-text">Sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-1"><span class="nav-number">3.5.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Join和Sort-Join比较"><span class="nav-number">3.5.1.</span> <span class="nav-text">Hash Join和Sort Join比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Index"><span class="nav-number">3.6.</span> <span class="nav-text">Index</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lec5-查询优化"><span class="nav-number">4.</span> <span class="nav-text">Lec5 查询优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lec7-并发控制"><span class="nav-number">5.</span> <span class="nav-text">Lec7 并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于锁的协议"><span class="nav-number">5.1.</span> <span class="nav-text">基于锁的协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两阶段锁协议"><span class="nav-number">5.1.1.</span> <span class="nav-text">两阶段锁协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#strict-两阶段锁"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">strict 两阶段锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rigorous-两阶段锁"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">rigorous 两阶段锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁提升协议"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">锁提升协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁机制的实现"><span class="nav-number">5.1.1.4.</span> <span class="nav-text">锁机制的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Increment-Lock自增自减锁"><span class="nav-number">5.1.1.5.</span> <span class="nav-text">Increment Lock自增自减锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于图的锁协议"><span class="nav-number">5.1.2.</span> <span class="nav-text">基于图的锁协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tree-协议"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">Tree 协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多粒度"><span class="nav-number">5.1.3.</span> <span class="nav-text">多粒度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁处理"><span class="nav-number">5.1.4.</span> <span class="nav-text">死锁处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁预防"><span class="nav-number">5.1.4.1.</span> <span class="nav-text">死锁预防</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁检测"><span class="nav-number">5.1.4.2.</span> <span class="nav-text">死锁检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁恢复"><span class="nav-number">5.1.4.3.</span> <span class="nav-text">死锁恢复</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乐观协议"><span class="nav-number">5.2.</span> <span class="nav-text">乐观协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于验证的协议"><span class="nav-number">5.2.1.</span> <span class="nav-text">基于验证的协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机遇时间戳的协议"><span class="nav-number">5.2.2.</span> <span class="nav-text">机遇时间戳的协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多版本协议"><span class="nav-number">5.2.3.</span> <span class="nav-text">多版本协议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lec9-并行和分布式数据库"><span class="nav-number">6.</span> <span class="nav-text">Lec9 并行和分布式数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并行数据库结构"><span class="nav-number">6.1.</span> <span class="nav-text">并行数据库结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO并行"><span class="nav-number">6.2.</span> <span class="nav-text">IO并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作并行"><span class="nav-number">6.3.</span> <span class="nav-text">操作并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plan并行和优化"><span class="nav-number">6.4.</span> <span class="nav-text">plan并行和优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式"><span class="nav-number">6.5.</span> <span class="nav-text">分布式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两阶段提交协议2-PC"><span class="nav-number">6.5.1.</span> <span class="nav-text">两阶段提交协议2 PC</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

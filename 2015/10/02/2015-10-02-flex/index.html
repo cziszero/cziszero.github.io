@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编译原理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="正则表达式和Flex的使用">
+<meta name="keywords" content="编译原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则&amp;Flex">
+<meta property="og:url" content="http://yoursite.com/2015/10/02/2015-10-02-flex/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="正则表达式和Flex的使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-30T14:40:51.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则&amp;Flex">
+<meta name="twitter:description" content="正则表达式和Flex的使用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/10/02/2015-10-02-flex/"/>
+
+
+
+
+
+  <title>正则&Flex | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/02/2015-10-02-flex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">正则&Flex</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/" itemprop="url" rel="index">
+                    <span itemprop="name">课程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/编译原理/" itemprop="url" rel="index">
+                    <span itemprop="name">编译原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  正则表达式和Flex的使用
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##Regular Expression</p>
+<p>###语法</p>
+<ol>
+<li><code>x</code>     匹配一个字母，此例即为字符x</li>
+<li><code>.</code>     代表除换行符外的任意一个字符</li>
+<li><code>[xyz]</code>     匹配xyz</li>
+<li><code>[abj-o]</code>     匹配a，b，j到o中的字母</li>
+<li><code>[^A-Z]</code>     匹配除A-Z之外的所有字符</li>
+<li><code>r*</code>     *匹配0个或任意个r</li>
+<li><code>r+</code>     一个或多个r</li>
+<li><code>r?</code>  0个或1个r</li>
+<li><code>r{2,5}</code> 2-5个r</li>
+<li><code>r{2,}</code> 两个及以上个r</li>
+<li><code>r{4}</code> 4个r</li>
+<li><code>{NAME}</code> the expansion of the “NAME”definition (see below);</li>
+<li><code>\X</code> if X is an ‘a’, ‘b’, ‘f’, ‘n’, ‘r’, ‘t’, or ‘v’, then the ANSI-C<br>interpretation of \X. Otherwise, a literal ‘X’ (used to escape operators such as ‘*’);</li>
+<li><code>\123</code> 代表八进制的123</li>
+<li><code>\x2a</code> 十六进制2a</li>
+<li><code>(r)</code> 匹配r，圆括号用来改变运算顺序。match an r; parentheses are used to override precedence (see    below);</li>
+<li><code>rs</code> 匹配rs，叫做连接”concatenation”，</li>
+<li><code>r|s</code> 匹配r或s</li>
+<li><code>r/s</code> 匹配模式r，但是要求其后紧跟着模式s。当需要判断本次匹配是否为“最长匹配（longest match）时，<br>模式s匹配的文本也会被包括进来，但完成判断后开始执行对应的动作（action）之前，<br>这些与模式s相配的文本会被返还给输入。所以动作（action）只能看到模式r匹配到的文本。<br>这种模式类型叫做尾部上下文（trailing context）。（有些‘r/s’组合是flex不能识别的；<br>请参看后面deficiencies/bugs一节中的dangerous trailing context的内容。）</li>
+<li><code>^r</code> 行首的r</li>
+<li><code>r$</code> 行尾的r</li>
+<li><code>&lt;S&gt;r</code> 匹配一个开始条件为S的r，an r, but only in start condition S (see below for discussion of start conditions);</li>
+<li><code>&lt;&lt;EOF&gt;&gt;</code> 匹配文件尾</li>
+</ol>
+<p>###注意</p>
+<ol>
+<li>运算优先级别按上述列表的先后由高到低排列</li>
+<li>空格只能出现在” “和[ ]中</li>
+<li>“ “和[ ]支持转义字符, 如：”\\x” will match \x;</li>
+<li>支持汉字：</li>
+</ol>
+<ul>
+<li>[\x81-\xfe][\x40-\xfe]匹配一个汉字GBK 码。</li>
+<li>[\xb0-\xf7][\xa0-\xfe]匹配一个汉字GB 码。</li>
+<li>“土豪”：如果本flex 源程序是用的GBK 码，则该模式匹配GBK 码汉字“土豪”</li>
+</ul>
+<h2 id="Flex语法"><a href="#Flex语法" class="headerlink" title="Flex语法"></a>Flex语法</h2><p>###结构</p>
+<blockquote>
+<blockquote>
+<p>   DEFINITION PART</p>
+<p>   %%</p>
+<p>   RULE PART</p>
+<p>   %%</p>
+<p>   USER C Source Code</p>
+</blockquote>
+</blockquote>
+<p>####DEFINITION PART<br>    %{<br>    C语言说明部分（全局变量、包含文件、宏定义和引用说明）<br>    %}<br>    [indent]C语句<br>    /<em> pattern definition 模式定义    </em>/<br>    NAME pattern<br>    /<em> inclusive start condition list 包含还是开始条件列表    </em>/<br>    %s S1 S2<br>    /<em> exclusive start condition list 独占开始开始条件列表    </em>/<br>    %x X1 X2</p>
+<ul>
+<li>定义部分的%{}和非顶行的开始直到该行结束所有的文字将直接拷贝到输出文件(去掉%{}), flex不进行任何处理；<br>%{}一定要顶行书写；</li>
+<li><p>Pattern Definition 所定义的NAME, 在Rule Part 的Pattern 中可以用{NAME}引用，flex将其替换为对应的正规表达式，<br>如：<br></p>
+<blockquote>
+<p>   <code>ID [_a-zA-Z][_0-9a-zA-Z]*</code><br><br>   在Rule Part 中可以：<br><br>   <code>{ID} printf (&quot;id: %s\n&quot;, yytext);</code><br><br>   等价于<br><br>   <code>[_a-zA-Z][_0-9a-zA-Z]* printf (&quot;id: %s\n&quot;, yytext);</code></p>
+</blockquote>
+</li>
+<li><p>flex不识别任何C 语句，C 代码只能出现在其格式规定的位置，但是为了能正确地将C 语句拷贝<br>到输出文件指定的地方，flex能识别C 的{ }块结构, 注释和字符串常量。</p>
+</li>
+<li>flex提供了机制有条件地激活规则。如果规则的pattern有前缀”<sc>“，表示扫描器在名为”sc”的开始条件下该规则才是活动的。<br>例如，<string>[^”]<em>    下，pattern [^”]</em>    只有在STRING条件下是active的。<br><br>开始条件在定义段声明。该行必须不能缩进，并使用%s或%x开始，跟着一个名字列表。%s表示inclusive(包含的)开始条件，%x表示exclusive(排它的)开始条件。开始条件使用BEGIN动作激活。直到下一个BEGIN动作执行，给定开始条件的规则才被激活，其他开始条件变得inactive。如果开始条件是inclusive，没有开始条件的规则都是active的；如果是exclusive的，只有符合开始条件的规则才是active的。如果flex文件中定义了一系列的依赖相同exclusive开始条件的规则，相当于描述了一个独立于其他规则的扫描器。</string></sc></li>
+<li>BEGIN(0)返回原始状态，这时只有无开始条件的规则是活动的。这个状态也被叫做开始条件“INITIAL”，所以BEGIN(INITIAL)等价于BEGIN(0)。</li>
+</ul>
+<h4 id="Rule-Part"><a href="#Rule-Part" class="headerlink" title="Rule Part"></a>Rule Part</h4><pre><code>pattern1 action1
+......
+patternN actionN
+</code></pre><ul>
+<li>patterN是正规表达式；</li>
+<li>patterN一定要顶行书写；</li>
+<li>actionN是C 语句；</li>
+<li>action中出现的{}一定要平衡, 如果少了一个}, flex 将把<br>以下的输入都认为是Action的代码，由于直到文件结束都找<br>不到结束action的}而报错如下：EOF encountered inside<br>an action。<br>action可以为空或“;”, 表示对所识别的词形不做任何处理，<br>即过滤当前识别的串。</li>
+</ul>
+<h2 id="Flex生成的lex-yy-c的结构"><a href="#Flex生成的lex-yy-c的结构" class="headerlink" title="Flex生成的lex.yy.c的结构"></a>Flex生成的lex.yy.c的结构</h2><ul>
+<li>flex的输出lex.yy.c包含了一个原型为: int yylex()的词<br>法分析函数、DFA 状态转移矩阵和一些辅助函数和宏定义；</li>
+<li>yylex()对yyin(缺省为stdin) 扫描, 匹配某一模式后执行<br>该模式对应的C 语言action, 如果action中没有return 等<br>结束函数的语句, yylex()继续上述操作, 否则将返回调用它<br>的函数; yylex()由于是用全局变量保存分析现场，因此下<br>一次再调用它时，它将继续对输入文件中还没有扫描的部分<br>继续分析；</li>
+<li>用户可通单词编码(TOKEN_NUM)，在单词pattern<br>的action中加上“return TOKEN_NUM;” 返回调用函数，调<br>用函数通过yylex()的返回值知道当前识别的单词, 词法分<br>析与语法分析就是通过该方法实现互动机制。</li>
+<li>状态转换矩阵缺省时用压缩方式表示，加-f选项时直接用二维<br>数组表示，这样输出的文件体积较大，但是执行速度快；</li>
+</ul>
+<ol>
+<li><code>File * yyin; yylex()</code>所扫描的文件，缺省值为<code>stdin</code>;</li>
+<li><code>File * yyout; yylex()</code>扫描输出文件，缺省值为<code>stdout</code>;</li>
+<li><code>int * yyleng; yylex()</code>当前识别的词形的长度;</li>
+<li><code>char * yytext; yylex()</code>当前识别的词形;</li>
+<li><code>ECHO;</code> (宏) 打印当前识别的词形到<code>yyout</code>;</li>
+<li><code>REJECT;</code> (宏) 选择下一个最佳pattern, ex:</li>
+<li><code>a | ab | abc ECHO; REJECT;</code>如果输入是: abc, 则输出为：abcaba.<br>注意：REJECT之后的代码将不执行；</li>
+<li><code>yymore();</code> 模式对应的action完成后，yytext不清空，将下一<br>个模式匹配后的词形直接追加到yytext中，如：<br><code>mega- ECHO; yymore();
+kludge ECHO;</code><br>如果输入是: mega-kludge, 则输出为：mega-mega-kludge.</li>
+<li><code>yyless(n);</code> 模式对应的action完成后，将缓冲区当前指针定<br>位到当前词形的第n个字符之后的第一字符，下次扫描从该<br>字符开始，而不是当前词形后的第一字符，如：<br><code>foobar ECHO; yyless(3);
+[a-z]+ ECHO;</code><br>如果输入是: foobar, 则输出为：foobarbar.</li>
+<li><code>int input();</code> 从缓冲区读取一个字符，并把当前扫描字符指针下移一个；</li>
+<li><code>BEGIN (S);</code> (宏) 激活开始条件, 其中S是定义部分的定义的(%s or<br>%x) 开始条件名, 在以后的扫描中，以<code>&lt;S&gt;</code>开始的模式将被激活; 注<br>意: 用户代码中不要定义与BEGIN等系统已有的宏重名的标识符;</li>
+<li><code>int yywrap();</code> (用户提供) 当扫描程序<code>yylex()</code>读到<code>yyin</code>的EOF时,<br>将调用该函数, 如果该函数返回0, 扫描程序<code>yylex()</code>认为用户已经<br>重新设置了<code>yyin</code>, 将继续扫描; 如果返回非零, 描程序<code>yylex()</code>将正<br>常结束, 返回0到调用它的函数。用户可以在该函数中对<code>yyin</code>重新<br>设置，使得<code>yylex()</code>不间断地扫描多个文件，对单个文件; 用户提<br>供下述函数定义即可：<code>int yywrap()
+{ return 1; }</code><br>注意不需要<code>int yywrap()</code>时，可在定义部分加选项%option<br>noyywrap或gcc编译链接时加选项-fl(加载int yywrap()库函数).</li>
+</ol>
+<h2 id="匹配原则"><a href="#匹配原则" class="headerlink" title="匹配原则"></a>匹配原则</h2><ul>
+<li>最长匹配原则;</li>
+<li>最先匹配原则。</li>
+</ul>
+<blockquote>
+<p>   Example .<br>program printf(“keyword\n”);<br>{ID} printf(“identifier\n”);<br>prog printf(“prog\n”);<br>如果输入是：”programming program” 则经过flex生成的扫描<br>程序扫描后将输出: ”identifier keyword”, 由于模式{ID}包含<br>模式prog，并且在后者之前，因此将模式prog永远不会匹配，<br>用flex编译该文件</p>
+</blockquote>
+<h2 id="Flex命令选项"><a href="#Flex命令选项" class="headerlink" title="Flex命令选项"></a>Flex命令选项</h2><ul>
+<li>-b 输出回溯(back up) 到lex.backup文件中;</li>
+<li>-C 对输出的状态转移矩阵进行不同强度的压缩, 强度的强弱次<br>序为: -Cem(缺省), -Cm, -C, -C{f,F}e, -C{f,F}和-C{f,F}a;</li>
+<li>-d 在每个模式匹配后输出调试信息: “–accepting rule at<br>line nnn (“matched text”)” 到stderr;</li>
+<li>-f fast scanner, 状态转换矩阵没有压缩;</li>
+<li>-i 大小写不敏感</li>
+<li>-s 禁止默认rule。suppress default rule;</li>
+<li>-t 不生成lex.yy.c文件，将该文件直接打印到stdout;<br>-v verbose mode, 输出生成的扫描程序DFA 等状态信息;<br>-T trace mode, 跟踪扫描程序的生成的每个过程。</li>
+</ul>
+<h2 id="效率相关"><a href="#效率相关" class="headerlink" title="效率相关"></a>效率相关</h2><ul>
+<li>flex的目标是生成高效的实用扫描程序，为了能处理大量的<br>模式，其性能已全面优化，所生成的扫描程序具有很高的效<br>率，但是有些操作和模式对最后的扫描程序的执行效率有一<br>定的影响；</li>
+<li>-C选项压缩DFA 的状态转换矩阵，影响访问速度；</li>
+<li>REJECT 将回退当前识别的词形到输入；</li>
+<li>%option yylineno 打开记录被扫描文件的行号；<br>模式中有一个模式是另一个模式的前缀，或一个模式是另一<br>个的子串，使得扫描程序不得不回溯(back up);</li>
+<li>“trailing context” 和^r也导致回溯；</li>
+<li>yymore(), yyless(n)对效率也有较小的影响。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本blog内容全部来自老师的<a href="../docs/flex.pdf">课件</a>，如有侵权，告知即删。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/19/2015-09-30-install&config/" rel="next" title="各种常用软件的安装和配置">
+                <i class="fa fa-chevron-left"></i> 各种常用软件的安装和配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/17/2015-10-17-greekalphabet/" rel="prev" title="常用希腊字母表">
+                常用希腊字母表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex语法"><span class="nav-number">1.</span> <span class="nav-text">Flex语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rule-Part"><span class="nav-number">1.0.1.</span> <span class="nav-text">Rule Part</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex生成的lex-yy-c的结构"><span class="nav-number">2.</span> <span class="nav-text">Flex生成的lex.yy.c的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配原则"><span class="nav-number">3.</span> <span class="nav-text">匹配原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex命令选项"><span class="nav-number">4.</span> <span class="nav-text">Flex命令选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效率相关"><span class="nav-number">5.</span> <span class="nav-text">效率相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

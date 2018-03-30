@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="计算机网络," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="计算机网络课程笔记">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络学习之数据链路层">
+<meta property="og:url" content="http://yoursite.com/2015/09/19/2015-09-19-ComputerNet_DataLinkLayer/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="计算机网络课程笔记">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_01.png">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_05.png%22">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_06.png">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_02.png">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_03.png">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_04.png">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_07.png">
+<meta property="og:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_08.png">
+<meta property="og:updated_time" content="2018-03-30T14:40:51.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络学习之数据链路层">
+<meta name="twitter:description" content="计算机网络课程笔记">
+<meta name="twitter:image" content="http://yoursite.com/images/ComputerNetWorkDataLinkLayer_01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/19/2015-09-19-ComputerNet_DataLinkLayer/"/>
+
+
+
+
+
+  <title>计算机网络学习之数据链路层 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/09/19/2015-09-19-ComputerNet_DataLinkLayer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络学习之数据链路层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-19T00:00:00+08:00">
+                2015-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/" itemprop="url" rel="index">
+                    <span itemprop="name">课程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  计算机网络课程笔记
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><em>　链路(link)——是一条无源的点到点的物理线路段，中间没有任何其他的交换结点。
+</em>　通路（path）——由一连串的链路和中间节点构成的源到目的路径。<br><em>　　数据链路(data link)—— 除了物理线路外，还必须有通信协议来控制数据在链路上的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。
+</em>　帧（frame）——在数据链路上传递的数据单元一般被称为帧，帧一般由帧头、帧内容、帧尾三部分构成。<br>－帧头表示帧的开始；<br>－帧尾表示帧的结束；<br>－帧内容一般分为协议控制和数据两部分。</p>
+<h2 id="涉及问题"><a href="#涉及问题" class="headerlink" title="涉及问题"></a>涉及问题</h2><p>提供的服务<br>链路管理<br>帧定界<br>差错控制<br>流量控制<br>将数据和控制信息区分<br>透明传输<br>寻址</p>
+<h2 id="提供的服务"><a href="#提供的服务" class="headerlink" title="提供的服务"></a>提供的服务</h2><p>数据链路层的最主要作用在于通过建立长期、临时数据链路，实现帧的传输，为上层提供信息的非路由传递功能。<br>分类：（面向连接，无连接(有确认，无确认)）</p>
+<h2 id="帧定界与透明传输"><a href="#帧定界与透明传输" class="headerlink" title="帧定界与透明传输"></a>帧定界与透明传输</h2><h3 id="字符计数法"><a href="#字符计数法" class="headerlink" title="字符计数法"></a>字符计数法</h3><p>利用头部中的一个域来指定该帧中的字符数，接收端通过字符计数值来知道帧的结束，要求线路是按字符为单位进行传递的，字符的界定是由低层完成。</p>
+<h3 id="带字符填充的首尾界符法"><a href="#带字符填充的首尾界符法" class="headerlink" title="带字符填充的首尾界符法"></a>带字符填充的首尾界符法</h3><p><img src="/images/ComputerNetWorkDataLinkLayer_01.png" alt=""><br>在字符计数法上考虑到错误之后的同步问题，让每一个帧都用一些特殊的字符作为帧的开始与结束；绝大多数协议都使用相同的字节作为开始与结束标志，被称为标志字节（flag byte）,也称为起始和结束分界符，连续出现的两个字符代表了当前帧的结束和下一帧的开始。</p>
+<p>透明传输的含义在于避免在有效载荷域中出现的与首尾界符相同的字符对帧界定工作的影响。其采用的方法是在有效载荷域中出现的每个标志字节前插入一个特殊的转义字节（ESC），接收端在将数据传送给网络层之前删除掉转义字符，这种技术被称为字节填充（byte stuffing）或字符填充（character stuffing）。有效载荷中出现的转义字符也必须同样处理。</p>
+<h3 id="带位填充的首尾标志法"><a href="#带位填充的首尾标志法" class="headerlink" title="带位填充的首尾标志法"></a>带位填充的首尾标志法</h3><p>在以二进制为最小传输单位的数据链路中，由于数据帧的长度是任意的比特长度，所以采用在每一个帧的开始与结束都添加一个特殊的标志二进制串，例如“01111110”，称为帧起始与结束标志。</p>
+<p>透明传输的含义在于避免在有效载荷域中出现的与首尾标志相同的二进制串对帧的界定造成影响。<br>　　例如对“01111110”,其采用的方法是：如果发送端在发送有效载荷时，如果每遇到５个“1”后，就在其后添加一个“0”；接收端如果在接收有效负载时，遇到连续的５个“1”，就会讲其后的“0”去掉，这种位填充（bit stuffing）机制与字节填充机制类似。</p>
+<h3 id="物理编码违例法"><a href="#物理编码违例法" class="headerlink" title="物理编码违例法　　"></a>物理编码违例法　　</h3><p>在传输过程中，利用码元的非有效状态来做为数据帧的起始。(详见ppt page13)</p>
+<h2 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h2><p>差错控制主要用于对传递的帧进行校验，发现错误就采用重发或纠错。</p>
+<p>主要差错情况(正常；数据帧出错；数据帧丢失；确认帧丢失)<br>实用的数据链路层协议大都不采用否认帧进行差错通知，由是采用检验出错误后，不发确认帧，导致发送方超时重传。 </p>
+<p>两大机制(计时器；帧编号)</p>
+<h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><p><img src="/images/ComputerNetWorkDataLinkLayer_05.png&quot;" alt=""><br>重传时间的作用是：数据帧发送完毕后若经过了这样长的时间还没有收到确认帧，就重传这个数据帧。<br>为方便起见，我们设重传时间为tout = tp + tpr+ ta + tp + tpr                  　　　<br>设上式右端的处理时间 tpr 和确认帧的发送时间 ta 都远小于传播时延 tp，因此可将重传时间取为两倍的传播时延，即tout = 2tp</p>
+<p>两个发送成功的数据帧之间的最小时间间隔是tT = tf + tout = tf  + 2tp                            　　　<br>设数据帧出现差错(包括帧丢失)的概率为 p，但假设确认帧不会出现差错。<br>设正确传送一个数据帧所需的平均时间 tav</p>
+<p>tav = tT ( 1 + 一个帧的平均重传次数)<br><img src="/images/ComputerNetWorkDataLinkLayer_06.png" alt=""></p>
+<h3 id="帧编号"><a href="#帧编号" class="headerlink" title="帧编号"></a>帧编号</h3><p>任何一个编号系统的序号所占用的比特数一定是有限的。因此，经过一段时间后，发送序号就会重复。<br>序号占用的比特数越少，数据传输的额外开销就越小。<br>对于停止等待协议，由于每发送一个数据帧就停止等待，因此用一个比特来编号就够了。一个比特可表示 0 和 1 两种不同的序号。<br>数据帧的发送序号 N(S) 以 0 和 1 交替的方式出现在数据帧中。<br>每发一个新的数据帧，发送序号就和上次发送的不一样。用这样的方法就可以使收方能够区分开新的数据帧和重传的数据帧了。</p>
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><p>流量控制——最重要的就是高速发送者与低速接受者之间的流量控制的问题 。<br><img src="/images/ComputerNetWorkDataLinkLayer_02.png" alt=""></p>
+<h2 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h2><h3 id="最简单流量控制"><a href="#最简单流量控制" class="headerlink" title="最简单流量控制"></a>最简单流量控制</h3><p>在发送结点的发送操作：<br>    (1) 从主机取一个数据帧。<br>    (2) 将数据帧送到数据链路层的发送缓存。<br>    (3) 将发送缓存中的数据帧发送出去。<br>    (4) 等待。<br>    (5) 若收到由接收结点发过来的信息(此信息的格式与内容可由双方事先商定好)，则从主机取一个新的数据帧，然后转到(2)。<br>在接收结点的接收操作：<br>    (1) 等待。<br>    (2) 若收到由发送结点发过来的数据帧则将其放入数据链路层的接收缓存。<br>    (3) 将接收缓存中的数据帧上交主机。<br>    (4) 向发送结点发一信息，表示数据帧已经上交给主机。<br>    (5) 转到(1)。<br><img src="/images/ComputerNetWorkDataLinkLayer_03.png" alt=""><br><img src="/images/ComputerNetWorkDataLinkLayer_04.png" alt=""></p>
+<h3 id="实际算法"><a href="#实际算法" class="headerlink" title="实际算法"></a>实际算法</h3><p>按照习惯的表示法，ACKn 表示“第 n – 1 号帧已经收到，现在期望接收第 n 号帧”。<br>在帧序列位数为1时：<br>ACK1 表示“0 号帧已收到，现在期望接收的下一帧是 1 号帧”；<br>ACK0 表示“1 号帧已收到，现在期望接收的下一帧是 0 号帧”。<br>发送节点：<br>(1) 从主机取一个数据帧，送交发送缓存。<br>(2) V(S)←0。// V(S)、N(S) 是当前帧号，N(S)写入帧中，V(S)存于本节点。<br>(3) N(S)←V(S)。<br>(4) 将发送缓存中的数据帧发送出去。<br>(5) 设置超时计时器。<br>(6) 等待。//等待以下(7)和(8)这两个事件中最先出现的一个<br>(7) 收到确认帧 ACKn，<br>      若 n = 1 – V(s)，则：<br>           从主机取一个新的数据帧，放入发送缓存；<br>           V(S)←[1 -V(S)]，转到 (3)。<br>      否则，丢弃这个确认帧，转到(6)。<br>(8) 若超时计时器时间到，则转到(4)。<br>接受节点：<br>(1)  V(R)←0。<br>(2)  等待。<br>(3)  收到一个数据帧；<br>           若 N(S) = V(R)，则执行(4)；<br>           否则丢弃此数据帧，然后转到(6)。<br>(4)  将收到的数据帧中的数据部分送交上层软件<br>        （也就是数据链路层模型中的主机）。<br>(5)  V(R)←[1 - V(R)]。<br>(6)  n←V(R)；发送确认帧 ACKn，转到(2)。<br>优点：比较简单 。<br>缺点：通信信道的利用率不高，也就是说，信道还远远没有被数据比特填满。<br>为了克服这一缺点，就产生了另外两种协议，即连续 ARQ 和选择重传 ARQ。</p>
+<h2 id="连续ARQ"><a href="#连续ARQ" class="headerlink" title="连续ARQ"></a>连续ARQ</h2><p>由于出现帧丢失或确认丢失后，导致连续n帧重传，所以又被称为退后n帧协议。<br>工作原理</p>
+<p>在发送完一个数据帧后，不是停下来等待确认帧，而是可以连续再发送若干个数据帧。<br>如果这时收到了接收端发来的确认帧，那么还可以接着发送数据帧。<br>由于减少了等待时间，整个通信的吞吐量就提高了。 </p>
+<p><img src="/images/ComputerNetWorkDataLinkLayer_07.png" alt=""><br><img src="/images/ComputerNetWorkDataLinkLayer_08.png" alt=""></p>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
+<li><p>接收端只按序接收数据帧。虽然在有差错的 2号帧之后接着又收到了正确的 3 个数据帧，但接收端都必须将这些帧丢弃，因为在这些帧前面有一个 2 号帧还没有收到。虽然丢弃了这些不按序的无差错帧，但应重复发送已发送过的最后一个确认帧（防止确认帧丢失）。</p>
+</li>
+<li><p>ACK1 表示确认 0 号帧 DATA0，并期望下次收到 1 号帧；ACK2 表示确认 1 号帧 DATA1，并期望下次收到 2 号帧。依此类推。</p>
+</li>
+<li><p>结点 A 在每发送完一个数据帧时都要设置该帧的超时计时器。如果在所设置的超时时间内收到确认帧，就立即将超时计时器清零。但若在所设置的超时时间到了而未收到确认帧，就要重传相应的数据帧（仍需重新设置超时计时器）。<br>在等不到 2 号帧的确认而重传 2 号数据帧时，虽然结点 A 已经发完了 5 号帧，但仍必须向回走，将 2号帧及其以后的各帧全部进行重传。连续 ARQ 又称为Go-back-N ARQ，意思是当出现差错必须重传时，要向回走 N 个帧，然后再开始重传。 </p>
+</li>
+</ol>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><ol>
+<li>发送端和接收端分别设定发送窗口和接收窗口 。</li>
+<li>发送窗口用来对发送端进行流量控制。</li>
+<li>发送窗口的大小 WT 代表在还没有收到对方确认信息的情况下发送端<br>最多可以发送多少个数据帧。</li>
+</ol>
+<p>当用 n 个比特进行编号时，若接收窗口的大小为 1，则只有在发送窗口的大小 WT &lt;=2^n -1时，连续 ARQ 协议才能正确运行。<br>   (所有确认帧都丢失,重传帧被当成新的一轮帧)</p>
+<h2 id="选择重传ARQ"><a href="#选择重传ARQ" class="headerlink" title="选择重传ARQ"></a>选择重传ARQ</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/19/2015-09-19-ComputerNet_English2Chinese/" rel="next" title="计算机网络之中英术语对照表">
+                <i class="fa fa-chevron-left"></i> 计算机网络之中英术语对照表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/19/2015-09-30-install&config/" rel="prev" title="各种常用软件的安装和配置">
+                各种常用软件的安装和配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及问题"><span class="nav-number">2.</span> <span class="nav-text">涉及问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提供的服务"><span class="nav-number">3.</span> <span class="nav-text">提供的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帧定界与透明传输"><span class="nav-number">4.</span> <span class="nav-text">帧定界与透明传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符计数法"><span class="nav-number">4.1.</span> <span class="nav-text">字符计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带字符填充的首尾界符法"><span class="nav-number">4.2.</span> <span class="nav-text">带字符填充的首尾界符法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带位填充的首尾标志法"><span class="nav-number">4.3.</span> <span class="nav-text">带位填充的首尾标志法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理编码违例法"><span class="nav-number">4.4.</span> <span class="nav-text">物理编码违例法　　</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差错控制"><span class="nav-number">5.</span> <span class="nav-text">差错控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计时器"><span class="nav-number">5.1.</span> <span class="nav-text">计时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#帧编号"><span class="nav-number">5.2.</span> <span class="nav-text">帧编号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流量控制"><span class="nav-number">6.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止等待协议"><span class="nav-number">7.</span> <span class="nav-text">停止等待协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单流量控制"><span class="nav-number">7.1.</span> <span class="nav-text">最简单流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际算法"><span class="nav-number">7.2.</span> <span class="nav-text">实际算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续ARQ"><span class="nav-number">8.</span> <span class="nav-text">连续ARQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要点"><span class="nav-number">8.1.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口"><span class="nav-number">8.2.</span> <span class="nav-text">滑动窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择重传ARQ"><span class="nav-number">9.</span> <span class="nav-text">选择重传ARQ</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
