@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T14:40:51.563Z">
+<meta property="og:updated_time" content="2018-06-15T16:51:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SAMBA介绍和配置">
 <meta name="twitter:description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
@@ -347,6 +347,15 @@
           </span>
 
           
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-06-16T00:51:00+08:00" content="2018-06-16">
+                  2018-06-16
+              </time>
+            </span>
+          
+
+          
             <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
@@ -417,13 +426,15 @@
 <li>smbd ：这个 daemon 的主要功能就是用来管理 SAMBA 主机分享的目录、档案与打印机等等。 主要利用可靠的 TCP 协议来传输数据，开放的端口为 139 及 445(不一定存在) 。</li>
 </ul>
 <h1 id="联机模式的介绍-peer-peer-domain-model"><a href="#联机模式的介绍-peer-peer-domain-model" class="headerlink" title="联机模式的介绍 (peer/peer, domain model)"></a>联机模式的介绍 (peer/peer, domain model)</h1><ul>
-<li>peer/peer (Workgroup model)：所有 PC 均可以在自己的计算机上面管理自己的账号与密码， 同时每一部计算机也都具有独力可以执行各项软件的能力</li>
-<li>domain model：将所有的账号与密码都放置在一部主控计算机 (Primary Domain Controller, PDC) 上面</li>
+<li>peer/peer (Workgroup model)：所有 PC 均可以在自己的计算机上面管理自己的账号与密码，同时每一部计算机也都具有独力可以执行各项软件的能力</li>
+<li>domain model：将所有的账号与密码都放置在一部主控计算机 (Primary Domain Controller, PDC) 上面。</li>
 </ul>
 <h1 id="SAMBA-服务器的基础设定"><a href="#SAMBA-服务器的基础设定" class="headerlink" title="SAMBA 服务器的基础设定"></a>SAMBA 服务器的基础设定</h1><h2 id="Samba-所需套件及其套件结构"><a href="#Samba-所需套件及其套件结构" class="headerlink" title="Samba 所需套件及其套件结构"></a>Samba 所需套件及其套件结构</h2><h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><ol>
 <li>samba：<br>这个套件主要包含了 SAMBA 的主要 daemon 档案 (smbd 及 nmbd)、 SAMBA 的文件档 (document)、以及其他与 SAMBA 相关的 logrotate 配置文件及开机默认选项档案等；</li>
 <li>samba-common：<br>这个套件则主要提供了 SAMBA 的主要配置文件 (smb.conf) 、 smb.conf 语法检验的测试程序 (testparm)等等；</li>
-<li>samba-client：<br>这个套件则提供了当 Linux 做为 SAMBA Client 端时，所需要的工具指令，例如挂载 SAMBA 文件格式的执行档 smbmount 等等。<h3 id="相关文件"><a href="#相关文件" class="headerlink" title="相关文件"></a>相关文件</h3></li>
+<li>samba-client：<br>这个套件则提供了当 Linux 做为 SAMBA Client 端时，所需要的工具指令，例如挂载 SAMBA 文件格式的执行档 smbmount 等等。</li>
+</ol>
+<h3 id="相关文件"><a href="#相关文件" class="headerlink" title="相关文件"></a>相关文件</h3><ul>
 <li>/etc/samba/smb.conf：<br>smb.conf 是 Samba 的主要配置文件名，如果你的 distribution 的 SAMBA 配置文件不在 /etc/samba/ 目录当中， 那么你应该使用 locate 或 find 等方式将他找出来就好啦。基本上，咱们的 Samba 就仅有这个配置文件而已， 且这个配置文件本身就是很详细的说明文件了，请用 vi 去查阅他吧！这个档案主要在设定工作组、 NetBIOS 名称以及分享的目录等相关设定，我们后续要介绍的都是这个档案而已啦！</li>
 <li>/etc/samba/lmhosts：<br>这个档案的主要目的在对应 NetBIOS name 与该主机名的 IP ，事实上他有点像是 /etc/hosts 的功能！只不过这个 lmhosts 对应的主机名是 NetBIOS name 喔！不要跟 /etc/hosts 搞混了！由于目前 SAMBA 的功能越来越强大，所以通常只要您一启动 SAMBA 时，他就能自己捉到 LAN 里面的相关计算机的 NetBIOS name 对应 IP 的信息，因此这个档案通常可以不用设定了！</li>
 <li>/etc/samba/smbpasswd：<br>这个档案预设并不存在啦！他是 SAMBA 默认的用户密码对应表。当我们设定的 SAMBA 服务器是较为严密的，需要用户输入账号与密码后才能登入的状态时，用户的密码默认就是放置在这里咯 (当然啰，您可以自行在 smb.conf 里面设定密码放置的地方及密码文件名， 不过我们这里都以预设的状态来说明) 。比较需要注意的是，这个档案因为包含了用户的密码， 当然权限方面要较为注意啦！这个档案的拥有者需要是 root ，且权限设定为 600 才行喔！</li>
@@ -437,16 +448,29 @@
 <li>nmblookup：<br>有点类似 nslookup 啦！重点在查出 NetBIOS name 就是了。</li>
 <li>smbtree：<br>这玩意就有点像 Windows 系统的网络上的芳邻显示的结果，可以显示类似『靠近我的计算机』之类的数据， 能够查到工作组与计算机名称的树状目录分布图，有趣吧！</li>
 <li>/usr/share/doc/samba-&lt;版本&gt;：<br>这个目录包含了 SAMBA 的所有相关的技术手册喔！也就是说，当您安装好了 SAMBA 之后，您的系统里面就已经含有相当丰富而完整的 SAMBA 使用手册了！值得高兴吧！ ^_^，所以，赶紧自行参考喔！</li>
-</ol>
+</ul>
 <h1 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h1><ol>
 <li>在 smb.conf 当中设定好工作组、NetBIOS 主机名、密码使用状态等等与主机相关的信息；</li>
 <li>在 smb.conf 内设定好预计要分享的目录或装置以及可供使用的用户数据；</li>
 <li>根据步骤 2 的设定，在 Linux 文件系统当中建立好分享出去的档案或装置的权限；</li>
 <li>根据步骤 2 的设定，以 smbpasswd 建立起用户的账号及密码</li>
-<li>启动 Samba 的 smbd, nmbd 服务，开始运转哩！</li>
+<li>启动 Samba 的 smbd, nmbd 服务，开始运转</li>
 </ol>
-<h2 id="smb-conf设置"><a href="#smb-conf设置" class="headerlink" title="smb.conf设置"></a>smb.conf设置</h2><h3 id="主机整体参数"><a href="#主机整体参数" class="headerlink" title="主机整体参数"></a>主机整体参数</h3><p>主要包括[global]和分享资源设置。</p>
-<h4 id="global"><a href="#global" class="headerlink" title="[global]"></a>[global]</h4><ul>
+<h2 id="smb-conf设置"><a href="#smb-conf设置" class="headerlink" title="smb.conf设置"></a>smb.conf设置</h2><h3 id="访问控制和用户后台"><a href="#访问控制和用户后台" class="headerlink" title="访问控制和用户后台"></a>访问控制和用户后台</h3><p>之前饰演了很多次都不行，其中的关键应该是在于<code>passdb backend</code>和<code>security</code>这一项配置，之前看的blog一般都说没有说要配置<code>passdb backend</code>（用户后台）这一项。samba有三种用户后台：<code>smbpasswd</code>, <code>tdbsam</code>和<code>ldapsam</code>.</p>
+<ul>
+<li><code>smbpasswd</code>：该方式是使用smb工具<code>smbpasswd</code>给系统用户（真实用户或者虚拟用户）设置一个Samba 密码，客户端就用此密码访问Samba资源。<code>smbpasswd</code>在<code>/etc/samba</code>中，有时需要手工创建该文件。</li>
+<li><code>tdbsam</code>：使用数据库文件创建用户数据库。数据库文件在<code>/etc/samba/passdb.tdb</code>中，可使用<code>smbpasswd –a</code>创建Samba用户，要创建的Samba用户必须先是系统用户。也可使用<code>pdbedit</code>创建Samba账户。<code>pdbedit</code>参数很多，列出几个主要的：<ul>
+<li><code>pdbedit –a username</code>：新建Samba账户。</li>
+<li><code>pdbedit –x username</code>：删除Samba账户。</li>
+<li><code>pdbedit –L</code>：列出Samba用户列表，读取<code>passdb.tdb</code>数据库文件。</li>
+<li><code>pdbedit –Lv</code>：列出Samba用户列表详细信息。</li>
+<li><code>pdbedit –c “[D]” –u username</code>：暂停该Samba用户账号。</li>
+<li><code>pdbedit –c “[]” –u username</code>：恢复该Samba用户账号。</li>
+</ul>
+</li>
+<li><code>ldapsam</code>：基于LDAP账户管理方式验证用户。首先要建立LDAP服务，设置<code>passdb backend = ldapsam:ldap://LDAP Server</code></li>
+</ul>
+<h3 id="global-中的参数的含义"><a href="#global-中的参数的含义" class="headerlink" title="[global]中的参数的含义"></a>[global]中的参数的含义</h3><ul>
 <li>workgroup = 工作组的名称：注意，主机群要相同；</li>
 <li>netbios name = 主机的 NetBIOS 名称啊，每部主机均不同；</li>
 <li>server string = 主机的简易说明，这个随便写即可。</li>
@@ -470,7 +494,7 @@
 <li>create mode 与 directory mode 都与权限有关的咯！</li>
 <li>valid users = 用户，这个项目可以指定能够进入到此资源的特定使用者。</li>
 </ul>
-<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>%S：取代目前的设定项目值，所谓的『设定项目值』就是在 [分享] 里面的内容！ 举例来说，例如底下的设定范例：</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>%S：取代目前的设定项目值，所谓的『设定项目值』就是在 [分享] 里面的内容！ 举例来说，例如底下的设定范例：</p>
 <ul>
 <li>[homes]<br> valid users = %S<br> ….<br>因为 valid users 是允许的登入者，设定为 %S 表示任何可登入的使用者都能够登入的意思～今天如果 dmtsai 这个使用者登入之后，那个 [homes] 就会自动的变成了 [dmtsai] 了！这样可以明白了吗？ %S 的用意就是在替换掉目前 [ ] 里面的内容啦！</li>
 <li>%m：代表 Client 端的 NetBIOS 主机名喔！</li>
@@ -483,14 +507,14 @@
 <li>%I：代表 Client 的 IP 咯。</li>
 <li>%T：代表目前的日期与时间</li>
 </ul>
-<h1 id="没有密码的-smb-conf-设定-纯测试"><a href="#没有密码的-smb-conf-设定-纯测试" class="headerlink" title="没有密码的 smb.conf 设定(纯测试)"></a>没有密码的 smb.conf 设定(纯测试)</h1><h1 id="我的设置"><a href="#我的设置" class="headerlink" title="我的设置"></a>我的设置</h1><p>之前说了一直没配好，然后找了另一种方案，即使用rsync来同步，但rsync还有有点不方便，还得进行命令式的上传，不能很好地和windows连接起来，所以还是得配置一下。首先使用了webmin进行配置，windows也更新了下，然后一连接竟然好像是可以了，所以很高兴，继续配置。<br>最后配置文件像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">[global]</div><div class="line">	passdb backend = tdbsam</div><div class="line">  security = user</div><div class="line"></div><div class="line">	wins support = true</div><div class="line">	available = no</div><div class="line">	dos charset = cp936</div><div class="line">	winbind trusted domains only = yes</div><div class="line">	write raw = no</div><div class="line">	os level = 20</div><div class="line">	template shell = /bin/false</div><div class="line">	socket options = TCP_NODELAY</div><div class="line">	browseable = no</div><div class="line">	unix charset = utf8</div><div class="line">	smb passwd file = /etc/samba/smbpasswd</div><div class="line">	log file = /var/log/samba/%m.log</div><div class="line">	server string = my samba server	</div><div class="line">	read raw = no</div><div class="line">	debug level = 3</div><div class="line">	dns proxy = no</div><div class="line">	name resolve order = lmhosts bcast host</div><div class="line">	max log size = 500</div><div class="line">	winbind use default domain = yes</div><div class="line">	load printers = no</div><div class="line">	log level = 3</div><div class="line">	encrypt passwords = yes</div><div class="line"></div><div class="line">[b]</div><div class="line">	available = yes</div><div class="line">	valid users = chao,@chao</div><div class="line">	browseable = yes</div><div class="line">	path = /home/chao/b</div><div class="line">	writeable = yes</div><div class="line">	write list = chao,@chao</div><div class="line">	user = chao,@chao</div></pre></td></tr></table></figure></p>
-<p>其中的关键应该是在于<code>passdb backend</code>和<code>security</code>这一项配置，之前看的blog一般都说没有说要配置<code>passdb backend</code>这一项，这次查到了这个</p>
-<blockquote>
-<p><code>passdb backend = tdbsam</code>  <code>passdb backend</code> （用户后台），samba有三种用户后台：<code>smbpasswd</code>, <code>tdbsam</code>和<code>ldapsam</code>.<br><code>smbpasswd</code>：该方式是使用smb工具<code>smbpasswd</code>给系统用户（真实用户或者虚拟用户）设置一个Samba 密码，客户端就用此密码访问Samba资源。<code>smbpasswd</code>在<code>/etc/samba</code>中，有时需要手工创建该文件。<br><code>tdbsam</code>：使用数据库文件创建用户数据库。数据库文件叫<code>passdb.tdb</code>，在/etc/samba中。<code>passdb.tdb</code>用户数据库可使用<code>smbpasswd –a</code>创建Samba用户，要创建的Samba用户必须先是系统用户。也可使用<code>pdbedit</code>创建Samba账户。<br><code>pdbedit</code>参数很多，列出几个主要的：<br><code>pdbedit –a username</code>：新建Samba账户。<br><code>pdbedit –x username</code>：删除Samba账户。<br><code>pdbedit –L</code>：列出Samba用户列表，读取passdb.tdb数据库文件。<br><code>pdbedit –Lv</code>：列出Samba用户列表详细信息。<br><code>pdbedit –c “[D]” –u username</code>：暂停该Samba用户账号。<br><code>pdbedit –c “[]” –u username</code>：恢复该Samba用户账号。<br><code>ldapsam</code>：基于LDAP账户管理方式验证用户。首先要建立LDAP服务，设置<code>passdb backend = ldapsam:ldap://LDAP Server</code></p>
-</blockquote>
-<p>这篇<a href="http://www.apelearn.com/study_v2/chapter24.html" target="_blank" rel="external">blog 第24章 配置Samba服务器</a>写的很好，按这个配置基本上没问题。</p>
-<p>另外之后还发生了一个问题，就是在使用webmin进行配置的时候，对于某个文件共享，口令和访问控制里面的“限于可能的列表”不能勾选，如果勾选的话会在配置文件中加入<code>only user = yes</code>这个配置项，然后就无法验证了，很奇怪，按理说应该也是可以的。怕是不勾选可以允许匿名访问，但我用手机实验了一下，发现还是需要输用户名和密码，而让qc实验了一下发现他电脑和我之前的一样，无法连接，所以之前怕不是windows有问题吧。。。</p>
-<p>按照上面的配置好了，就可以访问了，再把这个共享文件夹映射成网络磁盘，问题已经得到一个比较好的解决。</p>
+<h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="安装并创建密码"><a href="#安装并创建密码" class="headerlink" title="安装并创建密码"></a>安装并创建密码</h2><p>很容易，使用如下脚本很容易装好。需要注意的是，用户需要是linux中已有的一个用户，如果没有的话需要先新建一个用户。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install samba -y</div><div class="line"><span class="comment"># 设置密码，需要注意的是没有任何提示，并且是明文输入</span></div><div class="line">sudo smbpasswd -a -s zczhang</div></pre></td></tr></table></figure>
+<h2 id="创建配置文件并重启服务"><a href="#创建配置文件并重启服务" class="headerlink" title="创建配置文件并重启服务"></a>创建配置文件并重启服务</h2><p>这篇<a href="http://www.apelearn.com/study_v2/chapter24.html" target="_blank" rel="external">blog 第24章 配置Samba服务器</a>写的很好，按这个配置基本上没问题。后面是我实验了很多版本，最终这个版本的配置文件久经考验是可以的。（如果也不行，可以考虑用webmine进行配置）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak</div><div class="line">sudo cat &gt; /etc/samba/smb.conf &lt;&lt; EOF</div><div class="line">[global]</div><div class="line">	unix charset = utf8</div><div class="line">	dos charset = cp936</div><div class="line">	<span class="built_in">log</span> file = /var/<span class="built_in">log</span>/samba/%m.log</div><div class="line"></div><div class="line">	security = user</div><div class="line">	passdb backend = tdbsam</div><div class="line">	smb passwd file = /etc/samba/smbpasswd</div><div class="line">	encrypt passwords = yes</div><div class="line"></div><div class="line">	<span class="built_in">read</span> raw = no</div><div class="line">	deny hosts = 1.1.1.1</div><div class="line">	load printers = no</div><div class="line">	max <span class="built_in">log</span> size = 500</div><div class="line">	<span class="built_in">log</span> level = 3</div><div class="line">	write raw = no</div><div class="line">	socket options = TCP_NODELAY</div><div class="line">	debug level = 3</div><div class="line">    browseable = yes</div><div class="line">	os level = 20</div><div class="line">    available = yes</div><div class="line"></div><div class="line">	<span class="comment"># winbind trusted domains only = yes</span></div><div class="line">	<span class="comment"># dns proxy = no</span></div><div class="line">	<span class="comment"># name resolve order = lmhosts bcast host</span></div><div class="line">	<span class="comment"># winbind use default domain = yes</span></div><div class="line">    <span class="comment"># winbind use default domain = yes</span></div><div class="line">	<span class="comment"># netbios name  = vbirdserver</span></div><div class="line">	<span class="comment"># template shell = /bin/false</span></div><div class="line">    <span class="comment"># display charset = utf8</span></div><div class="line">	<span class="comment"># wins support = true</span></div><div class="line">	<span class="comment"># server string = my samba server</span></div><div class="line">	<span class="comment"># winbind trusted domains only = yes</span></div><div class="line">	<span class="comment"># socket options = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192</span></div><div class="line">	<span class="comment"># NetBIOS name 名称解析有关</span></div><div class="line"></div><div class="line"></div><div class="line">[usrxxxhome]</div><div class="line">	user = usrxxx,@usrxxx</div><div class="line">	path = /home/usrxxx</div><div class="line">	write list = usrxxx,@usrxxx</div><div class="line">	valid users = usrxxx,@usrxxx</div><div class="line">	directory mode = 771</div><div class="line">	deny hosts = 1.1.1.1</div><div class="line">	create mode = 771</div><div class="line">	writeable = yes</div><div class="line">	available = yes</div><div class="line">	browseable = yes</div><div class="line">EOF</div><div class="line">sudo /etc/init.d/samba restart</div></pre></td></tr></table></figure>
+<p>按照上面的配置好了，应该就可以访问了，再把这个共享文件夹映射成网络磁盘就很方便了。</p>
+<p>如果使用webmin进行配置，需要注意的是，对于某个文件共享，口令和访问控制里面的“限于可能的列表”不能勾选，如果勾选的话会在配置文件中加入<code>only user = yes</code>这个配置项，然后就无法验证了，很奇怪，按理说应该也是可以的。怕是不勾选可以允许匿名访问，但我用手机实验了一下，发现还是需要输用户名和密码，而让qc实验了一下发现他电脑和我之前的一样，无法连接，所以之前怕不是windows有问题吧。。。</p>
+<h2 id="在ipv6中使用samba服务"><a href="#在ipv6中使用samba服务" class="headerlink" title="在ipv6中使用samba服务"></a>在ipv6中使用samba服务</h2><p>samba是为局域网而诞生的，除非在边界路由上将samba服务用到的几个端口做了端口转发，要不然过一个路由器就无法链接了。当然，这是针对ipv4的情况。ipv6有唯一的地址，所以路由之后也是可以访问的，不过使用windows资源管理器来进行访问需要做点特殊的处理：<br>将一个ipv6地址<code>\\2001:da8:201:1146:2be4:946c:af92:356f</code>替换成<code>\\2001-da8-201-1146-2be4-946c-af92-356f.ipv6_literal.net</code>放到文件浏览器的地址栏就可以了。</p>
+<p>最后，将安装和配置的整个的脚本放在<a href="/docs/initsamba.sh">这里</a>，大家可以根据自己的实际情况修改使用。</p>
 
       
     </div>
@@ -612,7 +636,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -623,7 +647,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -634,7 +658,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -669,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#历史和由来"><span class="nav-number">1.</span> <span class="nav-text">历史和由来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAMBA-使用的-daemons"><span class="nav-number">2.</span> <span class="nav-text">SAMBA 使用的 daemons</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#联机模式的介绍-peer-peer-domain-model"><span class="nav-number">3.</span> <span class="nav-text">联机模式的介绍 (peer/peer, domain model)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAMBA-服务器的基础设定"><span class="nav-number">4.</span> <span class="nav-text">SAMBA 服务器的基础设定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Samba-所需套件及其套件结构"><span class="nav-number">4.1.</span> <span class="nav-text">Samba 所需套件及其套件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件"><span class="nav-number">4.1.1.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关文件"><span class="nav-number">4.1.2.</span> <span class="nav-text">相关文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置"><span class="nav-number">5.</span> <span class="nav-text">设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#smb-conf设置"><span class="nav-number">5.1.</span> <span class="nav-text">smb.conf设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主机整体参数"><span class="nav-number">5.1.1.</span> <span class="nav-text">主机整体参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#global"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">[global]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分享目录参数"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">分享目录参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">变量</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#没有密码的-smb-conf-设定-纯测试"><span class="nav-number">6.</span> <span class="nav-text">没有密码的 smb.conf 设定(纯测试)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我的设置"><span class="nav-number">7.</span> <span class="nav-text">我的设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#历史和由来"><span class="nav-number">1.</span> <span class="nav-text">历史和由来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAMBA-使用的-daemons"><span class="nav-number">2.</span> <span class="nav-text">SAMBA 使用的 daemons</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#联机模式的介绍-peer-peer-domain-model"><span class="nav-number">3.</span> <span class="nav-text">联机模式的介绍 (peer/peer, domain model)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAMBA-服务器的基础设定"><span class="nav-number">4.</span> <span class="nav-text">SAMBA 服务器的基础设定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Samba-所需套件及其套件结构"><span class="nav-number">4.1.</span> <span class="nav-text">Samba 所需套件及其套件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件"><span class="nav-number">4.1.1.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关文件"><span class="nav-number">4.1.2.</span> <span class="nav-text">相关文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置"><span class="nav-number">5.</span> <span class="nav-text">设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#smb-conf设置"><span class="nav-number">5.1.</span> <span class="nav-text">smb.conf设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制和用户后台"><span class="nav-number">5.1.1.</span> <span class="nav-text">访问控制和用户后台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#global-中的参数的含义"><span class="nav-number">5.1.2.</span> <span class="nav-text">[global]中的参数的含义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分享目录参数"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">分享目录参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.1.3.</span> <span class="nav-text">变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和配置"><span class="nav-number">6.</span> <span class="nav-text">安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装并创建密码"><span class="nav-number">6.1.</span> <span class="nav-text">安装并创建密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建配置文件并重启服务"><span class="nav-number">6.2.</span> <span class="nav-text">创建配置文件并重启服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在ipv6中使用samba服务"><span class="nav-number">6.3.</span> <span class="nav-text">在ipv6中使用samba服务</span></a></li></ol></li></ol></div>
             
 
           </div>

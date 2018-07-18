@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/26/2017-09-26-TexInstall/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/2018-03-30-numpy随机种子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
@@ -323,7 +323,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/26/2017-09-26-TexInstall/" itemprop="url">TexLive的安装</a></h1>
+                <a class="post-title-link" href="/2018/03/30/2018-03-30-numpy随机种子/" itemprop="url">numpy、python random、tensorflow随机种子设置</a></h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T00:00:00+08:00">
-                2017-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
+                2018-03-30
               </time>
             
 
@@ -344,6 +344,178 @@
 
             
           </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-04-17T17:22:37+08:00" content="2018-04-17">
+                  2018-04-17
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/numpy/" itemprop="url" rel="index">
+                    <span itemprop="name">numpy</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          numpy、python randomnumpy可以使用np.random.seed(2)来设置初始化种子
+
+每次设置seed之后都会重新初始化随机数发生器，计数器会置零
+设置seed是全局的，不同文件也是通用的
+
+python内置的random也是一样的
+tensorflowtf的random s
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/2018-03-30-numpy随机种子/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/2018-03-30-ssh端口映射/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/30/2018-03-30-ssh端口映射/" itemprop="url">ssh -L端口映射</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-31T00:24:44+08:00" content="2018-03-31">
+                  2018-03-31
+              </time>
+            </span>
+          
 
           
             <span class="post-category" >
@@ -365,6 +537,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -397,16 +580,20 @@
       
         
           
-          安装linux下的安装linux下安装Texlive还是比较简单的，参照Quick install即可，分为下面几步：
-
-清理环境
-下载运行安装器，注意此处可以选择安装模式，下载服务器（不过我实验了一下好像没有用）
-安装完成后记得设置环境变量
-运行latex sample2e.tex实验一下看是否成
+          ssh的一些参数含义
+-1：强制使用ssh协议版本1；
+-2：强制使用ssh协议版本2；
+-4：强制使用IPv4地址；
+-6：强制使用IPv6地址；
+-A：开启认证代理连接转发功能；
+-a：关闭认证代理连接转发功能；
+-b：使用本机指定地址作为对应连接的源ip地址；
+-C：请求压缩所有数据；
+-F：
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/26/2017-09-26-TexInstall/#more" rel="contents">
+            <a class="btn" href="/2018/03/30/2018-03-30-ssh端口映射/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -457,7 +644,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/25/2017-09-29-RL笔记Lec5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/2018-01-20-DPG/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
@@ -476,7 +663,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/25/2017-09-29-RL笔记Lec5/" itemprop="url">RL课程笔记·第五节·免模型控制</a></h1>
+                <a class="post-title-link" href="/2018/04/21/2018-01-20-DPG/" itemprop="url">Deterministic Policy Gradient Algorithms 阅读笔记</a></h1>
         
 
         <div class="post-meta">
@@ -488,8 +675,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T00:00:00+08:00">
-                2017-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T00:00:00+08:00">
+                2018-04-21
               </time>
             
 
@@ -497,6 +684,8 @@
 
             
           </span>
+
+          
 
           
             <span class="post-category" >
@@ -511,8 +700,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/" itemprop="url" rel="index">
-                    <span itemprop="name">课程</span>
+                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读笔记</span>
                   </a>
                 </span>
 
@@ -522,7 +711,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/RL/" itemprop="url" rel="index">
+                  <a href="/categories/论文阅读笔记/RL/" itemprop="url" rel="index">
                     <span itemprop="name">RL</span>
                   </a>
                 </span>
@@ -561,11 +750,11 @@
       
         
           
-          Introduction$\epsilon$ Greedy 探索GLIEGLIE Monte-Carlo 控制On-Policy Monte-Carlo ControlOn-Policy Temporal-Difference LearningOff-Policy LearningSummary
+          Abstract
           
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/25/2017-09-29-RL笔记Lec5/#more" rel="contents">
+            <a class="btn" href="/2018/04/21/2018-01-20-DPG/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -616,7 +805,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/25/2017-09-25-RL笔记Lec4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/2017-11-16-nodejs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
@@ -635,7 +824,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/25/2017-09-25-RL笔记Lec4/" itemprop="url">RL课程笔记·第四节·免模型预测</a></h1>
+                <a class="post-title-link" href="/2018/03/30/2017-11-16-nodejs/" itemprop="url">把blog从windows上迁移到Ubuntu</a></h1>
         
 
         <div class="post-meta">
@@ -647,8 +836,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T00:00:00+08:00">
-                2017-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
+                2018-03-30
               </time>
             
 
@@ -656,6 +845,15 @@
 
             
           </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T23:31:25+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
 
           
             <span class="post-category" >
@@ -670,8 +868,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/" itemprop="url" rel="index">
-                    <span itemprop="name">课程</span>
+                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
+                    <span itemprop="name">软件安装和使用</span>
                   </a>
                 </span>
 
@@ -681,8 +879,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/RL/" itemprop="url" rel="index">
-                    <span itemprop="name">RL</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -720,14 +918,358 @@
       
         
           
-          Introduction蒙特卡洛学习Monte-Carlo Learning原理：大数定理
-
-初访蒙特卡洛（First-Visit MC）Policy Evaluation: 只记开始状态的$G$
-每访蒙特卡洛（Every-Visit MC）Policy Evaluation: 每次遇到都会记下这个
+          Ubuntu上安装Node.js使用包管理安装Node.js本blog系统使用了hexo的方案，hexo是基于Node.js开发的，所以需要先在ubuntu上安装Node.js，安装源里面的非常简单，只要两句话就可以了。12sudo apt-get install nodejssudo apt-ge
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/25/2017-09-25-RL笔记Lec4/#more" rel="contents">
+            <a class="btn" href="/2018/03/30/2017-11-16-nodejs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/2017-03-15-SemEval2010Task8数据集介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/15/2017-03-15-SemEval2010Task8数据集介绍/" itemprop="url">SemEval2010Task8数据集介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T00:00:00+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T22:58:27+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/Relation-Extraction/" itemprop="url" rel="index">
+                    <span itemprop="name">Relation Extraction</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据集/" itemprop="url" rel="index">
+                    <span itemprop="name">数据集</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          SemEval2010Task8数据集介绍
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/15/2017-03-15-SemEval2010Task8数据集介绍/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" itemprop="url">使用Python基于SMTP发送邮件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T00:00:00+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T22:58:07+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          本篇blog引用自这里，此处仅作备份。
+在这篇笔记的最前面，我一定要说，网络协议的设计者都是天才。
+使用SMTP发送邮件其实十分简单，就如同我们和人交谈别无二致。这里我们使用SMTP协议发送一封邮件，小小体会一下网络协议之美。我在这里使用Windows平台上的VS2013 作为编码环境，使用C++，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -818,6 +1360,15 @@
 
             
           </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T22:57:47+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
 
           
             <span class="post-category" >
@@ -945,7 +1496,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/19/2017-09-19-Traffic Engineering Based on Stochastic Model Predictive Control for Uncertain Traffic Change/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/09/2016-09-09-IPython的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
@@ -964,7 +1515,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/19/2017-09-19-Traffic Engineering Based on Stochastic Model Predictive Control for Uncertain Traffic Change/" itemprop="url">Traffic Engineering Based on Stochastic Model Predictive Control for Uncertain Traffic Change 论文阅读笔记</a></h1>
+                <a class="post-title-link" href="/2016/09/09/2016-09-09-IPython的使用/" itemprop="url">IPython的使用</a></h1>
         
 
         <div class="post-meta">
@@ -976,8 +1527,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T00:00:00+08:00">
-                2017-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T00:00:00+08:00">
+                2016-09-09
               </time>
             
 
@@ -985,6 +1536,15 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
             
           </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T22:56:37+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
 
           
             <span class="post-category" >
@@ -999,8 +1559,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读笔记</span>
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
                   </a>
                 </span>
 
@@ -1010,8 +1570,19 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/ML方法应用于网络/" itemprop="url" rel="index">
-                    <span itemprop="name">ML方法应用于网络</span>
+                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
+                    <span itemprop="name">软件安装和使用</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1049,11 +1620,11 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
       
         
           
-          概括在使用MPC(Model Predictive Control)做TE(Traffic Engineering)时，可能某次流量预测并不准确而按照这个准确的值进行调教反而导致了网络拥塞，因此Otoshi提出相应的改进方法，即将预测错误的概率考虑进去，用一个高斯分布来描述预测错误的概率，从而将问题
+          Ipython使用Magic命令IPython有一些特殊的命令。有的为常见任务提供便利，有的则使你能够轻松控制IPython系统的行为。分为行模式和cell模式，行模式使用%打头，cell模式使用%%打头。行模式即只有一行，cell模式即可以有多行，只有第一行需要%%当automagic打开时，行模
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/19/2017-09-19-Traffic Engineering Based on Stochastic Model Predictive Control for Uncertain Traffic Change/#more" rel="contents">
+            <a class="btn" href="/2016/09/09/2016-09-09-IPython的使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1104,7 +1675,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/15/2017-09-15-A Survey of Techniques for Internet Traffic Classification using Machine Learning/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
@@ -1123,7 +1694,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/15/2017-09-15-A Survey of Techniques for Internet Traffic Classification using Machine Learning/" itemprop="url">A Survey of Techniques for Internet Traffic Classification using ML论文阅读笔记</a></h1>
+                <a class="post-title-link" href="/2016/09/09/2016-09-09-windows编译环境/" itemprop="url">关于windows编译环境的一些东西</a></h1>
         
 
         <div class="post-meta">
@@ -1135,8 +1706,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T00:00:00+08:00">
-                2017-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T00:00:00+08:00">
+                2016-09-09
               </time>
             
 
@@ -1144,6 +1715,15 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
             
           </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T22:55:48+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
 
           
             <span class="post-category" >
@@ -1158,8 +1738,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读笔记</span>
+                  <a href="/categories/语言/" itemprop="url" rel="index">
+                    <span itemprop="name">语言</span>
                   </a>
                 </span>
 
@@ -1169,8 +1749,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/方法应用于网络/" itemprop="url" rel="index">
-                    <span itemprop="name">方法应用于网络</span>
+                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
+                    <span itemprop="name">软件安装和使用</span>
                   </a>
                 </span>
 
@@ -1180,8 +1760,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/survery/" itemprop="url" rel="index">
-                    <span itemprop="name">survery</span>
+                  <a href="/categories/语言/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -1218,340 +1798,10 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
       
         
-          
-          AbstractIntroduce传统方法根据TCP端口及内容推测。基于两个假设：  
-
-第三方可以获取到包内信息。
-知道包格式但现在两个假设都不容易满足，所以想要根据其他特性来对流量类型进行聚类。  使用ML进行流量分类的步骤
-定义特征（最大/小包的长度，典型包的长度，间隔时间等）
-使用ML方法训
-          ...
+          写了一些在配置编译环境的时候的一些经验和教训
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/15/2017-09-15-A Survey of Techniques for Internet Traffic Classification using Machine Learning/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/11/2017-09-11-ML课堂笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CZ's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/11/2017-09-11-ML课堂笔记/" itemprop="url">ML课程笔记·第一节</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T00:00:00+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/" itemprop="url" rel="index">
-                    <span itemprop="name">课程</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          推荐书籍
-课程书籍《统计学习方法》李航
-《机器学习》周志华
-《The elements of Statistical Learning》
-
-作业与考核项目作业4次考核：作业60%+期末考试（闭卷笔试）40%最后一次课程时间随堂考试2017.12.25例行答疑：每周一13：30-14：30理科一号楼1
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/11/2017-09-11-ML课堂笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/09/2017-09-09-Inter-data-center network traffic prediction with elephant flows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CZ's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/09/2017-09-09-Inter-data-center network traffic prediction with elephant flows/" itemprop="url">Inter-data-center network traffic prediction with elephant flows 论文阅读笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T00:00:00+08:00">
-                2017-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/ML方法应用于网络/" itemprop="url" rel="index">
-                    <span itemprop="name">ML方法应用于网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Inter-data-center network traffic prediction with elephant flows阅读笔记数据流$M$个大象流，1个总体流量，总共工$M+1$，加上进出两个方向，所以对于某个时间点其原始数据维度为$2M+2$，即$(ini,outi,eini1,eout
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/09/2017-09-09-Inter-data-center network traffic prediction with elephant flows/#more" rel="contents">
+            <a class="btn" href="/2016/09/09/2016-09-09-windows编译环境/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1642,6 +1892,15 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
             
           </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-03-30T22:54:53+08:00" content="2018-03-30">
+                  2018-03-30
+              </time>
+            </span>
+          
 
           
             <span class="post-category" >
@@ -1772,170 +2031,11 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/2018-01-20-DPG/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CZ's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/21/2018-01-20-DPG/" itemprop="url">Deterministic Policy Gradient Algorithms 阅读笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T00:00:00+08:00">
-                2017-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/RL/" itemprop="url" rel="index">
-                    <span itemprop="name">RL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Abstract
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/21/2018-01-20-DPG/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1981,7 +2081,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1992,7 +2092,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2003,7 +2103,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

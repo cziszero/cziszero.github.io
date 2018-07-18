@@ -102,17 +102,17 @@
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="Abstract 远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。 为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/04/21/images/NRE/NREwithSelectiveAttention.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/04/21/images/NRE/sentenceEncoder.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/NREwithSelectiveAttention.jpg">
+<meta property="og:image" content="http://yoursite.com/images/NRE/sentenceEncoder.jpg">
 <meta property="og:image" content="http://yoursite.com/images/NRE/reult.jpg">
 <meta property="og:image" content="http://yoursite.com/images/NRE/differentSeeting.jpg">
 <meta property="og:image" content="http://yoursite.com/images/NRE/pcopmatm.jpg">
 <meta property="og:image" content="http://yoursite.com/images/NRE/casetest.jpg">
-<meta property="og:updated_time" content="2018-03-30T14:40:51.467Z">
+<meta property="og:updated_time" content="2018-06-15T14:29:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Relation Extraction with Selective Attention over Instances 阅读笔记">
 <meta name="twitter:description" content="Abstract 远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。 为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多">
-<meta name="twitter:image" content="http://yoursite.com/2017/04/21/images/NRE/NREwithSelectiveAttention.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/NRE/NREwithSelectiveAttention.jpg">
 
 
 
@@ -354,6 +354,15 @@
           </span>
 
           
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-06-15T22:29:40+08:00" content="2018-06-15">
+                  2018-06-15
+              </time>
+            </span>
+          
+
+          
             <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
@@ -428,7 +437,7 @@
 <li>(Riedel et al., 2010; Hoffmann et al., 2011; Surdeanu et al., 2012) 使用多实例学习(multi-instance learning)减少错误标注的影响。这些方法的问题在于他们使用了NLP工具例如POS标注等，工具产生的误差会传导到分类中。</li>
 <li>(Socher et al., 2012; Zeng et al., 2014; dos Santos et al., 2015)尝试在RE中使用DNN而不是人工提取特征，但这些工作是基于标注好的语句上的，没法大规模扩展到KBs上。</li>
 <li>(Zeng et al., 2015) 之后将 DS multi-instance learning 应用到了CDNN中。 该方法假设包含两个实体的句子中至少有一个表示了他们的关系，然后只选择这个最可能的句子来作为实体对的训练和预测样本。</li>
-<li>本文提出了一个句子级别的attention-based的CNN来做远程监督的关系提取（sentence-level attention-based convolutional neural network (CNN) for distant supervised relation extraction），如下图所示。<br><img src="../images/NRE/NREwithSelectiveAttention.jpg" alt="image"><br>图中$x_i$代表一个原始的句子，<br>$X_i$代表表示这个句子的向量，<br>$\alpha_i$代表第i个句子的权值，即Attention模型，<br>$s$代表最终形成的训练样本。</li>
+<li>本文提出了一个句子级别的attention-based的CNN来做远程监督的关系提取（sentence-level attention-based convolutional neural network (CNN) for distant supervised relation extraction），如下图所示。<br><img src="/images/NRE/NREwithSelectiveAttention.jpg" alt="image"><br>图中$x_i$代表一个原始的句子，<br>$X_i$代表表示这个句子的向量，<br>$\alpha_i$代表第i个句子的权值，即Attention模型，<br>$s$代表最终形成的训练样本。</li>
 <li>创新点<ul>
 <li>与现有的NRE模型比较，我们的模型能够利用所有包含有效信息的句子。</li>
 <li>为了减少远程学习中错误标注的问题，我们使用selective attention来降低噪音的影响。</li>
@@ -474,7 +483,7 @@
 <li>Sentence Encoder : 给定一个句子<a href="">${x}$</a>和两个对应实体，通过一个CNN来构建一个语句向量<a href="">$X$</a>。</li>
 <li>Selective Attention Over Instances。</li>
 </ul>
-<h3 id="3-1-Sentence-Encoder"><a href="#3-1-Sentence-Encoder" class="headerlink" title="3.1 Sentence Encoder"></a>3.1 Sentence Encoder</h3><p><img src="../images/NRE/sentenceEncoder.jpg" alt="Sentence Encoder"></p>
+<h3 id="3-1-Sentence-Encoder"><a href="#3-1-Sentence-Encoder" class="headerlink" title="3.1 Sentence Encoder"></a>3.1 Sentence Encoder</h3><p><img src="/images/NRE/sentenceEncoder.jpg" alt="Sentence Encoder"></p>
 <h4 id="3-1-1-Input-Representation"><a href="#3-1-1-Input-Representation" class="headerlink" title="3.1.1 Input Representation"></a>3.1.1 Input Representation</h4><ul>
 <li><p>输入是raw句子<a href="">$x$</a>，类似上一篇文章(Zeng et al., 2014)，同时使用单词向量WF和位置向量PF。</p>
 <ul>
@@ -723,8 +732,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/21/2018-01-20-DPG/" rel="prev" title="Deterministic Policy Gradient Algorithms 阅读笔记">
-                Deterministic Policy Gradient Algorithms 阅读笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/30/2017-04-30-keras笔记/" rel="prev" title="Keras笔记">
+                Keras笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -802,7 +811,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -813,7 +822,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -824,7 +833,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

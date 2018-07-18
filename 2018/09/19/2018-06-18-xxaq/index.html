@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="信息安全," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="信息安全复习">
+<meta name="keywords" content="信息安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息安全">
+<meta property="og:url" content="http://yoursite.com/2018/09/19/2018-06-18-xxaq/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="信息安全复习">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/MHalg.png">
+<meta property="og:image" content="http://yoursite.com/images/nsprotocol.png">
+<meta property="og:image" content="http://yoursite.com/images/nsprotocol2.png">
+<meta property="og:image" content="http://yoursite.com/images/kenhn.png">
+<meta property="og:updated_time" content="2018-06-19T09:52:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="信息安全">
+<meta name="twitter:description" content="信息安全复习">
+<meta name="twitter:image" content="http://yoursite.com/images/MHalg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/19/2018-06-18-xxaq/"/>
+
+
+
+
+
+  <title>信息安全 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/2018-06-18-xxaq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">信息安全</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T00:00:00+08:00">
+                2018-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/" itemprop="url" rel="index">
+                    <span itemprop="name">课程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程/信息安全/" itemprop="url" rel="index">
+                    <span itemprop="name">信息安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  信息安全复习
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="信息安全概念的历史变化和含义"><a href="#信息安全概念的历史变化和含义" class="headerlink" title="信息安全概念的历史变化和含义"></a>信息安全概念的历史变化和含义</h2><p>通信保密（COMSEC）：60-70年代 信息保密<br>信息安全（INFOSEC）：80-90年代 机密性、完整性、可用性、不可否认性 等<br>信息保障（IA）： 90-00年代 PDRR<br>赛博安全（Cyber Security）：00-? Cyber-Physical-System<br>安全通信技术(加密)→计算机系统安全→以互联网为基础网络安全→网络（空间）安全</p>
+<h2 id="导致信息安全问题的原因有哪些"><a href="#导致信息安全问题的原因有哪些" class="headerlink" title="导致信息安全问题的原因有哪些?"></a>导致信息安全问题的原因有哪些?</h2><h2 id="计算机在网络通信环境下进行信息交换所面临的安全威胁有哪些"><a href="#计算机在网络通信环境下进行信息交换所面临的安全威胁有哪些" class="headerlink" title="计算机在网络通信环境下进行信息交换所面临的安全威胁有哪些?"></a>计算机在网络通信环境下进行信息交换所面临的安全威胁有哪些?</h2><h2 id="安全的信息交换应满足哪些性质"><a href="#安全的信息交换应满足哪些性质" class="headerlink" title="安全的信息交换应满足哪些性质?"></a>安全的信息交换应满足哪些性质?</h2><h2 id="信息安全的目标"><a href="#信息安全的目标" class="headerlink" title="信息安全的目标"></a>信息安全的目标</h2><p>三个基本方面是：<br>– 机密性(Confidentiality) 即保证信息为授权者享用而不泄漏给未经授权者。<br>– 完整性(Integrity)  数据完整性，未被未授权篡改或者损坏 系统完整性，系统未被非授权操纵，按既定的功能运行<br>– 可用性 (Availability) 即保证信息和信息系统随时为授权者提供服务，而不要出现非授权者滥用却对授权者拒绝服务的情况。<br>其他方面：<br>– 信息的不可否认性 Non-repudiation ：要求无论发送方还是接收方都不能抵赖所进行的传输<br>– 鉴别 Authentication 鉴别就是确认实体是它所声明的。适用于用户、进程、系统、信息等<br>– 审计 Accountability 确保实体的活动可被跟踪<br>– 可靠性 Reliability 特定行为和结果的一致性</p>
+<h2 id="ISO-7498-2－1989确立了基于OSI参考模型的七层协议之上的信息安全体系结构，其中五大类安全服务分别是么"><a href="#ISO-7498-2－1989确立了基于OSI参考模型的七层协议之上的信息安全体系结构，其中五大类安全服务分别是么" class="headerlink" title="ISO 7498-2－1989确立了基于OSI参考模型的七层协议之上的信息安全体系结构，其中五大类安全服务分别是么?"></a>ISO 7498-2－1989确立了基于OSI参考模型的七层协议之上的信息安全体系结构，其中五大类安全服务分别是么?</h2><p>鉴别 访问控制 保密性 完整性 抗否认</p>
+<h2 id="1999年9月我国制定并颁布了《计算机信息系统安全保护等级划分准则》-该准则将计算机信息系统分别划分为哪几个等级"><a href="#1999年9月我国制定并颁布了《计算机信息系统安全保护等级划分准则》-该准则将计算机信息系统分别划分为哪几个等级" class="headerlink" title="1999年9月我国制定并颁布了《计算机信息系统安全保护等级划分准则》,该准则将计算机信息系统分别划分为哪几个等级?"></a>1999年9月我国制定并颁布了《计算机信息系统安全保护等级划分准则》,该准则将计算机信息系统分别划分为哪几个等级?</h2><p>用户自主保护级<br>系统审计保护级<br>安全标记保护级<br>结构化保护级<br>访问验证保护级</p>
+<h2 id="P2DR安全模型"><a href="#P2DR安全模型" class="headerlink" title="P2DR安全模型"></a>P2DR安全模型</h2><p>• 策略：是模型的核心，具体的实施过程中，策略意味着<br>网络安全要达到的目标。<br>• 防护：安全规章、安全配置、安全措施<br>• 检测：异常监视、模式发现<br>• 响应：报告、记录、反应、恢复<br>P2DR代表的分别是Policy(策略)，Protection(防护)、Detection(检测)和Response(响应)的首字母。按照P2DR的观点，一个良好的完整的动态安全体系，不仅需要恰当的防护(比如操作系统访问控制，防火墙、加密等)，而且需要动态的检测机制(比如入侵检测、漏洞扫描等)，在发现问题时还需要及时做出响应，这样的一个体系需要在统一的安全策略指导下进行实施，由此形成一个完备的，闭环的动态自适应安全体系。P2DR模型是建立在基于时间的安全理论基础之上的。该理论的基本思想是信息安全相关的所有活动，无论是攻击行为.防护行为，检测行为还是响应行为，都要消耗时间，因而可以用时间尺度来衡量一个体系的能力和安全性。<br>网络安全定义：Pt &gt; Dt + Rt</p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="密码算法的分类"><a href="#密码算法的分类" class="headerlink" title="密码算法的分类?"></a>密码算法的分类?</h2><ul>
+<li>按照保密的内容分 :<ul>
+<li>受限制的（ restricted) 算法 : 算法的保密性基于保持算法的秘密。</li>
+<li>基于密钥（ key-based) 的算法 : 算法的保密性基于对密钥的保密。</li>
+</ul>
+</li>
+<li>基于密钥的算法，按照密钥的特点分类：<ul>
+<li>对称密码算法（ symmetric cipher) ：又称传统密码算法（ conventional cipher) ，就是加密密钥和解密密钥相同，或实质上等同，即从一个易于推出另一个。又称秘密密钥算法或单密钥算法。</li>
+<li>非对称密钥算法（ asymmetric cipher): 加密密钥和解密密钥不相同，从一个很难推出另一个。又称公开密钥算法（ public-key cipher) 。公开密钥算法用一个密钥进行加密 ,  而用另一个进行解密。其中的加密密钥可以公开 , 又称公开密钥（ public key) ，简称公钥 . 解密密钥必须保密 , 又称私人密钥（ private key) 私钥 . 简称私钥。</li>
+</ul>
+</li>
+<li>按照明文的处理方法：<ul>
+<li>分组密码（ block cipher): 将明文分成固定长度的组，用同一密钥和算法对每一块加密，输出也是固定长度的密文。序列密码是手工和机械密码时代的主流</li>
+<li>流密码（ stream cipher): 又称序列密码 . 序列密码每次加密一位或一字节的明文，也可以称为流密码。</li>
+</ul>
+</li>
+</ul>
+<h2 id="古典密码算法和现代对称分组密码算法的基本手段是什么-有何本质差别"><a href="#古典密码算法和现代对称分组密码算法的基本手段是什么-有何本质差别" class="headerlink" title="古典密码算法和现代对称分组密码算法的基本手段是什么? 有何本质差别?"></a>古典密码算法和现代对称分组密码算法的基本手段是什么? 有何本质差别?</h2><p>代替 (substitution) :明文中的每一个字符被替换成密文中的另一个字符。接收者对密文做反向替换就可以恢复出明文。<br>置换（permutation) 又称换位（ transposition cipher) ：明文的字母保持相同，但顺序被打乱了。</p>
+<h2 id="代替加密的原理和实现"><a href="#代替加密的原理和实现" class="headerlink" title="代替加密的原理和实现"></a>代替加密的原理和实现</h2><ul>
+<li>单表代换密码：<br>Caesar Cipher： only have 26 possible ciphers<br>移位（ shift  ）密码、乘数（ multiplicative) 密码 仿射（ affine )  密码、多项式（ Polynomial) 密码 密钥短语（ Key Word) 密码</li>
+<li>多表代换密码： 可以用矩阵变换方便地描述多字母代换密码，有时又称起为矩阵变换密码。<br>维吉尼亚（ Vigenere) 密码<br>博福特（ Beaufort ）密码<br>滚动密钥 (running-key) 密码<br>弗纳姆 (Vernam) 密码</li>
+</ul>
+<h2 id="置换加密的原理和实现"><a href="#置换加密的原理和实现" class="headerlink" title="置换加密的原理和实现"></a>置换加密的原理和实现</h2><h2 id="密码分析的基本类型有哪些"><a href="#密码分析的基本类型有哪些" class="headerlink" title="密码分析的基本类型有哪些?"></a>密码分析的基本类型有哪些?</h2><ol>
+<li>唯密文攻击： Oscar 具有密文串 y.</li>
+<li>已知明文攻击 : Oscar 具有明文串 x 和相应的密文 y.</li>
+<li>选择明文攻击： Oscar 可获得对加密机的暂时访问， 因此他能选择明文串 x 并构造出相应的密文串 y 。</li>
+<li>选择密文攻击 :Oscar 可暂时接近密码机 , 可选择密文串 y ，并构造出相应的明文 x.<br>这一切的目的在于破译出密钥或密文</li>
+</ol>
+<h2 id="对称密码分析的两个基本方法"><a href="#对称密码分析的两个基本方法" class="headerlink" title="对称密码分析的两个基本方法"></a>对称密码分析的两个基本方法</h2><ul>
+<li>系统分析法（统计分析法）</li>
+<li>穷举法</li>
+</ul>
+<h2 id="密码算法的安全性含义"><a href="#密码算法的安全性含义" class="headerlink" title="密码算法的安全性含义?"></a>密码算法的安全性含义?</h2><ul>
+<li>无条件安全（Unconditionally secure）<br>无论破译者有多少密文,他也无法解出对应的明文,即使他解出了,他也无法验证结果的正确性.One time padding</li>
+<li>计算上安全（Computationally secure）<ul>
+<li>破译的代价超出信息本身的价值</li>
+<li>破译的时间超出了信息的有效期.</li>
+</ul>
+</li>
+</ul>
+<h2 id="现代对称分组密码的两个基本的设计原则和方法"><a href="#现代对称分组密码的两个基本的设计原则和方法" class="headerlink" title="现代对称分组密码的两个基本的设计原则和方法."></a>现代对称分组密码的两个基本的设计原则和方法.</h2><ul>
+<li>混乱 (confusion) ：使得密文的统计特性与密钥的取值之间的关系尽量复杂</li>
+<li>扩散（ Diffusion): 明文的统计结构被扩散消失到密文的长程统计特性 ,使得明文和密文之间的统计关系尽量复杂</li>
+</ul>
+<h2 id="典型算法的名称"><a href="#典型算法的名称" class="headerlink" title="典型算法的名称"></a>典型算法的名称</h2><p>DES<br>Triple DES<br>IDEA<br>RC5<br>RC6<br>AES</p>
+<h2 id="分组密码的操作模式-各有何特点"><a href="#分组密码的操作模式-各有何特点" class="headerlink" title="分组密码的操作模式,各有何特点?"></a>分组密码的操作模式,各有何特点?</h2><ul>
+<li>电子密码本ECB (electronic codebook mode):适合于传输短信息<ul>
+<li>简单和有效</li>
+<li>可以并行实现</li>
+<li>不能隐藏明文的模式信息, 相同明文 -&gt; 相同密文, 同样信息多次出现造成泄漏</li>
+<li>对明文的主动攻击是可能的, 信息块可被替换、重排、删除、重放</li>
+<li>误差传递：密文块损坏-&gt;仅对应明文块损坏</li>
+</ul>
+</li>
+<li>密码分组链接CBC (cipher block chaining)<ul>
+<li>没有已知的并行实现算法</li>
+<li>能隐藏明文的模式信息<br>– 需要共同的初始化向量IV<br>– 相同明文 不同密文<br>– 初始化向量IV可以用来改变第一块</li>
+<li>对明文的主动攻击是不容易的,信息块不容易被替换、重排、删除、重放<br>– 误差传递：密文块损坏两明文块损坏</li>
+<li>安全性好于ECB</li>
+<li>适合于传输长度大于64位的报文，还可以进行用户鉴别,是大多系统的标准如 SSL、IPSec  </li>
+</ul>
+</li>
+<li>密码反馈CFB (cipher feedback)<ul>
+<li>分组密码-&gt;流密码</li>
+<li>没有已知的并行实现算法</li>
+<li>隐藏了明文模式</li>
+<li>需要共同的移位寄存器初始值IV</li>
+<li>对于不同的消息，IV必须唯一</li>
+<li>误差传递：一个单元损坏影响多个单元</li>
+</ul>
+</li>
+<li>输出反馈OFB (output feedback)<ul>
+<li>OFB:分组密码流密码</li>
+<li>没有已知的并行实现算法</li>
+<li>隐藏了明文模式</li>
+<li>需要共同的移位寄存器初始值IV</li>
+<li>误差传递：一个单元损坏只影响对应单元</li>
+<li>对明文的主动攻击是可能的, 信息块可被替换、重排、删除、重放</li>
+<li>安全性较CFB差</li>
+</ul>
+</li>
+<li>计数器模式CTR(Counter )<ul>
+<li>efficiency,can do parallel encryptions, in advance of need, good for bursty high speed links</li>
+<li>random access to encrypted data blocks</li>
+<li>provable security (good as other modes)</li>
+<li>but must ensure never reuse key/counter values, otherwise could break (cf OFB)<h2 id="RC4"><a href="#RC4" class="headerlink" title="RC4"></a>RC4</h2></li>
+</ul>
+</li>
+<li>RC4是Ron Rivest 1987年为RSA公司设计的一种流密码。<br>– 可变密钥长度<br>– 面向字节操作</li>
+<li>主要设计思想 - 流密码可用一类伪随机数发生器实现<br>– 密钥做为随机数种子<br>– 产生密钥流 keystream (不重复,或极大周期)<br>– XOR（plaintext，keystream）</li>
+</ul>
+<h2 id="数据长度不满足分组长度整数倍时的处理办法？"><a href="#数据长度不满足分组长度整数倍时的处理办法？" class="headerlink" title="数据长度不满足分组长度整数倍时的处理办法？"></a>数据长度不满足分组长度整数倍时的处理办法？</h2><h2 id="双重DES和三重DES的原理和安全性分析"><a href="#双重DES和三重DES的原理和安全性分析" class="headerlink" title="双重DES和三重DES的原理和安全性分析"></a>双重DES和三重DES的原理和安全性分析</h2><p>DES不能成为群<br>对于 DES和所有56比特密钥，给定任意两个密钥K1和K2，都能找到一个密钥K3,使得E K2 (E K1 (P)) = E K3  (P) 是不可能的。<br>中间相遇(meet-in-the-middle)攻击困难</p>
+<h2 id="International-Data-Encryption-Algorithm"><a href="#International-Data-Encryption-Algorithm" class="headerlink" title="*International Data Encryption Algorithm"></a>*International Data Encryption Algorithm</h2><h2 id="RC5"><a href="#RC5" class="headerlink" title="*RC5"></a>*RC5</h2><ol>
+<li>适用于软件或者硬件实现</li>
+<li>运算速度快</li>
+<li>能适应于不同字长的程序（一个字的bit数是RC5的一个参数；）</li>
+<li>加密的轮数可变（轮数是RC5的第二个参数）</li>
+<li>密钥长度是可变的（密钥长度是RC5的第三个参数）</li>
+<li>对内存要求低</li>
+<li>依赖于数据的循环移位（增强抗攻击能力）</li>
+</ol>
+<h2 id="先进对称分组加密算法的特点"><a href="#先进对称分组加密算法的特点" class="headerlink" title="先进对称分组加密算法的特点"></a>先进对称分组加密算法的特点</h2><ul>
+<li>可变的密钥长度: RC5</li>
+<li>混合的运算 IDEA</li>
+<li>数据相关的圈数 RC5</li>
+<li>密钥相关的圈数 CAST-128</li>
+<li>密钥相关的S盒: Blowfish</li>
+<li>冗长密钥调度算法： Blowfish</li>
+<li>可变的F：CAST-128</li>
+<li>可变长明文/密文块长度</li>
+<li>可变圈数</li>
+<li>每圈操作作用于全部数据</li>
+</ul>
+<h2 id="DES和AES分别属于Feistel结构和SP网络结构"><a href="#DES和AES分别属于Feistel结构和SP网络结构" class="headerlink" title="DES和AES分别属于Feistel结构和SP网络结构"></a>DES和AES分别属于Feistel结构和SP网络结构</h2><ul>
+<li>Feistel结构：<ol>
+<li>给明文分组(L,R)</li>
+<li>对R进行加密</li>
+<li>密文=加密后的R+L（即LR的位置交换）</li>
+</ol>
+</li>
+<li>SP网络结构<br>轮输入首先被一个由子密钥控制的可逆函数S作用，然后再对所得结果用置换（或可逆线性变换）P作用。S和P分别被称为混乱层和扩散层，主要起混乱和扩散作用。<h2 id="AES-优点"><a href="#AES-优点" class="headerlink" title="AES 优点"></a>AES 优点</h2></li>
+<li>没有发现弱密钥或补密钥</li>
+<li>能有效抵抗目前已知的攻击算法<br>– 线性攻击<br>– 差分攻击</li>
+</ul>
+<h2 id="加密的位置："><a href="#加密的位置：" class="headerlink" title="加密的位置："></a>加密的位置：</h2><ul>
+<li>链路方式<ul>
+<li>Data exposed in sending node</li>
+<li>Data exposed in intermediate node</li>
+<li>The packet head almost  in secure.</li>
+<li>The traffic pattern is secure to some dgree.</li>
+<li>Require one key per host to node and node to node</li>
+<li>A degree of host authentication.</li>
+<li>在较低的网络层次上实现</li>
+</ul>
+</li>
+<li>端到端的方式：<br>-The source host encrypts the data.The destination host decrypts it.<br>-The packet head is in the clear.<br>-The user data are secure.<br>-The traffic pattern is insecure.<br>-Require one key per user pair<br>-A degree of user authentication.<br>-在较高的网络层次上实现</li>
+<li>总结<ul>
+<li>两种方式共同使用有更高的安全性</li>
+<li>The amount of traffic can be observed.</li>
+<li>Traffic padding is useful.</li>
+<li>源与目的地需有共享密钥</li>
+</ul>
+</li>
+</ul>
+<h2 id="IBE-CPK"><a href="#IBE-CPK" class="headerlink" title="*IBE CPK"></a>*IBE CPK</h2><ul>
+<li>CPK是“Combined Public Key”的缩写，即中文名为组合公钥，是一种加密算法，以很小的资源，生成大规模密钥。</li>
+<li>IBE identity-based encryption和签名方案。首先假设存在一个可信的密钥生成中心（trusted key generation center，KGG）；用户选择他的名字（或者是，网络地址，所在街道地址门牌号，电话号码）作为公钥，相应的私钥由KGG计算出来分配给每个加入网络中的用户。</li>
+<li>单项陷门函数</li>
+<li>严格单向函数： 一个单射函数f: X-&gt;Y称为是严格单向函数，如果下述条件成立：存在一个有效的方法，对所有的x可计算f（x），但不存在一个有效的办法由y= f（x）计算x。</li>
+<li>算术基本定理：任意大于1的整数a都能被因式分解为素因子幂的形式</li>
+<li>中国剩余定理</li>
+<li>费马小定理： p素数,a是整数且不能被p整除,则:  a^(p-1) = 1 mod p</li>
+<li>Euler数: Euler数(n)定义为小于n且与n互素的正整数个数</li>
+<li>Euler定理: 若a与n为互素的正整数,则: a\phi(n) = 1 mod n</li>
+<li>素性测试: 确定一个给定的大数是否是素数。目前还没有简单有效的方法解决该问题, Miller-Rabin素数测试算法(利用Fermat定理)</li>
+<li>素数定理。n附近的素数分布情况为：平均每ln(n)个整数中有一个素数。</li>
+</ul>
+<h2 id="公钥密码的提出和应用范围"><a href="#公钥密码的提出和应用范围" class="headerlink" title="公钥密码的提出和应用范围"></a>公钥密码的提出和应用范围</h2><ul>
+<li>对称密码算法的不足<ul>
+<li>（1）密钥管理量的困难</li>
+<li>（2）密钥必须通过某一信道协商，</li>
+<li>（3）数字签名的问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="公钥密码的基本思想和要求"><a href="#公钥密码的基本思想和要求" class="headerlink" title="公钥密码的基本思想和要求"></a>公钥密码的基本思想和要求</h2><ul>
+<li>加密与解密由不同的密钥完成</li>
+<li>知道加密算法,从加密密钥得到解密密钥在计算上是不可行的</li>
+<li>两个密钥中任何一个都可以用作加密而另一个用作解密(不是必须的)</li>
+<li>产生一对密钥是计算可行的</li>
+<li>已知公钥和明文，产生密文是计算可行的</li>
+<li>接收方利用私钥来解密密文是计算可行的</li>
+<li>对于攻击者，利用公钥来推断私钥是计算不可行的</li>
+<li>已知公钥和密文，恢复明文是计算不可行的</li>
+<li>(可选)加密和解密的顺序可交换</li>
+</ul>
+<h2 id="三种重要的公钥算法的名称及其依据"><a href="#三种重要的公钥算法的名称及其依据" class="headerlink" title="三种重要的公钥算法的名称及其依据"></a>三种重要的公钥算法的名称及其依据</h2><ul>
+<li><p>MH公钥算法 背包问题<br>背包问题描述：给定重量分别为a1 ,a2 ,…an 的n个物品,装入一个背包中,要求重量等于一个给定值。那么，究竟是那些物品？<br>做法：明文为X，S为密文<br>奥妙在于有两类背包，一类可以在线性时间内求解，另一类则不能，把易解的背包问题修改成难解的背包问题：公开密钥使用难解的背包问题；私钥使用易解的背包问题<br><img src="/images/MHalg.png" alt=""></p>
+<ul>
+<li>是第一个推广的公钥加密算法</li>
+<li>安全性基于背包问题</li>
+<li>在实践过程中，大多数的背包方案都已被破解，或者证明存在缺陷</li>
+<li>它表示了如何将NP完全问题用于公开密钥算法</li>
+</ul>
+</li>
+<li><p>大整数分解问题（The Integer Factorization Problem, RSA体制）  </p>
+<ul>
+<li>–加/解密、密钥交换、数字签名</li>
+<li>公开密钥 {e, n} n（两素数p和q的乘积）（推荐p,q等长）e（与(p-1)(q-1)互素）</li>
+<li>ed = 1(mod(p-1)(q-1))</li>
+<li>私有密钥 {d, p, q} d（e^-1  mod(p-1)(q-1)  )</li>
+<li>加密 c=m e mod n</li>
+<li>解密 m=c d mod n</li>
+<li>对RSA的选择密文攻击:不要用RSA对陌生人的随机文件签名，签名前先使用一个散列函数</li>
+<li>对RSA的公共模攻击: 不要让一群用户共享一个模n re1+se2=1</li>
+<li>对RSA的小加密指数攻击: 加密前将消息与随机值混合，并保证m与n有相同的长度</li>
+<li>对RSA的小解密指数攻击: 使用较小的d会产生穷尽解密攻击的可能 注意：应选择一个大的d值</li>
+<li>定时攻击: 基于加密程序运行时间的攻击, 一种全新的攻击手段, 选择密文的攻击,适用于攻击其他公钥算法; 对策 使用恒定的幂运算时间 加一个随机延迟  盲化</li>
+<li>为了抵抗现有的整数分解算法，对RSA模n的素因子p和q还有如下要求：<br>(1)|p-q|很大，通常 p和q的长度相同；<br>(2)p-1 和q-1分别含有大素因子p1和q1<br>(3)P1-1和q1-1分别含有大素因子p2和q2<br>(4)p+1和q+1分别含有大素因子p3和q3</li>
+<li>强素数</li>
+</ul>
+</li>
+<li>离散对数问题<br>y=g^x mod p 已知g,x,p,计算y是容易的 已知y,g,p,计算x是困难的。<br>− 有限域的乘法群上的离散对数问题(The Discrete Logarithm Problem, ElGamal体制）<br>− 定义在有限域的椭圆曲线上的离散对数问题（The Elliptic Curve Discrete Logarithm Problem, 类比的 ElGamal体制） R=kQ中的k</li>
+</ul>
+<h2 id="Diffie-Hellman密钥交换算法"><a href="#Diffie-Hellman密钥交换算法" class="headerlink" title="*Diffie-Hellman密钥交换算法"></a>*Diffie-Hellman密钥交换算法</h2><ul>
+<li>密钥交换方案:不能用于交换任意信息,允许两个用户可以安全地建立一个秘密信息，用于后续的通讯过程,该秘密信息仅为两个参与者知道</li>
+<li>算法的安全性依赖于有限域上计算离散对数的难度</li>
+<li>中间人攻击：O无法计算出a^(XaXb) mod p, O永远必须实时截获并冒充转发,否则会被发现</li>
+</ul>
+<h2 id="EIGamal算法"><a href="#EIGamal算法" class="headerlink" title="*EIGamal算法"></a>*EIGamal算法</h2><ul>
+<li>加/解密、密钥交换、数字签名<br>既可以用于加密，也可以用于签名，其安全性依赖于有限域上计算离散对数的难度<ul>
+<li>攻击ElGamal加密算法等价于解离散对<br>数问题</li>
+<li>要使用不同的随机数k来加密不同的信息</li>
+</ul>
+</li>
+</ul>
+<h2 id="对称及非对称算法的优缺点"><a href="#对称及非对称算法的优缺点" class="headerlink" title="对称及非对称算法的优缺点"></a>对称及非对称算法的优缺点</h2><ul>
+<li>对称密码算法<br>– 运算速度快、密钥短、多种用途（随机数产生、Hash<br>函数）、历史悠久<br>– 密钥管理困难（分发、更换）<br>– 对称的，通信方是平等的（不能为发送者提供保护）</li>
+<li>非对称密码算法<br>– 只需保管私钥、可以相当长的时间保持不变、需要的<br>数目较小<br>– 运算速度慢、密钥尺寸大、历史短<br>– 非对称的，通信方是不平等的，因为加密消息和验证<br>签名的人不能解密同一信息和产生同样的签名</li>
+</ul>
+<h2 id="消息鉴别的目的"><a href="#消息鉴别的目的" class="headerlink" title="消息鉴别的目的"></a>消息鉴别的目的</h2><p>第一，验证信息的发送者是真正的，而不是冒充的，此为信源识别；<br>第二，验证信息的完整性，在传送或存储过程中未被篡改，重放或延迟等。</p>
+<h2 id="鉴别函数"><a href="#鉴别函数" class="headerlink" title="鉴别函数"></a>鉴别函数</h2><ul>
+<li>消息加密函数:用完整信息的密文作为对信息的鉴别。<ul>
+<li>对称密钥加密<br>提供保密，提供鉴别<br>差错控制，内部差错控制 外部差错控制</li>
+<li>非对称密钥加密  zheng<ol>
+<li>公钥加密 提供保密，不提供鉴别</li>
+<li>私钥加密 提供鉴别和签名</li>
+<li>公钥加密私钥加密过的 保密、鉴别与签名</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>消息鉴别码MAC:公开函数+密钥产生一个固定长度的值作为鉴别标识<br>使用一个密钥生成一个固定大小的小数据块，并加入到消息中，称MAC （Message Authentication Code）， 或密码校验和（cryptographic checksum）<ol>
+<li>接收者可以确信消息M未被改变。</li>
+<li>接收者可以确信消息来自所声称的发送者；</li>
+<li>如果消息中包含顺序码（如HDLC,X.25,TCP），则接收者可以保证消息的正常顺序；<br>基于DES的MAC</li>
+</ol>
+</li>
+<li>散列函数:是一个公开的函数，它将任意长的信息映射成一个固定长度的信息。</li>
+</ul>
+<h2 id="散列函数的特性"><a href="#散列函数的特性" class="headerlink" title="散列函数的特性"></a>散列函数的特性</h2><p>1、H可以作用于一个任意长度的数据块；<br>2、H产生一个固定长度的输出；<br>3、对任意给定的x ,H(x) 计算相对容易，无论是软件还是硬件实现。<br>4、对任意给定码h，找到x满足H(x)=h具有计算不可行性；（单向性）<br>5、对任意给定的数据块x，找到满足H(y)=H(x)的yx具有计算不可行性。<br>6、找到任意数据对(x,y)，满足H(x) = H(y)是计算不可行的。（生日攻击： 对长度为m位的散列码，共有2^m 个可能的散列码，若要使任意的x,y 有H(x)=H(y)的概率为0.5,只需k=2^(m/2)）</p>
+<ul>
+<li>输入长度可变：H可应用于任意大小的数据块</li>
+<li>输出长度固定：H产生定长的输出</li>
+<li>效率：对任意的x，计算H(x)容易</li>
+<li>抗原像攻击（单向性）：任意给定h,找到y满足<br>H(y)=h在计算上是不可行的</li>
+<li>抗第二原像攻击（抗弱碰撞性）：对任意给定的<br>分块x,找到y≠x且H(x)=H(y)的y在计算上是不可行<br>的</li>
+<li>抗碰撞攻击（抗强碰撞性）：找到任何满足<br>H(x)=H(y)的偶对(x,y)在计算上是不可行的</li>
+<li><p>伪随机性：H的输出满足伪随机性测试标准</p>
+</li>
+<li><p>带秘密密钥的Hash函数:消息的散列值由只有通信双方知道的秘密密钥K来控制。此时，散列值称作MAC。</p>
+</li>
+<li>不带秘密密钥的Hash函数：消息的散列值的产生无需使用密钥。此时，散列值称作MDC。</li>
+</ul>
+<h2 id="散列函数的构造方法"><a href="#散列函数的构造方法" class="headerlink" title="散列函数的构造方法"></a>散列函数的构造方法</h2><ul>
+<li>基于数学难题的构造方法：<br>计算速度慢，不实用</li>
+<li>利用对称密码体制来设计Hash : 分组链接 Block Chaining 用对称加密算法构造hash函数 且许多这样的hash函数被证明不安全(与E的安全性无关)</li>
+<li>直接设计<br>–把原始消息M分成一些固定长度的块Yi<br>–最后一块padding并使其包含消息M长度<br>–设定初始值CV0<br>–压缩函数f, CVi=f(CVi-1,Yi-1)<br>–最后一个CVi为hash值</li>
+</ul>
+<h2 id="经典的散列算法"><a href="#经典的散列算法" class="headerlink" title="经典的散列算法"></a>经典的散列算法</h2><ul>
+<li>MD5 :+SHA-1使用little-endian 128bits</li>
+<li>SHA-1 :+SHA-1使用big-endian 160bits</li>
+<li>SHA-2 : – SHA-256（add -224 version) – SHA-384 – SHA-512</li>
+<li>RIPEMD-160 :little-endian +RIPEMD为128位 +更新后成为RIPEMD-160 +对密码分析的抵抗力好于SHA-1</li>
+<li>HMAC :</li>
+<li>无需修改地使用现有的散列函数</li>
+<li>当出现新的散列函数时,要能轻易地替换</li>
+<li>保持散列函数的原有性能不会导致算法性能的降<br>低</li>
+<li>使用和处理密钥的方式简单</li>
+<li>对鉴别机制的安全强度容易分析,与hash函数有同<br>等的安全性</li>
+<li>SHA-3 ， 最 早 称 为 Keccak ，</li>
+</ul>
+<h2 id="数字签名：特点、分类"><a href="#数字签名：特点、分类" class="headerlink" title="数字签名：特点、分类"></a>数字签名：特点、分类</h2><p>+传统签名的基本特点:<br>能与被签的文件在物理上不可分割<br>签名者不能否认自己的签名<br>签名不能被伪造<br>容易被验证<br>+数字签名是传统签名的数字化,基本要求:<br>能与所签文件“绑定”<br>签名者不能否认自己的签名<br>签名不能被伪造<br>容易被自动验证</p>
+<ul>
+<li>必须能够验证作者及其签名的日期时间；</li>
+<li>必须能够认证签名时刻的内容；</li>
+<li>签名必须能够由第三方验证，以解决争议；</li>
+<li>签名必须是依赖于被签名信息的一个位串模式；</li>
+<li>签名必须使用某些对发送者是唯一的信息，以防止<br>双方的伪造与否认；</li>
+<li>必须相对容易生成该数字签名；</li>
+<li>必须相对容易识别和验证该数字签名；</li>
+<li>伪造该数字签名在计算复杂性意义上具有不可行性，<br>既包括对一个已有的数字签名构造新的消息，也包<br>括对一个给定消息伪造一个数字签名；</li>
+<li>在存储器中保存一个数字签名副本是现实可行的。</li>
+</ul>
+<p>对签名方案的攻击模型</p>
+<ul>
+<li>唯密钥攻击(Key-only attack)</li>
+<li>已知消息攻击(know message attack)</li>
+<li>选择消息攻击<br>对签名方案的攻击目的</li>
+<li>完全破译(total break)</li>
+<li>选择性伪造(selective forgery)</li>
+<li>存在性伪造(existential forgery)</li>
+</ul>
+<h2 id="数字签名分类"><a href="#数字签名分类" class="headerlink" title="数字签名分类"></a>数字签名分类</h2><ul>
+<li>以验证方式分<ul>
+<li>直接数字签名direct digital signature<br>直接数字签名的缺点<ul>
+<li>验证模式依赖于发送方的保密密钥；<br>– 发送方要抵赖发送某一消息时，可能会声称其私有密钥丢失或被窃，从而他人伪造了他的签名。<br>– 通常需要采用与私有密钥安全性相关的行政管理控制手段来制止或至少是削弱这种情况，但威胁在某种程度上依然存在。<br>– 改进的方式例如可以要求被签名的信息包含一个时间戳（日期与时间），并要求将已暴露的密钥报告给一个授权中心。<ul>
+<li>X的某些私有密钥确实在时间T被窃取，敌方可以伪造X的签名及早于或等于时间T的时间戳。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>仲裁数字签名arbitrated digital signature<ul>
+<li>引入仲裁者<br>– 通常的做法是所有从发送方X到接收方Y的签名消息首先送到仲裁者A，A将消息及其签名进行一系列测试，<br>以检查其来源和内容，然后将消息加上日期并与已被仲裁者验证通过的指示一起发给Y。<ul>
+<li>仲裁者在这一类签名模式中扮演敏感和关键的角色。所有的参与者必须极大地相信这一仲裁机制工作正常。<br>（trusted system）<br>+以计算能力分<br>无条件安全的数字签名<br>计算上安全的数字签名<br>+以可签名次数分<br>一次性的数字签名： 如果一个签名方案仅给一则消息签名时是安全的，则签名方案是一次性签名方案。当然可以进行若干次验证， Lamport 数字签名方案，  Lamport方案缺陷:签名信息比较长<br>多次性的数字签名<br>+具有特殊性质的数字签名</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>普通数字签名算法<br>– RSA<br>– EIGamal/ Schnorr方案<br>– DSS/DSA</li>
+<li>不可否认的数字签名算法<br>没有签名者的合作，签名就不能得到验证。从而防止了由她签署的电子文档资料没有经过她的同意而被复制和分发的可能性。适用于知识产权产品分发控制。带来的问题：签名者在认为对其不利时拒绝合作，从而否认他曾签署的文件。 如果要阻止她主观否认，一个不可否认签名与一个否认协议(Disavowal Protocol)结合：签名者执行否认协议可以向法庭或公众证明一个伪造的签名确实是假的；如果签名者拒绝参与执行否认协议，就表明签名事实上是真的由其签署的。由三部分组成：签名算法、验证协议、否认协议。</li>
+<li>群签名算法<br>只有群成员能代表所在的群签名，接收者能验证签名所在的群,但不知道签名者，需要时,可借助于群成员或者可信机构找到签名者。应用: 投标，群数字签名方案由三个算法组成：签名算法、验证算法和识别算法</li>
+<li>盲签名算法<br>消息内容对签名者不可见<br>签名被接收者泄漏后,签名者无法追踪签名<br> 应用: 电子货币,电子选举<br> 盲签名过程:<br>消息盲变换签名接收者逆盲变换</li>
+</ul>
+<h2 id="协议"><a href="#协议" class="headerlink" title="*协议"></a>*协议</h2><ul>
+<li>协议的分类<ul>
+<li>仲裁协议</li>
+<li>裁决协议：包括两个低级的子协议：一个是非仲裁子协议，执行协议的各方每次想要完成的，另一个是裁决子协议，仅在例外的情况下，即有争议的时候才执行，这种特殊的仲裁者叫裁决人。</li>
+<li>自动执行协议： 协议本身就保证了公平性，不需要仲裁者来完成协议，也不需要裁决者来解决争端。</li>
+</ul>
+</li>
+<li>对协议的攻击<ul>
+<li>攻击目标：– 攻击协议使用的密码算法和密码技术 – 攻击协议本身</li>
+<li>攻击方式：– 被动攻击：与协议无关的人能窃听协议的一部分或全部。– 主动攻击：改变协议以便对自己有利。假冒、删除、<br>代替、重放</li>
+</ul>
+</li>
+</ul>
+<h2 id="密钥分配"><a href="#密钥分配" class="headerlink" title="密钥分配"></a>密钥分配</h2><p>– 基于对称密码体制的密钥分配<br>– 基于公开密码体制的秘密密钥分配</p>
+<h2 id="PKI基本概念"><a href="#PKI基本概念" class="headerlink" title="PKI基本概念"></a>PKI基本概念</h2><p>PKI（Public Key Infrastructure）公钥基础设施是提供公钥加密和数字签名服务的系统或平台，目的是为了管理密钥和证书。一个机构通过采用PKI 框架管理密钥和证书可以建立一个安全的网络环境。PKI 主要包括四个部分：X.509 格式的证书（X.509 V3）和证书废止列表CRL（X.509 V2）；CA 操作协议；CA 管理协议；CA 政策制定。一个典型、完整、有效的PKI 应用系统至少应具有以下五个部分；<br>　　1） 认证中心CA CA 是PKI 的核心，CA 负责管理PKI 结构下的所有用户（包括各种应用程序）的证书，把用户的公钥和用户的其他信息捆绑在一起，在网上验证用户的身份，CA 还要负责用户证书的黑名单登记和黑名单发布，后面有CA 的详细描述。<br>　　2） X.500 目录服务器 X.500 目录服务器用于发布用户的证书和黑名单信息，用户可通过标准的LDAP 协议查询自己或其他人的证书和下载黑名单信息。<br>　　3） 具有高强度密码算法(SSL)的安全WWW服务器 Secure socket layer(SSL)协议最初由Netscape 企业发展，现已成为网络用来鉴别网站和网页浏览者身份，以及在浏览器使用者及网页服务器之间进行加密通讯的全球化标准。<br>　　4） Web（安全通信平台） Web 有Web Client 端和Web Server 端两部分，分别安装在客户端和服务器端，通过具有高强度密码算法的SSL 协议保证客户端和服务器端数据的机密性、完整性、身份验证。<br>　　5） 自开发安全应用系统 自开发安全应用系统是指各行业自开发的各种具体应用系统，例如银行、证券的应用系统等。完整的PKI 包括认证政策的制定（包括遵循的技术标准、各CA 之间的上下级或同级关系、安全策略、安全程度、服务对象、管理原则和框架等）、认证规则、运作制度的制定、所涉及的各方法律关系内容以及技术的实现等。<br>完整的PKI系统必须具有权威认证机构(CA)、数字证书库、密钥备份及恢复系统、证书作废系统、应用接口（API）等基本构成部分，构建PKI也将围绕着这五大系统来着手构建。</p>
+<h2 id="Diffie-Hellman密钥交换协议及中间人攻击及改进办法"><a href="#Diffie-Hellman密钥交换协议及中间人攻击及改进办法" class="headerlink" title="Diffie-Hellman密钥交换协议及中间人攻击及改进办法"></a>Diffie-Hellman密钥交换协议及中间人攻击及改进办法</h2><h2 id="鉴别的概念和两种情形-实体-身份-鉴别和数据原发鉴别"><a href="#鉴别的概念和两种情形-实体-身份-鉴别和数据原发鉴别" class="headerlink" title="鉴别的概念和两种情形:实体(身份)鉴别和数据原发鉴别"></a>鉴别的概念和两种情形:实体(身份)鉴别和数据原发鉴别</h2><ul>
+<li>实体鉴别（身份鉴别）： 实体鉴别就是确认实体是它所声明的。某一实体确信与之打交道的实体正是所需要的实体。只是简单地鉴别实体本身的身份，不会和实体想要进行何种活动相联系。在实体鉴别中，身份由参与某次通信连接或会话的远程参与者提交。这种服务在连接建立或在数据传送阶段的某些时刻提供，使用这种服务可以确信(仅仅在使用时间内): 一个实体此时没有试图冒充别的实体，或没有试图将先前的连接作非授权地重演。</li>
+</ul>
+<h2 id="实现身份鉴别的途经"><a href="#实现身份鉴别的途经" class="headerlink" title="实现身份鉴别的途经"></a>实现身份鉴别的途经</h2><p>三种途径之一或他们的组合<br>（1）所知（Knowledge）:密码、口令<br>（2）所有（Possesses):身份证、护照、信用卡、钥匙<br>（3）个人特征：指纹、笔迹、声纹、手型、血型、视网膜、</p>
+<p>虹膜、DNA以及个人动作方面的一些特征<br>实体鉴别可以分为本地和远程两类。</p>
+<ul>
+<li>本地多用户鉴别：实体在本地环境的初始化鉴别（就是说，作为实体个人，和设备物理接触，不和网络中的其他设备通信）。– 需要用户进行明确的操作</li>
+<li>远程用户鉴别：连接远程设备、实体和环境的实体鉴别。– 通常将本地鉴别结果传送到远程。</li>
+</ul>
+<p>实体鉴别可以是单向的也可以是双向的。</p>
+<ul>
+<li>单向鉴别是指通信双方中只有一方向另一方进行鉴别。</li>
+<li>双向鉴别是指通信双方相互进行鉴别。</li>
+</ul>
+<h2 id="实体鉴别实现安全目标的方式"><a href="#实体鉴别实现安全目标的方式" class="headerlink" title="*实体鉴别实现安全目标的方式"></a>*实体鉴别实现安全目标的方式</h2><p>① 作为访问控制服务的一种必要支持，访问控制服务的执行依赖于确知的身份（访问控制服务直接对达到机密性、完整性、可用性及合法使用目标提供支持）；<br>② 作为提供数据起源认证的一种可能方法（当它与数据完整性机制结合起来使用时）；<br>③ 作为对责任原则的一种直接支持，例如，在审计追踪过程中做记录时，提供与某一活动相联系的确知身份。</p>
+<h2 id="对身份鉴别系统的要求"><a href="#对身份鉴别系统的要求" class="headerlink" title="*对身份鉴别系统的要求"></a>*对身份鉴别系统的要求</h2><p>（1）验证者正确识别合法申请者的概率极大化。<br>（2）不具有可传递性（Transferability)<br>（3）攻击者伪装成申请者欺骗验证者成功的概率<br>要小到可以忽略的程度<br>（4）计算有效性<br>（5）通信有效性<br>（6）秘密参数能安全存储</p>
+<ul>
+<li>（7）交互识别</li>
+<li>（8）第三方的实时参与</li>
+<li>（9）第三方的可信赖性</li>
+<li>（10）可证明的安全性</li>
+</ul>
+<h2 id="鉴别机制"><a href="#鉴别机制" class="headerlink" title="鉴别机制:"></a>鉴别机制:</h2><ul>
+<li>非密码的鉴别机制<ul>
+<li>口令机制</li>
+<li>一次性口令机制：动态口令卡</li>
+<li>询问—应答机制</li>
+<li>基于地址的机制</li>
+<li>基于个人特征的机制</li>
+<li>个人鉴别令牌</li>
+</ul>
+</li>
+<li>基于密码算法的鉴别<br>强鉴别（strong authentication):通过密码学的询问-应答(challenge-response)协议实现的身份鉴别，询问-应答协议的思想是一个实体向另一个实体证明他知道有关的秘密知识，但不向验证者提供秘密本身。这通过对一个时变的询问提供应答来实现，应答通常依赖于实体的秘密和询问。询问通常是一个实体选择的一个数（随机和秘密地）。<ul>
+<li>采用对称密码的鉴别机制<ul>
+<li>基于对称密码算法的鉴别依靠一定协议下的数据加密处理。</li>
+<li>通信双方共享一个密钥（通常存储在硬件中），该密钥    在询问—应答协议中处理或加密信息交换。</li>
+<li>无可信第三方参与的鉴别    – 单向鉴别：使用该机制时，两实体中只有一方被鉴别。    – 双向鉴别：两通信实体使用此机制进行相互鉴别。</li>
+<li>有可信第三方参与的鉴别</li>
+</ul>
+</li>
+<li>采用公开密码算法的机制</li>
+<li>采用密码校验函数的机制</li>
+</ul>
+</li>
+<li>零知识证明技术</li>
+</ul>
+<h2 id="重放攻击的形式和对抗措施"><a href="#重放攻击的形式和对抗措施" class="headerlink" title="重放攻击的形式和对抗措施"></a>重放攻击的形式和对抗措施</h2><ul>
+<li><p>常见的消息重放 攻击形式有：<br>① 简单重放：攻击者简单复制一条消息，以后在重新发送它；<br>② 可被日志记录的复制品：攻击者可以在一个合法有效的时间窗内重放一个带时间戳的消息；<br>③ 不能被检测到的复制品：这种情况可能出现，原因是原始信息已经被拦截，无法到达目的地，而只有重放的信息到达目的地。<br>④ 反向重放，不做修改。向消息发送者重放。当采用传统对称加密方式时，这种攻击是可能的。因为消息发送者不能简单地识别发送的消息和收到的消息在内容上的区别。</p>
+</li>
+<li><p>对策：<br>① 针对同一验证者的重放：非重复值</p>
+<ul>
+<li>A. 序列号：计数的策略：对付重放攻击的一种方法是在认证交换中使用一个序数来给每一个消息报文编号。仅当收到的消息序数顺序合法时才接受之。但这种方法的困难是要求双方必须保持上次消息的序号。</li>
+<li>B. 时间戳： A接受一个新消息仅当该消息包含一个时间戳，该时间戳在A看来，是足够接近A所知道的当前时间；这种方法要求不同参与者之间的时钟需要同步。 一旦时钟同步失败要么协议不能正常服务，影响可用性(availability)，造成拒绝服务(DOS) 要么放大时钟窗口，造成攻击的机会 时间窗大小的选择应根据消息的时效性来确定</li>
+<li>C. 验证者发送随机值（如询问）：不可预测、不重复。A期望从B获得一个消息：首先发给B一个随机值(challenge)；B收到这个值之后，对它作某种变换，并送回去； A收到B的response，希望包含这个随机值；在有的协议中，这个challenge也称为nonce。可能明文传输，也可能密文传输；这个条件可以是知道某个口令，也可能是其他的事情。变换例子：用密钥加密，说明B知道这个密钥;简单运算，比如增一，说明B知道这个随机值。询问/应答方法不适应非连接性的应用，因为它要求在传输开始之前先有握手的额外开销，这就抵消了无连接通信的主要特点。<br>② 针对不同验证者的重放：验证者的标识符</li>
+</ul>
+</li>
+</ul>
+<h2 id="鉴别和交换协议的核心问题"><a href="#鉴别和交换协议的核心问题" class="headerlink" title="鉴别和交换协议的核心问题"></a>鉴别和交换协议的核心问题</h2><p>鉴别和密钥交换协议的核心问题有两个：<br>– 保密性<br>– 时效性</p>
+<h2 id="典型鉴别协议"><a href="#典型鉴别协议" class="headerlink" title="典型鉴别协议"></a>典型鉴别协议</h2><ul>
+<li>*询问握手鉴别协议CHAP（challenge-Handshake Authentication Protocol）<ul>
+<li>优点<br>– 协议简单、易于实现<br>– 虽为单向鉴别协议，但可以通过在另一方的配置请<br>求，实现对通信实体的双向鉴别<br>– 通过不断地改变鉴别标识符和提问消息的值来防止<br>重放(playback)攻击。<br>– 利用周期性的提问防止通信双方在长期会话过程中<br>被攻击。</li>
+<li>缺点<br>– CHAP鉴别基于共享密钥，给密钥管理带来巨大不便，<br>不适合于大规模用户鉴别<br>– CHAP要求提供明文的密钥形式。</li>
+</ul>
+</li>
+<li>*S/Key 协议： S/key protocol主要用于防止重放攻击<ul>
+<li>三个组成部分<ul>
+<li>客户端程序：为端用户提供登录程序，并在<br>得到服务器质询值时，获取用户私钥，并调<br>用口令计算器形成本次鉴别口令，然后发送<br>给服务器程序</li>
+<li>口令计算器：负责产生本次口令</li>
+<li>服务器程序：验证用户口令</li>
+</ul>
+</li>
+<li>整个过程中，用户的私钥不会暴露在网络上</li>
+<li>过程<br>① 用户登录<br>② 客户端向服务器发出登录请求<br>③ 服务器向客户端发出S/KEY质询<br>④ 客户端要求用户键入私钥<br>⑤ 私钥与服务器发出的质询问被送入计算器<br>⑥ 计算器产生本次口令<br>⑦ 客户端将口令传给服务器，服务器对之进行<br>验证</li>
+</ul>
+</li>
+<li>Needham/Schroeder Protocol [1978]<br><img src="/images/nsprotocol.png" alt=""><br>假定攻击方C已经掌握A和B之间通信的一个老的会话密钥<br>。C可以在第3步冒充A利用老的会话密钥欺骗B。除非B记<br>住所有以前使用的与A通信的会话密钥，否则B无法判断这<br>是一个重放攻击。如果C可以中途阻止第4步的握手信息，<br>则可以冒充A在第5步响应。从这一点起，C就可以向B发送<br>伪造的消息而对B来说认为是用认证的会话密钥与A进行的<br>正常通信。</li>
+<li>Denning Protocol [1982]<br>改进版Needham/Schroeder Protocol，抵御重放攻击，但必须依靠各时钟<br>均可通过网络同步。<br>如果发送者的时钟比接收者的时钟要快，攻击者就可以从发送<br>者窃听消息，并在以后当时间戳对接收者来说成为当前时重放<br>给接收者。这种重放将会得到意想不到的后果。（称为抑制重<br>放攻击）。<br>一种克服抑制重放攻击的方法是强制各方定期检查自己的时钟<br>是否与KDC的时钟同步。<br>另一种避免同步开销的方法是采用临时数握手协议。<br><img src="/images/nsprotocol2.png" alt=""></li>
+<li>KEHN92<br><img src="/images/kenhn.png" alt=""></li>
+<li>*一个基于临时值握手协议：WOO92a</li>
+<li>*一个基于临时值握手协议：WOO92b</li>
+</ul>
+<h2 id="Kerberos"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</h2><p>– 基于口令的鉴别协议<br>– 利用对称密码技术建立起来的鉴别协议<br>– 可伸缩性——可适用于分布式网络环境<br>– 环境特点User-to-server authentication</p>
+<h2 id="X-509鉴别服务"><a href="#X-509鉴别服务" class="headerlink" title="X.509鉴别服务"></a>X.509鉴别服务</h2><ul>
+<li>个体的公钥信息<br>– 算法<br>– 参数<br>– 密钥</li>
+<li>签发人唯一标识符</li>
+<li>个体唯一标识符</li>
+<li>扩展域</li>
+<li>签名</li>
+</ul>
+<p>• 与Kerberos协议相比，X.509鉴别交换协议有一<br>个很大的优点：X.509不需要物理上安全的在线<br>服务器，因为一个证书包含了一个认证授权机构<br>的签名。公钥证书可通过使用一个不可信的目录<br>服务被离线地分配。<br>• X.509双向交换拥有Kerberos的缺陷，即依赖于<br>时戳，而X.509三向交换克服了这一缺陷。</p>
+<h2 id="Web安全：SQL注入攻击的原理和抵御机制、"><a href="#Web安全：SQL注入攻击的原理和抵御机制、" class="headerlink" title="Web安全：SQL注入攻击的原理和抵御机制、"></a>Web安全：SQL注入攻击的原理和抵御机制、</h2><p>浏览器的同源策略(Same Origin Policy)、跨站脚本(XSS)攻击和跨站请求伪造(CSRF)的攻击原理和效果</p>
+<h2 id="SSL协议：X-509证书的构成及扩展"><a href="#SSL协议：X-509证书的构成及扩展" class="headerlink" title="SSL协议：X.509证书的构成及扩展"></a>SSL协议：X.509证书的构成及扩展</h2><p>1.1.        版本号.<br>标识证书的版本（版本1、版本2或是版本3）。</p>
+<p>1.2.        序列号<br>标识证书的唯一整数，由证书颁发者分配的本证书的唯一标识符。</p>
+<p>1.3.        签名<br>用于签证书的算法标识，由对象标识符加上相关的参数组成，用于说明本证书所用的数字签名算法。例如，SHA-1和RSA的对象标识符就用来说明该数字签名是利用RSA对SHA-1杂凑加密。</p>
+<p>1.4.        颁发者<br>证书颁发者的可识别名（DN）。</p>
+<p>1.5.        有效期<br>证书有效期的时间段。本字段由”Not Before”和”Not After”两项组成，它们分别由UTC时间或一般的时间表示（在RFC2459中有详细的时间表示规则）。</p>
+<p>1.6.        主体<br>证书拥有者的可识别名，这个字段必须是非空的，除非你在证书扩展中有别名。</p>
+<p>1.7.        主体公钥信息<br>主体的公钥（以及算法标识符）。</p>
+<p>1.8.        颁发者唯一标识符<br>标识符—证书颁发者的唯一标识符，仅在版本2和版本3中有要求，属于可选项。</p>
+<p>1.9.        主体唯一标识符<br>证书拥有者的唯一标识符，仅在版本2和版本3中有要求，属于可选项。</p>
+<p>2、X.509证书扩展部分<br>可选的标准和专用的扩展（仅在版本2和版本3中使用），扩展部分的元素都有这样的结构：</p>
+<p>   Extension ::= SEQUENCE {<br>        extnID      OBJECT IDENTIFIER,<br>        critical    BOOLEAN DEFAULT FALSE,<br>        extnValue   OCTET STRING }<br>extnID：表示一个扩展元素的OID</p>
+<p>critical：表示这个扩展元素是否极重要</p>
+<p>extnValue：表示这个扩展元素的值，字符串类型。</p>
+<p>扩展部分包括：</p>
+<p>2.1.        发行者密钥标识符<br>证书所含密钥的唯一标识符，用来区分同一证书拥有者的多对密钥。</p>
+<p>2.2.        密钥使用<br>一个比特串，指明（限定）证书的公钥可以完成的功能或服务，如：证书签名、数据加密等。</p>
+<p>如果某一证书将 KeyUsage 扩展标记为“极重要”，而且设置为“keyCertSign”，则在 SSL 通信期间该证书出现时将被拒绝，因为该证书扩展表示相关私钥应只用于签写证书，而不应该用于 SSL。</p>
+<p>2.3.        CRL分布点<br>指明CRL的分布地点。</p>
+<p>2.4.        私钥的使用期<br>指明证书中与公钥相联系的私钥的使用期限，它也有Not Before和Not After组成。若此项不存在时，公私钥的使用期是一样的。</p>
+<p>2.5.        证书策略<br>由对象标识符和限定符组成，这些对象标识符说明证书的颁发和使用策略有关。</p>
+<p>2.6.        策略映射<br>表明两个CA域之间的一个或多个策略对象标识符的等价关系，仅在CA证书里存在。</p>
+<p>2.7.        主体别名<br>指出证书拥有者的别名，如电子邮件地址、IP地址等，别名是和DN绑定在一起的。</p>
+<p>2.8.        颁发者别名<br>指出证书颁发者的别名，如电子邮件地址、IP地址等，但颁发者的DN必须出现在证书的颁发者字段。</p>
+<p>2.9.        主体目录属性<br>指出证书拥有者的一系列属性。可以使用这一项来传递访问控制信息。</p>
+<h2 id="SSL-TLS协议的密码套件-Cipher-suites"><a href="#SSL-TLS协议的密码套件-Cipher-suites" class="headerlink" title="SSL/TLS协议的密码套件(Cipher-suites)"></a>SSL/TLS协议的密码套件(Cipher-suites)</h2><p>1个authentication (认证)算法<br>1个encryption(加密)算法<br>1个message authentication code (消息认证码 简称MAC)算法<br>1 个key exchange(密钥交换)算法</p>
+<h2 id="记录协议和握手协议的多种典型构成"><a href="#记录协议和握手协议的多种典型构成" class="headerlink" title="记录协议和握手协议的多种典型构成"></a>记录协议和握手协议的多种典型构成</h2><p> SSL记录协议<br>– 建立在可靠的传输协议(如TCP)之上<br>– 它提供连接安全性，有两个特点<br>• 保密性，使用了对称加密算法<br>• 完整性，使用HMAC算法<br>– 用来封装高层的协议<br>• SSL握手协议<br>– 客户和服务器之间相互鉴别<br>– 协商加密算法和密钥<br>– 它提供连接安全性，有三个特点<br>• 身份鉴别，至少对一方实现鉴别，也可以是双向鉴别<br>• 协商得到的共享密钥是安全的，中间人不能够知道<br>• 协商过程是可靠的</p>
+<h2 id="软件安全：恶意软件的分类"><a href="#软件安全：恶意软件的分类" class="headerlink" title="软件安全：恶意软件的分类"></a>软件安全：恶意软件的分类</h2><p>病毒程序和其它恶意内容<br>后门(Backdoor or Trapdoor)<br>逻辑炸弹(Logic Bomb)<br>特洛伊木马(Trojan Horse)<br>僵尸(Zombie)<br>病毒(Viruses)<br>邮件病毒（Email Virus）<br>蠕虫（Worms）</p>
+<h2 id="缓冲区溢出、整数溢出和C格式化字符串溢出漏洞"><a href="#缓冲区溢出、整数溢出和C格式化字符串溢出漏洞" class="headerlink" title="缓冲区溢出、整数溢出和C格式化字符串溢出漏洞"></a>缓冲区溢出、整数溢出和C格式化字符串溢出漏洞</h2><p>• 缓冲区：程序运行期间，在内存中分配的一个连<br>续的区域，用于保存包括字符数组在内的各种数<br>据类型。<br>• 溢出：所填充的数据超出了原有缓冲区的边界，<br>并非法占据了另一段内存区域。<br>• 缓冲区溢出：由于填充数据越界而导致程序原有<br>流程的改变，黑客借此精心构造填充数据，让程<br>序转而执行特殊的代码，最终获得系统的控制权。</p>
+<h2 id="硬件安全：硬件安全等级-FIPS-140-2-和典型攻击"><a href="#硬件安全：硬件安全等级-FIPS-140-2-和典型攻击" class="headerlink" title="硬件安全：硬件安全等级(FIPS 140-2)和典型攻击"></a>硬件安全：硬件安全等级(FIPS 140-2)和典型攻击</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/信息安全/" rel="tag"># 信息安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/19/2015-10-31-tfsplices/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章"><span class="nav-number">1.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息安全概念的历史变化和含义"><span class="nav-number">1.1.</span> <span class="nav-text">信息安全概念的历史变化和含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导致信息安全问题的原因有哪些"><span class="nav-number">1.2.</span> <span class="nav-text">导致信息安全问题的原因有哪些?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机在网络通信环境下进行信息交换所面临的安全威胁有哪些"><span class="nav-number">1.3.</span> <span class="nav-text">计算机在网络通信环境下进行信息交换所面临的安全威胁有哪些?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全的信息交换应满足哪些性质"><span class="nav-number">1.4.</span> <span class="nav-text">安全的信息交换应满足哪些性质?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息安全的目标"><span class="nav-number">1.5.</span> <span class="nav-text">信息安全的目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ISO-7498-2－1989确立了基于OSI参考模型的七层协议之上的信息安全体系结构，其中五大类安全服务分别是么"><span class="nav-number">1.6.</span> <span class="nav-text">ISO 7498-2－1989确立了基于OSI参考模型的七层协议之上的信息安全体系结构，其中五大类安全服务分别是么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1999年9月我国制定并颁布了《计算机信息系统安全保护等级划分准则》-该准则将计算机信息系统分别划分为哪几个等级"><span class="nav-number">1.7.</span> <span class="nav-text">1999年9月我国制定并颁布了《计算机信息系统安全保护等级划分准则》,该准则将计算机信息系统分别划分为哪几个等级?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2DR安全模型"><span class="nav-number">1.8.</span> <span class="nav-text">P2DR安全模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码算法的分类"><span class="nav-number">2.1.</span> <span class="nav-text">密码算法的分类?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#古典密码算法和现代对称分组密码算法的基本手段是什么-有何本质差别"><span class="nav-number">2.2.</span> <span class="nav-text">古典密码算法和现代对称分组密码算法的基本手段是什么? 有何本质差别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代替加密的原理和实现"><span class="nav-number">2.3.</span> <span class="nav-text">代替加密的原理和实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#置换加密的原理和实现"><span class="nav-number">2.4.</span> <span class="nav-text">置换加密的原理和实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密码分析的基本类型有哪些"><span class="nav-number">2.5.</span> <span class="nav-text">密码分析的基本类型有哪些?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对称密码分析的两个基本方法"><span class="nav-number">2.6.</span> <span class="nav-text">对称密码分析的两个基本方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密码算法的安全性含义"><span class="nav-number">2.7.</span> <span class="nav-text">密码算法的安全性含义?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现代对称分组密码的两个基本的设计原则和方法"><span class="nav-number">2.8.</span> <span class="nav-text">现代对称分组密码的两个基本的设计原则和方法.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型算法的名称"><span class="nav-number">2.9.</span> <span class="nav-text">典型算法的名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组密码的操作模式-各有何特点"><span class="nav-number">2.10.</span> <span class="nav-text">分组密码的操作模式,各有何特点?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RC4"><span class="nav-number">2.11.</span> <span class="nav-text">RC4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据长度不满足分组长度整数倍时的处理办法？"><span class="nav-number">2.12.</span> <span class="nav-text">数据长度不满足分组长度整数倍时的处理办法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双重DES和三重DES的原理和安全性分析"><span class="nav-number">2.13.</span> <span class="nav-text">双重DES和三重DES的原理和安全性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#International-Data-Encryption-Algorithm"><span class="nav-number">2.14.</span> <span class="nav-text">*International Data Encryption Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RC5"><span class="nav-number">2.15.</span> <span class="nav-text">*RC5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先进对称分组加密算法的特点"><span class="nav-number">2.16.</span> <span class="nav-text">先进对称分组加密算法的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DES和AES分别属于Feistel结构和SP网络结构"><span class="nav-number">2.17.</span> <span class="nav-text">DES和AES分别属于Feistel结构和SP网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AES-优点"><span class="nav-number">2.18.</span> <span class="nav-text">AES 优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加密的位置："><span class="nav-number">2.19.</span> <span class="nav-text">加密的位置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IBE-CPK"><span class="nav-number">2.20.</span> <span class="nav-text">*IBE CPK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公钥密码的提出和应用范围"><span class="nav-number">2.21.</span> <span class="nav-text">公钥密码的提出和应用范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公钥密码的基本思想和要求"><span class="nav-number">2.22.</span> <span class="nav-text">公钥密码的基本思想和要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种重要的公钥算法的名称及其依据"><span class="nav-number">2.23.</span> <span class="nav-text">三种重要的公钥算法的名称及其依据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diffie-Hellman密钥交换算法"><span class="nav-number">2.24.</span> <span class="nav-text">*Diffie-Hellman密钥交换算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EIGamal算法"><span class="nav-number">2.25.</span> <span class="nav-text">*EIGamal算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对称及非对称算法的优缺点"><span class="nav-number">2.26.</span> <span class="nav-text">对称及非对称算法的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息鉴别的目的"><span class="nav-number">2.27.</span> <span class="nav-text">消息鉴别的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鉴别函数"><span class="nav-number">2.28.</span> <span class="nav-text">鉴别函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列函数的特性"><span class="nav-number">2.29.</span> <span class="nav-text">散列函数的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列函数的构造方法"><span class="nav-number">2.30.</span> <span class="nav-text">散列函数的构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的散列算法"><span class="nav-number">2.31.</span> <span class="nav-text">经典的散列算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字签名：特点、分类"><span class="nav-number">2.32.</span> <span class="nav-text">数字签名：特点、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字签名分类"><span class="nav-number">2.33.</span> <span class="nav-text">数字签名分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议"><span class="nav-number">2.34.</span> <span class="nav-text">*协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥分配"><span class="nav-number">2.35.</span> <span class="nav-text">密钥分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI基本概念"><span class="nav-number">2.36.</span> <span class="nav-text">PKI基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diffie-Hellman密钥交换协议及中间人攻击及改进办法"><span class="nav-number">2.37.</span> <span class="nav-text">Diffie-Hellman密钥交换协议及中间人攻击及改进办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鉴别的概念和两种情形-实体-身份-鉴别和数据原发鉴别"><span class="nav-number">2.38.</span> <span class="nav-text">鉴别的概念和两种情形:实体(身份)鉴别和数据原发鉴别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现身份鉴别的途经"><span class="nav-number">2.39.</span> <span class="nav-text">实现身份鉴别的途经</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体鉴别实现安全目标的方式"><span class="nav-number">2.40.</span> <span class="nav-text">*实体鉴别实现安全目标的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对身份鉴别系统的要求"><span class="nav-number">2.41.</span> <span class="nav-text">*对身份鉴别系统的要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鉴别机制"><span class="nav-number">2.42.</span> <span class="nav-text">鉴别机制:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重放攻击的形式和对抗措施"><span class="nav-number">2.43.</span> <span class="nav-text">重放攻击的形式和对抗措施</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鉴别和交换协议的核心问题"><span class="nav-number">2.44.</span> <span class="nav-text">鉴别和交换协议的核心问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型鉴别协议"><span class="nav-number">2.45.</span> <span class="nav-text">典型鉴别协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kerberos"><span class="nav-number">2.46.</span> <span class="nav-text">Kerberos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-509鉴别服务"><span class="nav-number">2.47.</span> <span class="nav-text">X.509鉴别服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web安全：SQL注入攻击的原理和抵御机制、"><span class="nav-number">2.48.</span> <span class="nav-text">Web安全：SQL注入攻击的原理和抵御机制、</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL协议：X-509证书的构成及扩展"><span class="nav-number">2.49.</span> <span class="nav-text">SSL协议：X.509证书的构成及扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS协议的密码套件-Cipher-suites"><span class="nav-number">2.50.</span> <span class="nav-text">SSL/TLS协议的密码套件(Cipher-suites)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记录协议和握手协议的多种典型构成"><span class="nav-number">2.51.</span> <span class="nav-text">记录协议和握手协议的多种典型构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件安全：恶意软件的分类"><span class="nav-number">2.52.</span> <span class="nav-text">软件安全：恶意软件的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区溢出、整数溢出和C格式化字符串溢出漏洞"><span class="nav-number">2.53.</span> <span class="nav-text">缓冲区溢出、整数溢出和C格式化字符串溢出漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件安全：硬件安全等级-FIPS-140-2-和典型攻击"><span class="nav-number">2.54.</span> <span class="nav-text">硬件安全：硬件安全等级(FIPS 140-2)和典型攻击</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
