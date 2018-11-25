@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T14:40:51.000Z">
+<meta property="og:updated_time" content="2018-11-25T16:21:19.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow随笔">
 <meta name="twitter:description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
@@ -349,8 +349,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:40:51+08:00" content="2018-03-30">
-                  2018-03-30
+              <time itemprop="dateUpdated" datetime="2018-11-26T00:21:19+08:00" content="2018-11-26">
+                  2018-11-26
               </time>
             </span>
           
@@ -465,31 +465,57 @@ product = tf.matmul(matrix1, matrix2)
 <li>在创建模型之前，我们要先初始化权重和偏置，一般来说，初始化应加入轻微的噪声来打破对称性，防止0梯度的问题。</li>
 <li>为了减少过拟合，我们在输出层之前加入 dropout。我们用一个 placeholder 来代表一个神经元在 dropout 中被保留的概率。这样我们可以在训练过程中启用 dropout，在测试过程中关闭 dropout。<br>TensorFlow 的tf.nn.dropout操作会自动处理神经元输出值的scale。所以用 dropout 的时候可以不用考虑 scale。</li>
 </ul>
-<h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>dropout</p>
+<h1 id="tensorflow使用指定显卡及按需分配显存"><a href="#tensorflow使用指定显卡及按需分配显存" class="headerlink" title="tensorflow使用指定显卡及按需分配显存"></a>tensorflow使用指定显卡及按需分配显存</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 声明可使用几号显卡</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line">os.environ[<span class="string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="string">'0'</span></div><div class="line"><span class="comment"># 显存按需分配</span></div><div class="line">config = tf.ConfigProto()</div><div class="line">config.gpu_options.allow_growth = <span class="keyword">True</span></div><div class="line">sess = tf.Session(config=config)</div></pre></td></tr></table></figure>
+<h1 id="非线性激活函数"><a href="#非线性激活函数" class="headerlink" title="非线性激活函数"></a>非线性激活函数</h1><p>tensorflow中共有7中不同的非线性激活函数：</p>
+<ol>
+<li><code>tf.nn.relu</code></li>
+<li><code>tf.sigmoid</code></li>
+<li><code>tf.tanh</code></li>
+</ol>
+<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>原则：损失函数的定义应该尽可能反应真实需求。</p>
+<h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><h3 id="交叉熵Cross-Entropy"><a href="#交叉熵Cross-Entropy" class="headerlink" title="交叉熵Cross Entropy"></a>交叉熵Cross Entropy</h3><p>$$H(p,q)=-\sum_x{p(x)log{q(x)}}$$<br>衡量了两个概率分布的距离，$p(x)$为真实概率，$q(x)$为预测概率。</p>
+<h2 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h2><h3 id="均方误差MSE"><a href="#均方误差MSE" class="headerlink" title="均方误差MSE"></a>均方误差MSE</h3><p>$$MSE(y,y’)=\frac{1}{n}\sum_{i=1}^n{(y-y’)^2}$$</p>
+<h1 id="训练技巧"><a href="#训练技巧" class="headerlink" title="训练技巧"></a>训练技巧</h1><h2 id="学习速率设置"><a href="#学习速率设置" class="headerlink" title="学习速率设置"></a>学习速率设置</h2><ol>
+<li>指数衰减Exponential Decay<br><code>tf.train.exponential_decay(init_learning_rate, global_step, decay_steps, decay_rate, staircase=False, name=None)</code><br>计算公式为:  </li>
+</ol>
+<p>$$learning_rate = init_learning_rate * decay_rate^ {\frac{global_step}{decay_steps}}$$</p>
+<p>一般所有样本过一个轮次换一次learning rate。</p>
+<h2 id="获取所有op"><a href="#获取所有op" class="headerlink" title="获取所有op"></a>获取所有op</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vs = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> tf.get_default_graph().get_operations() ]:</div><div class="line">    vs.append(i.name)</div><div class="line">vs = sorted(vs)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> vs:</div><div class="line">    print(i)</div></pre></td></tr></table></figure>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="tf"><a href="#tf" class="headerlink" title="tf"></a>tf</h2><ol>
 <li>tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)<br>产生一个截尾正态随机分布</li>
 <li>tf.reshape(tensor, shape, name=None)<br>将tensor转成shape的形状，shape中可以有一个维度是-1，此时由原tensor和其他的维度值共同计算出这个维度的值来。</li>
 <li>tf.expand_dims(input, axis=None, name=None, dim=None)<br>在input的第axis位置添加一个长度为1的维度</li>
 <li>tf.name_scope(name, default_name=None, values=None)<br>上下文管理器，定义op时使用</li>
+<li><code>tf.variable_scope(name)</code><br>完整的签名为<code>tf.variable_scope(name_or_scope, default_name=None, values=None, initializer=None, regularizer=None, caching_device=None, partitioner=None, custom_getter=None, reuse=None, dtype=None, use_resource=None, constraint=None, auxiliary_name_scope=True)</code>，作用即为声明一个变量的作用域。</li>
+<li><code>tf.get_variable(name)</code><br>完整的签名为<code>tf.get_variable(name, shape=None, dtype=None, initializer=None, regularizer=None, trainable=True, collections=None, caching_device=None, partitioner=None, validate_shape=True, use_resource=None, custom_getter=None, constraint=None)</code>,需要在variable_scope上下文中声明是否reuse，<code>with tf.variable_scope(&quot;foo&quot;, reuse=tf.AUTO_REUSE):</code>可以这样写，找不到则创建一个，如果找到了则返回已经创建的。</li>
+<li><code>tf.add_n(inputs, name=None)</code><br>将inputs这个列表里面的tensor逐个相加</li>
+<li><code>tf.control_dependencies(control_inputs)</code><br>创建一个 context manager 来控制依赖关系 </li>
+<li><code>tf.clip_by_value(t, clip_value_min, clip_value_max, name=None)</code><br>将t限制在[clip_value_min, clip_value_max]内。</li>
+<li><code>tf.greater(x, y, name=None)</code><br>逐元素计算x&gt;y，返回一个与x，y大小相同的bool张量。</li>
+<li><code>tf.where(condition, x=None, y=None, name=None)</code><br>根据condition逐元素的选择是x对应的值还是y对应的值。</li>
+<li><code>tf.add_to_collection(name, value)</code><br>将一些tensor加入名为name的collection，反向操作是<code>tf.get_collection(key, scope=None)</code></li>
 </ol>
-<h2 id="tf-nn"><a href="#tf-nn" class="headerlink" title="tf.nn"></a>tf.nn</h2><ol>
-<li>tf.nn.conv2d(input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None)<br>CNN中的卷积计算</li>
-<li>tf.nn.max_pool(value, ksize, strides, padding, data_format=’NHWC’, name=None)<br>CNN中的max-pooling计算</li>
-<li>tf.nn.relu(features, name=None)<br>计算relu型激活函数</li>
-<li>tf.nn.dropout(x, keep_prob, noise_shape=None, seed=None, name=None)<br>实现dropout技术。</li>
-<li>tf.nn.softmax(logits, dim=-1, name=None)<br>实现softmax计算</li>
-<li>tf.nn.zero_fraction(value, name=None)<br>计算value向量中0的比例，常用于评估稀疏状况</li>
-</ol>
-<h2 id="tf-train"><a href="#tf-train" class="headerlink" title="tf.train"></a>tf.train</h2><h3 id="tf-train-Saver"><a href="#tf-train-Saver" class="headerlink" title="tf.train.Saver"></a>tf.train.Saver</h3><ol>
+<h2 id="tf-nn"><a href="#tf-nn" class="headerlink" title="tf.nn"></a>tf.nn</h2><h3 id="tf-nn-conv2d-input-filter-strides-padding"><a href="#tf-nn-conv2d-input-filter-strides-padding" class="headerlink" title="tf.nn.conv2d(input, filter, strides, padding)"></a><code>tf.nn.conv2d(input, filter, strides, padding)</code></h3><p><code>tf.nn.conv2d(input, filter, strides, padding, use_cudnn_on_gpu=True, data_format=&#39;NHWC&#39;, dilations=[1, 1, 1, 1], name=None)</code><br>strides步长，第一维和最后一维必须为1。padding表示填充方式，’VALID’表示不填充，SAME表示填充0.</p>
+<h3 id="tf-nn-max-pool-avg-pool"><a href="#tf-nn-max-pool-avg-pool" class="headerlink" title="tf.nn.max_pool/avg_pool"></a><code>tf.nn.max_pool/avg_pool</code></h3><p><code>tf.nn.max_pool(value, ksize, strides, padding, data_format=&#39;NHWC&#39;, name=None)</code> max-pooling</p>
+<h3 id="tf-nn-relu-features-name-None"><a href="#tf-nn-relu-features-name-None" class="headerlink" title="tf.nn.relu(features, name=None)"></a><code>tf.nn.relu(features, name=None)</code></h3><p> 计算relu型激活函数</p>
+<h3 id="tf-nn-bias-add-value-bias"><a href="#tf-nn-bias-add-value-bias" class="headerlink" title="tf.nn.bias_add(value, bias)"></a><code>tf.nn.bias_add(value, bias)</code></h3><p><code>tf.nn.bias_add(value, bias, data_format=None, name=None)</code>用于在经过卷积核后加上bias</p>
+<h3 id="tf-nn-dropout-x-keep-prob-noise-shape-None-seed-None-name-None"><a href="#tf-nn-dropout-x-keep-prob-noise-shape-None-seed-None-name-None" class="headerlink" title="tf.nn.dropout(x, keep_prob, noise_shape=None, seed=None, name=None)"></a><code>tf.nn.dropout(x, keep_prob, noise_shape=None, seed=None, name=None)</code></h3><p> 实现dropout技术。</p>
+<h3 id="tf-nn-softmax-logits-dim-1-name-None"><a href="#tf-nn-softmax-logits-dim-1-name-None" class="headerlink" title="tf.nn.softmax(logits, dim=-1, name=None)"></a><code>tf.nn.softmax(logits, dim=-1, name=None)</code></h3><p> 实现softmax计算</p>
+<h3 id="tf-nn-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-dim-1-name-None"><a href="#tf-nn-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-dim-1-name-None" class="headerlink" title="tf.nn.softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, dim=-1, name=None)"></a><code>tf.nn.softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, dim=-1, name=None)</code></h3><p>接在softmax后面计算cross entropy。</p>
+<h3 id="tf-nn-zero-fraction-value-name-None"><a href="#tf-nn-zero-fraction-value-name-None" class="headerlink" title="tf.nn.zero_fraction(value, name=None)"></a><code>tf.nn.zero_fraction(value, name=None)</code></h3><p> 计算value向量中0的比例，常用于评估稀疏状况</p>
+<h3 id="tf-nn-sparse-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-name-None"><a href="#tf-nn-sparse-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-name-None" class="headerlink" title="tf.nn.sparse_softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, name=None)"></a><code>tf.nn.sparse_softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, name=None)</code></h3><p><code>tf.nn.softmax_cross_entropy_with_logits</code>针对非多标记问题的优化实现。</p>
+<h3 id="tf-nn-l2-loss-t-name-None"><a href="#tf-nn-l2-loss-t-name-None" class="headerlink" title="tf.nn.l2_loss(t, name=None)"></a><code>tf.nn.l2_loss(t, name=None)</code></h3><p>计算$output = sum(t^2)/2$，注意，这里没有开方。</p>
+<h2 id="tf-train"><a href="#tf-train" class="headerlink" title="tf.train"></a>tf.train</h2><h3 id="tf-train-ExponentialMovingAverage-decay-num-updates-None-zero-debias-False"><a href="#tf-train-ExponentialMovingAverage-decay-num-updates-None-zero-debias-False" class="headerlink" title="tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)"></a><code>tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)</code></h3><p>可以对一组var做指数滑动平均，对每个var维护一个shadow变量，算式为:</p>
+<p>$$shadow_var = decay <em> shadow_var + (1-decay)</em>var$$</p>
+<p>首先生成使用<code>ema = tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)</code>生成一个实例，然后使用<code>op = ema.assign([va,vb...vc])</code>指定要维护的变量列表，可以使用<code>ema.average(va)</code>指定要求滑动平均的变量。</p>
+<h3 id="tf-train-Saver"><a href="#tf-train-Saver" class="headerlink" title="tf.train.Saver"></a>tf.train.Saver</h3><ol>
 <li>tf.train.Saver(var_list=None, reshape=False, sharded=False, max_to_keep=5, keep_checkpoint_every_n_hours=10000.0, name=None, restore_sequentially=False, saver_def=None, builder=None, defer_build=False, allow_empty=False, write_version=2, pad_step_number=False)<br>创建一个Saver，用于保存变量等</li>
 </ol>
 <h3 id="tf-train-AdamOptimizer"><a href="#tf-train-AdamOptimizer" class="headerlink" title="tf.train.AdamOptimizer"></a>tf.train.AdamOptimizer</h3><ol>
-<li>tf.train.AdamOptimizer.compute_gradients(self, loss, var_list=None, gate_gradients=1, aggregation_method=None, colocate_gradients_with_ops=False, grad_loss=None)<br>minimize()的第一步，对loss中的var_list中的变量计算梯度，返回(gradient, variable)列表</li>
+<li>`tf.train.AdamOptimizer.compute_gradients(self, loss, var_list=None, gate_gradients=1, aggregation_method=None, colocate_gradients_with_ops=False, grad_loss=None)<br>minimize()的第一步，对loss中的var_list中的变量计算梯度，返回(gradient, variable)列表</li>
 <li>optimizer.apply_gradients(grads_and_vars, global_step=None, name=None)<br>minimize()的第二步，根据上一部中计算出的梯度更新参数值。</li>
 </ol>
-<h3 id="np-random"><a href="#np-random" class="headerlink" title="np.random"></a>np.random</h3><ol>
-<li>np.random.uniform(low=0.0, high=1.0, size=None)<br>生成shape样的均匀分布，范围是[low,high)</li>
-</ol>
+<h2 id="tf-contrib-layers"><a href="#tf-contrib-layers" class="headerlink" title="tf.contrib.layers"></a><code>tf.contrib.layers</code></h2><h3 id="tf-contrib-layers-l1-regularizer-scale-scope-None"><a href="#tf-contrib-layers-l1-regularizer-scale-scope-None" class="headerlink" title="tf.contrib.layers.l1_regularizer(scale, scope=None)"></a><code>tf.contrib.layers.l1_regularizer(scale, scope=None)</code></h3><p>返回一个可以计算给定参数L1正则的函数，与之类似的还有<code>tf.contrib.layers.l1_regularizer(scale, scope=None)</code> 和 <code>tf.contrib.layers.l1_l2_regularizer(scale_l1=1.0, scale_l2=1.0, scope=None)</code>。<br>与<code>tf.nn.l2_loss(t)</code>不同的是：这个返回一个函数，用于计算带系数的L2正则项，L2正则的计算完全相同。</p>
 
       
     </div>
@@ -522,8 +548,8 @@ product = tf.matmul(matrix1, matrix2)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/20/2017-03-20-CS224d_lecture1/" rel="next" title="CS224d 笔记">
-                <i class="fa fa-chevron-left"></i> CS224d 笔记
+              <a href="/2017/04/09/2017-10-11-chromeuse/" rel="next" title="chrome使用">
+                <i class="fa fa-chevron-left"></i> chrome使用
               </a>
             
           </div>
@@ -532,8 +558,8 @@ product = tf.matmul(matrix1, matrix2)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/09/2017-04-09-VPSsetting/" rel="prev" title="VPS初始化设置">
-                VPS初始化设置 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/11/2017-04-11-RD_RelationClassificationviaCNN/" rel="prev" title="Relation classification via convolutional DNN 阅读笔记">
+                Relation classification via convolutional DNN 阅读笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -611,7 +637,7 @@ product = tf.matmul(matrix1, matrix2)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -622,7 +648,7 @@ product = tf.matmul(matrix1, matrix2)
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -633,7 +659,7 @@ product = tf.matmul(matrix1, matrix2)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -668,7 +694,7 @@ product = tf.matmul(matrix1, matrix2)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#get-started阅读笔记"><span class="nav-number">1.</span> <span class="nav-text">get started阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started-With-TensorFlow"><span class="nav-number">1.1.</span> <span class="nav-text">Getting Started With TensorFlow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">2.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">3.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf"><span class="nav-number">3.1.</span> <span class="nav-text">tf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-nn"><span class="nav-number">3.2.</span> <span class="nav-text">tf.nn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-train"><span class="nav-number">3.3.</span> <span class="nav-text">tf.train</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-train-Saver"><span class="nav-number">3.3.1.</span> <span class="nav-text">tf.train.Saver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-train-AdamOptimizer"><span class="nav-number">3.3.2.</span> <span class="nav-text">tf.train.AdamOptimizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#np-random"><span class="nav-number">3.3.3.</span> <span class="nav-text">np.random</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#get-started阅读笔记"><span class="nav-number">1.</span> <span class="nav-text">get started阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started-With-TensorFlow"><span class="nav-number">1.1.</span> <span class="nav-text">Getting Started With TensorFlow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow使用指定显卡及按需分配显存"><span class="nav-number">2.</span> <span class="nav-text">tensorflow使用指定显卡及按需分配显存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非线性激活函数"><span class="nav-number">3.</span> <span class="nav-text">非线性激活函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#损失函数"><span class="nav-number">4.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类问题"><span class="nav-number">4.1.</span> <span class="nav-text">分类问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉熵Cross-Entropy"><span class="nav-number">4.1.1.</span> <span class="nav-text">交叉熵Cross Entropy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归问题"><span class="nav-number">4.2.</span> <span class="nav-text">回归问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#均方误差MSE"><span class="nav-number">4.2.1.</span> <span class="nav-text">均方误差MSE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#训练技巧"><span class="nav-number">5.</span> <span class="nav-text">训练技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习速率设置"><span class="nav-number">5.1.</span> <span class="nav-text">学习速率设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有op"><span class="nav-number">5.2.</span> <span class="nav-text">获取所有op</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">6.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf"><span class="nav-number">6.1.</span> <span class="nav-text">tf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-nn"><span class="nav-number">6.2.</span> <span class="nav-text">tf.nn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-conv2d-input-filter-strides-padding"><span class="nav-number">6.2.1.</span> <span class="nav-text">tf.nn.conv2d(input, filter, strides, padding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-max-pool-avg-pool"><span class="nav-number">6.2.2.</span> <span class="nav-text">tf.nn.max_pool/avg_pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-relu-features-name-None"><span class="nav-number">6.2.3.</span> <span class="nav-text">tf.nn.relu(features, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-bias-add-value-bias"><span class="nav-number">6.2.4.</span> <span class="nav-text">tf.nn.bias_add(value, bias)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-dropout-x-keep-prob-noise-shape-None-seed-None-name-None"><span class="nav-number">6.2.5.</span> <span class="nav-text">tf.nn.dropout(x, keep_prob, noise_shape=None, seed=None, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-softmax-logits-dim-1-name-None"><span class="nav-number">6.2.6.</span> <span class="nav-text">tf.nn.softmax(logits, dim=-1, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-dim-1-name-None"><span class="nav-number">6.2.7.</span> <span class="nav-text">tf.nn.softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, dim=-1, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-zero-fraction-value-name-None"><span class="nav-number">6.2.8.</span> <span class="nav-text">tf.nn.zero_fraction(value, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-sparse-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-name-None"><span class="nav-number">6.2.9.</span> <span class="nav-text">tf.nn.sparse_softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-l2-loss-t-name-None"><span class="nav-number">6.2.10.</span> <span class="nav-text">tf.nn.l2_loss(t, name=None)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-train"><span class="nav-number">6.3.</span> <span class="nav-text">tf.train</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-train-ExponentialMovingAverage-decay-num-updates-None-zero-debias-False"><span class="nav-number">6.3.1.</span> <span class="nav-text">tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-train-Saver"><span class="nav-number">6.3.2.</span> <span class="nav-text">tf.train.Saver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-train-AdamOptimizer"><span class="nav-number">6.3.3.</span> <span class="nav-text">tf.train.AdamOptimizer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-contrib-layers"><span class="nav-number">6.4.</span> <span class="nav-text">tf.contrib.layers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-contrib-layers-l1-regularizer-scale-scope-None"><span class="nav-number">6.4.1.</span> <span class="nav-text">tf.contrib.layers.l1_regularizer(scale, scope=None)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

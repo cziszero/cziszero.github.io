@@ -63,9 +63,9 @@ tags:
 
 ## 3. Methodology 
 
-概述：给定一个句子集合[$S=\{x_1,x_2,··· ,x_n\}$]()和两个对应的实体，我们想要评价对于每一个可能关系[$r$]()的概率。  
+概述：给定一个句子集合$S=\{x_1,x_2,··· ,x_n\}$和两个对应的实体，我们想要评价对于每一个可能关系$r$的概率。  
 分为两个部分：  
-+ Sentence Encoder : 给定一个句子[${x}$]()和两个对应实体，通过一个CNN来构建一个语句向量[$X$]()。
++ Sentence Encoder : 给定一个句子${x}$和两个对应实体，通过一个CNN来构建一个语句向量$X$。
 + Selective Attention Over Instances。
 
 ### 3.1 Sentence Encoder
@@ -74,26 +74,27 @@ tags:
 
 #### 3.1.1 Input Representation
 
-+ 输入是raw句子[$x$]()，类似上一篇文章(Zeng et al., 2014)，同时使用单词向量WF和位置向量PF。
-  - 单词向量WF [$w$]() ：提取单词的语义和语法信息，维度是[$d^a$]()
-  - 位置向量PF : 靠近实体的通常更有意义。维度是[$d^b x 2$]()
-  - 总长度为 [$d$]() $d=d^a+d^b$
++ 输入是raw句子$x$，类似上一篇文章(Zeng et al., 2014)，同时使用单词向量WF和位置向量PF。
+  - 单词向量WF $w$ ：提取单词的语义和语法信息，维度是$d^a$
+  - 位置向量PF : 靠近实体的通常更有意义。维度是$d^b x 2$
+  - 总长度为 $d$ $d=d^a+d^b$
+
 #### 3.1.2 Convolution, Max-pooling and Non-linear Layers
 
 + 在关系提取这个问题中，一个主要的挑战是句子长度是变换的，重要的信息可能出现在句子的任何地方。我们应该应用局部特征（Local Features）然后做一个整体的预测（Prediction globally），本文使用卷积层来合并所有的这些特征。
-+ 卷积层首先提取长度为$l$的滑动窗口内的局部特征(Local features)，然后使用max-pooling操作提取出一个大小固定的向量。
-+ 使用[$W$]()来表示卷积矩阵，其维度为$d^cx(lxd)$,其中[$d^c$]()是句子向量的长度。
-+ 使用[$q_i$]()代表第$i$个窗口的单词连接成的向量，超出范围的使用0向量扩展padding。
++ 卷积层首先提取长度为 $l$ 的滑动窗口内的局部特征(Local features)，然后使用max-pooling操作提取出一个大小固定的向量。
++ 使用$W$来表示卷积矩阵，其维度为$d^cx(lxd)$,其中$d^c$是句子向量的长度。
++ 使用$q_i$代表第$i$个窗口的单词连接成的向量，超出范围的使用0向量扩展padding。
 + 卷积第$i$个通道filter的计算就是  
 $$p_i = [Wq + b]_i$$   
 其中$b$是偏置向量。
-+ 然后对每一个维度做max-pooling得到句子向量[$x$]()
++ 然后对每一个维度做max-pooling得到句子向量$x$
 + PCNN(Zeng et al., 2015)，是CNN的一种变体，就是用两个实体把句子分成三段，每一段有一个单独的卷积核$(p_{i1},p_{i2},p_{i3})$，然后再对每一段分别进行max-pooling操作，每个维度得到3个值然后连接扩展该维。
 + 使用一个非线性激活函数$\tanh$
 
 ### 3.2 Selective Attention over Instances
 
-+ 在包含两个相同实体的句子集合[$S=\{x_1,x_2,··· ,x_n\}$]()表示成一个向量$s$，用来代表这个集合用来预测关系$r$。
++ 在包含两个相同实体的句子集合$S=\{x_1,x_2,··· ,x_n\}$表示成一个向量$s$，用来代表这个集合用来预测关系$r$。
 + $s$是$S$中句子向量的加权和。  
 $$s=\sum\limits_i {\alpha_i w_i}$$  
 $\alpha_i$就是每个句子的权值，也正是本文中Selective Attention的含义。
@@ -118,13 +119,14 @@ $\alpha_i$就是每个句子的权值，也正是本文中Selective Attention的
 
   $d$ 是偏置向量， $M$ 是<u>关系矩阵（representation matrix of relations）</u>
 
-  即在最后添加两个一个softmax层。
+  即在最后添加一个softmax层。
   
 ### 3.3 Optimization and Implementation Details
 
 + 使用交叉熵cross-entropy 作为目标函数。
 + 使用随机梯度下降SGD最小化目标函数。
 + 在输出层应用了 dropout (Srivastava et al., 2014)技术来防止过拟合，dropout就是在输出层定义一个概率$p$，把输出结果呈上按照概率为$p$的伯努利分布。所以，输出公式应该写为  
+
 $$o=M(s h)+d$$
 
 ## 4. Experiments
@@ -226,6 +228,4 @@ $$o=M(s h)+d$$
 
 ## TODO
 
-- [ ] 设置参数的时候可以使用测试集么？
-- [ ] 以实体对为单位还是以句子为单位？
-- [ ] Attention的权值向量是不是不是参数，只是句子向量s的一个函数？
+- [ ] 测试时以实体对为单位还是以句子为单位？

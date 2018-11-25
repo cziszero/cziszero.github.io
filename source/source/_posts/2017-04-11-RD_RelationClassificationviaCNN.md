@@ -59,7 +59,7 @@ tags:
 ![](/images/NRE/ArchitectureofNN.jpg)
 
 ### Word Representation 单词表示
-直接使用了可免费获得的（freely available）的(Turian et al., 2010)的词向量。
+直接使用了可免费获得的(Turian et al., 2010)的词向量。
 
 ### Lexical Level Features 词语级别的特征
 + 以前经常使用nouns themselves, the types of the pairs of nominals and word sequences between the entities，要从NLP工具中得到。
@@ -92,36 +92,45 @@ tags:
 #### Convolution 卷积
 + 每个单词的特征向量只能表示它附近的上下文信息，对于Relation Classification，需要把整个句子都组合起来，<u>自然的想到卷积方法</u>
 + 和Collobert et al. (2011)类似，首先把从window process中得到的向量做一个线性变换。  
+ 
  $$Z = W_1X$$  
- 其中，$X$是一个n0 x t 的矩阵，n0 = w x n，n是每个单词特征向量的维度[WF PF]。w是窗口大小。t是输入句子中单词的个数。  
- $W_1$是一个n1 x n0 的矩阵，n1是第一个隐藏层的输出个数。  
- <u>We can see that the features share the same weights across all times</u>  
- 输出$Z$是一个n1 × t的向量，使用max-pooling只记录影响最大的那个，如下式所示。   
+ 
+ 其中，$X$是一个$n_0 \times t$ 的矩阵，$n_0 = w \times n$，$n$是每个单词特征向量的维度$[WF PF]$。$w$是窗口大小, $t$是输入句子中单词的个数。  
+ $W_1$是一个$n_1 \times n_0$ 的矩阵，$n_1$是第一个隐藏层的输出个数。  
+ 输出$Z$是一个$n_1 \times t$的向量，使用max-pooling只记录影响最大的那个，如下式所示。   
+
  $$ m_i = \max Z(i,\cdot) \qquad   0 \leq i \leq n1 $$  
+
 + 然后我们获得了$m = \{m_1,m_2,···,m_n1\}$向量，与t没有关系了。
 
 #### Sentence Level Feature Vector 句子级别的特征向量
 + 添加一个全连接层，使用双曲正切tanh作为激活函数，tanh具有一个良好的性质，如下式所示，在BP算法时容易计算导数。  
+
  $$ \frac{d}{dx}\tanh x  = 1 - \tanh^2x$$
+
 + 全连接层的表示为  
+
  $$ g = \tanh(W_2 m) $$  
- 其中$W_2$是一个 n2 x n1 的矩阵，n2是本层的输出个数。
+
+ 其中$W_2$是一个$n_2 \times n_1$的矩阵，$n_2$是本层的输出个数。
 + 输出g是一个n2维的向量，可以认为是一个高级别向量（句子级别向量）-- higher level features (sentence level features)。
 
 ### output 输出
-+ 组合词语级别的向量l和上面得到的句子级别的向量g，得到向量f，$f = [l,g]$，其维度为n3。
++ 组合词语级别的向量l和上面得到的句子级别的向量g，得到向量f，$f = [l,g]$，其维度为$n_3$。
 + 添加一个softmax层来计算最后的概率。  
- $$ o = W_3 f$$  
+
+ $$ o = W_3 f $$  
  $$ p = softmax(o) $$  
- 其中$W_3$是一个n4 x n3 维的变换矩阵，n4是关系类别个数。o可以看作对应的类别的confidence score，最后使用softmax计算出条件概率。
+
+ 其中$W_3$是一个$n_4 \times n_3$维的变换矩阵，n4是关系类别个数。o可以看作对应的类别的confidence score，最后使用softmax计算出条件概率。
 
 ### Backpropagation Training BP训练
 + 本文假设各个句子是相互独立的。
 + 涉及的参数有
 $\Theta = (X,N,W_1,W_2,W_3)$，其中$N$是the word embeddings of WordNet hypernyms。
 + 本模型就是输入一个句子s，输出其中名词对所属类别的概率。
-+ 目标函数是对数似然值log likelihood $ J(\Theta) $，使用随机梯度下降法（stochastic gradient descent (SGD)）进行训练。
-+ N,W1,W2 and W3 随机初始化， X 初始为词向量。
++ 目标函数是对数似然值log likelihood $J(\Theta)$, 使用随机梯度下降法（stochastic gradient descent (SGD)）进行训练。
++ $N, W_1, W_2, W_3$ 随机初始化， X 初始为词向量。
 
 ## Dataset and Evaluation Metrics 数据集和评测
 + 使用SemEval-2010 Task 8 dataset (Hendrickx et al., 2010)数据集（免费开放），其中包含10717个标注实例，
@@ -186,5 +195,4 @@ $\Theta = (X,N,W_1,W_2,W_3)$，其中$N$是the word embeddings of WordNet hypern
 
 ## Question
 + 到底在哪里使用了卷积？文中写卷积的地方是一个矩阵相乘啊
-+ X为什么也是一个参数？
 + 为什么要把PF映射成一个向量？

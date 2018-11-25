@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="SemEval2010Task8数据集介绍">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T14:58:27.000Z">
+<meta property="og:updated_time" content="2018-11-15T06:02:37.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SemEval2010Task8数据集介绍">
 <meta name="twitter:description" content="SemEval2010Task8数据集介绍">
@@ -349,8 +349,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:58:27+08:00" content="2018-03-30">
-                  2018-03-30
+              <time itemprop="dateUpdated" datetime="2018-11-15T14:02:37+08:00" content="2018-11-15">
+                  2018-11-15
               </time>
             </span>
           
@@ -431,7 +431,7 @@
       
 
       
-        <h2 id="Task-8-Multi-Way-Classification-of-Semantic-Relations-Between-Pairs-of-Nominals"><a href="#Task-8-Multi-Way-Classification-of-Semantic-Relations-Between-Pairs-of-Nominals" class="headerlink" title="Task #8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals"></a>Task #8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals</h2><h3 id="训练集-Readme"><a href="#训练集-Readme" class="headerlink" title="训练集 Readme"></a>训练集 Readme</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>有8000个已经标注好实体的句子。一部分来自SemEval-1 Task #4 (Classification of Semantic Relations between Nominals)，<br>其它的是本次从web上手机的。</p>
+        <h2 id="Task-8-Multi-Way-Classification-of-Semantic-Relations-Between-Pairs-of-Nominals"><a href="#Task-8-Multi-Way-Classification-of-Semantic-Relations-Between-Pairs-of-Nominals" class="headerlink" title="Task #8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals"></a>Task #8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals</h2><h3 id="训练集-Readme"><a href="#训练集-Readme" class="headerlink" title="训练集 Readme"></a>训练集 Readme</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>有8000个已经标注好实体的句子。一部分来自SemEval-1 Task #4 (Classification of Semantic Relations between Nominals)，<br>其它的是本次从web上搜集的。</p>
 <h4 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h4><p>选择了9中关系，分别为<br>(1) Cause-Effect<br>(2) Instrument-Agency<br>(3) Product-Producer<br>(4) Content-Container<br>(5) Entity-Origin<br>(6) Entity-Destination<br>(7) Component-Whole<br>(8) Member-Collection<br>(9) Message-Topic<br>1-5 关系SemEval-1 Task #4中也有，详细说明在Task8_Relation*.pdf中也有。</p>
 <h4 id="数据格式DATA-FORMAT"><a href="#数据格式DATA-FORMAT" class="headerlink" title="数据格式DATA FORMAT"></a>数据格式DATA FORMAT</h4><p>例如  </p>
 <p>15 “They saw that the <e1>equipment</e1> was put inside rollout <e2>drawers</e2>, which looked aesthetically more pleasing and tidy.”<br>Content-Container(e1,e2)<br>Comment: the drawer contains the equipment, typical example of Content-Container; no movement</p>
@@ -443,7 +443,7 @@
 <h4 id="测试过程"><a href="#测试过程" class="headerlink" title="测试过程"></a>测试过程</h4><p>分别使用<br>TD1   training examples 1-1000<br>TD2   training examples 1-2000<br>TD3   training examples 1-4000<br>TD4   training examples 1-8000<br>进行训练后测试。<br>在每个过程中可以使用训练集训练，进一步开发或者交叉验证，但不能使用该阶段训练集外的数据。<br>训练集中的最后891个训练数据(examples 7110-8000)是从SemEval-1 Task #4 datasets，只包含关系1-5，因此关系类的分布是倾斜的。参赛者可以使用也可以不使用。<br>外部资源的使用没有限制。</p>
 <h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><p>提交包含5个文件<br> NUS_TD1.txt<br> NUS_TD2.txt<br> NUS_TD3.txt<br> NUS_TD4.txt<br> NUS_description.txt<br>前四个是相应的结果，最后一个描述个人信息</p>
 <h4 id="有用的链接"><a href="#有用的链接" class="headerlink" title="有用的链接"></a>有用的链接</h4><p>Google group: <a href="http://groups.google.com.sg/group/semeval-2010-multi-way-classification-of-semantic-relations?hl=en" target="_blank" rel="external">http://groups.google.com.sg/group/semeval-2010-multi-way-classification-of-semantic-relations?hl=en</a><br>Task website: <a href="http://docs.google.com/View?docid=dfvxd49s_36c28v9pmw" target="_blank" rel="external">http://docs.google.com/View?docid=dfvxd49s_36c28v9pmw</a><br>SemEval-2 website: <a href="http://semeval2.fbk.eu/semeval2.php" target="_blank" rel="external">http://semeval2.fbk.eu/semeval2.php</a></p>
-<h4 id="时间安排"><a href="#时间安排" class="headerlink" title="时间安排"></a>时间安排</h4>
+
       
     </div>
     
@@ -475,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/09/2017-03-09-HypothesisTesting/" rel="next" title="假设检验">
-                <i class="fa fa-chevron-left"></i> 假设检验
+              <a href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" rel="next" title="使用Python基于SMTP发送邮件">
+                <i class="fa fa-chevron-left"></i> 使用Python基于SMTP发送邮件
               </a>
             
           </div>
@@ -485,8 +485,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" rel="prev" title="使用Python基于SMTP发送邮件">
-                使用Python基于SMTP发送邮件 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/19/2017-03-19-DeepLearningTutorialLHYNOTE/" rel="prev" title="Deep Learning Tutorial李宏毅 笔记">
+                Deep Learning Tutorial李宏毅 笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -564,7 +564,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -575,7 +575,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -586,7 +586,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -621,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Task-8-Multi-Way-Classification-of-Semantic-Relations-Between-Pairs-of-Nominals"><span class="nav-number">1.</span> <span class="nav-text">Task #8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练集-Readme"><span class="nav-number">1.1.</span> <span class="nav-text">训练集 Readme</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系"><span class="nav-number">1.1.2.</span> <span class="nav-text">关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据格式DATA-FORMAT"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据格式DATA FORMAT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评测"><span class="nav-number">1.1.4.</span> <span class="nav-text">评测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试集-Readme"><span class="nav-number">1.2.</span> <span class="nav-text">测试集 Readme</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.2.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要"><span class="nav-number">1.2.2.</span> <span class="nav-text">重要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据格式"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评估"><span class="nav-number">1.2.4.</span> <span class="nav-text">评估</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试过程"><span class="nav-number">1.2.5.</span> <span class="nav-text">测试过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交"><span class="nav-number">1.2.6.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有用的链接"><span class="nav-number">1.2.7.</span> <span class="nav-text">有用的链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间安排"><span class="nav-number">1.2.8.</span> <span class="nav-text">时间安排</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Task-8-Multi-Way-Classification-of-Semantic-Relations-Between-Pairs-of-Nominals"><span class="nav-number">1.</span> <span class="nav-text">Task #8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练集-Readme"><span class="nav-number">1.1.</span> <span class="nav-text">训练集 Readme</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系"><span class="nav-number">1.1.2.</span> <span class="nav-text">关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据格式DATA-FORMAT"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据格式DATA FORMAT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评测"><span class="nav-number">1.1.4.</span> <span class="nav-text">评测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试集-Readme"><span class="nav-number">1.2.</span> <span class="nav-text">测试集 Readme</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.2.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要"><span class="nav-number">1.2.2.</span> <span class="nav-text">重要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据格式"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评估"><span class="nav-number">1.2.4.</span> <span class="nav-text">评估</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试过程"><span class="nav-number">1.2.5.</span> <span class="nav-text">测试过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交"><span class="nav-number">1.2.6.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有用的链接"><span class="nav-number">1.2.7.</span> <span class="nav-text">有用的链接</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

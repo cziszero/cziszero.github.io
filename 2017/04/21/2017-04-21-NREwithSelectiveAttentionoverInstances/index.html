@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/images/NRE/differentSeeting.jpg">
 <meta property="og:image" content="http://yoursite.com/images/NRE/pcopmatm.jpg">
 <meta property="og:image" content="http://yoursite.com/images/NRE/casetest.jpg">
-<meta property="og:updated_time" content="2018-06-15T14:29:40.000Z">
+<meta property="og:updated_time" content="2018-11-15T07:29:11.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Relation Extraction with Selective Attention over Instances 阅读笔记">
 <meta name="twitter:description" content="Abstract 远程监督的关系提取（Distant supervised relation extraction）已经被广泛的使用来发现新的关系了，但主要问题是无可避免的引入了噪音，对关系提取的性能影响很大。 为了解决这个问题，我们提出了句子级别的attention-based模型(sentence-level attention-based model)，本文中使用CNN来编码句子语义，并在多">
@@ -356,8 +356,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-06-15T22:29:40+08:00" content="2018-06-15">
-                  2018-06-15
+              <time itemprop="dateUpdated" datetime="2018-11-15T15:29:11+08:00" content="2018-11-15">
+                  2018-11-15
               </time>
             </span>
           
@@ -478,32 +478,32 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3. Methodology"></a>3. Methodology</h2><p>概述：给定一个句子集合<a href="">$S=\{x_1,x_2,··· ,x_n\}$</a>和两个对应的实体，我们想要评价对于每一个可能关系<a href="">$r$</a>的概率。<br>分为两个部分：  </p>
+<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3. Methodology"></a>3. Methodology</h2><p>概述：给定一个句子集合$S=\{x_1,x_2,··· ,x_n\}$和两个对应的实体，我们想要评价对于每一个可能关系$r$的概率。<br>分为两个部分：  </p>
 <ul>
-<li>Sentence Encoder : 给定一个句子<a href="">${x}$</a>和两个对应实体，通过一个CNN来构建一个语句向量<a href="">$X$</a>。</li>
+<li>Sentence Encoder : 给定一个句子${x}$和两个对应实体，通过一个CNN来构建一个语句向量$X$。</li>
 <li>Selective Attention Over Instances。</li>
 </ul>
 <h3 id="3-1-Sentence-Encoder"><a href="#3-1-Sentence-Encoder" class="headerlink" title="3.1 Sentence Encoder"></a>3.1 Sentence Encoder</h3><p><img src="/images/NRE/sentenceEncoder.jpg" alt="Sentence Encoder"></p>
 <h4 id="3-1-1-Input-Representation"><a href="#3-1-1-Input-Representation" class="headerlink" title="3.1.1 Input Representation"></a>3.1.1 Input Representation</h4><ul>
-<li><p>输入是raw句子<a href="">$x$</a>，类似上一篇文章(Zeng et al., 2014)，同时使用单词向量WF和位置向量PF。</p>
-<ul>
-<li>单词向量WF <a href="">$w$</a> ：提取单词的语义和语法信息，维度是<a href="">$d^a$</a></li>
-<li>位置向量PF : 靠近实体的通常更有意义。维度是<a href="">$d^b x 2$</a></li>
-<li>总长度为 <a href="">$d$</a> $d=d^a+d^b$<h4 id="3-1-2-Convolution-Max-pooling-and-Non-linear-Layers"><a href="#3-1-2-Convolution-Max-pooling-and-Non-linear-Layers" class="headerlink" title="3.1.2 Convolution, Max-pooling and Non-linear Layers"></a>3.1.2 Convolution, Max-pooling and Non-linear Layers</h4></li>
+<li>输入是raw句子$x$，类似上一篇文章(Zeng et al., 2014)，同时使用单词向量WF和位置向量PF。<ul>
+<li>单词向量WF $w$ ：提取单词的语义和语法信息，维度是$d^a$</li>
+<li>位置向量PF : 靠近实体的通常更有意义。维度是$d^b x 2$</li>
+<li>总长度为 $d$ $d=d^a+d^b$</li>
 </ul>
 </li>
-<li><p>在关系提取这个问题中，一个主要的挑战是句子长度是变换的，重要的信息可能出现在句子的任何地方。我们应该应用局部特征（Local Features）然后做一个整体的预测（Prediction globally），本文使用卷积层来合并所有的这些特征。</p>
-</li>
-<li>卷积层首先提取长度为$l$的滑动窗口内的局部特征(Local features)，然后使用max-pooling操作提取出一个大小固定的向量。</li>
-<li>使用<a href="">$W$</a>来表示卷积矩阵，其维度为$d^cx(lxd)$,其中<a href="">$d^c$</a>是句子向量的长度。</li>
-<li>使用<a href="">$q_i$</a>代表第$i$个窗口的单词连接成的向量，超出范围的使用0向量扩展padding。</li>
+</ul>
+<h4 id="3-1-2-Convolution-Max-pooling-and-Non-linear-Layers"><a href="#3-1-2-Convolution-Max-pooling-and-Non-linear-Layers" class="headerlink" title="3.1.2 Convolution, Max-pooling and Non-linear Layers"></a>3.1.2 Convolution, Max-pooling and Non-linear Layers</h4><ul>
+<li>在关系提取这个问题中，一个主要的挑战是句子长度是变换的，重要的信息可能出现在句子的任何地方。我们应该应用局部特征（Local Features）然后做一个整体的预测（Prediction globally），本文使用卷积层来合并所有的这些特征。</li>
+<li>卷积层首先提取长度为 $l$ 的滑动窗口内的局部特征(Local features)，然后使用max-pooling操作提取出一个大小固定的向量。</li>
+<li>使用$W$来表示卷积矩阵，其维度为$d^cx(lxd)$,其中$d^c$是句子向量的长度。</li>
+<li>使用$q_i$代表第$i$个窗口的单词连接成的向量，超出范围的使用0向量扩展padding。</li>
 <li>卷积第$i$个通道filter的计算就是<br>$$p_i = [Wq + b]_i$$<br>其中$b$是偏置向量。</li>
-<li>然后对每一个维度做max-pooling得到句子向量<a href="">$x$</a></li>
+<li>然后对每一个维度做max-pooling得到句子向量$x$</li>
 <li>PCNN(Zeng et al., 2015)，是CNN的一种变体，就是用两个实体把句子分成三段，每一段有一个单独的卷积核$(p_{i1},p_{i2},p_{i3})$，然后再对每一段分别进行max-pooling操作，每个维度得到3个值然后连接扩展该维。</li>
 <li>使用一个非线性激活函数$\tanh$</li>
 </ul>
 <h3 id="3-2-Selective-Attention-over-Instances"><a href="#3-2-Selective-Attention-over-Instances" class="headerlink" title="3.2 Selective Attention over Instances"></a>3.2 Selective Attention over Instances</h3><ul>
-<li>在包含两个相同实体的句子集合<a href="">$S=\{x_1,x_2,··· ,x_n\}$</a>表示成一个向量$s$，用来代表这个集合用来预测关系$r$。</li>
+<li>在包含两个相同实体的句子集合$S=\{x_1,x_2,··· ,x_n\}$表示成一个向量$s$，用来代表这个集合用来预测关系$r$。</li>
 <li>$s$是$S$中句子向量的加权和。<br>$$s=\sum\limits_i {\alpha_i w_i}$$<br>$\alpha_i$就是每个句子的权值，也正是本文中Selective Attention的含义。</li>
 <li><p>本文使用两种方法来定义权值$\alpha$</p>
 <ul>
@@ -515,14 +515,15 @@
 <p>$o$代表神经网络的最后输出，定义为</p>
 <p>$$o=Ms+d$$</p>
 <p>$d$ 是偏置向量， $M$ 是<u>关系矩阵（representation matrix of relations）</u></p>
-<p>即在最后添加两个一个softmax层。</p>
+<p>即在最后添加一个softmax层。</p>
 </li>
 </ul>
 <h3 id="3-3-Optimization-and-Implementation-Details"><a href="#3-3-Optimization-and-Implementation-Details" class="headerlink" title="3.3 Optimization and Implementation Details"></a>3.3 Optimization and Implementation Details</h3><ul>
 <li>使用交叉熵cross-entropy 作为目标函数。</li>
 <li>使用随机梯度下降SGD最小化目标函数。</li>
-<li>在输出层应用了 dropout (Srivastava et al., 2014)技术来防止过拟合，dropout就是在输出层定义一个概率$p$，把输出结果呈上按照概率为$p$的伯努利分布。所以，输出公式应该写为<br>$$o=M(s h)+d$$</li>
+<li>在输出层应用了 dropout (Srivastava et al., 2014)技术来防止过拟合，dropout就是在输出层定义一个概率$p$，把输出结果呈上按照概率为$p$的伯努利分布。所以，输出公式应该写为  </li>
 </ul>
+<p>$$o=M(s h)+d$$</p>
 <h2 id="4-Experiments"><a href="#4-Experiments" class="headerlink" title="4. Experiments"></a>4. Experiments</h2><h3 id="4-1-Dataset-and-Evaluation-Metrics"><a href="#4-1-Dataset-and-Evaluation-Metrics" class="headerlink" title="4.1 Dataset and Evaluation Metrics"></a>4.1 Dataset and Evaluation Metrics</h3><ul>
 <li>使用(Riedel et al., 2010)开发的，(Hoffmann et al., 2011; Surdeanu et al., 2012)也使用的一个数据集。</li>
 <li>这个数据集是将NYT和freebase对齐，使用Stanford named entity tagger (Finkel et al., 2005)来识别实体，然后和freebase中的实体进行对齐。</li>
@@ -688,9 +689,7 @@
 </tbody>
 </table>
 <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
-<li style="list-style: none"><input type="checkbox"> 设置参数的时候可以使用测试集么？</li>
-<li style="list-style: none"><input type="checkbox"> 以实体对为单位还是以句子为单位？</li>
-<li style="list-style: none"><input type="checkbox"> Attention的权值向量是不是不是参数，只是句子向量s的一个函数？</li>
+<li style="list-style: none"><input type="checkbox"> 测试时以实体对为单位还是以句子为单位？</li>
 </ul>
 
       
@@ -811,7 +810,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -822,7 +821,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -833,7 +832,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
