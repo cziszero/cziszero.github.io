@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="前言本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中. 树结构Trie相关题目: Leetcode720 12345678910111213141516171819202122232425262728293031323334353637class TrieNode &amp;#123;public:  bool eow = false;  TrieNode *children[26">
+<meta name="description" content="前言本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中. 树结构Trie相关题目: Leetcode720 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class TrieNode &amp;#123;public:  bool eow = fal">
 <meta name="keywords" content="算法和数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用算法和数据结构的模板">
 <meta property="og:url" content="http://yoursite.com/2018/12/27/2018-12-27-AlgorithmTemplate/index.html">
 <meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="前言本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中. 树结构Trie相关题目: Leetcode720 12345678910111213141516171819202122232425262728293031323334353637class TrieNode &amp;#123;public:  bool eow = false;  TrieNode *children[26">
+<meta property="og:description" content="前言本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中. 树结构Trie相关题目: Leetcode720 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class TrieNode &amp;#123;public:  bool eow = fal">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-27T15:57:25.696Z">
+<meta property="og:updated_time" content="2018-12-31T15:34:51.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用算法和数据结构的模板">
-<meta name="twitter:description" content="前言本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中. 树结构Trie相关题目: Leetcode720 12345678910111213141516171819202122232425262728293031323334353637class TrieNode &amp;#123;public:  bool eow = false;  TrieNode *children[26">
+<meta name="twitter:description" content="前言本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中. 树结构Trie相关题目: Leetcode720 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class TrieNode &amp;#123;public:  bool eow = fal">
 
 
 
@@ -348,8 +348,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-12-27T23:57:25+08:00" content="2018-12-27">
-                  2018-12-27
+              <time itemprop="dateUpdated" datetime="2018-12-31T23:34:51+08:00" content="2018-12-31">
+                  2018-12-31
               </time>
             </span>
           
@@ -406,7 +406,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇blog主要用于整理做题过程中经常用到的算法和数据结构, 不断完善中.</p>
 <h1 id="树结构"><a href="#树结构" class="headerlink" title="树结构"></a>树结构</h1><h2 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h2><p>相关题目: <a href="https://leetcode.com/problems/longest-word-in-dictionary" target="_blank" rel="external">Leetcode720</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="keyword">bool</span> eow = <span class="literal">false</span>;</div><div class="line">  TrieNode *children[<span class="number">26</span>] = &#123;&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  TrieNode *root;</div><div class="line">  Trie() &#123; root = <span class="keyword">new</span> TrieNode(); &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">    TrieNode *curr = root;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</div><div class="line">      <span class="keyword">int</span> index = s[i] - <span class="string">'a'</span>;</div><div class="line">      <span class="keyword">if</span> (!curr-&gt;children[index]) curr-&gt;children[index] = <span class="keyword">new</span> TrieNode();</div><div class="line">      curr = curr-&gt;children[index];</div><div class="line">    &#125;</div><div class="line">    curr-&gt;eow = <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">displayUtil</span><span class="params">(TrieNode *curr, <span class="built_in">string</span> &amp;s)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (curr-&gt;eow) <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</div><div class="line">      <span class="keyword">if</span> (curr-&gt;children[i]) &#123;</div><div class="line">        s.push_back(i + <span class="string">'a'</span>);</div><div class="line">        displayUtil(curr-&gt;children[i], s);</div><div class="line">        s.pop_back();</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">displayTrie</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">string</span> s;</div><div class="line">    displayUtil(root, s);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="keyword">bool</span> eow = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">int</span> id = <span class="number">0</span>;</div><div class="line">  TrieNode *children[<span class="number">26</span>] = &#123;&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  TrieNode *root;</div><div class="line">  Trie() &#123; root = <span class="keyword">new</span> TrieNode(); &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s, <span class="keyword">int</span> id = <span class="number">0</span>)</span> </span>&#123;</div><div class="line">    TrieNode *curr = root;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</div><div class="line">      <span class="keyword">int</span> index = s[i] - <span class="string">'a'</span>;</div><div class="line">      <span class="keyword">if</span> (!curr-&gt;children[index]) curr-&gt;children[index] = <span class="keyword">new</span> TrieNode();</div><div class="line">      curr = curr-&gt;children[index];</div><div class="line">    &#125;</div><div class="line">    curr-&gt;eow = <span class="literal">true</span>;</div><div class="line">    curr-&gt;id = id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s)</span> </span>&#123;</div><div class="line">    TrieNode *curr = root;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</div><div class="line">      <span class="keyword">int</span> index = s[i] - <span class="string">'a'</span>;</div><div class="line">      <span class="keyword">if</span> (curr &amp;&amp; curr-&gt;children[index])</div><div class="line">        curr = curr-&gt;children[index];</div><div class="line">      <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> curr-&gt;eow ? curr-&gt;id : <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">displayUtil</span><span class="params">(TrieNode *curr, <span class="built_in">string</span> &amp;s)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (curr-&gt;eow) <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</div><div class="line">      <span class="keyword">if</span> (curr-&gt;children[i]) &#123;</div><div class="line">        s.push_back(i + <span class="string">'a'</span>);</div><div class="line">        displayUtil(curr-&gt;children[i], s);</div><div class="line">        s.pop_back();</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">displayTrie</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">string</span> s;</div><div class="line">    displayUtil(root, s);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -445,6 +445,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/31/2018-12-31-Tree/" rel="prev" title="各种树结构">
+                各种树结构 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -521,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -532,7 +536,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -543,7 +547,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -601,7 +605,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

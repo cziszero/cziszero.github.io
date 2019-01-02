@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法和数据结构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="模板 基础 模拟 高精度 加 减 乘 除     排序 简单排序 插入排序 选择排序 冒泡排序   高级排序 堆排序 快速排序 归并排序   非基于比较的排序 计数排序 桶排序     树 LCA问题 倍增算法 tarjan算法     图结构 图的概念 图的存储 邻接矩阵 邻接表 边表   图的遍历 DFS BFS   图的传递闭包 最小生成树 kruskal prim   最短路算法 无权最">
+<meta name="keywords" content="算法和数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用算法题目分类">
+<meta property="og:url" content="http://yoursite.com/2018/12/31/2018-12-31-AlgorithmCatalog/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="模板 基础 模拟 高精度 加 减 乘 除     排序 简单排序 插入排序 选择排序 冒泡排序   高级排序 堆排序 快速排序 归并排序   非基于比较的排序 计数排序 桶排序     树 LCA问题 倍增算法 tarjan算法     图结构 图的概念 图的存储 邻接矩阵 邻接表 边表   图的遍历 DFS BFS   图的传递闭包 最小生成树 kruskal prim   最短路算法 无权最">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-02T15:12:41.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用算法题目分类">
+<meta name="twitter:description" content="模板 基础 模拟 高精度 加 减 乘 除     排序 简单排序 插入排序 选择排序 冒泡排序   高级排序 堆排序 快速排序 归并排序   非基于比较的排序 计数排序 桶排序     树 LCA问题 倍增算法 tarjan算法     图结构 图的概念 图的存储 邻接矩阵 邻接表 边表   图的遍历 DFS BFS   图的传递闭包 最小生成树 kruskal prim   最短路算法 无权最">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/31/2018-12-31-AlgorithmCatalog/"/>
+
+
+
+
+
+  <title>常用算法题目分类 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018-12-31-AlgorithmCatalog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用算法题目分类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00+08:00">
+                2018-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-01-02T23:12:41+08:00" content="2019-01-02">
+                  2019-01-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法和数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法和数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="#%E6%A8%A1%E6%9D%BF">模板</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80">基础</a><ul>
+<li><a href="#%E6%A8%A1%E6%8B%9F">模拟</a></li>
+<li><a href="#%E9%AB%98%E7%B2%BE%E5%BA%A6">高精度</a><ul>
+<li><a href="#%E5%8A%A0">加</a></li>
+<li><a href="#%E5%87%8F">减</a></li>
+<li><a href="#%E4%B9%98">乘</a></li>
+<li><a href="#%E9%99%A4">除</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8E%92%E5%BA%8F">排序</a><ul>
+<li><a href="#%E7%AE%80%E5%8D%95%E6%8E%92%E5%BA%8F">简单排序</a><ul>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F">插入排序</a></li>
+<li><a href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F">选择排序</a></li>
+<li><a href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F">冒泡排序</a></li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E6%8E%92%E5%BA%8F">高级排序</a><ul>
+<li><a href="#%E5%A0%86%E6%8E%92%E5%BA%8F">堆排序</a></li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a></li>
+<li><a href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F">归并排序</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9D%9E%E5%9F%BA%E4%BA%8E%E6%AF%94%E8%BE%83%E7%9A%84%E6%8E%92%E5%BA%8F">非基于比较的排序</a><ul>
+<li><a href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F">计数排序</a></li>
+<li><a href="#%E6%A1%B6%E6%8E%92%E5%BA%8F">桶排序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%A0%91">树</a><ul>
+<li><a href="#lca%E9%97%AE%E9%A2%98">LCA问题</a><ul>
+<li><a href="#%E5%80%8D%E5%A2%9E%E7%AE%97%E6%B3%95">倍增算法</a></li>
+<li><a href="#tarjan%E7%AE%97%E6%B3%95">tarjan算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E7%BB%93%E6%9E%84">图结构</a><ul>
+<li><a href="#%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5">图的概念</a></li>
+<li><a href="#%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8">图的存储</a><ul>
+<li><a href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5">邻接矩阵</a></li>
+<li><a href="#%E9%82%BB%E6%8E%A5%E8%A1%A8">邻接表</a></li>
+<li><a href="#%E8%BE%B9%E8%A1%A8">边表</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86">图的遍历</a><ul>
+<li><a href="#dfs">DFS</a></li>
+<li><a href="#bfs">BFS</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E7%9A%84%E4%BC%A0%E9%80%92%E9%97%AD%E5%8C%85">图的传递闭包</a></li>
+<li><a href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">最小生成树</a><ul>
+<li><a href="#kruskal">kruskal</a></li>
+<li><a href="#prim">prim</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95">最短路算法</a><ul>
+<li><a href="#%E6%97%A0%E6%9D%83%E6%9C%80%E7%9F%AD%E8%B7%AFbfs">无权最短路（BFS）</a></li>
+<li><a href="#floyd%E7%AE%97%E6%B3%95floyd%E6%89%BE%E6%9C%80%E5%B0%8F%E7%8E%AF">floyd算法（floyd找最小环）</a></li>
+<li><a href="#dijkstra%E7%AE%97%E6%B3%95">Dijkstra算法</a></li>
+<li><a href="#bellman-ford%E7%AE%97%E6%B3%95">Bellman-Ford算法</a></li>
+<li><a href="#spfashortest-path-faster-algorithm">SPFA（Shortest Path Faster Algorithm）</a></li>
+<li><a href="#%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F">差分约束系统</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F">拓扑排序</a><ul>
+<li><a href="#kahn%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">Kahn拓扑排序算法</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8Edfs%E7%9A%84%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">基于DFS的拓扑排序算法</a></li>
+</ul>
+</li>
+<li><a href="#%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84">欧拉路径</a><ul>
+<li><a href="#fleury%E7%AE%97%E6%B3%95">Fleury算法</a></li>
+<li><a href="#hierholzer%E7%AE%97%E6%B3%95">Hierholzer算法</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E7%9A%84%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F">图的强连通分量</a><ul>
+<li><a href="#kosaraju%E7%AE%97%E6%B3%95%E5%8F%8Cdfs">Kosaraju算法（双DFS)</a></li>
+<li><a href="#tarjan%E7%AE%97%E6%B3%95">Tarjan算法</a></li>
+<li><a href="#gabow%E7%AE%97%E6%B3%95">Gabow算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#hash">Hash</a><ul>
+<li><a href="#%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80">康托展开</a></li>
+</ul>
+</li>
+<li><a href="#%E6%90%9C%E7%B4%A2">搜索</a><ul>
+<li><a href="#bfs%E5%8F%8A%E4%BC%98%E5%8C%96">BFS及优化</a><ul>
+<li><a href="#%E5%88%A4%E9%87%8D">判重</a></li>
+<li><a href="#%E5%8F%8C%E5%90%91%E5%B9%BF%E6%90%9C">双向广搜</a></li>
+</ul>
+</li>
+<li><a href="#dfs%E5%8F%8A%E4%BC%98%E5%8C%96">DFS及优化</a><ul>
+<li><a href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%89%AA%E6%9E%9D">可行性剪枝</a></li>
+<li><a href="#%E6%9C%80%E4%BC%98%E6%80%A7%E5%89%AA%E6%9E%9D">最优性剪枝</a></li>
+<li><a href="#%E8%BF%AD%E4%BB%A3%E5%8A%A0%E6%B7%B1%E6%90%9C%E7%B4%A2">迭代加深搜索</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%88%86%E6%B2%BB%E6%B3%95">分治法</a></li>
+<li><a href="#%E4%BA%8C%E5%88%86%E6%B3%95">二分法</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86">字符串处理</a><ul>
+<li><a href="#kmp%E7%AE%97%E6%B3%95">KMP算法</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3">数学相关</a><ul>
+<li><a href="#%E5%90%8C%E4%BD%99%E7%9B%B8%E5%85%B3">同余相关</a><ul>
+<li><a href="#%E6%95%B4%E9%99%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8">整除的基本性质</a></li>
+<li><a href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E7%AE%97%E6%B3%95">欧几里德算法</a></li>
+<li><a href="#stein%E7%AE%97%E6%B3%95">Stein算法</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E7%AE%97%E6%B3%95">扩展欧几里德算法</a></li>
+<li><a href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86">中国剩余定理</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88">排列组合</a><ul>
+<li><a href="#%E6%8E%92%E5%88%97%E6%95%B0">排列数</a></li>
+<li><a href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%8D%B3%E6%89%A9%E5%B1%95%E5%85%AC%E5%BC%8F">组合数即扩展公式</a></li>
+<li><a href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86">二项式定理</a></li>
+</ul>
+</li>
+<li><a href="#%E7%B4%A0%E6%95%B0%E7%9B%B8%E5%85%B3">素数相关</a><ul>
+<li><a href="#%E7%AE%97%E6%9C%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86">算术基本定理</a></li>
+<li><a href="#%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0">筛法求素数</a></li>
+<li><a href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">欧拉函数、欧拉定理、费马小定理</a></li>
+<li><a href="#%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95">素数测试</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E5%B9%82">快速幂</a><ul>
+<li><a href="#%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82">矩阵快速幂</a></li>
+<li><a href="#st%E7%AE%97%E6%B3%95">ST算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%B4%AA%E5%BF%83%E6%B3%95">贪心法</a><ul>
+<li><a href="#%E5%B8%A6%E5%8F%8D%E6%82%94%E7%9A%84%E8%B4%AA%E5%BF%83">带反悔的贪心</a></li>
+<li><a href="#%E8%B4%AA%E5%BF%83%E6%B3%95%E7%9A%84%E8%AF%81%E6%98%8E">贪心法的证明</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A3%80%E7%B4%A2">检索</a></li>
+<li><a href="#two-pointer">Two-Pointer</a></li>
+<li><a href="#%E8%AE%A4%E7%9C%9F%E6%80%9D%E8%80%83">认真思考</a></li>
+<li><a href="#%E5%BE%85%E5%BD%92%E7%B1%BB">待归类</a></li>
+</ul>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><ol>
+<li>SPFA poj2387_spfa.cpp</li>
+</ol>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ol>
+<li>洛谷1085 不高兴的津津：求最大数</li>
+<li>洛谷1008 三连击：模运算及标志数组的使用</li>
+<li>洛谷1423 小玉在游泳：while循环</li>
+<li>洛谷1055 ISBN号码：字符串处理或者模运算，ASCII表</li>
+<li>洛谷1047 校门外的树：标志数组的使用</li>
+<li>洛谷1428 小鱼比可爱：双重循环</li>
+<li>洛谷1017 进制转换，进一步熟悉循环的使用</li>
+<li>P1003 铺地毯，介绍二维数组</li>
+<li>P1424 小鱼的航程(改进版)</li>
+<li>P1427 小鱼的数字游戏(数组和循环的简单应用)</li>
+<li>P1914 小书童——密码(模运算和循环的简单应用)</li>
+<li>P1200 [USACO1.1]你的飞碟在这儿Your Ride Is He(模运算和循环的简单应用)</li>
+<li>P1540 机器翻译（队列的简单应用）</li>
+<li>P1067 多项式输出 模拟 字符串处理</li>
+<li>P1125 笨小猴 字符串处理+100以内的质数判断</li>
+<li>P1017 进制转换 负进制数</li>
+<li>P1160 队列安排 教链表 </li>
+<li>P1996 约瑟夫问题</li>
+<li>P1425 小鱼的游泳时间 100</li>
+<li>P1089 津津的储蓄计划 0</li>
+<li>P1046 陶陶摘苹果</li>
+<li>P1075 质因数分解</li>
+<li>P1028 数的计算</li>
+<li>P1149 火柴棒等式</li>
+<li>P1308 统计单词数</li>
+<li>P1036 选数</li>
+<li>P1015 回文数</li>
+<li>P1308 统计单词数题目</li>
+<li>P1217 [USACO1.5]回文质数 Prime Palindromes</li>
+<li>P1618 三连击（升级版）</li>
+</ol>
+<h2 id="模拟"><a href="#模拟" class="headerlink" title="模拟"></a>模拟</h2><ol>
+<li>P1079 Vigenère 密码 简单模拟</li>
+<li>P1035 级数求和 简单模拟</li>
+<li>玛雅历 2017算法课第一次作业 A poj1008 取余运算</li>
+<li>Leetcode 957.Prison Cells After N Days 模拟+取余</li>
+</ol>
+<h2 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h2><h3 id="加"><a href="#加" class="headerlink" title="加"></a>加</h3><ol>
+<li>P1601 A+B Problem（高精）</li>
+<li>P1015 回文数<h3 id="减"><a href="#减" class="headerlink" title="减"></a>减</h3></li>
+<li>P2142 高精度减法<h3 id="乘"><a href="#乘" class="headerlink" title="乘"></a>乘</h3></li>
+<li>P1009 阶乘之和<h3 id="除"><a href="#除" class="headerlink" title="除"></a>除</h3></li>
+</ol>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><ol>
+<li>P1068 分数线划定 简单排序<h2 id="简单排序"><a href="#简单排序" class="headerlink" title="简单排序"></a>简单排序</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h2 id="高级排序"><a href="#高级排序" class="headerlink" title="高级排序"></a>高级排序</h2><h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h2 id="非基于比较的排序"><a href="#非基于比较的排序" class="headerlink" title="非基于比较的排序"></a>非基于比较的排序</h2><h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3></li>
+</ol>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="LCA问题"><a href="#LCA问题" class="headerlink" title="LCA问题"></a>LCA问题</h2><p><a href="https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.03.md" target="_blank" rel="external">LCA和RMQ问题</a></p>
+<ol>
+<li>LCA 洛谷3397</li>
+<li><a href="http://poj.org/problem?id=1330" target="_blank" rel="external">POJ1330 Nearest Common Ancestors</a> | LCA | 简单</li>
+<li><a href="http://codeforces.com/contest/609/problem/E" target="_blank" rel="external">CF609E Minimum spanning tree for each edge</a> | LCA | 中上</li>
+<li><a href="http://poj.org/problem?id=1986" target="_blank" rel="external">POJ 1986Distance Queries</a> | LCA | 较难</li>
+</ol>
+<h3 id="倍增算法"><a href="#倍增算法" class="headerlink" title="倍增算法"></a>倍增算法</h3><p><a href="https://zhyack.github.io/posts/2015_12_22_LCA-Binary-Lifting-Note.html" target="_blank" rel="external">倍增LCA的一个讲的比较好的资料</a></p>
+<h3 id="tarjan算法"><a href="#tarjan算法" class="headerlink" title="tarjan算法"></a>tarjan算法</h3><p><a href="https://comzyh.com/blog/archives/492/" target="_blank" rel="external">Tarjan LCA的一个讲的比较好的资料</a></p>
+<h1 id="图结构"><a href="#图结构" class="headerlink" title="图结构"></a>图结构</h1><h2 id="图的概念"><a href="#图的概念" class="headerlink" title="图的概念"></a>图的概念</h2><h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><h3 id="边表"><a href="#边表" class="headerlink" title="边表"></a>边表</h3><h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><ol>
+<li>洛谷 P1330 封锁阳光大学(染色)</li>
+<li>Leetcode 959.Regions Cut By Slashes 见图好好想想</li>
+</ol>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><ol>
+<li>DFS 输出所有的哈密顿回路 HDU 2181 (hdu_2181_Hamiltonian.cpp)</li>
+<li>Leetcode 685.Redundant Connection II 在图上找环, 并考察dfs树的理解</li>
+</ol>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><ol>
+<li>统计无向图的联通块个数，POJ 2524(poj_2524_Religions_bfs.cpp)</li>
+<li><a href="http://algorithm.openjudge.cn/algorithma/D/" target="_blank" rel="external">仙岛求药</a> 在棋盘上BFS求最短路</li>
+</ol>
+<h2 id="图的传递闭包"><a href="#图的传递闭包" class="headerlink" title="图的传递闭包"></a>图的传递闭包</h2><ol>
+<li>图的传递闭包，高精加和高精乘，洛谷1037，NOIP2002年普及组(luogu_1037_transClosure.cpp)</li>
+</ol>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><ol>
+<li>洛谷 P2330 [SCOI2005] 繁忙的都市（最小生成树模板题）<h3 id="kruskal"><a href="#kruskal" class="headerlink" title="kruskal"></a>kruskal</h3></li>
+<li>洛谷 P1546 最短网络 Agri-Net 模板题 (luogu_1546_kruskal.cpp、luogu_1546_prim.cpp)</li>
+<li>Conscription (POJ No.3723)</li>
+<li>POJ 2349 Arctic 很巧妙的的把问题转化为最小生成树问题 (poj_2349_Arctic.cpp) <a href="http://bailian.openjudge.cn/practice/2349/" target="_blank" rel="external">http://bailian.openjudge.cn/practice/2349/</a></li>
+</ol>
+<h3 id="prim"><a href="#prim" class="headerlink" title="prim"></a>prim</h3><h2 id="最短路算法"><a href="#最短路算法" class="headerlink" title="最短路算法"></a>最短路算法</h2><h3 id="无权最短路（BFS）"><a href="#无权最短路（BFS）" class="headerlink" title="无权最短路（BFS）"></a>无权最短路（BFS）</h3><ol>
+<li>洛谷2296 寻找道路：BFS求最短路，需要先把图反向<h3 id="floyd算法（floyd找最小环）"><a href="#floyd算法（floyd找最小环）" class="headerlink" title="floyd算法（floyd找最小环）"></a>floyd算法（floyd找最小环）</h3></li>
+<li>洛谷 P1119 灾后重建（Floyd的理解）<h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><h3 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h3><h3 id="SPFA（Shortest-Path-Faster-Algorithm）"><a href="#SPFA（Shortest-Path-Faster-Algorithm）" class="headerlink" title="SPFA（Shortest Path Faster Algorithm）"></a>SPFA（Shortest Path Faster Algorithm）</h3></li>
+<li>POJ2387 Til the Cows Come Home 最短路模板题(poj2387_spfa.cpp)</li>
+<li>P1073 最优贸易 （图论，经典题，前后各做一次spfa）</li>
+<li>洛谷3371 【模板】单源最短路径 要求分别使用SPFA，bellman-ford，Dijkstra（朴素及堆优化）算法实现</li>
+<li>洛谷 P1339 [USACO09OCT]热浪Heat Wave 最短路模板题</li>
+<li>洛谷 P1462 通往奥格瑞玛的道路（二分+最短路）</li>
+<li>洛谷 P1346 电车（建图有点意思，难度不大）</li>
+<li>Roadblocks (POJ No.3255) 次短路</li>
+<li>P1027 Car的旅行路线 最短路</li>
+<li>Poj 1860 Currency Exchange 判环</li>
+</ol>
+<h3 id="差分约束系统"><a href="#差分约束系统" class="headerlink" title="差分约束系统"></a>差分约束系统</h3><ol>
+<li>Layout (POJ No.3169)</li>
+</ol>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><ol>
+<li>拓扑排序算法的实现，poj 2367，(poj_2367_topSort_kahn.cpp)</li>
+<li>P2019 脑力达人之拓扑序列路径总数</li>
+</ol>
+<h3 id="Kahn拓扑排序算法"><a href="#Kahn拓扑排序算法" class="headerlink" title="Kahn拓扑排序算法"></a>Kahn拓扑排序算法</h3><h3 id="基于DFS的拓扑排序算法"><a href="#基于DFS的拓扑排序算法" class="headerlink" title="基于DFS的拓扑排序算法"></a>基于DFS的拓扑排序算法</h3><h2 id="欧拉路径"><a href="#欧拉路径" class="headerlink" title="欧拉路径"></a>欧拉路径</h2><ol>
+<li>P2731 骑马修栅栏 | 欧拉回路 | 简单</li>
+<li>P1341 无序字母对(欧拉回路)</li>
+</ol>
+<h3 id="Fleury算法"><a href="#Fleury算法" class="headerlink" title="Fleury算法"></a>Fleury算法</h3><h3 id="Hierholzer算法"><a href="#Hierholzer算法" class="headerlink" title="Hierholzer算法"></a>Hierholzer算法</h3><h2 id="图的强连通分量"><a href="#图的强连通分量" class="headerlink" title="图的强连通分量"></a>图的强连通分量</h2><ol>
+<li>POJ2186 Popular Cows （牛仰慕） 求强连通分量缩点<h3 id="Kosaraju算法（双DFS"><a href="#Kosaraju算法（双DFS" class="headerlink" title="Kosaraju算法（双DFS)"></a>Kosaraju算法（双DFS)</h3><h3 id="Tarjan算法"><a href="#Tarjan算法" class="headerlink" title="Tarjan算法"></a>Tarjan算法</h3><h3 id="Gabow算法"><a href="#Gabow算法" class="headerlink" title="Gabow算法"></a>Gabow算法</h3></li>
+</ol>
+<h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><h2 id="康托展开"><a href="#康托展开" class="headerlink" title="康托展开"></a>康托展开</h2><h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><ol>
+<li>棋盘问题 类似八皇后 POJ1321</li>
+<li>P1034 矩形覆盖 NOIP 2002</li>
+<li>P1092 虫食算 noip2004提高组第4题</li>
+<li>P1312 Mayan游戏<h2 id="BFS及优化"><a href="#BFS及优化" class="headerlink" title="BFS及优化"></a>BFS及优化</h2></li>
+<li>P1074 靶形数独 NOIP2009 提高组 第四题 （可加入位运算优化）<h3 id="判重"><a href="#判重" class="headerlink" title="判重"></a>判重</h3><h3 id="双向广搜"><a href="#双向广搜" class="headerlink" title="双向广搜"></a>双向广搜</h3><h2 id="DFS及优化"><a href="#DFS及优化" class="headerlink" title="DFS及优化"></a>DFS及优化</h2></li>
+<li>P1219 八皇后<h3 id="可行性剪枝"><a href="#可行性剪枝" class="headerlink" title="可行性剪枝"></a>可行性剪枝</h3><h3 id="最优性剪枝"><a href="#最优性剪枝" class="headerlink" title="最优性剪枝"></a>最优性剪枝</h3><h3 id="迭代加深搜索"><a href="#迭代加深搜索" class="headerlink" title="迭代加深搜索"></a>迭代加深搜索</h3></li>
+</ol>
+<h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h1><h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><ol>
+<li>洛谷 P1462 通往奥格瑞玛的道路（二分+最短路）</li>
+<li>P1182 数列分段Section II (二分答案) </li>
+<li>P1314 聪明的质监员 二分问题</li>
+<li>P1083 借教室 前缀和+二分<h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2></li>
+</ol>
+<h1 id="数学相关"><a href="#数学相关" class="headerlink" title="数学相关"></a>数学相关</h1><h2 id="同余相关"><a href="#同余相关" class="headerlink" title="同余相关"></a>同余相关</h2><h3 id="整除的基本性质"><a href="#整除的基本性质" class="headerlink" title="整除的基本性质"></a>整除的基本性质</h3><h3 id="欧几里德算法"><a href="#欧几里德算法" class="headerlink" title="欧几里德算法"></a>欧几里德算法</h3><ol>
+<li>P1029 最大公约数和最小公倍数问题<h3 id="Stein算法"><a href="#Stein算法" class="headerlink" title="Stein算法"></a>Stein算法</h3><h3 id="扩展欧几里德算法"><a href="#扩展欧几里德算法" class="headerlink" title="扩展欧几里德算法"></a>扩展欧几里德算法</h3><h3 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h3><h2 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h2><h3 id="排列数"><a href="#排列数" class="headerlink" title="排列数"></a>排列数</h3><h3 id="组合数即扩展公式"><a href="#组合数即扩展公式" class="headerlink" title="组合数即扩展公式"></a>组合数即扩展公式</h3><h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3></li>
+<li>P1313 计算系数 杨辉三角<h2 id="素数相关"><a href="#素数相关" class="headerlink" title="素数相关"></a>素数相关</h2><h3 id="算术基本定理"><a href="#算术基本定理" class="headerlink" title="算术基本定理"></a>算术基本定理</h3><h3 id="筛法求素数"><a href="#筛法求素数" class="headerlink" title="筛法求素数"></a>筛法求素数</h3></li>
+<li>P3383 【模板】线性筛素数<h3 id="欧拉函数、欧拉定理、费马小定理"><a href="#欧拉函数、欧拉定理、费马小定理" class="headerlink" title="欧拉函数、欧拉定理、费马小定理"></a>欧拉函数、欧拉定理、费马小定理</h3><h3 id="素数测试"><a href="#素数测试" class="headerlink" title="素数测试"></a>素数测试</h3><h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2></li>
+<li>P1226 取余运算||快速幂<h3 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h3><h3 id="ST算法"><a href="#ST算法" class="headerlink" title="ST算法"></a>ST算法</h3></li>
+</ol>
+<h1 id="贪心法"><a href="#贪心法" class="headerlink" title="贪心法"></a>贪心法</h1><ol>
+<li>完成P3602 Koishi Loves Segments</li>
+<li>完成P2094 运输</li>
+<li>POJ2376 </li>
+<li>洛谷P1970 花匠</li>
+<li>洛谷P1223 排队接水</li>
+<li>P3620 [APIO2007]数据备份 贪心</li>
+<li>P1080 国王游戏<h2 id="带反悔的贪心"><a href="#带反悔的贪心" class="headerlink" title="带反悔的贪心"></a>带反悔的贪心</h2></li>
+<li><a href="https://www.luogu.org/problemnew/show/P3620" target="_blank" rel="external">APIO/CTSC 2007数据备份</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="external">Leetcode 123.Best Time to Buy and Sell Stock IV</a><h2 id="贪心法的证明"><a href="#贪心法的证明" class="headerlink" title="贪心法的证明"></a>贪心法的证明</h2></li>
+</ol>
+<h1 id="检索"><a href="#检索" class="headerlink" title="检索"></a>检索</h1><p>有很多题目可以规约成从某个集合中检索某个元素, 常用的方法有<a href="#hash">hash</a>, <a href="/2018/12/31/2018-12-31-Tree/#trie">Trie</a>, <a href="">平衡树</a><br>例如  </p>
+<ol>
+<li>leetcode 1.Two Sum 两个数a,b和为s, 已知a和s, 确认b是否在集合中</li>
+<li>leetcode 720.Longest Word in Dictionary 先排序然后检索前缀是否在里面, 用HashMap做检索的话时间复杂度是$O(nklogn)+O(nk)$, 其中n是单词表中单词的个数, k是单词的平均长度. 然而和前缀有关, 所以可以用Trie做, 插入时间复杂度$O(nk)$, 检查时间复杂度是$O(nk)$</li>
+<li></li>
+</ol>
+<h1 id="Two-Pointer"><a href="#Two-Pointer" class="headerlink" title="Two-Pointer"></a>Two-Pointer</h1><ol>
+<li>Leetcode 3.Longest Substring Without Repeating Characters</li>
+<li>Leetcode 395.Longest Substring with At Least K Repeating Characters 枚举不同的字母有几个, 最多26个, 给定不同字母个数, 找到Longest Substring with At Least K Repeating Characters是$O(n)$的, 所以总的时间复杂度是$O(n)$的. 分治的方法最坏情况下时间复杂度是$O(n^2)$</li>
+<li>Leetcode 4.Median of Two Sorted Arrays 始终维护在两个指针左边的有n/2个, 可以扩展到求第k个, 只要维护在两个指针左边的有k个即可. 同时有另外一种思路, 直接找第k个元素, 每次取两个有序数列的第k/2个比较, 会发现有一个肯定不包含第k个元素, 可以直接去掉. 详情参见<a href="https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/143046" target="_blank" rel="external">链接</a></li>
+<li>Leetcode 336.Palindrome Pairs 给一堆字符串, 找成对字符串连接可以构成回文串的, 实际上就是检索反转字符串是否也存在, 不过需要注意各种情况, 比如一个字符串为空, 两个字符串不等长, 两个字符串等长等, 既可以用Trie也可以用HashMap.</li>
+</ol>
+<h1 id="认真思考"><a href="#认真思考" class="headerlink" title="认真思考"></a>认真思考</h1><ol>
+<li>Leetcode 42.Trapping Rain Water</li>
+<li>Leetcode 407    Trapping Rain Water BFS+堆, 但建模是重点</li>
+</ol>
+<h1 id="待归类"><a href="#待归类" class="headerlink" title="待归类"></a>待归类</h1><ol>
+<li>POJ 1191</li>
+<li>火车进站</li>
+<li>P2758 编辑距离</li>
+<li>P1772 [ZJOI2006]物流运输</li>
+<li>P1334 瑞瑞的木板</li>
+<li>P1854 花店橱窗布置</li>
+<li>P1007 独木桥</li>
+<li>P1311 选择客栈</li>
+<li>P1541 乌龟棋</li>
+<li>P1315 观光公交</li>
+<li>P1091 合唱队形</li>
+<li>P1006 传纸条 NOIP2008</li>
+<li>P3623 [APIO2008]免费道路</li>
+<li>P1155 双栈排序 NOIP2008</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法和数据结构/" rel="tag"># 算法和数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/2018-12-31-Tree/" rel="next" title="各种树结构">
+                <i class="fa fa-chevron-left"></i> 各种树结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/31/2018-12-31-AlgorithmDP/" rel="prev" title="常用算法-动态规划">
+                常用算法-动态规划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="cziszero" />
+          <p class="site-author-name" itemprop="name">cziszero</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模板"><span class="nav-number">1.</span> <span class="nav-text">模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟"><span class="nav-number">2.1.</span> <span class="nav-text">模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高精度"><span class="nav-number">2.2.</span> <span class="nav-text">高精度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加"><span class="nav-number">2.2.1.</span> <span class="nav-text">加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减"><span class="nav-number">2.2.2.</span> <span class="nav-text">减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乘"><span class="nav-number">2.2.3.</span> <span class="nav-text">乘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#除"><span class="nav-number">2.2.4.</span> <span class="nav-text">除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">3.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单排序"><span class="nav-number">3.1.</span> <span class="nav-text">简单排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.1.1.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">3.1.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">3.1.3.</span> <span class="nav-text">冒泡排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级排序"><span class="nav-number">3.2.</span> <span class="nav-text">高级排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">3.2.1.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">3.2.2.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">3.2.3.</span> <span class="nav-text">归并排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非基于比较的排序"><span class="nav-number">3.3.</span> <span class="nav-text">非基于比较的排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">3.3.1.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">3.3.2.</span> <span class="nav-text">桶排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树"><span class="nav-number">4.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LCA问题"><span class="nav-number">4.1.</span> <span class="nav-text">LCA问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#倍增算法"><span class="nav-number">4.1.1.</span> <span class="nav-text">倍增算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tarjan算法"><span class="nav-number">4.1.2.</span> <span class="nav-text">tarjan算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图结构"><span class="nav-number">5.</span> <span class="nav-text">图结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图的概念"><span class="nav-number">5.1.</span> <span class="nav-text">图的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的存储"><span class="nav-number">5.2.</span> <span class="nav-text">图的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">5.2.1.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邻接表"><span class="nav-number">5.2.2.</span> <span class="nav-text">邻接表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边表"><span class="nav-number">5.2.3.</span> <span class="nav-text">边表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的遍历"><span class="nav-number">5.3.</span> <span class="nav-text">图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS"><span class="nav-number">5.3.1.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFS"><span class="nav-number">5.3.2.</span> <span class="nav-text">BFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的传递闭包"><span class="nav-number">5.4.</span> <span class="nav-text">图的传递闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树"><span class="nav-number">5.5.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskal"><span class="nav-number">5.5.1.</span> <span class="nav-text">kruskal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prim"><span class="nav-number">5.5.2.</span> <span class="nav-text">prim</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路算法"><span class="nav-number">5.6.</span> <span class="nav-text">最短路算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无权最短路（BFS）"><span class="nav-number">5.6.1.</span> <span class="nav-text">无权最短路（BFS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#floyd算法（floyd找最小环）"><span class="nav-number">5.6.2.</span> <span class="nav-text">floyd算法（floyd找最小环）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">5.6.3.</span> <span class="nav-text">Dijkstra算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bellman-Ford算法"><span class="nav-number">5.6.4.</span> <span class="nav-text">Bellman-Ford算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPFA（Shortest-Path-Faster-Algorithm）"><span class="nav-number">5.6.5.</span> <span class="nav-text">SPFA（Shortest Path Faster Algorithm）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差分约束系统"><span class="nav-number">5.6.6.</span> <span class="nav-text">差分约束系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓扑排序"><span class="nav-number">5.7.</span> <span class="nav-text">拓扑排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kahn拓扑排序算法"><span class="nav-number">5.7.1.</span> <span class="nav-text">Kahn拓扑排序算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于DFS的拓扑排序算法"><span class="nav-number">5.7.2.</span> <span class="nav-text">基于DFS的拓扑排序算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉路径"><span class="nav-number">5.8.</span> <span class="nav-text">欧拉路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fleury算法"><span class="nav-number">5.8.1.</span> <span class="nav-text">Fleury算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hierholzer算法"><span class="nav-number">5.8.2.</span> <span class="nav-text">Hierholzer算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的强连通分量"><span class="nav-number">5.9.</span> <span class="nav-text">图的强连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kosaraju算法（双DFS"><span class="nav-number">5.9.1.</span> <span class="nav-text">Kosaraju算法（双DFS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tarjan算法"><span class="nav-number">5.9.2.</span> <span class="nav-text">Tarjan算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gabow算法"><span class="nav-number">5.9.3.</span> <span class="nav-text">Gabow算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash"><span class="nav-number">6.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#康托展开"><span class="nav-number">6.1.</span> <span class="nav-text">康托展开</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索"><span class="nav-number">7.</span> <span class="nav-text">搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS及优化"><span class="nav-number">7.1.</span> <span class="nav-text">BFS及优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#判重"><span class="nav-number">7.1.1.</span> <span class="nav-text">判重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向广搜"><span class="nav-number">7.1.2.</span> <span class="nav-text">双向广搜</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DFS及优化"><span class="nav-number">7.2.</span> <span class="nav-text">DFS及优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可行性剪枝"><span class="nav-number">7.2.1.</span> <span class="nav-text">可行性剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最优性剪枝"><span class="nav-number">7.2.2.</span> <span class="nav-text">最优性剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代加深搜索"><span class="nav-number">7.2.3.</span> <span class="nav-text">迭代加深搜索</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分治法"><span class="nav-number">8.</span> <span class="nav-text">分治法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分法"><span class="nav-number">9.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串处理"><span class="nav-number">10.</span> <span class="nav-text">字符串处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP算法"><span class="nav-number">10.1.</span> <span class="nav-text">KMP算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数学相关"><span class="nav-number">11.</span> <span class="nav-text">数学相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#同余相关"><span class="nav-number">11.1.</span> <span class="nav-text">同余相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整除的基本性质"><span class="nav-number">11.1.1.</span> <span class="nav-text">整除的基本性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧几里德算法"><span class="nav-number">11.1.2.</span> <span class="nav-text">欧几里德算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stein算法"><span class="nav-number">11.1.3.</span> <span class="nav-text">Stein算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展欧几里德算法"><span class="nav-number">11.1.4.</span> <span class="nav-text">扩展欧几里德算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中国剩余定理"><span class="nav-number">11.1.5.</span> <span class="nav-text">中国剩余定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排列组合"><span class="nav-number">11.2.</span> <span class="nav-text">排列组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排列数"><span class="nav-number">11.2.1.</span> <span class="nav-text">排列数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合数即扩展公式"><span class="nav-number">11.2.2.</span> <span class="nav-text">组合数即扩展公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项式定理"><span class="nav-number">11.2.3.</span> <span class="nav-text">二项式定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#素数相关"><span class="nav-number">11.3.</span> <span class="nav-text">素数相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术基本定理"><span class="nav-number">11.3.1.</span> <span class="nav-text">算术基本定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#筛法求素数"><span class="nav-number">11.3.2.</span> <span class="nav-text">筛法求素数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数、欧拉定理、费马小定理"><span class="nav-number">11.3.3.</span> <span class="nav-text">欧拉函数、欧拉定理、费马小定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#素数测试"><span class="nav-number">11.3.4.</span> <span class="nav-text">素数测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速幂"><span class="nav-number">11.4.</span> <span class="nav-text">快速幂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵快速幂"><span class="nav-number">11.4.1.</span> <span class="nav-text">矩阵快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ST算法"><span class="nav-number">11.4.2.</span> <span class="nav-text">ST算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心法"><span class="nav-number">12.</span> <span class="nav-text">贪心法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#带反悔的贪心"><span class="nav-number">12.1.</span> <span class="nav-text">带反悔的贪心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心法的证明"><span class="nav-number">12.2.</span> <span class="nav-text">贪心法的证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索"><span class="nav-number">13.</span> <span class="nav-text">检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-Pointer"><span class="nav-number">14.</span> <span class="nav-text">Two-Pointer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#认真思考"><span class="nav-number">15.</span> <span class="nav-text">认真思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#待归类"><span class="nav-number">16.</span> <span class="nav-text">待归类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
