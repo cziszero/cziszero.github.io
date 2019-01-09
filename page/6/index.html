@@ -644,7 +644,7 @@ Representation learning attempts to automatically learn good features or represe
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/2017-11-28-MultiBoosting/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/2017-11-28-IteratedBagging/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
@@ -663,7 +663,7 @@ Representation learning attempts to automatically learn good features or represe
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/28/2017-11-28-MultiBoosting/" itemprop="url">MultiBoosting A Technique for Combining Boosting and Wagging 阅读笔记</a></h1>
+                <a class="post-title-link" href="/2017/11/28/2017-11-28-IteratedBagging/" itemprop="url">Using Iterated Bagging to Debias Regressions 阅读笔记</a></h1>
         
 
         <div class="post-meta">
@@ -757,11 +757,12 @@ Representation learning attempts to automatically learn good features or represe
       
         
           
-          AbstractIntroductionAdaBoost and baggingbagging在二项分布的伯努利试验中，如果试验次数$n$很大，二项分布的概率$p$很小，且乘积$λ= np$比较适中，则事件出现的次数的概率可以用泊松分布来逼近。事实上，二项分布可以看作泊松分布在离散时间上的对应物。有
+          Abstractbagging 可以显著的降低variance，但无法降低bias。第一步bagging，然后进行boosting。实验使用了tree和nearest neighbor regression来测试。
+Introduction回归问题的泛化误差=随机噪声+预测bias+预测varian
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/28/2017-11-28-MultiBoosting/#more" rel="contents">
+            <a class="btn" href="/2017/11/28/2017-11-28-IteratedBagging/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
