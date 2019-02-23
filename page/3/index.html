@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,14 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
 
 
 
@@ -33,52 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
 
 
 
@@ -86,37 +70,18 @@
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="CZ&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CZ&#39;s blog">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -128,12 +93,33 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
-
+  
 
 
 
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="CZ&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CZ&#39;s blog">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>CZ's blog</title>
   
@@ -149,11 +135,34 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -161,28 +170,27 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
+    <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CZ's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -190,66 +198,97 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -264,9 +303,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -280,12 +317,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -298,17 +343,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/2018-06-03-DQN/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/2018-06-15-installCUDAcnDNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -320,13 +367,22 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/03/2018-06-03-DQN/" itemprop="url">DQN</a></h1>
+                
+                <a href="/2018/06/15/2018-06-15-installCUDAcnDNN/" class="post-title-link" itemprop="url">在ubuntu16.04上安装nvida显卡驱动，CUDA9.0 和 cuDNN7.0</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -334,27 +390,23 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
-                2018-06-03
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-15 00:00:00 / 修改时间：23:42:33" itemprop="dateCreated datePublished" datetime="2018-06-15T00:00:00+08:00">2018-06-15</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-06-15T22:29:18+08:00" content="2018-06-15">
-                  2018-06-15
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -365,11 +417,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RL/" itemprop="url" rel="index">
-                    <span itemprop="name">RL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装和使用/" itemprop="url" rel="index"><span itemprop="name">软件安装和使用</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -379,6 +434,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/06/15/2018-06-15-installCUDAcnDNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/15/2018-06-15-installCUDAcnDNN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -386,6 +455,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
           
 
           
@@ -405,25 +502,37 @@
       
         
           
-          DQN算法伪代码
-Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了
-          ...
+            <p>
+              使用PPA安装nvidia驱动添加nvidia驱动的PPA该PPA的详细信息
+sudo add-apt-repository ppa:graphics-driverssudo apt-get update
+清除旧的安装sudo apt-get purge nvidia*
+禁用开源驱动nouveau首
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/03/2018-06-03-DQN/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/15/2018-06-15-installCUDAcnDNN/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -454,6 +563,452 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
   
   
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/2018-06-15-gitUsage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/06/15/2018-06-15-gitUsage/" class="post-title-link" itemprop="url">git使用中遇到的一些问题及解决</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-15 00:00:00 / 修改时间：23:42:27" itemprop="dateCreated datePublished" datetime="2018-06-15T00:00:00+08:00">2018-06-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装和使用/" itemprop="url" rel="index"><span itemprop="name">软件安装和使用</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/06/15/2018-06-15-gitUsage/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/15/2018-06-15-gitUsage/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              git的中文乱码问题git config --global core.quotepath false  		# 显示 status 编码git config --global gui.encoding utf-8			# 图形界面编码git config --global i18n.commit.e
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/15/2018-06-15-gitUsage/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/2018-06-03-DQN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/06/03/2018-06-03-DQN/" class="post-title-link" itemprop="url">DQN</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">2018-06-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-15 22:29:18" itemprop="dateModified" datetime="2018-06-15T22:29:18+08:00">2018-06-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RL/" itemprop="url" rel="index"><span itemprop="name">RL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/06/03/2018-06-03-DQN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/03/2018-06-03-DQN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">416</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              DQN算法伪代码
+Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/03/2018-06-03-DQN/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -465,8 +1020,8 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -478,13 +1033,22 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/03/2018-06-03-tensorflow变量初始化/" itemprop="url">tensorflow变量初始化</a></h1>
+                
+                <a href="/2018/06/03/2018-06-03-tensorflow变量初始化/" class="post-title-link" itemprop="url">tensorflow变量初始化</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -492,27 +1056,35 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
-                2018-06-03
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">2018-06-03</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-07 00:54:17" itemprop="dateModified" datetime="2018-06-07T00:54:17+08:00">2018-06-07</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-06-07T00:54:17+08:00" content="2018-06-07">
-                  2018-06-07
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -523,11 +1095,7 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tensorflow/" itemprop="url" rel="index">
-                    <span itemprop="name">tensorflow</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tensorflow/" itemprop="url" rel="index"><span itemprop="name">tensorflow</span></a></span>
 
                 
                 
@@ -537,6 +1105,20 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/06/03/2018-06-03-tensorflow变量初始化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/03/2018-06-03-tensorflow变量初始化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -544,6 +1126,34 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">409</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
           
 
           
@@ -563,24 +1173,34 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
       
         
           
-          tensorflow变量初始化的方式使用tf.Variable()创建或tf.get_variable()创建，但初始化有所不同。如下图所示代码：1234567init = tf.truncated_normal([3, 1], stddev=0.1)va = tf.Variable(init)vb
-          ...
+            <p>
+              tensorflow变量初始化的方式使用tf.Variable()创建或tf.get_variable()创建，但初始化有所不同。如下图所示代码：init = tf.truncated_normal([3, 1], stddev=0.1)va = tf.Variable(init)vb = tf.V
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/03/2018-06-03-tensorflow变量初始化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/03/2018-06-03-tensorflow变量初始化/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -611,6 +1231,8 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -622,8 +1244,8 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -635,13 +1257,22 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/30/2018-03-30-numpy随机种子/" itemprop="url">numpy、python random、tensorflow随机种子设置</a></h1>
+                
+                <a href="/2018/03/30/2018-03-30-numpy随机种子/" class="post-title-link" itemprop="url">numpy、python random、tensorflow随机种子设置</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -649,27 +1280,35 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
-                2018-03-30
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-30 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">2018-03-30</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-17 17:22:37" itemprop="dateModified" datetime="2018-04-17T17:22:37+08:00">2018-04-17</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-04-17T17:22:37+08:00" content="2018-04-17">
-                  2018-04-17
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -680,11 +1319,7 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/numpy/" itemprop="url" rel="index">
-                    <span itemprop="name">numpy</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/numpy/" itemprop="url" rel="index"><span itemprop="name">numpy</span></a></span>
 
                 
                 
@@ -694,6 +1329,20 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/03/30/2018-03-30-numpy随机种子/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/30/2018-03-30-numpy随机种子/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -701,6 +1350,34 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
           
 
           
@@ -720,30 +1397,40 @@ Replay buffer一个很重要的问题是buffer中的样本不是独立同分布�
       
         
           
-          numpy、python randomnumpy可以使用np.random.seed(2)来设置初始化种子
+            <p>
+              numpy、python randomnumpy可以使用np.random.seed(2)来设置初始化种子
 
 每次设置seed之后都会重新初始化随机数发生器，计数器会置零
 设置seed是全局的，不同文件也是通用的
 
 python内置的random也是一样的
 tensorflowtf的random s
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/2018-03-30-numpy随机种子/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/30/2018-03-30-numpy随机种子/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -774,6 +1461,8 @@ tensorflowtf的random s
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -785,8 +1474,8 @@ tensorflowtf的random s
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -798,13 +1487,22 @@ tensorflowtf的random s
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/30/2018-03-30-ssh端口映射/" itemprop="url">ssh -L端口映射</a></h1>
+                
+                <a href="/2018/03/30/2018-03-30-ssh端口映射/" class="post-title-link" itemprop="url">ssh -L端口映射</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -812,27 +1510,35 @@ tensorflowtf的random s
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
-                2018-03-30
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-30 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">2018-03-30</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-31 00:24:44" itemprop="dateModified" datetime="2018-03-31T00:24:44+08:00">2018-03-31</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-31T00:24:44+08:00" content="2018-03-31">
-                  2018-03-31
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -843,22 +1549,14 @@ tensorflowtf的random s
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安装和使用</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装和使用/" itemprop="url" rel="index"><span itemprop="name">软件安装和使用</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
                 
                 
@@ -868,6 +1566,20 @@ tensorflowtf的random s
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/03/30/2018-03-30-ssh端口映射/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/30/2018-03-30-ssh端口映射/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -875,6 +1587,34 @@ tensorflowtf的random s
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
           
 
           
@@ -894,7 +1634,8 @@ tensorflowtf的random s
       
         
           
-          ssh的一些参数含义
+            <p>
+              ssh的一些参数含义
 -1：强制使用ssh协议版本1；
 -2：强制使用ssh协议版本2；
 -4：强制使用IPv4地址；
@@ -904,23 +1645,32 @@ tensorflowtf的random s
 -b：使用本机指定地址作为对应连接的源ip地址；
 -C：请求压缩所有数据；
 -F：
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/2018-03-30-ssh端口映射/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/30/2018-03-30-ssh端口映射/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -951,6 +1701,8 @@ tensorflowtf的random s
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -962,8 +1714,8 @@ tensorflowtf的random s
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -975,13 +1727,22 @@ tensorflowtf的random s
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/21/2018-01-20-DPG/" itemprop="url">Deterministic Policy Gradient Algorithms 阅读笔记</a></h1>
+                
+                <a href="/2018/04/21/2018-01-20-DPG/" class="post-title-link" itemprop="url">Deterministic Policy Gradient Algorithms 阅读笔记</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -989,20 +1750,35 @@ tensorflowtf的random s
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T00:00:00+08:00">
-                2018-04-21
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-21T00:00:00+08:00">2018-04-21</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-30 23:49:01" itemprop="dateModified" datetime="2018-03-30T23:49:01+08:00">2018-03-30</time>
+              
             
           </span>
 
           
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1013,22 +1789,14 @@ tensorflowtf的random s
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读笔记</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文阅读笔记/" itemprop="url" rel="index"><span itemprop="name">论文阅读笔记</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读笔记/RL/" itemprop="url" rel="index">
-                    <span itemprop="name">RL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文阅读笔记/RL/" itemprop="url" rel="index"><span itemprop="name">RL</span></a></span>
 
                 
                 
@@ -1038,6 +1806,20 @@ tensorflowtf的random s
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/04/21/2018-01-20-DPG/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/21/2018-01-20-DPG/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1045,6 +1827,34 @@ tensorflowtf的random s
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">8</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
           
 
           
@@ -1064,24 +1874,34 @@ tensorflowtf的random s
       
         
           
-          Abstract
-          
+            <p>
+              Abstract
+              
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/2018-01-20-DPG/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/04/21/2018-01-20-DPG/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1112,6 +1932,8 @@ tensorflowtf的random s
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -1123,8 +1945,8 @@ tensorflowtf的random s
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1136,13 +1958,22 @@ tensorflowtf的random s
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/30/2017-11-16-nodejs/" itemprop="url">把blog从windows上迁移到Ubuntu</a></h1>
+                
+                <a href="/2018/03/30/2017-11-16-nodejs/" class="post-title-link" itemprop="url">把blog从windows上迁移到Ubuntu</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1150,27 +1981,23 @@ tensorflowtf的random s
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
-                2018-03-30
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-30 00:00:00 / 修改时间：23:31:25" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">2018-03-30</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T23:31:25+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1181,22 +2008,14 @@ tensorflowtf的random s
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安装和使用</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装和使用/" itemprop="url" rel="index"><span itemprop="name">软件安装和使用</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
                 
                 
@@ -1206,6 +2025,20 @@ tensorflowtf的random s
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/03/30/2017-11-16-nodejs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/30/2017-11-16-nodejs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1213,6 +2046,34 @@ tensorflowtf的random s
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
           
 
           
@@ -1232,24 +2093,34 @@ tensorflowtf的random s
       
         
           
-          Ubuntu上安装Node.js使用包管理安装Node.js本blog系统使用了hexo的方案，hexo是基于Node.js开发的，所以需要先在ubuntu上安装Node.js，安装源里面的非常简单，只要两句话就可以了。12sudo apt-get install nodejssudo apt-ge
-          ...
+            <p>
+              Ubuntu上安装Node.js使用包管理安装Node.js本blog系统使用了hexo的方案，hexo是基于Node.js开发的，所以需要先在ubuntu上安装Node.js，安装源里面的非常简单，只要两句话就可以了。sudo apt-get install nodejssudo apt-get 
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/2017-11-16-nodejs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/30/2017-11-16-nodejs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1280,6 +2151,8 @@ tensorflowtf的random s
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -1291,8 +2164,8 @@ tensorflowtf的random s
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1304,13 +2177,22 @@ tensorflowtf的random s
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" itemprop="url">使用Python基于SMTP发送邮件</a></h1>
+                
+                <a href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" class="post-title-link" itemprop="url">使用Python基于SMTP发送邮件</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1318,27 +2200,35 @@ tensorflowtf的random s
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T00:00:00+08:00">
-                2017-03-15
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-15T00:00:00+08:00">2017-03-15</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-30 22:58:07" itemprop="dateModified" datetime="2018-03-30T22:58:07+08:00">2018-03-30</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:58:07+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1349,22 +2239,14 @@ tensorflowtf的random s
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -1374,6 +2256,20 @@ tensorflowtf的random s
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1381,6 +2277,34 @@ tensorflowtf的random s
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">12k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
           
 
           
@@ -1400,26 +2324,36 @@ tensorflowtf的random s
       
         
           
-          本篇blog引用自这里，此处仅作备份。
+            <p>
+              本篇blog引用自这里，此处仅作备份。
 在这篇笔记的最前面，我一定要说，网络协议的设计者都是天才。
 使用SMTP发送邮件其实十分简单，就如同我们和人交谈别无二致。这里我们使用SMTP协议发送一封邮件，小小体会一下网络协议之美。我在这里使用Windows平台上的VS2013 作为编码环境，使用C++，
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1450,6 +2384,8 @@ tensorflowtf的random s
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -1461,8 +2397,8 @@ tensorflowtf的random s
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1474,13 +2410,22 @@ tensorflowtf的random s
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/23/2017-09-23-RL笔记Lec1/" itemprop="url">RL课程笔记·第一节·RL简介</a></h1>
+                
+                <a href="/2017/09/23/2017-09-23-RL笔记Lec1/" class="post-title-link" itemprop="url">RL课程笔记·第一节·RL简介</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1488,27 +2433,35 @@ tensorflowtf的random s
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-23T00:00:00+08:00">
-                2017-09-23
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-23T00:00:00+08:00">2017-09-23</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-30 22:57:47" itemprop="dateModified" datetime="2018-03-30T22:57:47+08:00">2018-03-30</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:57:47+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1519,22 +2472,14 @@ tensorflowtf的random s
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/" itemprop="url" rel="index">
-                    <span itemprop="name">课程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/RL/" itemprop="url" rel="index">
-                    <span itemprop="name">RL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/RL/" itemprop="url" rel="index"><span itemprop="name">RL</span></a></span>
 
                 
                 
@@ -1544,6 +2489,20 @@ tensorflowtf的random s
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/09/23/2017-09-23-RL笔记Lec1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/23/2017-09-23-RL笔记Lec1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1551,6 +2510,34 @@ tensorflowtf的random s
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
           
 
           
@@ -1570,7 +2557,8 @@ tensorflowtf的random s
       
         
           
-          Lec 1关于RLRL和监督学习，非监督学习是并列的
+            <p>
+              Lec 1关于RLRL和监督学习，非监督学习是并列的
 RL的特性
 没有监督，通过reward信号来训练
 反馈是延迟的而不是即时的
@@ -1579,379 +2567,32 @@ agent的action影响他之后环境
 
 RL问题RL术语
 Rewards $R_t$一个标量的反馈信号，表明在t步agent的
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/23/2017-09-23-RL笔记Lec1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/23/2017-09-23-RL笔记Lec1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
     
 
     
-
+    
     
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
+    
 
     
       
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/09/2016-09-09-IPython的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CZ's blog">
-    </span>
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/09/2016-09-09-IPython的使用/" itemprop="url">IPython的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T00:00:00+08:00">
-                2016-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:56:37+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安装和使用</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Ipython使用Magic命令IPython有一些特殊的命令。有的为常见任务提供便利，有的则使你能够轻松控制IPython系统的行为。分为行模式和cell模式，行模式使用%打头，cell模式使用%%打头。行模式即只有一行，cell模式即可以有多行，只有第一行需要%%当automagic打开时，行模
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/09/2016-09-09-IPython的使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CZ's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/09/2016-09-09-windows编译环境/" itemprop="url">关于windows编译环境的一些东西</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T00:00:00+08:00">
-                2016-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:55:48+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安装和使用</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          写了一些在配置编译环境的时候的一些经验和教训
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/09/2016-09-09-windows编译环境/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
     
 
     
@@ -1980,15 +2621,12 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2004,81 +2642,299 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
-               alt="cziszero" />
-          <p class="site-author-name" itemprop="name">cziszero</p>
-           
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
               <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">75</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
   </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
 
 
         
@@ -2087,47 +2943,70 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">182k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:46</span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2141,7 +3020,6 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
 
 
-  
 
 
 
@@ -2153,72 +3031,6 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -2226,8 +3038,54 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com.disqus.com/count.js" async></script>
+
+
+
+
+
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2276,6 +3134,8 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -2309,8 +3169,9 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2434,7 +3295,7 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
 
                   // select top N slices in content
 
-                  var upperBound = parseInt('-1');
+                  var upperBound = parseInt('1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0, upperBound);
                   }
@@ -2479,9 +3340,9 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2553,30 +3414,101 @@ Rewards $R_t$一个标量的反馈信号，表明在t步agent的
   
 
   
+  
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
 
   
 

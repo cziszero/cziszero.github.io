@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,14 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
 
 
 
@@ -33,52 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="软件安装和使用,linux," />
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
 
 
 
@@ -86,42 +70,18 @@
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
-<meta name="keywords" content="软件安装和使用,linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SAMBA介绍和配置">
-<meta property="og:url" content="http://yoursite.com/2017/10/15/2017-10-15-samba/index.html">
-<meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-15T16:51:00.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SAMBA介绍和配置">
-<meta name="twitter:description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -133,12 +93,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2017/10/15/2017-10-15-samba/"/>
-
+  
 
 
 
+
+  <meta name="description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
+<meta name="keywords" content="软件安装和使用,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAMBA介绍和配置">
+<meta property="og:url" content="http://yoursite.com/2017/10/15/2017-10-15-samba/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-15T16:51:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SAMBA介绍和配置">
+<meta name="twitter:description" content="历史和由来 windows上网络共享文件系统叫做Common Internet File System, CIFS;linux上有 Network File System, NFS; 两者进行转化产生了Server Message Block (SMB)，即现在要用的samba。 NFS架构在RPC Server上，samba使用NetBIOS(Network Basic Input/Output">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/15/2017-10-15-samba/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>SAMBA介绍和配置 | CZ's blog</title>
   
@@ -154,38 +140,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CZ's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -193,66 +202,97 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -267,9 +307,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -283,12 +321,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -301,6 +347,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -310,8 +358,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -323,11 +371,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SAMBA介绍和配置</h1>
+          <h2 class="post-title" itemprop="name headline">SAMBA介绍和配置<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2017-10-15-samba.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -335,27 +392,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T00:00:00+08:00">
-                2017-10-15
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-10-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-10-15T00:00:00+08:00">2017-10-15</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-16 00:51:00" itemprop="dateModified" datetime="2018-06-16T00:51:00+08:00">2018-06-16</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-06-16T00:51:00+08:00" content="2018-06-16">
-                  2018-06-16
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -366,22 +431,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安装和使用</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装和使用/" itemprop="url" rel="index"><span itemprop="name">软件安装和使用</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
                 
                 
@@ -391,6 +448,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/10/15/2017-10-15-samba/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/15/2017-10-15-samba/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -398,6 +469,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
           
 
           
@@ -484,7 +583,7 @@
 </ul>
 <h4 id="分享目录参数"><a href="#分享目录参数" class="headerlink" title="分享目录参数"></a>分享目录参数</h4><p>在目录参数部分，主要有底下这几个常见的参数喔：</p>
 <ul>
-<li>[分享名称] ：这个分享名称很重要，他是一个『代号』而已。 举例来说，你在 Windows 当中使用『共享』来分享网芳时，假设你将『D:\game』分享出来， 系统不是还会要你输入一个『在网络上面的名称』吗？假设你输入『My_Games』这个名称好了， 那么未来大家在网芳看到的这个文件夹 (D:\game) 名称其实是『\\你的IP\My_Games』啦！</li>
+<li>[分享名称] ：这个分享名称很重要，他是一个『代号』而已。 举例来说，你在 Windows 当中使用『共享』来分享网芳时，假设你将『D:\game』分享出来， 系统不是还会要你输入一个『在网络上面的名称』吗？假设你输入『My_Games』这个名称好了， 那么未来大家在网芳看到的这个文件夹 (D:\game) 名称其实是『\你的IP\My_Games』啦！</li>
 <li>comment ：这个目录的说明！</li>
 <li>path ：在网芳中显示的名称 [分享名称] 中，所实际进入的 Linux 文件系统。 也就是说，在网芳当中看到的是 [分享] 的名称，而实际操作的文件系统则是在 path 里头所设定的。</li>
 <li>read only：是否只读？</li>
@@ -507,9 +606,9 @@
 <li>%T：代表目前的日期与时间</li>
 </ul>
 <h1 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h1><h2 id="安装并创建密码"><a href="#安装并创建密码" class="headerlink" title="安装并创建密码"></a>安装并创建密码</h2><p>很容易，使用如下脚本很容易装好。需要注意的是，用户需要是linux中已有的一个用户，如果没有的话需要先新建一个用户。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install samba -y</div><div class="line"><span class="comment"># 设置密码，需要注意的是没有任何提示，并且是明文输入</span></div><div class="line">sudo smbpasswd -a -s zczhang</div></pre></td></tr></table></figure>
-<h2 id="创建配置文件并重启服务"><a href="#创建配置文件并重启服务" class="headerlink" title="创建配置文件并重启服务"></a>创建配置文件并重启服务</h2><p>这篇<a href="http://www.apelearn.com/study_v2/chapter24.html" target="_blank" rel="external">blog 第24章 配置Samba服务器</a>写的很好，按这个配置基本上没问题。后面是我实验了很多版本，最终这个版本的配置文件久经考验是可以的。（如果也不行，可以考虑用webmine进行配置）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak</div><div class="line">sudo cat &gt; /etc/samba/smb.conf &lt;&lt; EOF</div><div class="line">[global]</div><div class="line">	unix charset = utf8</div><div class="line">	dos charset = cp936</div><div class="line">	<span class="built_in">log</span> file = /var/<span class="built_in">log</span>/samba/%m.log</div><div class="line"></div><div class="line">	security = user</div><div class="line">	passdb backend = tdbsam</div><div class="line">	smb passwd file = /etc/samba/smbpasswd</div><div class="line">	encrypt passwords = yes</div><div class="line"></div><div class="line">	<span class="built_in">read</span> raw = no</div><div class="line">	deny hosts = 1.1.1.1</div><div class="line">	load printers = no</div><div class="line">	max <span class="built_in">log</span> size = 500</div><div class="line">	<span class="built_in">log</span> level = 3</div><div class="line">	write raw = no</div><div class="line">	socket options = TCP_NODELAY</div><div class="line">	debug level = 3</div><div class="line">    browseable = yes</div><div class="line">	os level = 20</div><div class="line">    available = yes</div><div class="line"></div><div class="line">	<span class="comment"># winbind trusted domains only = yes</span></div><div class="line">	<span class="comment"># dns proxy = no</span></div><div class="line">	<span class="comment"># name resolve order = lmhosts bcast host</span></div><div class="line">	<span class="comment"># winbind use default domain = yes</span></div><div class="line">    <span class="comment"># winbind use default domain = yes</span></div><div class="line">	<span class="comment"># netbios name  = vbirdserver</span></div><div class="line">	<span class="comment"># template shell = /bin/false</span></div><div class="line">    <span class="comment"># display charset = utf8</span></div><div class="line">	<span class="comment"># wins support = true</span></div><div class="line">	<span class="comment"># server string = my samba server</span></div><div class="line">	<span class="comment"># winbind trusted domains only = yes</span></div><div class="line">	<span class="comment"># socket options = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192</span></div><div class="line">	<span class="comment"># NetBIOS name 名称解析有关</span></div><div class="line"></div><div class="line"></div><div class="line">[usrxxxhome]</div><div class="line">	user = usrxxx,@usrxxx</div><div class="line">	path = /home/usrxxx</div><div class="line">	write list = usrxxx,@usrxxx</div><div class="line">	valid users = usrxxx,@usrxxx</div><div class="line">	directory mode = 771</div><div class="line">	deny hosts = 1.1.1.1</div><div class="line">	create mode = 771</div><div class="line">	writeable = yes</div><div class="line">	available = yes</div><div class="line">	browseable = yes</div><div class="line">EOF</div><div class="line">sudo /etc/init.d/samba restart</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba -y</span><br><span class="line"><span class="comment"># 设置密码，需要注意的是没有任何提示，并且是明文输入</span></span><br><span class="line">sudo smbpasswd -a -s zczhang</span><br></pre></td></tr></table></figure>
+<h2 id="创建配置文件并重启服务"><a href="#创建配置文件并重启服务" class="headerlink" title="创建配置文件并重启服务"></a>创建配置文件并重启服务</h2><p>这篇<a href="http://www.apelearn.com/study_v2/chapter24.html" target="_blank" rel="noopener">blog 第24章 配置Samba服务器</a>写的很好，按这个配置基本上没问题。后面是我实验了很多版本，最终这个版本的配置文件久经考验是可以的。（如果也不行，可以考虑用webmine进行配置）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak</span><br><span class="line">sudo cat &gt; /etc/samba/smb.conf &lt;&lt; EOF</span><br><span class="line">[global]</span><br><span class="line">	unix charset = utf8</span><br><span class="line">	dos charset = cp936</span><br><span class="line">	<span class="built_in">log</span> file = /var/<span class="built_in">log</span>/samba/%m.log</span><br><span class="line"></span><br><span class="line">	security = user</span><br><span class="line">	passdb backend = tdbsam</span><br><span class="line">	smb passwd file = /etc/samba/smbpasswd</span><br><span class="line">	encrypt passwords = yes</span><br><span class="line"></span><br><span class="line">	<span class="built_in">read</span> raw = no</span><br><span class="line">	deny hosts = 1.1.1.1</span><br><span class="line">	load printers = no</span><br><span class="line">	max <span class="built_in">log</span> size = 500</span><br><span class="line">	<span class="built_in">log</span> level = 3</span><br><span class="line">	write raw = no</span><br><span class="line">	socket options = TCP_NODELAY</span><br><span class="line">	debug level = 3</span><br><span class="line">    browseable = yes</span><br><span class="line">	os level = 20</span><br><span class="line">    available = yes</span><br><span class="line"></span><br><span class="line">	<span class="comment"># winbind trusted domains only = yes</span></span><br><span class="line">	<span class="comment"># dns proxy = no</span></span><br><span class="line">	<span class="comment"># name resolve order = lmhosts bcast host</span></span><br><span class="line">	<span class="comment"># winbind use default domain = yes</span></span><br><span class="line">    <span class="comment"># winbind use default domain = yes</span></span><br><span class="line">	<span class="comment"># netbios name  = vbirdserver</span></span><br><span class="line">	<span class="comment"># template shell = /bin/false</span></span><br><span class="line">    <span class="comment"># display charset = utf8</span></span><br><span class="line">	<span class="comment"># wins support = true</span></span><br><span class="line">	<span class="comment"># server string = my samba server</span></span><br><span class="line">	<span class="comment"># winbind trusted domains only = yes</span></span><br><span class="line">	<span class="comment"># socket options = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192</span></span><br><span class="line">	<span class="comment"># NetBIOS name 名称解析有关</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[usrxxxhome]</span><br><span class="line">	user = usrxxx,@usrxxx</span><br><span class="line">	path = /home/usrxxx</span><br><span class="line">	write list = usrxxx,@usrxxx</span><br><span class="line">	valid users = usrxxx,@usrxxx</span><br><span class="line">	directory mode = 771</span><br><span class="line">	deny hosts = 1.1.1.1</span><br><span class="line">	create mode = 771</span><br><span class="line">	writeable = yes</span><br><span class="line">	available = yes</span><br><span class="line">	browseable = yes</span><br><span class="line">EOF</span><br><span class="line">sudo /etc/init.d/samba restart</span><br></pre></td></tr></table></figure>
 <p>按照上面的配置好了，应该就可以访问了，再把这个共享文件夹映射成网络磁盘就很方便了。</p>
 <p>如果使用webmin进行配置，需要注意的是，对于某个文件共享，口令和访问控制里面的“限于可能的列表”不能勾选，如果勾选的话会在配置文件中加入<code>only user = yes</code>这个配置项，然后就无法验证了，很奇怪，按理说应该也是可以的。怕是不勾选可以允许匿名访问，但我用手机实验了一下，发现还是需要输用户名和密码，而让qc实验了一下发现他电脑和我之前的一样，无法连接，所以之前怕不是windows有问题吧。。。</p>
 <h2 id="在ipv6中使用samba服务"><a href="#在ipv6中使用samba服务" class="headerlink" title="在ipv6中使用samba服务"></a>在ipv6中使用samba服务</h2><p>samba是为局域网而诞生的，除非在边界路由上将samba服务用到的几个端口做了端口转发，要不然过一个路由器就无法链接了。当然，这是针对ipv4的情况。ipv6有唯一的地址，所以路由之后也是可以访问的，不过使用windows资源管理器来进行访问需要做点特殊的处理：<br>将一个ipv6地址<code>\\2001:da8:201:1146:2be4:946c:af92:356f</code>替换成<code>\\2001-da8-201-1146-2be4-946c-af92-356f.ipv6_literal.net</code>放到文件浏览器的地址栏就可以了。</p>
@@ -517,12 +616,18 @@
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -574,21 +679,21 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -604,91 +709,302 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
-               alt="cziszero" />
-          <p class="site-author-name" itemprop="name">cziszero</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
               <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">75</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -696,14 +1012,22 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
 
 
         
@@ -712,47 +1036,70 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">182k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:46</span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -766,7 +1113,6 @@
 
 
 
-  
 
 
 
@@ -778,72 +1124,6 @@
 
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -851,8 +1131,77 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2017/10/15/2017-10-15-samba/";
+    this.page.identifier = "2017/10/15/2017-10-15-samba/";
+    this.page.title = 'SAMBA介绍和配置';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -901,6 +1250,8 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -934,8 +1285,9 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1059,7 +1411,7 @@
 
                   // select top N slices in content
 
-                  var upperBound = parseInt('-1');
+                  var upperBound = parseInt('1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0, upperBound);
                   }
@@ -1104,9 +1456,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1178,30 +1530,79 @@
   
 
   
+  
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    
+      <script type="text/x-mathjax-config">
   
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
 
   
 

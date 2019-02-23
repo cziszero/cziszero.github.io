@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,14 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
 
 
 
@@ -33,52 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Python,Tensorflow," />
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
 
 
 
@@ -86,42 +70,18 @@
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
-<meta name="keywords" content="Python,Tensorflow">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Tensorflow随笔">
-<meta property="og:url" content="http://yoursite.com/2017/04/09/2017-04-09-TensorflowTur/index.html">
-<meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-25T16:21:19.639Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tensorflow随笔">
-<meta name="twitter:description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -133,12 +93,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2017/04/09/2017-04-09-TensorflowTur/"/>
-
+  
 
 
 
+
+  <meta name="description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
+<meta name="keywords" content="Python,Tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensorflow随笔">
+<meta property="og:url" content="http://yoursite.com/2017/04/09/2017-04-09-TensorflowTur/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-25T16:21:19.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tensorflow随笔">
+<meta name="twitter:description" content="get started阅读笔记Getting Started With TensorFlow 一些包含contrib的方法是正在开发中的方法，可能会变。 概念 Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。 Variable维护状态，feed fetch赋值或取数。 tensor 存储数据，tensor的shape表示其大小，rank表示其维度。 使用upd">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/09/2017-04-09-TensorflowTur/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Tensorflow随笔 | CZ's blog</title>
   
@@ -154,38 +140,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CZ's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -193,66 +202,97 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -267,9 +307,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -283,12 +321,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -301,6 +347,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -310,8 +358,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -323,11 +371,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tensorflow随笔</h1>
+          <h2 class="post-title" itemprop="name headline">Tensorflow随笔<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2017-04-09-TensorflowTur.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -335,27 +392,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">
-                2017-04-09
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">2017-04-09</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-26 00:21:19" itemprop="dateModified" datetime="2018-11-26T00:21:19+08:00">2018-11-26</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-11-26T00:21:19+08:00" content="2018-11-26">
-                  2018-11-26
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -366,44 +431,28 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/类库/" itemprop="url" rel="index">
-                    <span itemprop="name">类库</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/类库/" itemprop="url" rel="index"><span itemprop="name">类库</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/类库/Tensorflow/" itemprop="url" rel="index">
-                    <span itemprop="name">Tensorflow</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/类库/Tensorflow/" itemprop="url" rel="index"><span itemprop="name">Tensorflow</span></a></span>
 
                 
                 
@@ -413,6 +462,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/04/09/2017-04-09-TensorflowTur/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/09/2017-04-09-TensorflowTur/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -420,6 +483,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
           
 
           
@@ -437,7 +528,7 @@
       
 
       
-        <h1 id="get-started阅读笔记"><a href="#get-started阅读笔记" class="headerlink" title="get started阅读笔记"></a>get started阅读笔记</h1><h2 id="Getting-Started-With-TensorFlow"><a href="#Getting-Started-With-TensorFlow" class="headerlink" title="Getting Started With TensorFlow"></a><a href="https://www.tensorflow.org/get_started/get_started" target="_blank" rel="external">Getting Started With TensorFlow</a></h2><ul>
+        <h1 id="get-started阅读笔记"><a href="#get-started阅读笔记" class="headerlink" title="get started阅读笔记"></a>get started阅读笔记</h1><h2 id="Getting-Started-With-TensorFlow"><a href="#Getting-Started-With-TensorFlow" class="headerlink" title="Getting Started With TensorFlow"></a><a href="https://www.tensorflow.org/get_started/get_started" target="_blank" rel="noopener">Getting Started With TensorFlow</a></h2><ul>
 <li>一些包含contrib的方法是正在开发中的方法，可能会变。</li>
 <li>概念<ol>
 <li>Graph 表示计算任务，在Session中执行Graph，Graph中的节点是op。</li>
@@ -450,11 +541,11 @@
 <li>Session 对象在使用完后需要关闭以释放资源. 除了显式调用 close 外, 也可以使用 “with” 代码块 来自动完成关闭动作.</li>
 <li><p>with…Device 语句用来指派特定的 CPU 或 GPU 执行操作:</p>
 <p> with tf.Session() as sess:</p>
-<pre><code>with tf.device(&quot;/gpu:1&quot;):
-matrix1 = tf.constant([[3., 3.]])
-matrix2 = tf.constant([[2.],[2.]])
-product = tf.matmul(matrix1, matrix2)
-...
+<pre><code> with tf.device(&quot;/gpu:1&quot;):
+ matrix1 = tf.constant([[3., 3.]])
+ matrix2 = tf.constant([[2.],[2.]])
+ product = tf.matmul(matrix1, matrix2)
+ ...
 </code></pre></li>
 <li>为了便于使用诸如 IPython 之类的 Python 交互环境, 可以使用 InteractiveSession 代替 Session 类, 使用Tensor.eval() 和 Operation.run() 方法代替 Session.run() . 这样可以避免使用一个变量来持有会话.（P24）</li>
 <li>在执行前，Variable要先初始化，可以调用Variable.initializer.run()进行。或者使用tf.global_variables_initializer().run()进行初始化。</li>
@@ -464,7 +555,7 @@ product = tf.matmul(matrix1, matrix2)
 <li>在创建模型之前，我们要先初始化权重和偏置，一般来说，初始化应加入轻微的噪声来打破对称性，防止0梯度的问题。</li>
 <li>为了减少过拟合，我们在输出层之前加入 dropout。我们用一个 placeholder 来代表一个神经元在 dropout 中被保留的概率。这样我们可以在训练过程中启用 dropout，在测试过程中关闭 dropout。<br>TensorFlow 的tf.nn.dropout操作会自动处理神经元输出值的scale。所以用 dropout 的时候可以不用考虑 scale。</li>
 </ul>
-<h1 id="tensorflow使用指定显卡及按需分配显存"><a href="#tensorflow使用指定显卡及按需分配显存" class="headerlink" title="tensorflow使用指定显卡及按需分配显存"></a>tensorflow使用指定显卡及按需分配显存</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 声明可使用几号显卡</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line">os.environ[<span class="string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="string">'0'</span></div><div class="line"><span class="comment"># 显存按需分配</span></div><div class="line">config = tf.ConfigProto()</div><div class="line">config.gpu_options.allow_growth = <span class="keyword">True</span></div><div class="line">sess = tf.Session(config=config)</div></pre></td></tr></table></figure>
+<h1 id="tensorflow使用指定显卡及按需分配显存"><a href="#tensorflow使用指定显卡及按需分配显存" class="headerlink" title="tensorflow使用指定显卡及按需分配显存"></a>tensorflow使用指定显卡及按需分配显存</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 声明可使用几号显卡</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="string">'0'</span></span><br><span class="line"><span class="comment"># 显存按需分配</span></span><br><span class="line">config = tf.ConfigProto()</span><br><span class="line">config.gpu_options.allow_growth = <span class="keyword">True</span></span><br><span class="line">sess = tf.Session(config=config)</span><br></pre></td></tr></table></figure>
 <h1 id="非线性激活函数"><a href="#非线性激活函数" class="headerlink" title="非线性激活函数"></a>非线性激活函数</h1><p>tensorflow中共有7中不同的非线性激活函数：</p>
 <ol>
 <li><code>tf.nn.relu</code></li>
@@ -472,14 +563,12 @@ product = tf.matmul(matrix1, matrix2)
 <li><code>tf.tanh</code></li>
 </ol>
 <h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>原则：损失函数的定义应该尽可能反应真实需求。</p>
-<h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><h3 id="交叉熵Cross-Entropy"><a href="#交叉熵Cross-Entropy" class="headerlink" title="交叉熵Cross Entropy"></a>交叉熵Cross Entropy</h3><p>$$H(p,q)=-\sum_x{p(x)log{q(x)}}$$<br>衡量了两个概率分布的距离，$p(x)$为真实概率，$q(x)$为预测概率。</p>
-<h2 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h2><h3 id="均方误差MSE"><a href="#均方误差MSE" class="headerlink" title="均方误差MSE"></a>均方误差MSE</h3><p>$$MSE(y,y’)=\frac{1}{n}\sum_{i=1}^n{(y-y’)^2}$$</p>
-<h1 id="训练技巧"><a href="#训练技巧" class="headerlink" title="训练技巧"></a>训练技巧</h1><h2 id="学习速率设置"><a href="#学习速率设置" class="headerlink" title="学习速率设置"></a>学习速率设置</h2><ol>
+<h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><h3 id="交叉熵Cross-Entropy"><a href="#交叉熵Cross-Entropy" class="headerlink" title="交叉熵Cross Entropy"></a>交叉熵Cross Entropy</h3><script type="math/tex; mode=display">H(p,q)=-\sum_x{p(x)log{q(x)}}</script><p>衡量了两个概率分布的距离，$p(x)$为真实概率，$q(x)$为预测概率。</p>
+<h2 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h2><h3 id="均方误差MSE"><a href="#均方误差MSE" class="headerlink" title="均方误差MSE"></a>均方误差MSE</h3><script type="math/tex; mode=display">MSE(y,y')=\frac{1}{n}\sum_{i=1}^n{(y-y')^2}</script><h1 id="训练技巧"><a href="#训练技巧" class="headerlink" title="训练技巧"></a>训练技巧</h1><h2 id="学习速率设置"><a href="#学习速率设置" class="headerlink" title="学习速率设置"></a>学习速率设置</h2><ol>
 <li>指数衰减Exponential Decay<br><code>tf.train.exponential_decay(init_learning_rate, global_step, decay_steps, decay_rate, staircase=False, name=None)</code><br>计算公式为:  </li>
 </ol>
-<p>$$learning_rate = init_learning_rate * decay_rate^ {\frac{global_step}{decay_steps}}$$</p>
-<p>一般所有样本过一个轮次换一次learning rate。</p>
-<h2 id="获取所有op"><a href="#获取所有op" class="headerlink" title="获取所有op"></a>获取所有op</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vs = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> tf.get_default_graph().get_operations() ]:</div><div class="line">    vs.append(i.name)</div><div class="line">vs = sorted(vs)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> vs:</div><div class="line">    print(i)</div></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">learning\_rate = init\_learning\_rate * decay\_rate^ {\frac{global\_step}{decay\_steps}}</script><p>一般所有样本过一个轮次换一次learning rate。</p>
+<h2 id="获取所有op"><a href="#获取所有op" class="headerlink" title="获取所有op"></a>获取所有op</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vs = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> tf.get_default_graph().get_operations() ]:</span><br><span class="line">    vs.append(i.name)</span><br><span class="line">vs = sorted(vs)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> vs:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="tf"><a href="#tf" class="headerlink" title="tf"></a>tf</h2><ol>
 <li>tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)<br>产生一个截尾正态随机分布</li>
 <li>tf.reshape(tensor, shape, name=None)<br>将tensor转成shape的形状，shape中可以有一个维度是-1，此时由原tensor和其他的维度值共同计算出这个维度的值来。</li>
@@ -505,8 +594,7 @@ product = tf.matmul(matrix1, matrix2)
 <h3 id="tf-nn-sparse-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-name-None"><a href="#tf-nn-sparse-softmax-cross-entropy-with-logits-sentinel-None-labels-None-logits-None-name-None" class="headerlink" title="tf.nn.sparse_softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, name=None)"></a><code>tf.nn.sparse_softmax_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, name=None)</code></h3><p><code>tf.nn.softmax_cross_entropy_with_logits</code>针对非多标记问题的优化实现。</p>
 <h3 id="tf-nn-l2-loss-t-name-None"><a href="#tf-nn-l2-loss-t-name-None" class="headerlink" title="tf.nn.l2_loss(t, name=None)"></a><code>tf.nn.l2_loss(t, name=None)</code></h3><p>计算$output = sum(t^2)/2$，注意，这里没有开方。</p>
 <h2 id="tf-train"><a href="#tf-train" class="headerlink" title="tf.train"></a>tf.train</h2><h3 id="tf-train-ExponentialMovingAverage-decay-num-updates-None-zero-debias-False"><a href="#tf-train-ExponentialMovingAverage-decay-num-updates-None-zero-debias-False" class="headerlink" title="tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)"></a><code>tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)</code></h3><p>可以对一组var做指数滑动平均，对每个var维护一个shadow变量，算式为:</p>
-<p>$$shadow_var = decay <em> shadow_var + (1-decay)</em>var$$</p>
-<p>首先生成使用<code>ema = tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)</code>生成一个实例，然后使用<code>op = ema.assign([va,vb...vc])</code>指定要维护的变量列表，可以使用<code>ema.average(va)</code>指定要求滑动平均的变量。</p>
+<script type="math/tex; mode=display">shadow_var = decay * shadow_var + (1-decay)*var</script><p>首先生成使用<code>ema = tf.train.ExponentialMovingAverage(decay, num_updates=None, zero_debias=False)</code>生成一个实例，然后使用<code>op = ema.assign([va,vb...vc])</code>指定要维护的变量列表，可以使用<code>ema.average(va)</code>指定要求滑动平均的变量。</p>
 <h3 id="tf-train-Saver"><a href="#tf-train-Saver" class="headerlink" title="tf.train.Saver"></a>tf.train.Saver</h3><ol>
 <li>tf.train.Saver(var_list=None, reshape=False, sharded=False, max_to_keep=5, keep_checkpoint_every_n_hours=10000.0, name=None, restore_sequentially=False, saver_def=None, builder=None, defer_build=False, allow_empty=False, write_version=2, pad_step_number=False)<br>创建一个Saver，用于保存变量等</li>
 </ol>
@@ -518,12 +606,18 @@ product = tf.matmul(matrix1, matrix2)
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -547,8 +641,8 @@ product = tf.matmul(matrix1, matrix2)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/09/2017-10-11-chromeuse/" rel="next" title="chrome使用">
-                <i class="fa fa-chevron-left"></i> chrome使用
+              <a href="/2017/03/20/2017-03-20-CS224d_lecture1/" rel="next" title="CS224d 笔记">
+                <i class="fa fa-chevron-left"></i> CS224d 笔记
               </a>
             
           </div>
@@ -557,8 +651,8 @@ product = tf.matmul(matrix1, matrix2)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/11/2017-04-11-RD_RelationClassificationviaCNN/" rel="prev" title="Relation classification via convolutional DNN 阅读笔记">
-                Relation classification via convolutional DNN 阅读笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/09/2017-10-11-chromeuse/" rel="prev" title="chrome使用">
+                chrome使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -575,21 +669,21 @@ product = tf.matmul(matrix1, matrix2)
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -605,91 +699,302 @@ product = tf.matmul(matrix1, matrix2)
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
-               alt="cziszero" />
-          <p class="site-author-name" itemprop="name">cziszero</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
               <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">75</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -697,14 +1002,22 @@ product = tf.matmul(matrix1, matrix2)
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
 
 
         
@@ -713,47 +1026,70 @@ product = tf.matmul(matrix1, matrix2)
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">182k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:46</span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -767,7 +1103,6 @@ product = tf.matmul(matrix1, matrix2)
 
 
 
-  
 
 
 
@@ -779,72 +1114,6 @@ product = tf.matmul(matrix1, matrix2)
 
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -852,8 +1121,77 @@ product = tf.matmul(matrix1, matrix2)
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2017/04/09/2017-04-09-TensorflowTur/";
+    this.page.identifier = "2017/04/09/2017-04-09-TensorflowTur/";
+    this.page.title = 'Tensorflow随笔';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -902,6 +1240,8 @@ product = tf.matmul(matrix1, matrix2)
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -935,8 +1275,9 @@ product = tf.matmul(matrix1, matrix2)
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1060,7 +1401,7 @@ product = tf.matmul(matrix1, matrix2)
 
                   // select top N slices in content
 
-                  var upperBound = parseInt('-1');
+                  var upperBound = parseInt('1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0, upperBound);
                   }
@@ -1105,9 +1446,9 @@ product = tf.matmul(matrix1, matrix2)
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1179,30 +1520,79 @@ product = tf.matmul(matrix1, matrix2)
   
 
   
+  
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    
+      <script type="text/x-mathjax-config">
   
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
 
   
 

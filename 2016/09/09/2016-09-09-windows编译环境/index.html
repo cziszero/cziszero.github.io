@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,14 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
 
 
 
@@ -33,52 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="软件安装和使用,编译器,C/C++,环境配置," />
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
 
 
 
@@ -86,42 +70,18 @@
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="写了一些在配置编译环境的时候的一些经验和教训">
-<meta name="keywords" content="软件安装和使用,编译器,C&#x2F;C++,环境配置">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于windows编译环境的一些东西">
-<meta property="og:url" content="http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/index.html">
-<meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="写了一些在配置编译环境的时候的一些经验和教训">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T14:55:48.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于windows编译环境的一些东西">
-<meta name="twitter:description" content="写了一些在配置编译环境的时候的一些经验和教训">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -133,12 +93,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/"/>
-
+  
 
 
 
+
+  <meta name="description" content="写了一些在配置编译环境的时候的一些经验和教训">
+<meta name="keywords" content="软件安装和使用,编译器,C&#x2F;C++,环境配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于windows编译环境的一些东西">
+<meta property="og:url" content="http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="写了一些在配置编译环境的时候的一些经验和教训">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-30T14:55:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于windows编译环境的一些东西">
+<meta name="twitter:description" content="写了一些在配置编译环境的时候的一些经验和教训">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>关于windows编译环境的一些东西 | CZ's blog</title>
   
@@ -154,38 +140,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CZ's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -193,66 +202,97 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -267,9 +307,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -283,12 +321,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -301,6 +347,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -310,8 +358,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -323,11 +371,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于windows编译环境的一些东西</h1>
+          <h2 class="post-title" itemprop="name headline">关于windows编译环境的一些东西<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2016-09-09-windows编译环境.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -335,27 +392,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T00:00:00+08:00">
-                2016-09-09
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-09 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-09T00:00:00+08:00">2016-09-09</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-30 22:55:48" itemprop="dateModified" datetime="2018-03-30T22:55:48+08:00">2018-03-30</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:55:48+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -366,33 +431,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件安装和使用/" itemprop="url" rel="index">
-                    <span itemprop="name">软件安装和使用</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装和使用/" itemprop="url" rel="index"><span itemprop="name">软件安装和使用</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/" itemprop="url" rel="index">
-                    <span itemprop="name">语言</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/语言/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a></span>
 
                 
                 
@@ -402,6 +455,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2016/09/09/2016-09-09-windows编译环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/09/2016-09-09-windows编译环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -410,11 +477,37 @@
           
 
           
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
 
           
-              <div class="post-description">
-                  写了一些在配置编译环境的时候的一些经验和教训
-              </div>
+            <div class="post-description">写了一些在配置编译环境的时候的一些经验和教训</div>
           
 
         </div>
@@ -433,23 +526,29 @@
         <h2 id="关于windows编译环境的一些东西"><a href="#关于windows编译环境的一些东西" class="headerlink" title="关于windows编译环境的一些东西"></a>关于windows编译环境的一些东西</h2><p>事情的起源是这样的，因为要做安全保密课的大作业，需要用到openSSL，于是下载了openSSL的源代码，<br>下载下来发现没有make文件，需要先下个perl，然后就放弃了。找到了一个编译好的windows上可以用的库<br>，然后想这下大功告成了吧，万万没想到啊，这才是苦难的开始。</p>
 <p>首先是QT中引用库的配置，可以以交互的方式来添加库文件，即右键项目，选择添加库，然后发现有三个<br>选项：内部库，外部库，系统库。鸟知道这三个啥区别啊，那就逐个点点试试呗。点内部库发现需要添加的<br>是在项目目录中的库，点外部库发现是要添加项目目录外的库文件，不光要添加库文件，还要添加头文件，<br>点系统库只让添加一个库，发现只要选一个库文件添加上就好。然后观察才pro文件中添加的信息发现并没有<br>什么大的区别，只是库文件目录不大一样而已。只是增加几个项，INCLUDEPATH ，DEPENDPATH，LIBS。<br>LIBS和INCLUDEPATH的含义很好理解，即库文件和包好目录，LIBS的实例如：<br><code>LIBS += -LC:/OpenSSL-Win64/lib/ -llibeay32</code> 可以观察出结构，即<code>-L</code>添加目录，<code>-l</code>添加文件。注意，<br>库文件最后的<code>.lib</code>是要省略的，但前面的不能省略，另外目录分隔符是unix的格式。<code>INCLUDEPATH</code>的书写<br>更简单，如：<code>INCLUDEPATH += C:/OpenSSL-Win64/include</code> ，这里还要吐槽一点，采用上面说的交互<br>的方式添加库时会自动在目录前面添加<code>$$PWD/</code>，导致编译的时候找不到库目录，删掉就好了。另外，采用<br>交互方式添加库是还让选择平台（win，linux，mac）和静态库还是动态库，以及debug模式还是release<br>模式，经过观察发现，选为静态库的时候会加入<code>PRE_TARGETDEPS</code>一项的配置，但目前还不知道什么用。<br>总之，经过实验发现，添加库的时候采用直接更改pro文件的方式就可以了，比较简单，如果有平台要求等<br>可以用交互方式添加下看看格式。另外，还有QT的两个配置项（<code>DEPENDPATH</code>，<code>PRE_TARGETDEPS</code>）<br>没有搞清楚其含义，留待以后查一下。</p>
 <p>另外，关于QT中添加动态库有两种方式，显式添加手动解析和隐式链接。<br>添加知道怎么在QT工程里添加库后，我兴奋的添加上，想马上就可以大展手脚了。然而。。<br>下载下来的库目录是这样的<br>    │  4758cca.lib<br>    │  aep.lib<br>    │  atalla.lib<br>    │  capi.lib<br>    │  chil.lib<br>    │  cswift.lib<br>    │  gmp.lib<br>    │  gost.lib<br>    │  libeay32.lib<br>    │  nuron.lib<br>    │  padlock.lib<br>    │  ssleay32.lib<br>    │  sureware.lib<br>    │  ubsec.lib<br>    │<br>    └─VC<br>        │  libeay32MD.lib<br>        │  libeay32MDd.lib<br>        │  libeay32MT.lib<br>        │  libeay32MTd.lib<br>        │  ssleay32MD.lib<br>        │  ssleay32MDd.lib<br>        │  ssleay32MT.lib<br>        │  ssleay32MTd.lib<br>        │<br>        └─static<br>                libeay32MD.lib<br>                libeay32MDd.lib<br>                libeay32MT.lib<br>                libeay32MTd.lib<br>                ssleay32MD.lib<br>                ssleay32MDd.lib<br>                ssleay32MT.lib<br>                ssleay32MTd.lib<br>[MT和MD]的区别前段时间我刚刚知道，然后排除带d后缀的是debug时使用的，然后还剩下了<br>    │  4758cca.lib<br>    │  aep.lib<br>    │  atalla.lib<br>    │  capi.lib<br>    │  chil.lib<br>    │  cswift.lib<br>    │  gmp.lib<br>    │  gost.lib<br>    │  libeay32.lib<br>    │  nuron.lib<br>    │  padlock.lib<br>    │  ssleay32.lib<br>    │  sureware.lib<br>    │  ubsec.lib<br>    └─VC<br>        │  libeay32MD.lib<br>        │  libeay32MT.lib<br>        │  ssleay32MD.lib<br>        │  ssleay32MT.lib<br>        └─static<br>                libeay32MD.lib<br>                libeay32MT.lib<br>                ssleay32MD.lib<br>                ssleay32MT.lib<br>但还有上面的杂七杂八的库是干嘛用的，我看了下readme文档和帮助文档，也没说怎么使用，不过难不住<br>会使用搜索引擎的我啊。经过一番搜索，发现在调用openSSL的时候只要连接libeay32和ssleay两个库就<br>可以了。其中，libeay32主要用于加密解密相关功能，ssleay主要用于SSL相关功能。确定了这个，<br>接下来只要确定QT使用的什么编译选项（MD/MT），然后在pro文件里添加上就行了呗，这时我的内心<br>是充满希望的。确定QT使用的什么编译选项（MD/MT）怎么能难倒我呢，我一下就找到对应平台的<br>qmake的配置文件（qmake现在也不大清楚，需要查一下），例如我的是在<br><code>C:\Qt\Qt5.4.1\5.4\msvc2013_64_opengl\mkspecs\win32-msvc2013\qmake.conf</code>，打开看了下是<br>使用<code>/MD</code>的编译选项，然后我就把static文件夹下的libeay32MD.lib ssleay32MD.lib都给添加上了，然后<br>去网上找了段代码，没添加库之前一大堆找不到符号，添加库之后只有三个找不到符号了。。。尼玛，<br>就三个。。还是编译不过，我也不知道是什么问题，我以为是我还漏掉了哪个库文件。然后各种google，<br>奈何别人好像都没碰到。。。不过在还是学到了一些新知识。前面有贴了下载下来的编译好的库目录，看到<br>他是我还比较困惑为什么外层有.lib还有个内层的static文件夹存了一些.lib文件。lib不已经是静态链接库了么，<br>那里面的和外面的有什么区别呢？以前也查过这方面的资料，但都是浅尝辄止了，没有真正认认真真学过，<br>这次终于知道在windows以.lib结尾的并不一定都是静态链接库。首先库分为静态链接库和动态链接库两种，<br>静态链接库是在编译链接的时候就和其他的打包在一起，链接好之后就可以单独运行了，而静态库也只需要<br>提供一个lib库文件。但动态链接库在生成的时候还会伴随着产生一个lib文件，这个文件是动态链接库的<br>索引文件，会比静态链接库产生的lib文件小很多。动态链接库是在运行时链接的，在build阶段link时<br>并不会打包到一起，所以如果需要在别的地方运行还要把该dll考过去。在程序中使用动态链接库时，如果<br>显式的引用动态链接库则不需要添加lib文件，但需要手动解析。如果隐式的使用动态链接库，则需要把<br>索引用的lib文件添加在编译选项中，然后之后的加载由操作系统自动完成。[更多资料请参考]</p>
-<p>然后一段时间过去了，我想不会是下载下来的这个编译好的包有问题吧。。。那我还是自己编译试试吧。<br>然后我又去查了openSSL的编译方法，这个资料挺多的，例如<a href="http://blog.csdn.net/xiexievv/article/details/45114235" target="_blank" rel="external">这个</a>。<br>VS的目录结构<br>cl的编译选项</p>
+<p>然后一段时间过去了，我想不会是下载下来的这个编译好的包有问题吧。。。那我还是自己编译试试吧。<br>然后我又去查了openSSL的编译方法，这个资料挺多的，例如<a href="http://blog.csdn.net/xiexievv/article/details/45114235" target="_blank" rel="noopener">这个</a>。<br>VS的目录结构<br>cl的编译选项</p>
 <blockquote>
 <p>   如何在Windows下编译OpenSSL （VS2010使用VC10的cl编译器）<br>   1、安装ActivePerl,初始化的时候,需要用到perl解释器<br>   2、使用VS2010下的Visual Studio 2010 Command Prompt进入控制台模式<br>   （这个模式会自动设置各种环境变量）<br>   3、解压缩openssl的包,进入openssl的目录<br>   4、perl configure VC-WIN32<br>   尽量在这个目录下执行该命令，否则找不到Configure文件，或者指定完整的Configure文件路径。<br>   5、<code>ms\do_ms.bat</code>,在解压目录下执行ms\do_ms.bat命令<br>   6、<code>nmake -f ms\ntdll.mak</code><br>   7、<code>nmake -f ms\nt.mak</code></p>
 <p>   测试动态库：<br>       nmake -f ms\ntdll.mak test<br>       测试静态库：<br>       nmake -f ms\nt.mak test<br>       安装动态库：<br>       nmake -f ms\ntdll.mak install<br>       安装静态库：<br>       nmake -f ms\nt.mak install<br>       清除上次动态库的编译，以便重新编译：<br>       nmake -f ms\ntdll.mak clean<br>       清除上次静态库的编译，以便重新编译：<br>       nmake -f ms\nt.mak clean<br>咦，当时找的时候不是找到的这篇博文，找到这篇博文的话可能还省点事，当时找到的第二步都是让在<br>运行<code>vcvarsall.bat x86</code>，我也找到了这个文件，是在C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC<br>这个目录下，在这个目录下成功的执行 <code>vcvarsall.bat x86</code>，然后继续往后做，悲剧发生了。后面的第6步第7步<br>不行，老是提示找不到include的文件，现在看来这很明显是没有配好环境嘛，但当时头脑有点混乱。算了算了，<br>过去这么长时间了，当时的也记不大清楚了，就只写结果吧，本来还想写的生动有趣一点呢。。。</p>
 </blockquote>
 <p>发现是环境没有配好后，我就开始探索VS的目录结构，毕竟这个已经困扰我好久了。<br>首先在C:\Program Files (x86)目录下我一下就看到了Microsoft Visual Studio 11.0、Microsoft Visual Studio 12.0、<br>Microsoft Visual Studio 14.0，然后知道这是不同的版本，其中11.0对应Visual Studio 2012，12.0对应Visual Studio 2013，<br>14.0对应Visual Studio 2015，那我找到主版本就行了。我机子上安装的版本是2013。</p>
 <p>感悟：<br>想到就立即去做<br>遇事要冷静，想想怎样做最优。</p>
-<p><a href="https://msdn.microsoft.com/en-us/library/x4d2c09s(VS.80).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/x4d2c09s(VS.80).aspx</a><br>版本号<a href="http://baike.baidu.com/view/261613.htm#6" target="_blank" rel="external">http://baike.baidu.com/view/261613.htm#6</a><br>linux编译64位和32位的编译选项。</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/x4d2c09s(VS.80).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/en-us/library/x4d2c09s(VS.80).aspx</a><br>版本号<a href="http://baike.baidu.com/view/261613.htm#6" target="_blank" rel="noopener">http://baike.baidu.com/view/261613.htm#6</a><br>linux编译64位和32位的编译选项。</p>
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -477,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/09/2016-09-09-IPython的使用/" rel="next" title="IPython的使用">
-                <i class="fa fa-chevron-left"></i> IPython的使用
+              <a href="/2016/03/12/2016-03-12-QT_Problem/" rel="next" title="QFile 和 QTextStream 的问题">
+                <i class="fa fa-chevron-left"></i> QFile 和 QTextStream 的问题
               </a>
             
           </div>
@@ -487,8 +586,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/24/2017-01-24-CRT/" rel="prev" title="长久以来关于CRT显示器的一些问题">
-                长久以来关于CRT显示器的一些问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/09/2016-09-09-IPython的使用/" rel="prev" title="IPython的使用">
+                IPython的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,21 +604,21 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -535,91 +634,302 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
-               alt="cziszero" />
-          <p class="site-author-name" itemprop="name">cziszero</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
               <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">75</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -627,14 +937,22 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
 
 
         
@@ -643,47 +961,70 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">182k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:46</span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -697,7 +1038,6 @@
 
 
 
-  
 
 
 
@@ -709,72 +1049,6 @@
 
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -782,8 +1056,77 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2016/09/09/2016-09-09-windows编译环境/";
+    this.page.identifier = "2016/09/09/2016-09-09-windows编译环境/";
+    this.page.title = '关于windows编译环境的一些东西';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -832,6 +1175,8 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -865,8 +1210,9 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -990,7 +1336,7 @@
 
                   // select top N slices in content
 
-                  var upperBound = parseInt('-1');
+                  var upperBound = parseInt('1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0, upperBound);
                   }
@@ -1035,9 +1381,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1109,30 +1455,79 @@
   
 
   
+  
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    
+      <script type="text/x-mathjax-config">
   
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
 
   
 

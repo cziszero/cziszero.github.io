@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Part 1: Key Concepts in RLStochastic Policies通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:  根据$s$可以生成随机策略 根据特定的$action$和$s$可以计算log likelihoo">
+<meta name="keywords" content="RL,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenAI Spinning Up 阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2019/02/16/2019-02-16-OpenAIspinningup/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="Part 1: Key Concepts in RLStochastic Policies通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:  根据$s$可以生成随机策略 根据特定的$action$和$s$可以计算log likelihoo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/RL/DDPG.png">
+<meta property="og:updated_time" content="2019-02-23T14:29:13.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenAI Spinning Up 阅读笔记">
+<meta name="twitter:description" content="Part 1: Key Concepts in RLStochastic Policies通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:  根据$s$可以生成随机策略 根据特定的$action$和$s$可以计算log likelihoo">
+<meta name="twitter:image" content="http://yoursite.com/images/RL/DDPG.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/16/2019-02-16-OpenAIspinningup/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>OpenAI Spinning Up 阅读笔记 | CZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/2019-02-16-OpenAIspinningup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">OpenAI Spinning Up 阅读笔记<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2019-02-16-OpenAIspinningup.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-16 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-16T00:00:00+08:00">2019-02-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-23 22:29:13" itemprop="dateModified" datetime="2019-02-23T22:29:13+08:00">2019-02-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RL/" itemprop="url" rel="index"><span itemprop="name">RL</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RL/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/02/16/2019-02-16-OpenAIspinningup/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/16/2019-02-16-OpenAIspinningup/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Part-1-Key-Concepts-in-RL"><a href="#Part-1-Key-Concepts-in-RL" class="headerlink" title="Part 1: Key Concepts in RL"></a>Part 1: Key Concepts in RL</h1><h2 id="Stochastic-Policies"><a href="#Stochastic-Policies" class="headerlink" title="Stochastic Policies"></a>Stochastic Policies</h2><p>通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:</p>
+<ul>
+<li>根据$s$可以生成随机策略</li>
+<li>根据特定的$action$和$s$可以计算log likelihoods: $\log \pi_{\theta}(a|s)$.</li>
+</ul>
+<h3 id="categorical-policies"><a href="#categorical-policies" class="headerlink" title="categorical policies"></a>categorical policies</h3><p>所谓的categorical policies其实和分类类似, 最后经过一个softmax表示各个action的概率, 和分类的区别在于最后取哪个动作还需要按照刚算出来的概率进行抽样, 是非确定的.</p>
+<h3 id="Diagonal-Gaussian-Policies"><a href="#Diagonal-Gaussian-Policies" class="headerlink" title="Diagonal Gaussian Policies"></a>Diagonal Gaussian Policies</h3><p>通常使用多元高斯分布来作为连续action的随机policy, 描述一个多元高斯分布需要每个随机变量的均值$\mu$和他们的协方差矩阵$\Sigma$, 写作</p>
+<script type="math/tex; mode=display">p\left(\boldsymbol{x}\right)=\left|2\pi\Sigma\right|^{-1/2}\exp\left(-\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{\mu}\right)^T\Sigma^{-1}\left(\boldsymbol{x}-\boldsymbol{\mu}\right)\right)</script><p>但在RL中, 通常使用只有对角线上非零的协方差矩阵, 协方差一般用来刻画两个随机变量的线性相关性, 也就是说表示多个action的随机变量是线性不相关的, 这样可以只用一个向量来表示协方差矩阵$\Sigma$, 通常使用log standard deviations, 即$\log \sigma_{\theta}(s)$, 因为它的取值范围是$(-\infty, \infty)$, 而标准差必须为非负数, 这样不利于训练.</p>
+<p>其一般也有两种方式, 即:</p>
+<ul>
+<li>不依赖于$s$, 使用其他方式确定, VPG, TRPO, PPO 都是使用这种方法</li>
+<li>依赖于$s$, 和均值$\mu$一起由神经网络确定</li>
+</ul>
+<p>抽样使用公式, 其中$z \sim \mathcal{N}(0, I)$, $\odot$ 表示诸元素相乘:</p>
+<script type="math/tex; mode=display">a = \mu_{\theta}(s) + \sigma_{\theta}(s) \odot z</script><p>计算对数似然使用公式:</p>
+<script type="math/tex; mode=display">\log \pi_{\theta}(a|s) = -\frac{1}{2}\left(\sum_{i=1}^k \left(\frac{(a_i - \mu_i)^2}{\sigma_i^2} + 2 \log \sigma_i \right) + k \log 2\pi \right).</script><h2 id="Reward-and-Return"><a href="#Reward-and-Return" class="headerlink" title="Reward and Return"></a>Reward and Return</h2><p>reward 依赖于$s<em>t, a_t, s</em>{t+1}$ , 即 $r<em>t = R(s_t, a_t, s</em>{t+1})$, 但通常可简化为$r_t = R(s_t)$ 或者$r_t = R(s_t,a_t)$<br>而Return的定义也有两种:</p>
+<ul>
+<li>finite-horizon undiscounted return: $R(\tau) = \sum_{t=0}^T r_t$</li>
+<li>infinite-horizon discounted return: $R(\tau) = \sum_{t=0}^{\infty} \gamma^t r_t$</li>
+</ul>
+<p>加折扣的原因在于:</p>
+<ul>
+<li>直觉上来看越早拿到收益越好</li>
+<li>数学上来看, 不加折扣的话可能不收敛, 这样就很难处理了</li>
+</ul>
+<h2 id="Value-Functions"><a href="#Value-Functions" class="headerlink" title="Value Functions"></a>Value Functions</h2><ul>
+<li><p>On-Policy Value Function $V^{\pi}(s)$ :</p>
+<script type="math/tex; mode=display">V^{\pi}(s) =  \mathop{E}\limits_{\tau \sim \pi} {\left[R(\tau)| s_0 = s\right]}</script></li>
+<li><p>On-Policy Action-Value Function $Q^{\pi}(s,a)$ :</p>
+<script type="math/tex; mode=display">Q^{\pi}(s,a) = \mathop{E}\limits_{\tau \sim \pi}{[R(\tau)| s_0 = s, a_0 = a]}</script></li>
+<li><p>Optimal Value Function $V^*(s)$:</p>
+<script type="math/tex; mode=display">V^*(s) = \max_{\pi} \mathop{E}\limits_{\tau \sim \pi}{[R(\tau)| s_0 = s]}</script></li>
+<li><p>Optimal Action-Value Function $Q^*(s,a)$:</p>
+<script type="math/tex; mode=display">Q^*(s,a) = \max_{\pi} \mathop{E}\limits_{\tau \sim \pi}{[R(\tau)| s_0 = s, a_0 = a]}</script></li>
+</ul>
+<p>使用这种写法的时候都是指的infinite-horizon discounted return, 而Value functions for finite-horizon undiscounted return would need to accept time as an argument.</p>
+<h2 id="Bellman-Equations"><a href="#Bellman-Equations" class="headerlink" title="Bellman Equations"></a>Bellman Equations</h2><p>the on-policy 中, Bellman方程如下:</p>
+<script type="math/tex; mode=display">V^{\pi}(s) = \mathop{E}\limits_{a \sim \pi  s'\sim P}{r(s,a) + \gamma V^{\pi}(s')}</script><script type="math/tex; mode=display">Q^{\pi}(s,a) = \mathop{E}\limits_{s'\sim P}{r(s,a) + \gamma \mathop{E}\limits_{a'\sim \pi}{Q^{\pi}(s',a')}}</script><p>Bellman最优方程如下:</p>
+<script type="math/tex; mode=display">V^*(s) = \max_a \mathop{E}\limits_{s'\sim P}{[r(s,a) + \gamma V^*(s')]}</script><script type="math/tex; mode=display">Q^*(s,a) = \mathop{E}\limits_{s'\sim P}{[r(s,a) + \gamma \max_{a'} Q^*(s',a')]}</script><p>where $s’ \sim P$ is shorthand for $s’ \sim P(\cdot |s,a)$, indicating that the next state $s’$ is sampled from the environment’s transition rules; $a \sim \pi$ is shorthand for $a \sim \pi(\cdot|s)$; and $a’ \sim \pi$ is shorthand for $a’ \sim \pi(\cdot|s’)$.</p>
+<p>Bellman backup 即指 Bellman方程的右边.</p>
+<h2 id="Advantage-Functions"><a href="#Advantage-Functions" class="headerlink" title="Advantage Functions"></a>Advantage Functions</h2><script type="math/tex; mode=display">A^{\pi}(s,a) = Q^{\pi}(s,a) - V^{\pi}(s)</script><h1 id="Part-2-Kinds-of-RL-Algorithms"><a href="#Part-2-Kinds-of-RL-Algorithms" class="headerlink" title="Part 2: Kinds of RL Algorithms"></a>Part 2: Kinds of RL Algorithms</h1><p>Policy Based的方法更稳定一些, 而value based的方法不太稳定.</p>
+<p>[] 为什么Policy Optimization大多数用on policy的, 而value based的方法大部分是off policy的?</p>
+<h1 id="Part-3-Intro-to-Policy-Optimization"><a href="#Part-3-Intro-to-Policy-Optimization" class="headerlink" title="Part 3: Intro to Policy Optimization"></a>Part 3: Intro to Policy Optimization</h1><h1 id="DDPG-Deep-Deterministic-Policy-Gradient"><a href="#DDPG-Deep-Deterministic-Policy-Gradient" class="headerlink" title="DDPG Deep Deterministic Policy Gradient"></a>DDPG Deep Deterministic Policy Gradient</h1><p>在该文档中对DDPG介绍的很简单, 基本上就是按照链式求导法则讲的. 因为这个系列文档中没有Actor Critic的内容, 所以实际上先讲了下Actor Critic的原理.</p>
+<p>原文中The Q-Learning Side of DDPG实际上讲的是AC框架中Critic, Critic的作用是来估计$Q(s,a)$, 我们用参数$\phi$来估计$Q$, 即有$Q_\phi(s,a)$, 加上Bellman最优方程: </p>
+<script type="math/tex; mode=display">Q^*(s,a) = \mathop{E}\limits_{s' \sim P} \left[r(s,a) + \gamma \max_{a'} Q^*(s', a')\right]</script><p>, 使用这个作为更准确$Q$提供训练信号, 最后使用MSE作为Loss, 则得到最终的Loss函数:</p>
+<script type="math/tex; mode=display">
+L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
+    \Bigg( Q_{\phi}(s,a) - \left(r + \gamma (1 - d) \max_{a'} Q_{\phi}(s',a') \right) \Bigg)^2
+    \right]</script><p>这就是Q-learning以及AC框架中Critic的Loss形式. 在DQN中为了稳定训练引入Replay Buffer和Target Networks.<br>这个地方文档中在You Should Know里写了为什么可以用old experiences, 就是无论多过时的$s,a,r,s’,d$都应该遵循Bellman方程, 但实际上因为前面还有个求期望, 所以Replay Buffer也不能太大, 要不然old policy的$s,a,r,s’,d$的分布可能和现在的policy的$s,a,r,s’,d$分布是不一致的.<br>第二个问题为什么要使用Target Network, 文档里说的很简单, 就是说$r + \gamma (1 - d) \max<em>{a’} Q</em>{\phi}(s’,a’)$和$\phi$有关, 不用的话训练不稳定. 对此我产生一个问题是使用semi-gradient更新确实有问题, 但我可以对整个Loss重新求梯度做为更新的参数啊, 为啥非得引入target network呢? <u><i>对此, Sutton的书里说如果Td-target是静态的可以保证收敛, 但如果是动态的不能保证收敛, [待查阅]</i></u>&lt;/i&gt;<br>所以最终的Loss为:</p>
+<script type="math/tex; mode=display">
+L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
+    \Bigg( Q_{\phi}(s,a) - \left(r + \gamma (1 - d) Q_{\phi_{\text{targ}}}(s', \mu_{\theta_{\text{targ}}}(s')) \right) \Bigg)^2
+    \right],</script><p>加下来说的The Policy Learning Side of DDPG, 实际上就是AC中的Actor, 在DDPG中, 应用链式求导法则即可.<br>由于DDPG是确定性的, 无法像SPG一样天然的包含探索, 所以需要加入噪声, 原论文中说加入time-correlated OU noise, 但更新的研究证明加入mean-zero Gaussian noise就非常好了.<br>算法整体的伪代码如下所示:<br><img src="/images/RL/DDPG.png" alt="DDPG"></p>
+<h2 id="Key-Notes"><a href="#Key-Notes" class="headerlink" title="Key Notes"></a>Key Notes</h2><ol>
+<li>DDPG和DQN一样, 是off policy的, 需要Replay Buffer</li>
+<li>DDPG因为用到$\frac{\partial Q(s,a)}{\partial a}$ 所以要求$a$是连续的</li>
+<li>DDPG的主要算法思想即链式求导法则</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RL/" rel="tag"># RL</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/16/2019-01-16-interesting/" rel="next" title="有趣的实现/算法">
+                <i class="fa fa-chevron-left"></i> 有趣的实现/算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1-Key-Concepts-in-RL"><span class="nav-number">1.</span> <span class="nav-text">Part 1: Key Concepts in RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stochastic-Policies"><span class="nav-number">1.1.</span> <span class="nav-text">Stochastic Policies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#categorical-policies"><span class="nav-number">1.1.1.</span> <span class="nav-text">categorical policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diagonal-Gaussian-Policies"><span class="nav-number">1.1.2.</span> <span class="nav-text">Diagonal Gaussian Policies</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reward-and-Return"><span class="nav-number">1.2.</span> <span class="nav-text">Reward and Return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-Functions"><span class="nav-number">1.3.</span> <span class="nav-text">Value Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bellman-Equations"><span class="nav-number">1.4.</span> <span class="nav-text">Bellman Equations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage-Functions"><span class="nav-number">1.5.</span> <span class="nav-text">Advantage Functions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-2-Kinds-of-RL-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Part 2: Kinds of RL Algorithms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-3-Intro-to-Policy-Optimization"><span class="nav-number">3.</span> <span class="nav-text">Part 3: Intro to Policy Optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDPG-Deep-Deterministic-Policy-Gradient"><span class="nav-number">4.</span> <span class="nav-text">DDPG Deep Deterministic Policy Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Notes"><span class="nav-number">4.1.</span> <span class="nav-text">Key Notes</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">182k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:46</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2019/02/16/2019-02-16-OpenAIspinningup/";
+    this.page.identifier = "2019/02/16/2019-02-16-OpenAIspinningup/";
+    this.page.title = 'OpenAI Spinning Up 阅读笔记';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

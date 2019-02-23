@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,14 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
 
 
 
@@ -33,75 +48,64 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="数据库," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="存储和文件结构存储磁盘时间寻道时间**+旋转延迟+传输时间 SSD写SSD的时间比读SSD的时间大很多 文件组织固定长的record变长recordSlotted Page Structurerecord的组织形式  heap sequentialoverflow block hashing multitable clustering file organization  Lec3 索引Order">
+  <meta name="description" content="存储和文件结构存储磁盘时间寻道时间**+旋转延迟+传输时间 SSD写SSD的时间比读SSD的时间大很多 文件组织固定长的record变长recordSlotted Page Structurerecord的组织形式  heap sequentialoverflow block hashing multitable clustering file organization  Lec3 索引Order">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DB课堂总结">
 <meta property="og:url" content="http://yoursite.com/2018/01/01/2018-01-01-DB/index.html">
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="存储和文件结构存储磁盘时间寻道时间**+旋转延迟+传输时间 SSD写SSD的时间比读SSD的时间大很多 文件组织固定长的record变长recordSlotted Page Structurerecord的组织形式  heap sequentialoverflow block hashing multitable clustering file organization  Lec3 索引Order">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/slot.png">
 <meta property="og:image" content="http://yoursite.com/images/dblec411.png">
 <meta property="og:image" content="http://yoursite.com/images/lockCompa.png">
@@ -118,36 +122,18 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/01/2018-01-01-DB/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
   };
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2018/01/01/2018-01-01-DB/"/>
-
-
-
-
 
   <title>DB课堂总结 | CZ's blog</title>
   
@@ -163,38 +149,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CZ's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -202,66 +211,97 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -276,9 +316,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -292,12 +330,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -310,6 +356,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -319,8 +367,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cziszero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -332,11 +380,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DB课堂总结</h1>
+          <h2 class="post-title" itemprop="name headline">DB课堂总结<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2018-01-01-DB.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -344,27 +401,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T00:00:00+08:00">
-                2018-01-01
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-01T00:00:00+08:00">2018-01-01</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-30 22:50:27" itemprop="dateModified" datetime="2018-03-30T22:50:27+08:00">2018-03-30</time>
+              
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-03-30T22:50:27+08:00" content="2018-03-30">
-                  2018-03-30
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -375,22 +440,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/" itemprop="url" rel="index">
-                    <span itemprop="name">课程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课程/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -400,6 +457,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/01/01/2018-01-01-DB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/01/2018-01-01-DB/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -407,6 +478,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
           
 
           
@@ -426,7 +525,7 @@
       
         <h1 id="存储和文件结构"><a href="#存储和文件结构" class="headerlink" title="存储和文件结构"></a>存储和文件结构</h1><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><h3 id="磁盘时间"><a href="#磁盘时间" class="headerlink" title="磁盘时间"></a>磁盘时间</h3><p>寻道时间**+旋转延迟+传输时间</p>
 <h3 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h3><p>写SSD的时间比读SSD的时间大很多</p>
-<h2 id="文件组织"><a href="#文件组织" class="headerlink" title="文件组织"></a>文件组织</h2><h3 id="固定长的record"><a href="#固定长的record" class="headerlink" title="固定长的record"></a>固定长的record</h3><h3 id="变长record"><a href="#变长record" class="headerlink" title="变长record"></a>变长record</h3><p>Slotted Page Structure<br><img src="/images/slot.png" alt=""><br>record的组织形式</p>
+<h2 id="文件组织"><a href="#文件组织" class="headerlink" title="文件组织"></a>文件组织</h2><h3 id="固定长的record"><a href="#固定长的record" class="headerlink" title="固定长的record"></a>固定长的record</h3><h3 id="变长record"><a href="#变长record" class="headerlink" title="变长record"></a>变长record</h3><p>Slotted Page Structure<br><img src="/images/slot.png" alt><br>record的组织形式</p>
 <ol>
 <li>heap</li>
 <li>sequential<br>overflow block</li>
@@ -458,7 +557,7 @@
 <li>union集合求并</li>
 <li>聚合函数 aggregation（group by sum min等）</li>
 <li>排序 sort</li>
-<li>去重 duplicate elimination<br><img src="/images/dblec411.png" alt=""><h2 id="One-Pass-scan"><a href="#One-Pass-scan" class="headerlink" title="One Pass scan"></a>One Pass scan</h2><h3 id="One-Block-in-Memory"><a href="#One-Block-in-Memory" class="headerlink" title="One Block in Memory"></a>One Block in Memory</h3>一个一个读进来处理了再丢出去，做选择、投影、集合并（bag多重结果聚合）都可以<br>Cost=B(R)<h3 id="Multiple-Blocks-in-Memory"><a href="#Multiple-Blocks-in-Memory" class="headerlink" title="Multiple Blocks in Memory"></a>Multiple Blocks in Memory</h3></li>
+<li>去重 duplicate elimination<br><img src="/images/dblec411.png" alt><h2 id="One-Pass-scan"><a href="#One-Pass-scan" class="headerlink" title="One Pass scan"></a>One Pass scan</h2><h3 id="One-Block-in-Memory"><a href="#One-Block-in-Memory" class="headerlink" title="One Block in Memory"></a>One Block in Memory</h3>一个一个读进来处理了再丢出去，做选择、投影、集合并（bag多重结果聚合）都可以<br>Cost=B(R)<h3 id="Multiple-Blocks-in-Memory"><a href="#Multiple-Blocks-in-Memory" class="headerlink" title="Multiple Blocks in Memory"></a>Multiple Blocks in Memory</h3></li>
 <li>去重 Cost=B(R)</li>
 <li>某一个元组可以放入主存，set union（set 单重集合）、difference、intersection、prodect<br>Cost=B(R)+B(S)、M=Min(B(R),B(S))+2<h2 id="Loop"><a href="#Loop" class="headerlink" title="Loop"></a>Loop</h2>两个元组都无法放入主存，join，set操作</li>
 <li>tuple based Nested loop join占用两块buffer<br>Cost=T(s)+T(R)*T(S) </li>
@@ -469,7 +568,7 @@
 <li>2-Phase Sort<br>限制|log_{B-1}|N/B||为1，即N&lt;=(B-1)*B时。此时代价为3B(R)（忽略了最后输出的代价）</li>
 <li>Sort Join<br>Cost: 5(B(R)+B(S)) ;sort用4(B(R)+B(s))（包括最后输出），最后join使用类似归并排序的方法，两个关系只扫描一次,需要sqrt(max(B(R),B(S)))</li>
 <li>取消sort结果的输出，直接对很多个小的有序列表进行merge join<br>则效率提高为3(B(R)+B(S)),需要M&gt;sqrt(B(R)+B(s))</li>
-<li>集合并交差、去重操作与上面的类似。<h2 id="Hash-1"><a href="#Hash-1" class="headerlink" title="Hash"></a>Hash</h2>Hash join Cost=3(B(R)+B(S))<br>所需buffer B(R)/(M-1)<m， 每个table在第一阶段进行尽可能多的划分，产生尽可能小的sublist，="" 在第二阶段，只要保证两个表相对较小的sublist放入内存即可="" 实际上，要求m="">sqrt(min(B(R),B(S)))比sortjoin需要的buffer少<h3 id="Hash-Join和Sort-Join比较"><a href="#Hash-Join和Sort-Join比较" class="headerlink" title="Hash Join和Sort Join比较"></a>Hash Join和Sort Join比较</h3></m，></li>
+<li>集合并交差、去重操作与上面的类似。<h2 id="Hash-1"><a href="#Hash-1" class="headerlink" title="Hash"></a>Hash</h2>Hash join Cost=3(B(R)+B(S))<br>所需buffer B(R)/(M-1)<m， 每个table在第一阶段进行尽可能多的划分，产生尽可能小的sublist， 在第二阶段，只要保证两个表相对较小的sublist放入内存即可 实际上，要求m>sqrt(min(B(R),B(S)))比sortjoin需要的buffer少<h3 id="Hash-Join和Sort-Join比较"><a href="#Hash-Join和Sort-Join比较" class="headerlink" title="Hash Join和Sort Join比较"></a>Hash Join和Sort Join比较</h3></m，></li>
 <li>有充足buffer的时候，hash join和sort join的cost 都是3(B(R)+B(S))，但此时所需的buffer数目是不一致的， sqrt(min(B(R), B(S)) &lt; sqrt(B(R) + B(S))</li>
 <li>hash可以高度并行</li>
 <li>hash的性能依赖于hash函数的质量</li>
@@ -483,13 +582,13 @@
 <li>把子查询转化为join操作</li>
 <li>使用左深树<h1 id="Lec7-并发控制"><a href="#Lec7-并发控制" class="headerlink" title="Lec7 并发控制"></a>Lec7 并发控制</h1><h2 id="基于锁的协议"><a href="#基于锁的协议" class="headerlink" title="基于锁的协议"></a>基于锁的协议</h2>两种锁</li>
 <li>排他锁X（exclusive）：可以应用与读写</li>
-<li>共享锁S（shared）：只能应用与读操作<br>锁的相容性<br><img src="/images/lockCompa.png" alt=""><h3 id="两阶段锁协议"><a href="#两阶段锁协议" class="headerlink" title="两阶段锁协议"></a>两阶段锁协议</h3></li>
+<li>共享锁S（shared）：只能应用与读操作<br>锁的相容性<br><img src="/images/lockCompa.png" alt><h3 id="两阶段锁协议"><a href="#两阶段锁协议" class="headerlink" title="两阶段锁协议"></a>两阶段锁协议</h3></li>
 <li>Phase 1：Growing Phase 不断获得锁</li>
-<li>Phase 2：Shrinking Phase 不断释放锁<br>可以按照Lock point（获取最后一个点的时间）串行化<br>能保证可串行化，但可能导致级联回滚，无法避免死锁<h4 id="strict-两阶段锁"><a href="#strict-两阶段锁" class="headerlink" title="strict 两阶段锁"></a>strict 两阶段锁</h4>x锁必须在commit/abort的时候才能释放<h4 id="rigorous-两阶段锁"><a href="#rigorous-两阶段锁" class="headerlink" title="rigorous 两阶段锁"></a>rigorous 两阶段锁</h4>s，x锁都必须在commit/abort的时候才能释放<h4 id="锁提升协议"><a href="#锁提升协议" class="headerlink" title="锁提升协议"></a>锁提升协议</h4>P1. 获取s，x锁或s锁提升为x锁<br>P2. 释放s，x锁或者讲x锁降低为s锁<br>允许更多的并发事物，实现简单<h4 id="锁机制的实现"><a href="#锁机制的实现" class="headerlink" title="锁机制的实现"></a>锁机制的实现</h4>所表，使用数据项的hash来索引，并维护每个事务所拥有的锁的列表<h4 id="Increment-Lock自增自减锁"><a href="#Increment-Lock自增自减锁" class="headerlink" title="Increment Lock自增自减锁"></a>Increment Lock自增自减锁</h4>即两个自增自减操作不区分先后<br><img src="/images/lockCompaI.png" alt=""><h3 id="基于图的锁协议"><a href="#基于图的锁协议" class="headerlink" title="基于图的锁协议"></a>基于图的锁协议</h3>将先后关系表示为一个有向无环图<h4 id="Tree-协议"><a href="#Tree-协议" class="headerlink" title="Tree 协议"></a>Tree 协议</h4></li>
+<li>Phase 2：Shrinking Phase 不断释放锁<br>可以按照Lock point（获取最后一个点的时间）串行化<br>能保证可串行化，但可能导致级联回滚，无法避免死锁<h4 id="strict-两阶段锁"><a href="#strict-两阶段锁" class="headerlink" title="strict 两阶段锁"></a>strict 两阶段锁</h4>x锁必须在commit/abort的时候才能释放<h4 id="rigorous-两阶段锁"><a href="#rigorous-两阶段锁" class="headerlink" title="rigorous 两阶段锁"></a>rigorous 两阶段锁</h4>s，x锁都必须在commit/abort的时候才能释放<h4 id="锁提升协议"><a href="#锁提升协议" class="headerlink" title="锁提升协议"></a>锁提升协议</h4>P1. 获取s，x锁或s锁提升为x锁<br>P2. 释放s，x锁或者讲x锁降低为s锁<br>允许更多的并发事物，实现简单<h4 id="锁机制的实现"><a href="#锁机制的实现" class="headerlink" title="锁机制的实现"></a>锁机制的实现</h4>所表，使用数据项的hash来索引，并维护每个事务所拥有的锁的列表<h4 id="Increment-Lock自增自减锁"><a href="#Increment-Lock自增自减锁" class="headerlink" title="Increment Lock自增自减锁"></a>Increment Lock自增自减锁</h4>即两个自增自减操作不区分先后<br><img src="/images/lockCompaI.png" alt><h3 id="基于图的锁协议"><a href="#基于图的锁协议" class="headerlink" title="基于图的锁协议"></a>基于图的锁协议</h3>将先后关系表示为一个有向无环图<h4 id="Tree-协议"><a href="#Tree-协议" class="headerlink" title="Tree 协议"></a>Tree 协议</h4></li>
 <li>只允许x锁</li>
 <li>只能获取已拥有的锁的数据的子孙节点的锁，如果该事物还没有锁，则可以获取任意没有锁的数据</li>
 <li>可以在任何时间释放锁</li>
-<li>释放锁之后该事物无法再获取这个数据的锁<br>优点：可以保证冲突可串行化，并且没有死锁，可以更早的释放锁<br>缺点：不能保证可恢复性和不级联回滚，可能需要获取他们不会访问数据的锁<h3 id="多粒度"><a href="#多粒度" class="headerlink" title="多粒度"></a>多粒度</h3>Intention锁模型<br>IS（Intention Shared）：意向共享锁<br>IX：（Intention Exclusive）<br>SIX（shared and intention exclusive）<br><img src="/images/lockCompaIxs.png" alt=""><h3 id="死锁处理"><a href="#死锁处理" class="headerlink" title="死锁处理"></a>死锁处理</h3><h4 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h4></li>
+<li>释放锁之后该事物无法再获取这个数据的锁<br>优点：可以保证冲突可串行化，并且没有死锁，可以更早的释放锁<br>缺点：不能保证可恢复性和不级联回滚，可能需要获取他们不会访问数据的锁<h3 id="多粒度"><a href="#多粒度" class="headerlink" title="多粒度"></a>多粒度</h3>Intention锁模型<br>IS（Intention Shared）：意向共享锁<br>IX：（Intention Exclusive）<br>SIX（shared and intention exclusive）<br><img src="/images/lockCompaIxs.png" alt><h3 id="死锁处理"><a href="#死锁处理" class="headerlink" title="死锁处理"></a>死锁处理</h3><h4 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h4></li>
 <li>一次获取所有资源</li>
 <li>wait-die 老的抢年轻的</li>
 <li>wound-wait 年轻的抢老的</li>
@@ -512,23 +611,29 @@
 <li>Inter query</li>
 <li>Intra Query<ul>
 <li>Intra operation</li>
-<li>Inter operation<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2>SemiJoin<br>主拷贝Primary Copy 设定一个Primary site<br>基于时间戳的并发控制可以应用于分布式系统，全局唯一的时间戳的实现将成为一个问题。使用local unique timestamp+site identifier构成global unique identifier<br>local unique timestamp随接本地时钟和收到的事物的时间戳确定<h3 id="两阶段提交协议2-PC"><a href="#两阶段提交协议2-PC" class="headerlink" title="两阶段提交协议2 PC"></a>两阶段提交协议2 PC</h3><img src="/images/2pcpath.png" alt=""><br><img src="/images/2pcabort.png" alt=""><br>阻塞：</li>
+<li>Inter operation<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2>SemiJoin<br>主拷贝Primary Copy 设定一个Primary site<br>基于时间戳的并发控制可以应用于分布式系统，全局唯一的时间戳的实现将成为一个问题。使用local unique timestamp+site identifier构成global unique identifier<br>local unique timestamp随接本地时钟和收到的事物的时间戳确定<h3 id="两阶段提交协议2-PC"><a href="#两阶段提交协议2-PC" class="headerlink" title="两阶段提交协议2 PC"></a>两阶段提交协议2 PC</h3><img src="/images/2pcpath.png" alt><br><img src="/images/2pcabort.png" alt><br>阻塞：</li>
 </ul>
 </li>
 </ul>
 <ol>
 <li>coordinator挂了</li>
 </ol>
-<p><img src="/images/3pcpath.png" alt=""></p>
+<p><img src="/images/3pcpath.png" alt></p>
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -578,21 +683,21 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -608,91 +713,302 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
-               alt="cziszero" />
-          <p class="site-author-name" itemprop="name">cziszero</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
               <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">75</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">48</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -700,14 +1016,22 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
 
 
         
@@ -716,47 +1040,70 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">182k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:46</span>
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -770,7 +1117,6 @@
 
 
 
-  
 
 
 
@@ -782,72 +1128,6 @@
 
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -855,8 +1135,77 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2018/01/01/2018-01-01-DB/";
+    this.page.identifier = "2018/01/01/2018-01-01-DB/";
+    this.page.title = 'DB课堂总结';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -905,6 +1254,8 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -938,8 +1289,9 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1063,7 +1415,7 @@
 
                   // select top N slices in content
 
-                  var upperBound = parseInt('-1');
+                  var upperBound = parseInt('1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0, upperBound);
                   }
@@ -1108,9 +1460,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1182,30 +1534,79 @@
   
 
   
+  
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    
+      <script type="text/x-mathjax-config">
   
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
 
   
 
