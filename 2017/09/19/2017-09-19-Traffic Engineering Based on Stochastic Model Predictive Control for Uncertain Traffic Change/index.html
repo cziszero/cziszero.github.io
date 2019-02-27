@@ -222,7 +222,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -232,7 +232,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -552,8 +552,8 @@
 </ol>
 <p>使用$x(t-1)$代替$x(t)$来计算分配方案，使得容易出现问题。解决方法之一是让t变小，从而一段时间之内的可以看作变化不大，但这样频繁的调整网络有代价。另一种方式是预测t时刻的流量来进行规划，但预测不一定对，所以本篇论文引入了预测错误的分布。</p>
 <h2 id="III-SMP-TE-Stochastic-Model-Predictive-Traffic-Engineering"><a href="#III-SMP-TE-Stochastic-Model-Predictive-Traffic-Engineering" class="headerlink" title="III. SMP-TE: Stochastic Model Predictive Traffic Engineering"></a>III. SMP-TE: Stochastic Model Predictive Traffic Engineering</h2><h3 id="A-Stochastic-Model-Predictive-Control"><a href="#A-Stochastic-Model-Predictive-Control" class="headerlink" title="A. Stochastic Model Predictive Control"></a>A. Stochastic Model Predictive Control</h3><h4 id="1-Model-Predictive-Control"><a href="#1-Model-Predictive-Control" class="headerlink" title="1) Model Predictive Control"></a>1) Model Predictive Control</h4><ol>
-<li>要和目标$y(k)$尽可能的接近，所以引入代价函数$J<em>1=\sum</em>{k=t+1}^{t+h}{||y(k)-r_y(k)||^2}$</li>
-<li>还要尽可能的平缓，所以引入$J<em>2=\sum</em>{k=t+1}^{t+h}{||u(k)-u(k-1)||^2}$，<em>感觉这里不太对，应该是$\hat{y}(k)-\hat{y}(k-1)$吧</em></li>
+<li>要和目标$y(k)$尽可能的接近，所以引入代价函数$J_1=\sum_{k=t+1}^{t+h}{||y(k)-r_y(k)||^2}$</li>
+<li>还要尽可能的平缓，所以引入$J_2=\sum_{k=t+1}^{t+h}{||u(k)-u(k-1)||^2}$，<em>感觉这里不太对，应该是$\hat{y}(k)-\hat{y}(k-1)$吧</em></li>
 <li>所以总的代价为$J=(1-w)J_1+wJ_2$</li>
 </ol>
 <h4 id="2-Probability-Constraints"><a href="#2-Probability-Constraints" class="headerlink" title="2) Probability Constraints"></a>2) Probability Constraints</h4><p>使用上面说的引入预测来改进使用$x(t-1)$代替$x(t)$来计算分配方案的问题时，又引入了一个新的问题，即预测错了怎么办？一种方法是按最坏的情况配置冗余，还有一种方法是讲错误的发生作为一个随机变量，为了克服这个错误需要配置的冗余也变成一个随机变量，这样就引入一个soft bound，可以给定一个阈值和容量上限，这样最大的可通行流量就可以确定出来。</p>
@@ -565,8 +565,8 @@
 <h4 id="3-Relaxation-of-Future-Probabilistic"><a href="#3-Relaxation-of-Future-Probabilistic" class="headerlink" title="3) Relaxation of Future Probabilistic"></a>3) Relaxation of Future Probabilistic</h4><p>注意，代价函数是在多个调节轮次上定义的，虽然只用于调节当前的这一次。可以发现，预测显然是紧邻的下一个最靠谱也最重要，其他的预测就不那么靠谱也没有那么重要了，因为之后会有反馈修正，这样还是要求他们具有相同的拥塞的概率就不合适了，可以把这个概率$q$逐渐放宽。论文中使用了$q(k)=(1-p)exp(-\frac{k-t-1}{\tau})$来设定概率阈值，$\tau$是可以设定的决定松弛素的常数。当$q(k)&gt;0.5$时则不再上升，置为$0.5$</p>
 <h2 id="IV-Evaluation"><a href="#IV-Evaluation" class="headerlink" title="IV. Evaluation"></a>IV. Evaluation</h2><h3 id="A-Simulation-Environment"><a href="#A-Simulation-Environment" class="headerlink" title="A. Simulation Environment"></a>A. Simulation Environment</h3><h4 id="1-network-topology"><a href="#1-network-topology" class="headerlink" title="1)    network topology"></a>1)    network topology</h4><h4 id="2-traffic"><a href="#2-traffic" class="headerlink" title="2)    traffic"></a>2)    traffic</h4><p>使用Netflow协议收集，100个包取样一次，5分钟汇总一次。设置的目标利用率为95%。</p>
 <h4 id="3-prediction-error-model"><a href="#3-prediction-error-model" class="headerlink" title="3)    prediction error model"></a>3)    prediction error model</h4><p>假设预测错误服从高斯分布。其均值为0，方差与多少步成正比$k\sigma ^2$，使用normalized mean squared error (NMSE)来计算$\sigma ^2$，$NMSE=\frac{\sigma_j^2}{V[x_j(t)]}$，这里取$NMSE=0.3$，所以令$\sigma_j^2=0.3V[x_j(t)]$，$j$是表示第几条路由。</p>
-<h4 id="4-Cost-Function"><a href="#4-Cost-Function" class="headerlink" title="4)    Cost Function"></a>4)    Cost Function</h4><p>使用平均hop length作为代价函数，因为降低hop length可以降低传播时延（propagation delay），相对于传播时延，在排队延时（queuing delay ）可以忽略不计。<br>平均hop length D定义为$D=\frac{1}{F}\sum<em>j{\sum</em>{i\in \vartheta }{R_{i,j}d_i}}$，使用正则化的hop length $\frac{D}{\max{X_jd_j}}$作为代价函数<em>前面说了一种代价函数呀，为什么还要有一个，这两个一样么？</em>。$w$最后选定0.5，因为实验中更改$w$从0到1，步长为0.1结果没啥变化。<em>没啥变化不是说明这个方法不大靠谱么。。。。</em></p>
-<h4 id="5-Routing-Calculation"><a href="#5-Routing-Calculation" class="headerlink" title="5)    Routing Calculation"></a>5)    Routing Calculation</h4><p>求解上面提到个约束，先将概率不等式转换为确定性的形式，$\forall k,\forall l,\hat y<em>l(k)+\Phi^{-1}(1-p)\sqrt{\sum_j{A</em>{l,j}(k)^2k\sigma_j^2}}\leq C_l(k)$，此处$A(k)=G · R(K)$,$\Phi^{-1}$是高斯分布的分位点函数（quantile function of the Gaussian distribution），通过这个变换之后，原问题就变成一个凸优化问题，叫做second-order cone programming (SOCP)，可以使用CPLEX包来求解该问题。</p>
+<h4 id="4-Cost-Function"><a href="#4-Cost-Function" class="headerlink" title="4)    Cost Function"></a>4)    Cost Function</h4><p>使用平均hop length作为代价函数，因为降低hop length可以降低传播时延（propagation delay），相对于传播时延，在排队延时（queuing delay ）可以忽略不计。<br>平均hop length D定义为$D=\frac{1}{F}\sum_j{\sum_{i\in \vartheta }{R_{i,j}d_i}}$，使用正则化的hop length $\frac{D}{\max{X_jd_j}}$作为代价函数<em>前面说了一种代价函数呀，为什么还要有一个，这两个一样么？</em>。$w$最后选定0.5，因为实验中更改$w$从0到1，步长为0.1结果没啥变化。<em>没啥变化不是说明这个方法不大靠谱么。。。。</em></p>
+<h4 id="5-Routing-Calculation"><a href="#5-Routing-Calculation" class="headerlink" title="5)    Routing Calculation"></a>5)    Routing Calculation</h4><p>求解上面提到个约束，先将概率不等式转换为确定性的形式，$\forall k,\forall l,\hat y_l(k)+\Phi^{-1}(1-p)\sqrt{\sum_j{A_{l,j}(k)^2k\sigma_j^2}}\leq C_l(k)$，此处$A(k)=G · R(K)$,$\Phi^{-1}$是高斯分布的分位点函数（quantile function of the Gaussian distribution），通过这个变换之后，原问题就变成一个凸优化问题，叫做second-order cone programming (SOCP)，可以使用CPLEX包来求解该问题。</p>
 <h4 id="6-Compared-Methods"><a href="#6-Compared-Methods" class="headerlink" title="6)    Compared Methods"></a>6)    Compared Methods</h4><ol>
 <li>和只预测一步的模型进行对比，也就是对应本模型中的$h=1,p=0.5$的情况，以证明多步预测是游泳的。</li>
 <li>和基于MPC的TE方法进行对比，其基于多步预测，但并没有把预测错的的概率考虑进去，对应本模型$p=0.5$的情况，来证明本片论文中提出的方法是有效的，可以避免预测错的的影响而不造成明显的路由变化。</li>
@@ -701,7 +701,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -810,9 +810,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1008,7 +1006,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -1017,7 +1015,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 

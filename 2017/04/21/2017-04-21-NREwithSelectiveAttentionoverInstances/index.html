@@ -229,7 +229,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -239,7 +239,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.7k</span>
+                <span title="本文字数">7.8k</span>
               
 
               
@@ -593,7 +593,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3. Methodology"></a>3. Methodology</h2><p>概述：给定一个句子集合$S={x_1,x_2,··· ,x_n}$和两个对应的实体，我们想要评价对于每一个可能关系$r$的概率。<br>分为两个部分：  </p>
+<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3. Methodology"></a>3. Methodology</h2><p>概述：给定一个句子集合$S=\{x_1,x_2,··· ,x_n\}$和两个对应的实体，我们想要评价对于每一个可能关系$r$的概率。<br>分为两个部分：  </p>
 <ul>
 <li>Sentence Encoder : 给定一个句子${x}$和两个对应实体，通过一个CNN来构建一个语句向量$X$。</li>
 <li>Selective Attention Over Instances。</li>
@@ -614,11 +614,11 @@
 <li>使用$q_i$代表第$i$个窗口的单词连接成的向量，超出范围的使用0向量扩展padding。</li>
 <li>卷积第$i$个通道filter的计算就是  <script type="math/tex; mode=display">p_i = [Wq + b]_i</script>其中$b$是偏置向量。</li>
 <li>然后对每一个维度做max-pooling得到句子向量$x$</li>
-<li>PCNN(Zeng et al., 2015)，是CNN的一种变体，就是用两个实体把句子分成三段，每一段有一个单独的卷积核$(p<em>{i1},p</em>{i2},p_{i3})$，然后再对每一段分别进行max-pooling操作，每个维度得到3个值然后连接扩展该维。</li>
+<li>PCNN(Zeng et al., 2015)，是CNN的一种变体，就是用两个实体把句子分成三段，每一段有一个单独的卷积核$(p_{i1},p_{i2},p_{i3})$，然后再对每一段分别进行max-pooling操作，每个维度得到3个值然后连接扩展该维。</li>
 <li>使用一个非线性激活函数$\tanh$</li>
 </ul>
 <h3 id="3-2-Selective-Attention-over-Instances"><a href="#3-2-Selective-Attention-over-Instances" class="headerlink" title="3.2 Selective Attention over Instances"></a>3.2 Selective Attention over Instances</h3><ul>
-<li>在包含两个相同实体的句子集合$S={x_1,x_2,··· ,x_n}$表示成一个向量$s$，用来代表这个集合用来预测关系$r$。</li>
+<li>在包含两个相同实体的句子集合$S=\{x_1,x_2,··· ,x_n\}$表示成一个向量$s$，用来代表这个集合用来预测关系$r$。</li>
 <li>$s$是$S$中句子向量的加权和。  <script type="math/tex; mode=display">s=\sum\limits_i {\alpha_i w_i}</script>$\alpha_i$就是每个句子的权值，也正是本文中Selective Attention的含义。</li>
 <li><p>本文使用两种方法来定义权值$\alpha$</p>
 <ul>
@@ -933,7 +933,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1042,9 +1042,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1240,7 +1238,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -1249,7 +1247,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 

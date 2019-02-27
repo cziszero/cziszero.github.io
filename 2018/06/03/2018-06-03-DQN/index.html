@@ -98,19 +98,19 @@
 
 
 
-  <meta name="description" content="DQN算法伪代码 Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。（问题在与处理数据偏斜的意义何在？我知道了，神经网络其实不管样本的分布，他只管准确的表达出某">
+  <meta name="description" content="DQN算法伪代码 Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。（问题在与处理数据偏斜的意义何在？神经网络其实不管样本的分布，他只管准确的表达出某个样本对应">
 <meta name="keywords" content="RL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DQN">
 <meta property="og:url" content="http://yoursite.com/2018/06/03/2018-06-03-DQN/index.html">
 <meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="DQN算法伪代码 Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。（问题在与处理数据偏斜的意义何在？我知道了，神经网络其实不管样本的分布，他只管准确的表达出某">
+<meta property="og:description" content="DQN算法伪代码 Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。（问题在与处理数据偏斜的意义何在？神经网络其实不管样本的分布，他只管准确的表达出某个样本对应">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/RL/dqn_alg.jpg">
-<meta property="og:updated_time" content="2018-06-15T14:29:18.000Z">
+<meta property="og:updated_time" content="2019-02-27T02:13:04.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DQN">
-<meta name="twitter:description" content="DQN算法伪代码 Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。（问题在与处理数据偏斜的意义何在？我知道了，神经网络其实不管样本的分布，他只管准确的表达出某">
+<meta name="twitter:description" content="DQN算法伪代码 Replay buffer一个很重要的问题是buffer中的样本不是独立同分布的。随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。（问题在与处理数据偏斜的意义何在？神经网络其实不管样本的分布，他只管准确的表达出某个样本对应">
 <meta name="twitter:image" content="http://yoursite.com/images/RL/dqn_alg.jpg">
 
 
@@ -224,7 +224,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -234,7 +234,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -426,7 +426,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-15 22:29:18" itemprop="dateModified" datetime="2018-06-15T22:29:18+08:00">2018-06-15</time>
+                <time title="修改时间：2019-02-27 10:13:04" itemprop="dateModified" datetime="2019-02-27T10:13:04+08:00">2019-02-27</time>
               
             
           </span>
@@ -492,7 +492,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">416</span>
+                <span title="本文字数">327</span>
               
 
               
@@ -527,9 +527,8 @@
 
       
         <h1 id="DQN"><a href="#DQN" class="headerlink" title="DQN"></a>DQN</h1><h2 id="算法伪代码"><a href="#算法伪代码" class="headerlink" title="算法伪代码"></a>算法伪代码</h2><p><img src="/images/RL/dqn_alg.jpg" alt></p>
-<h2 id="Replay-buffer"><a href="#Replay-buffer" class="headerlink" title="Replay buffer"></a>Replay buffer</h2><p>一个很重要的问题是buffer中的样本不是独立同分布的。<br>随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。<br>（问题在与处理数据偏斜的意义何在？我知道了，神经网络其实不管样本的分布，他只管准确的表达出某个样本对应的情况，其实是认为所有样本是均匀分布的，所以得把不均匀分布的样本处理成均匀分布的样本）</p>
-<h2 id="Target-Network"><a href="#Target-Network" class="headerlink" title="Target Network"></a>Target Network</h2><p>为什么要用Target Network？<br>能不能使用maxout代替两个网络？<br>两个网络能不能共享一部分参数？</p>
-<h1 id="！！-华为代码中有一个很重要的问题是初始化的时候Network和Network-Target没有同步"><a href="#！！-华为代码中有一个很重要的问题是初始化的时候Network和Network-Target没有同步" class="headerlink" title="！！ 华为代码中有一个很重要的问题是初始化的时候Network和Network_Target没有同步"></a>！！ 华为代码中有一个很重要的问题是初始化的时候Network和Network_Target没有同步</h1><p>但是为什么最开始两个网络的初值要一样呢<br>还有一个问题确实不应该是走一步就训练一次<br>好像都没有bias</p>
+<h2 id="Replay-buffer"><a href="#Replay-buffer" class="headerlink" title="Replay buffer"></a>Replay buffer</h2><p>一个很重要的问题是buffer中的样本不是独立同分布的。<br>随机抽样是为了解决样本之间不独立的问题，打破样本之间的相关性。其实更准确的说应该是为了是每一个batch都是在state分布上的平均抽样才能达到比较好的效果，要不然神经网络可能会为了适应某个样本调偏了原来的。<br>（问题在与处理数据偏斜的意义何在？神经网络其实不管样本的分布，他只管准确的表达出某个样本对应的情况，其实是认为所有样本是均匀分布的，所以得把不均匀分布的样本处理成均匀分布的样本）</p>
+<h2 id="Target-Network"><a href="#Target-Network" class="headerlink" title="Target Network"></a>Target Network</h2><p>为什么要用Target Network？<br>两个网络能不能共享一部分参数？ 不能, 就是为了没有同样参数才设置了Target Network</p>
 
       
     </div>
@@ -566,8 +565,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/21/2018-01-20-DPG/" rel="next" title="Deterministic Policy Gradient Algorithms 阅读笔记">
-                <i class="fa fa-chevron-left"></i> Deterministic Policy Gradient Algorithms 阅读笔记
+              <a href="/2018/06/03/2018-06-03-tensorflow变量初始化/" rel="next" title="tensorflow变量初始化">
+                <i class="fa fa-chevron-left"></i> tensorflow变量初始化
               </a>
             
           </div>
@@ -576,8 +575,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/03/2018-06-03-tensorflow变量初始化/" rel="prev" title="tensorflow变量初始化">
-                tensorflow变量初始化 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/15/2018-06-15-gitUsage/" rel="prev" title="git使用中遇到的一些问题及解决">
+                git使用中遇到的一些问题及解决 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +655,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -765,9 +764,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -923,7 +920,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DQN"><span class="nav-number">1.</span> <span class="nav-text">DQN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法伪代码"><span class="nav-number">1.1.</span> <span class="nav-text">算法伪代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replay-buffer"><span class="nav-number">1.2.</span> <span class="nav-text">Replay buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target-Network"><span class="nav-number">1.3.</span> <span class="nav-text">Target Network</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#！！-华为代码中有一个很重要的问题是初始化的时候Network和Network-Target没有同步"><span class="nav-number">2.</span> <span class="nav-text">！！ 华为代码中有一个很重要的问题是初始化的时候Network和Network_Target没有同步</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DQN"><span class="nav-number">1.</span> <span class="nav-text">DQN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法伪代码"><span class="nav-number">1.1.</span> <span class="nav-text">算法伪代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replay-buffer"><span class="nav-number">1.2.</span> <span class="nav-text">Replay buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target-Network"><span class="nav-number">1.3.</span> <span class="nav-text">Target Network</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -963,7 +960,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -972,7 +969,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 

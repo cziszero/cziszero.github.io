@@ -224,7 +224,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -234,7 +234,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -542,11 +542,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pl</span><br><span class="line">x = np.random.randint(<span class="number">1</span>,<span class="number">100</span>,[<span class="number">1000</span>])</span><br><span class="line">avga = [x[<span class="number">0</span>]]</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">2</span>,<span class="number">1001</span>):</span><br><span class="line">    p = avga[len(avga)<span class="number">-1</span>]</span><br><span class="line">    avga.append(p+(x[n<span class="number">-1</span>]-p)/n)</span><br><span class="line">pl.plot(range(<span class="number">0</span>,<span class="number">1000</span>),avga)</span><br><span class="line"></span><br><span class="line">alpha = <span class="number">100</span></span><br><span class="line">avgb = [x[<span class="number">0</span>]]</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">2</span>,<span class="number">1001</span>):</span><br><span class="line">    p = avgb[len(avgb)<span class="number">-1</span>]</span><br><span class="line">    avgb.append(p+(x[n<span class="number">-1</span>]-p)/alpha)</span><br><span class="line">pl.plot(range(<span class="number">0</span>,<span class="number">1000</span>),avgb,<span class="string">'r'</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
 <p><img src="/images/output_2_0.png" alt="png"></p>
 <h2 id="Temporal-Difference-Learning"><a href="#Temporal-Difference-Learning" class="headerlink" title="Temporal-Difference Learning"></a>Temporal-Difference Learning</h2><p>bootstrapping<br>这里计算$V(S_t)$使用这个公式（最简单的形式$TD(0)$）：</p>
-<script type="math/tex; mode=display">V(S_t) \leftarrow V(S_t)+\alpha (R_{t+1}+ \gamma V(S_{t+1})-V(S_t))</script><p>其中，$R<em>{t+1}+ \gamma V(S</em>{t+1})$称为TD target，$\delta<em>t=R</em>{t+1}+ \gamma V(S_{t+1})-V(S_t)$称为TD error。</p>
+<script type="math/tex; mode=display">V(S_t) \leftarrow V(S_t)+\alpha (R_{t+1}+ \gamma V(S_{t+1})-V(S_t))</script><p>其中，$R_{t+1}+ \gamma V(S_{t+1})$称为TD target，$\delta_t=R_{t+1}+ \gamma V(S_{t+1})-V(S_t)$称为TD error。</p>
 <h2 id="MC和TD对比"><a href="#MC和TD对比" class="headerlink" title="MC和TD对比"></a>MC和TD对比</h2><ol>
 <li>蒙特卡洛需要把complete episodes，not by bootstrapping，TD方法使用incomplete episodes，by bootstrapping</li>
 <li>TD可以在连续环境（没有终止状态）中进行，MC只能在有终止状态的环境中进行。</li>
-<li>MC中的Return $G<em>t$是$V</em>{\pi}(S<em>t)$ 的非偏估计（unbiased estimate）。大多数情况下TD中的TD target $R</em>{t+1}+ \gamma V(S<em>{t+1})-V(S_t)$是实际$V</em>{\pi}(S_t)$的有偏估计。</li>
+<li>MC中的Return $G_t$是$V_{\pi}(S_t)$ 的非偏估计（unbiased estimate）。大多数情况下TD中的TD target $R_{t+1}+ \gamma V(S_{t+1})-V(S_t)$是实际$V_{\pi}(S_t)$的有偏估计。</li>
 <li>TD Target比Return的方差更小，因为它只基于一步。</li>
 <li>MC是高Variance，低bias的，其优点（1）很好的收敛（2）（even with function approximation）（3）对初始值不敏感（4）非常容易理解和使用。</li>
 <li>TD低Variance，但有bias，其优点（1）通常更高效（2）TD(0)可以收敛到$V_{\pi}(S_t)$（3）（but not always with function approximation）（4）对初始值敏感</li>
@@ -709,7 +709,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -818,9 +818,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1016,7 +1014,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -1025,7 +1023,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 

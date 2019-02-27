@@ -222,7 +222,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -232,7 +232,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -539,7 +539,7 @@
 <li><strong>原假设$H_0$，备选假设$H_1$</strong>。<ul>
 <li><strong>奈曼-皮尔逊范式(Neyman-Pearson)</strong>:在控制第一类错误概率$\alpha$的前提下，尽量犯使第二类错误的概率$\beta$尽量小。 因此，原假设$H_0$使被保护的，只有条件足够强时才拒绝$H_0$,因此原假设的提出必须经过慎重考虑，一般情况下不可轻易拒绝。</li>
 <li><strong>显著性水平$\alpha$</strong>:在某个样本上做估计，犯第一类错误的概率$\alpha$称为该检验法$W$的显著性水平。</li>
-<li><strong>检验水平</strong>：显著性水平的上确界$sup{\alpha}$称为检验水平。</li>
+<li><strong>检验水平</strong>：显著性水平的上确界$sup\{\alpha\}$称为检验水平。</li>
 <li><strong>简单假设和复合假设</strong>：当$\Theta_0$或者$\Theta_1$为单点集即$H_0$或者$H_1$是一个分布而不是一族分布，则称为简单假设，<br>否则称为复合假设。</li>
 <li><strong>参数假设检验和非参数假设检验</strong>：参数假设检验即对未知参数提出假设，再根据样本进行检验。非参数假设检验例如对未知分布的假设，检验两个分布是否相同（女票的问题即是这类问题，检验元话语在两个语料库中的分布是否相同以得到是否有使用差异的结论），是否独立等。</li>
 </ul>
@@ -559,17 +559,17 @@
 <ol>
 <li>1~2步于临界值法相同。</li>
 <li>计算满足$H_0$时,对于样本$T$的观察值<br>$t_0$，</li>
-<li>计算出$p={\sup \limits<em>{\theta\in{\Theta}_0} P</em>{\theta}(T&gt;t_0)}$</li>
+<li>计算出$p={\sup \limits_{\theta\in{\Theta}_0} P_{\theta}(T&gt;t_0)}$</li>
 <li>对于给定的显著性水平$\alpha$，如果出现$p&lt;\alpha$，则拒绝$H_0$，否则接受。</li>
 </ol>
 <p><strong>直观含义</strong><br>$p$描述了原假设成立时，出现比观测到的情况更极端的概率。</p>
 <h1 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h1><h2 id="对数似然比检验"><a href="#对数似然比检验" class="headerlink" title="对数似然比检验"></a>对数似然比检验</h2><p>这个就是女票的问题。重新表述下问题：现有两个语料库A和B，现想要探究某个词w在语料库A和B中的分布是否相同。<br>对数似然比的方法由Ted Dunning在<a href="../docs/HypothesisTesting/Accurate_Methods_for_the_Statistics_of_Surprise_and_Coincidence.pdf">Accurate Methods for the Statistics of Surprise and Coincidence</a>中提出。下面重新回顾一下。Comparing Corpora using Frequency Profiling</p>
 <h3 id="对数似然比检验的概念"><a href="#对数似然比检验的概念" class="headerlink" title="对数似然比检验的概念"></a>对数似然比检验的概念</h3><p>对于两个假设可信程度的指标，一个比较自然的度量是两个假设的似然比。<br>由此引出似然比检验的方法。<br>对于在假设$H_0$和<br>$H_1$上的似然比：</p>
-<p>$L<em>{\Theta_0}(x)=\sup</em>{\theta\in\Theta_0}f(x,\theta)$</p>
-<p>$L<em>{\Theta_1}(x)=\sup</em>{\theta\in\Theta_1}f(x,\theta)$</p>
+<p>$L_{\Theta_0}(x)=\sup_{\theta\in\Theta_0}f(x,\theta)$</p>
+<p>$L_{\Theta_1}(x)=\sup_{\theta\in\Theta_1}f(x,\theta)$</p>
 <p>考虑其比值</p>
-<p>${\lambda}=\frac{L<em>{\Theta_0}(x)}{L</em>{\Theta_1}(x)}$</p>
-<p>如此比值较大，则说明真参数在$\Theta<em>0$<br>内的可能性更大，我们倾向于则接受$H_0$，反之亦然。<br>在实际中，常使用$L</em>{\Theta}(x)$代替分母<br>${L_{\Theta_1}(x)$来方便计算。</p>
+<p>${\lambda}=\frac{L_{\Theta_0}(x)}{L_{\Theta_1}(x)}$</p>
+<p>如此比值较大，则说明真参数在$\Theta_0$<br>内的可能性更大，我们倾向于则接受$H_0$，反之亦然。<br>在实际中，常使用$L_{\Theta}(x)$代替分母<br>${L_{\Theta_1}(x)$来方便计算。</p>
 <p>此即为次然比检验的直观理解，详细定义参见<a href="../docs/HypothesisTesting/HypothesisTesting_zhangweiping.pdf">附件</a></p>
 <h3 id="Accurate-Methods-for-the-Statistics-of-Surprise-and-Coincidence笔记"><a href="#Accurate-Methods-for-the-Statistics-of-Surprise-and-Coincidence笔记" class="headerlink" title="Accurate Methods for the Statistics of Surprise and Coincidence笔记"></a>Accurate Methods for the Statistics of Surprise and Coincidence笔记</h3><ol>
 <li><blockquote>
@@ -733,7 +733,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -842,9 +842,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1040,7 +1038,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -1049,7 +1047,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 

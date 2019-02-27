@@ -98,18 +98,18 @@
 
 
 
-  <meta name="description" content="深入浅出强化学习 原理入门 读书笔记">
+  <meta name="description" content="基本  迭代计算平均这是下面很多迭代式更新公式的主要根据 S_n = \frac{1}{N}\sum_{i=1}^{n}{a_i}=S_{n-1}+\frac{1}{N}(a_n-S_{n-1})重要性抽样Model-based DP方法v_{\pi}(s)=\sum_{a\in A}{\pi(a|s)}(R_{s}^{a}+\gamma\sum_{s&apos;\in S}{P_{ss&apos;}^{a}v_{\">
 <meta name="keywords" content="RL,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出强化学习 原理入门">
 <meta property="og:url" content="http://yoursite.com/2018/09/19/2018-11-13-RL/index.html">
 <meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="深入浅出强化学习 原理入门 读书笔记">
+<meta property="og:description" content="基本  迭代计算平均这是下面很多迭代式更新公式的主要根据 S_n = \frac{1}{N}\sum_{i=1}^{n}{a_i}=S_{n-1}+\frac{1}{N}(a_n-S_{n-1})重要性抽样Model-based DP方法v_{\pi}(s)=\sum_{a\in A}{\pi(a|s)}(R_{s}^{a}+\gamma\sum_{s&apos;\in S}{P_{ss&apos;}^{a}v_{\">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-25T16:04:05.390Z">
+<meta property="og:updated_time" content="2019-02-27T05:45:15.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出强化学习 原理入门">
-<meta name="twitter:description" content="深入浅出强化学习 原理入门 读书笔记">
+<meta name="twitter:description" content="基本  迭代计算平均这是下面很多迭代式更新公式的主要根据 S_n = \frac{1}{N}\sum_{i=1}^{n}{a_i}=S_{n-1}+\frac{1}{N}(a_n-S_{n-1})重要性抽样Model-based DP方法v_{\pi}(s)=\sum_{a\in A}{\pi(a|s)}(R_{s}^{a}+\gamma\sum_{s&apos;\in S}{P_{ss&apos;}^{a}v_{\">
 
 
 
@@ -222,7 +222,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -232,7 +232,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-26 00:04:05" itemprop="dateModified" datetime="2018-11-26T00:04:05+08:00">2018-11-26</time>
+                <time title="修改时间：2019-02-27 13:45:15" itemprop="dateModified" datetime="2019-02-27T13:45:15+08:00">2019-02-27</time>
               
             
           </span>
@@ -497,7 +497,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.4k</span>
+                <span title="本文字数">1.2k</span>
               
 
               
@@ -517,8 +517,6 @@
           
 
           
-            <div class="post-description">深入浅出强化学习 原理入门 读书笔记</div>
-          
 
         </div>
       </header>
@@ -533,7 +531,14 @@
       
 
       
-        <h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><h2 id="G-t-定义"><a href="#G-t-定义" class="headerlink" title="$G_t$定义"></a>$G_t$定义</h2><script type="math/tex; mode=display">G_t=\sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}}</script><h2 id="v-pi-s-函数定义"><a href="#v-pi-s-函数定义" class="headerlink" title="$v_{\pi}(s)$函数定义"></a>$v_{\pi}(s)$函数定义</h2><script type="math/tex; mode=display">v_{\pi}(s)=E_{\pi}[G_t|S_t=s]=E_{\pi}[\sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}|S_t=s}]</script><h2 id="q-pi-s-a-函数定义"><a href="#q-pi-s-a-函数定义" class="headerlink" title="$q_{\pi}(s,a)$函数定义"></a>$q_{\pi}(s,a)$函数定义</h2><script type="math/tex; mode=display">q_{\pi}(s,a)=E_{\pi}[G_t|S_t=s,A_t=a]=E_{\pi}[\sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}|S_t=s,A_t=a}]</script><h2 id="迭代计算平均"><a href="#迭代计算平均" class="headerlink" title="迭代计算平均"></a>迭代计算平均</h2><p>这是下面很多迭代式更新公式的主要根据</p>
+        <h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><!-- ## $G_t$定义
+$$G_t=\sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}}$$ -->
+<!-- ## $v_{\pi}(s)$函数定义
+$$ v_{\pi}(s)=E_{\pi}[G_t|S_t=s]=E_{\pi}[\sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}|S_t=s}] $$
+
+## $q_{\pi}(s,a)$函数定义
+$$q_{\pi}(s,a)=E_{\pi}[G_t|S_t=s,A_t=a]=E_{\pi}[\sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}|S_t=s,A_t=a}]$$ -->
+<h2 id="迭代计算平均"><a href="#迭代计算平均" class="headerlink" title="迭代计算平均"></a>迭代计算平均</h2><p>这是下面很多迭代式更新公式的主要根据</p>
 <script type="math/tex; mode=display">S_n = \frac{1}{N}\sum_{i=1}^{n}{a_i}=S_{n-1}+\frac{1}{N}(a_n-S_{n-1})</script><h2 id="重要性抽样"><a href="#重要性抽样" class="headerlink" title="重要性抽样"></a>重要性抽样</h2><h1 id="Model-based-DP方法"><a href="#Model-based-DP方法" class="headerlink" title="Model-based DP方法"></a>Model-based DP方法</h1><script type="math/tex; mode=display">v_{\pi}(s)=\sum_{a\in A}{\pi(a|s)}(R_{s}^{a}+\gamma\sum_{s'\in S}{P_{ss'}^{a}v_{\pi}(s')})</script><p>是一个bootstrpd的方法，因为有${P_{ss’}^{a}}$项，所以是model-based的。</p>
 <h1 id="Model-free的基于表格方法"><a href="#Model-free的基于表格方法" class="headerlink" title="Model-free的基于表格方法"></a>Model-free的基于表格方法</h1><h2 id="MC方法"><a href="#MC方法" class="headerlink" title="MC方法"></a>MC方法</h2><p>因为是model-free的, 上面的${P_{ss’}^{a}}$项未知, 所以从定义出发  </p>
 <script type="math/tex; mode=display">v_{\pi}(s)=E_{\pi}[G_t|S_t=s] \\
@@ -583,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/15/2018-06-15-gitUsage/" rel="next" title="git使用中遇到的一些问题及解决">
-                <i class="fa fa-chevron-left"></i> git使用中遇到的一些问题及解决
+              <a href="/2018/06/15/2018-06-15-updatePython_install/" rel="next" title="python升级和常用包的安装脚本">
+                <i class="fa fa-chevron-left"></i> python升级和常用包的安装脚本
               </a>
             
           </div>
@@ -673,7 +678,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -782,9 +787,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -940,7 +943,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本"><span class="nav-number">1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#G-t-定义"><span class="nav-number">1.1.</span> <span class="nav-text">$G_t$定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-pi-s-函数定义"><span class="nav-number">1.2.</span> <span class="nav-text">$v_{\pi}(s)$函数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-pi-s-a-函数定义"><span class="nav-number">1.3.</span> <span class="nav-text">$q_{\pi}(s,a)$函数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代计算平均"><span class="nav-number">1.4.</span> <span class="nav-text">迭代计算平均</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要性抽样"><span class="nav-number">1.5.</span> <span class="nav-text">重要性抽样</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-based-DP方法"><span class="nav-number">2.</span> <span class="nav-text">Model-based DP方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-free的基于表格方法"><span class="nav-number">3.</span> <span class="nav-text">Model-free的基于表格方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MC方法"><span class="nav-number">3.1.</span> <span class="nav-text">MC方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TD方法"><span class="nav-number">3.2.</span> <span class="nav-text">TD方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TD-lambda-方法"><span class="nav-number">3.3.</span> <span class="nav-text">$TD(\lambda)$方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-free的基于值函数逼近的方法"><span class="nav-number">4.</span> <span class="nav-text">Model-free的基于值函数逼近的方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本"><span class="nav-number">1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代计算平均"><span class="nav-number">1.1.</span> <span class="nav-text">迭代计算平均</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要性抽样"><span class="nav-number">1.2.</span> <span class="nav-text">重要性抽样</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-based-DP方法"><span class="nav-number">2.</span> <span class="nav-text">Model-based DP方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-free的基于表格方法"><span class="nav-number">3.</span> <span class="nav-text">Model-free的基于表格方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MC方法"><span class="nav-number">3.1.</span> <span class="nav-text">MC方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TD方法"><span class="nav-number">3.2.</span> <span class="nav-text">TD方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TD-lambda-方法"><span class="nav-number">3.3.</span> <span class="nav-text">$TD(\lambda)$方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-free的基于值函数逼近的方法"><span class="nav-number">4.</span> <span class="nav-text">Model-free的基于值函数逼近的方法</span></a></li></ol></div>
             
 
           </div>
@@ -980,7 +983,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -989,7 +992,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 

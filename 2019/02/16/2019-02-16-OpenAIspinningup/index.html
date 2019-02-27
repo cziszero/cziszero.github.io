@@ -98,20 +98,21 @@
 
 
 
-  <meta name="description" content="Part 1: Key Concepts in RLStochastic Policies通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:  根据$s$可以生成随机策略 根据特定的$action$和$s$可以计算log likelihoo">
+  <meta name="description" content="本篇Blog是针对OpenAI Spinning Up的一个阅读笔记, 同时也正好复习一下以前学过的知识, 总结如下. Part 1: Key Concepts in RLPolicies通常用$a_t = \mu_{\theta}(s_t)$来表示确定性的Policy, 用$a_t \sim \pi_{\theta}(\cdot | s_t)$表示随机性的Policy. Stochastic P">
 <meta name="keywords" content="RL,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenAI Spinning Up 阅读笔记">
 <meta property="og:url" content="http://yoursite.com/2019/02/16/2019-02-16-OpenAIspinningup/index.html">
 <meta property="og:site_name" content="CZ&#39;s blog">
-<meta property="og:description" content="Part 1: Key Concepts in RLStochastic Policies通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:  根据$s$可以生成随机策略 根据特定的$action$和$s$可以计算log likelihoo">
+<meta property="og:description" content="本篇Blog是针对OpenAI Spinning Up的一个阅读笔记, 同时也正好复习一下以前学过的知识, 总结如下. Part 1: Key Concepts in RLPolicies通常用$a_t = \mu_{\theta}(s_t)$来表示确定性的Policy, 用$a_t \sim \pi_{\theta}(\cdot | s_t)$表示随机性的Policy. Stochastic P">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/RL/rl_algorithms_1.svg">
 <meta property="og:image" content="http://yoursite.com/images/RL/DDPG.png">
-<meta property="og:updated_time" content="2019-02-23T14:29:13.967Z">
+<meta property="og:updated_time" content="2019-02-27T13:44:09.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenAI Spinning Up 阅读笔记">
-<meta name="twitter:description" content="Part 1: Key Concepts in RLStochastic Policies通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:  根据$s$可以生成随机策略 根据特定的$action$和$s$可以计算log likelihoo">
-<meta name="twitter:image" content="http://yoursite.com/images/RL/DDPG.png">
+<meta name="twitter:description" content="本篇Blog是针对OpenAI Spinning Up的一个阅读笔记, 同时也正好复习一下以前学过的知识, 总结如下. Part 1: Key Concepts in RLPolicies通常用$a_t = \mu_{\theta}(s_t)$来表示确定性的Policy, 用$a_t \sim \pi_{\theta}(\cdot | s_t)$表示随机性的Policy. Stochastic P">
+<meta name="twitter:image" content="http://yoursite.com/images/RL/rl_algorithms_1.svg">
 
 
 
@@ -224,7 +225,7 @@
         
         
           
-          <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-时间线">
 
     
     
@@ -234,7 +235,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
 
   </li>
         
@@ -426,7 +427,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-23 22:29:13" itemprop="dateModified" datetime="2019-02-23T22:29:13+08:00">2019-02-23</time>
+                <time title="修改时间：2019-02-27 21:44:09" itemprop="dateModified" datetime="2019-02-27T21:44:09+08:00">2019-02-27</time>
               
             
           </span>
@@ -499,7 +500,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.8k</span>
+                <span title="本文字数">7.2k</span>
               
 
               
@@ -513,7 +514,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -533,13 +534,15 @@
       
 
       
-        <h1 id="Part-1-Key-Concepts-in-RL"><a href="#Part-1-Key-Concepts-in-RL" class="headerlink" title="Part 1: Key Concepts in RL"></a>Part 1: Key Concepts in RL</h1><h2 id="Stochastic-Policies"><a href="#Stochastic-Policies" class="headerlink" title="Stochastic Policies"></a>Stochastic Policies</h2><p>通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:</p>
+        <p>本篇Blog是针对<a href="https://spinningup.openai.com" target="_blank" rel="noopener">OpenAI Spinning Up</a>的一个阅读笔记, 同时也正好复习一下以前学过的知识, 总结如下.</p>
+<h1 id="Part-1-Key-Concepts-in-RL"><a href="#Part-1-Key-Concepts-in-RL" class="headerlink" title="Part 1: Key Concepts in RL"></a>Part 1: Key Concepts in RL</h1><h2 id="Policies"><a href="#Policies" class="headerlink" title="Policies"></a>Policies</h2><p>通常用$a_t = \mu_{\theta}(s_t)$来表示确定性的Policy, 用$a_t \sim \pi_{\theta}(\cdot | s_t)$表示随机性的Policy.</p>
+<h3 id="Stochastic-Policies"><a href="#Stochastic-Policies" class="headerlink" title="Stochastic Policies"></a>Stochastic Policies</h3><p>通常有两种形式表示随机策略, categorical policies 和 diagonal Gaussian policies, 分别应用于离散动作空间和连续动作空间的场景. 用作描述随机策略的方法必须满足:</p>
 <ul>
 <li>根据$s$可以生成随机策略</li>
 <li>根据特定的$action$和$s$可以计算log likelihoods: $\log \pi_{\theta}(a|s)$.</li>
 </ul>
-<h3 id="categorical-policies"><a href="#categorical-policies" class="headerlink" title="categorical policies"></a>categorical policies</h3><p>所谓的categorical policies其实和分类类似, 最后经过一个softmax表示各个action的概率, 和分类的区别在于最后取哪个动作还需要按照刚算出来的概率进行抽样, 是非确定的.</p>
-<h3 id="Diagonal-Gaussian-Policies"><a href="#Diagonal-Gaussian-Policies" class="headerlink" title="Diagonal Gaussian Policies"></a>Diagonal Gaussian Policies</h3><p>通常使用多元高斯分布来作为连续action的随机policy, 描述一个多元高斯分布需要每个随机变量的均值$\mu$和他们的协方差矩阵$\Sigma$, 写作</p>
+<h4 id="categorical-policies"><a href="#categorical-policies" class="headerlink" title="categorical policies"></a>categorical policies</h4><p>所谓的categorical policies其实和分类类似, 最后经过一个softmax表示各个action的概率, 和分类的区别在于最后取哪个动作还需要按照刚算出来的概率进行抽样, 是非确定的.</p>
+<h4 id="Diagonal-Gaussian-Policies"><a href="#Diagonal-Gaussian-Policies" class="headerlink" title="Diagonal Gaussian Policies"></a>Diagonal Gaussian Policies</h4><p>通常使用多元高斯分布来作为连续action的随机policy, 描述一个多元高斯分布需要每个随机变量的均值$\mu$和他们的协方差矩阵$\Sigma$, 写作</p>
 <script type="math/tex; mode=display">p\left(\boldsymbol{x}\right)=\left|2\pi\Sigma\right|^{-1/2}\exp\left(-\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{\mu}\right)^T\Sigma^{-1}\left(\boldsymbol{x}-\boldsymbol{\mu}\right)\right)</script><p>但在RL中, 通常使用只有对角线上非零的协方差矩阵, 协方差一般用来刻画两个随机变量的线性相关性, 也就是说表示多个action的随机变量是线性不相关的, 这样可以只用一个向量来表示协方差矩阵$\Sigma$, 通常使用log standard deviations, 即$\log \sigma_{\theta}(s)$, 因为它的取值范围是$(-\infty, \infty)$, 而标准差必须为非负数, 这样不利于训练.</p>
 <p>其一般也有两种方式, 即:</p>
 <ul>
@@ -548,7 +551,11 @@
 </ul>
 <p>抽样使用公式, 其中$z \sim \mathcal{N}(0, I)$, $\odot$ 表示诸元素相乘:</p>
 <script type="math/tex; mode=display">a = \mu_{\theta}(s) + \sigma_{\theta}(s) \odot z</script><p>计算对数似然使用公式:</p>
-<script type="math/tex; mode=display">\log \pi_{\theta}(a|s) = -\frac{1}{2}\left(\sum_{i=1}^k \left(\frac{(a_i - \mu_i)^2}{\sigma_i^2} + 2 \log \sigma_i \right) + k \log 2\pi \right).</script><h2 id="Reward-and-Return"><a href="#Reward-and-Return" class="headerlink" title="Reward and Return"></a>Reward and Return</h2><p>reward 依赖于$s<em>t, a_t, s</em>{t+1}$ , 即 $r<em>t = R(s_t, a_t, s</em>{t+1})$, 但通常可简化为$r_t = R(s_t)$ 或者$r_t = R(s_t,a_t)$<br>而Return的定义也有两种:</p>
+<script type="math/tex; mode=display">\log \pi_{\theta}(a|s) = -\frac{1}{2}\left(\sum_{i=1}^k \left(\frac{(a_i - \mu_i)^2}{\sigma_i^2} + 2 \log \sigma_i \right) + k \log 2\pi \right)</script><h2 id="Trajectories"><a href="#Trajectories" class="headerlink" title="Trajectories"></a>Trajectories</h2><p>一个trajectory / episode / history $\tau$ 表示state, reward, action的序列,</p>
+<script type="math/tex; mode=display">\tau = (s_0, a_0, r_0, s_1, a_1, r_1 ...)</script><p>其中$s_0 \sim \rho_0(\cdot)$.</p>
+<p>当前状态$s_t$根据当前动作$a_t$转移到$s_{t+1}$, 具体如何转移是由环境决定的,<br>可以为确定性的:</p>
+<script type="math/tex; mode=display">s_{t+1} = f(s_t, a_t)</script><p>也可以为非确定性的:</p>
+<script type="math/tex; mode=display">s_{t+1} \sim P(\cdot|s_t, a_t)</script><h2 id="Reward-and-Return"><a href="#Reward-and-Return" class="headerlink" title="Reward and Return"></a>Reward and Return</h2><p>reward 依赖于$s_t, a_t, s_{t+1}$ , 即 $r_t = R(s_t, a_t, s_{t+1})$, 但通常可简化为$r_t = R(s_t)$ 或者$r_t = R(s_t,a_t)$<br>而Return的定义也有两种:</p>
 <ul>
 <li>finite-horizon undiscounted return: $R(\tau) = \sum_{t=0}^T r_t$</li>
 <li>infinite-horizon discounted return: $R(\tau) = \sum_{t=0}^{\infty} \gamma^t r_t$</li>
@@ -558,7 +565,10 @@
 <li>直觉上来看越早拿到收益越好</li>
 <li>数学上来看, 不加折扣的话可能不收敛, 这样就很难处理了</li>
 </ul>
-<h2 id="Value-Functions"><a href="#Value-Functions" class="headerlink" title="Value Functions"></a>Value Functions</h2><ul>
+<h2 id="The-RL-Problem"><a href="#The-RL-Problem" class="headerlink" title="The RL Problem"></a>The RL Problem</h2><p>RL的目标是找到一个policy使得期望回报最大化, 求期望首先要有概率分布, 以只考虑有限步长为例:</p>
+<script type="math/tex; mode=display">P(\tau|\pi) = \rho_0 (s_0) \prod_{t=0}^{T-1} P(s_{t+1} | s_t, a_t) \pi(a_t | s_t).</script><p>则目标函数为:</p>
+<script type="math/tex; mode=display">J(\pi) = \mathop{E}\limits_{\tau \sim \pi}{R(\tau)} = \int_{\tau} P(\tau|\pi) R(\tau)</script><p>我们的目标是找到最优策略$\pi^*$:</p>
+<script type="math/tex; mode=display">\pi^* = \arg \max_{\pi} J(\pi)</script><h2 id="Value-Functions"><a href="#Value-Functions" class="headerlink" title="Value Functions"></a>Value Functions</h2><ul>
 <li><p>On-Policy Value Function $V^{\pi}(s)$ :</p>
 <script type="math/tex; mode=display">V^{\pi}(s) =  \mathop{E}\limits_{\tau \sim \pi} {\left[R(\tau)| s_0 = s\right]}</script></li>
 <li><p>On-Policy Action-Value Function $Q^{\pi}(s,a)$ :</p>
@@ -568,29 +578,61 @@
 <li><p>Optimal Action-Value Function $Q^*(s,a)$:</p>
 <script type="math/tex; mode=display">Q^*(s,a) = \max_{\pi} \mathop{E}\limits_{\tau \sim \pi}{[R(\tau)| s_0 = s, a_0 = a]}</script></li>
 </ul>
-<p>使用这种写法的时候都是指的infinite-horizon discounted return, 而Value functions for finite-horizon undiscounted return would need to accept time as an argument.</p>
-<h2 id="Bellman-Equations"><a href="#Bellman-Equations" class="headerlink" title="Bellman Equations"></a>Bellman Equations</h2><p>the on-policy 中, Bellman方程如下:</p>
-<script type="math/tex; mode=display">V^{\pi}(s) = \mathop{E}\limits_{a \sim \pi  s'\sim P}{r(s,a) + \gamma V^{\pi}(s')}</script><script type="math/tex; mode=display">Q^{\pi}(s,a) = \mathop{E}\limits_{s'\sim P}{r(s,a) + \gamma \mathop{E}\limits_{a'\sim \pi}{Q^{\pi}(s',a')}}</script><p>Bellman最优方程如下:</p>
-<script type="math/tex; mode=display">V^*(s) = \max_a \mathop{E}\limits_{s'\sim P}{[r(s,a) + \gamma V^*(s')]}</script><script type="math/tex; mode=display">Q^*(s,a) = \mathop{E}\limits_{s'\sim P}{[r(s,a) + \gamma \max_{a'} Q^*(s',a')]}</script><p>where $s’ \sim P$ is shorthand for $s’ \sim P(\cdot |s,a)$, indicating that the next state $s’$ is sampled from the environment’s transition rules; $a \sim \pi$ is shorthand for $a \sim \pi(\cdot|s)$; and $a’ \sim \pi$ is shorthand for $a’ \sim \pi(\cdot|s’)$.</p>
-<p>Bellman backup 即指 Bellman方程的右边.</p>
-<h2 id="Advantage-Functions"><a href="#Advantage-Functions" class="headerlink" title="Advantage Functions"></a>Advantage Functions</h2><script type="math/tex; mode=display">A^{\pi}(s,a) = Q^{\pi}(s,a) - V^{\pi}(s)</script><h1 id="Part-2-Kinds-of-RL-Algorithms"><a href="#Part-2-Kinds-of-RL-Algorithms" class="headerlink" title="Part 2: Kinds of RL Algorithms"></a>Part 2: Kinds of RL Algorithms</h1><p>Policy Based的方法更稳定一些, 而value based的方法不太稳定.</p>
-<p>[] 为什么Policy Optimization大多数用on policy的, 而value based的方法大部分是off policy的?</p>
+<p>使用这种写法的时候都是指的infinite-horizon discounted return, 而finite-horizon undiscounted retur需要考虑时间$t$.</p>
+<p>对于$V$和$Q$显然有:</p>
+<script type="math/tex; mode=display">V^{\pi}(s) = \mathop{E}\limits_{a\sim \pi}{\left[Q^{\pi}(s,a)\right]}</script><script type="math/tex; mode=display">V^*(s) = \max\limits_{a}{Q^*(s,a)}</script><h2 id="Bellman-Equations"><a href="#Bellman-Equations" class="headerlink" title="Bellman Equations"></a>Bellman Equations</h2><p>the on-policy 中, Bellman方程如下:</p>
+<script type="math/tex; mode=display">V^{\pi}(s) = \mathop{E}\limits_{a \sim \pi  s'\sim P}{\left[ r(s,a) + \gamma V^{\pi}(s')\right]}</script><script type="math/tex; mode=display">Q^{\pi}(s,a) = \mathop{E}\limits_{s'\sim P}{\left[r(s,a) + \gamma \mathop{E}\limits_{a'\sim \pi}{\left[Q^{\pi}(s',a')\right]}\right]}</script><p>Bellman最优方程如下:</p>
+<script type="math/tex; mode=display">V^*(s) = \max_a \mathop{E}\limits_{s'\sim P}{\left[r(s,a) + \gamma V^*(s')\right]}</script><script type="math/tex; mode=display">Q^*(s,a) = \mathop{E}\limits_{s'\sim P}{\left[r(s,a) + \gamma \max_{a' \sim \pi} Q^*(s',a')\right]}</script><p>其中: $s’ \sim P$ 是 $s’ \sim P(\cdot |s,a)$ 的简写, 表示$s’$是从环境决定的转移分布中抽样的; </p>
+<p>Bellman backup 即指 Bellman方程的右边, 也称作TD-Target</p>
+<h2 id="Advantage-Functions"><a href="#Advantage-Functions" class="headerlink" title="Advantage Functions"></a>Advantage Functions</h2><p>根据公式$V^{\pi}(s) = \mathop{E}\limits_{a\sim \pi}{\left[Q^{\pi}(s,a)\right]}$, 即$V^{\pi}(s)$表示了在状态$s$处按照策略$\pi$随机抽取一个action的平均价值, 而Advantage Functions就用来表示某个action比”平均”情况好多少.</p>
+<script type="math/tex; mode=display">A^{\pi}(s,a) = Q^{\pi}(s,a) - V^{\pi}(s)</script><h1 id="Part-2-Kinds-of-RL-Algorithms"><a href="#Part-2-Kinds-of-RL-Algorithms" class="headerlink" title="Part 2: Kinds of RL Algorithms"></a>Part 2: Kinds of RL Algorithms</h1><p>在本文档中给出了一个主要RL方法的分类, 如下图所示:<br><img src="/images/RL/rl_algorithms_1.svg" alt="Kinds of RL Algorithms"></p>
+<h2 id="Model-Based-vs-Model-Free"><a href="#Model-Based-vs-Model-Free" class="headerlink" title="Model-Based vs Model-Free"></a>Model-Based vs Model-Free</h2><p>区别在于是否已知Environment的信息, 即状态转移的分布及reward的信息. 如果已知这些信息显然可以做plan, 在真正执行一个动作之前就可以大概知道其结果, 可以提高数据效率. 但缺点是很难对Environment建模, 建模好的Environment容易与真实环境存在很大bias, 使得在虚拟环境中学到的policy在真实环境中效果很差.</p>
+<h2 id="what-to-learn-and-how-to-learn"><a href="#what-to-learn-and-how-to-learn" class="headerlink" title="what to learn and how to learn"></a>what to learn and how to learn</h2><ul>
+<li>Policy (确定性的deterministic或非确定性的stochastic): 直接优化参数$\theta$表示的Policy $\pi_\theta(a|s)$, 通常是on policy的, 例如:<ul>
+<li>A2C/A3C直接优化$J(\pi_\theta)$</li>
+<li>PPO 通过最大化一个代替的目标函数来使优化policy </li>
+</ul>
+</li>
+<li>Q/V 学习 $Q^*$  或 $V^*$, 然后通过$a(s) = \arg \max_a Q^*_{\theta}(s,a)$转化得到最优策略, 通常使off-policy的. 例如:<ul>
+<li>DQN</li>
+<li>C51</li>
+</ul>
+</li>
+<li>Q和Policy共同学习<ul>
+<li><a href="#DDPG-Deep-Deterministic-Policy-Gradient">DDPG</a></li>
+<li><a href="#Soft-Actor-Critic">SAC</a> : 随机策略, 熵正则化(entropy regularization)使得学习更稳定, 效果更好</li>
+</ul>
+</li>
+</ul>
+<h3 id="Trade-offs"><a href="#Trade-offs" class="headerlink" title="Trade-offs"></a>Trade-offs</h3><ul>
+<li>Policy Based的方法更稳定一些, 而value based的方法不太稳定</li>
+<li>Value Based的方法比Policy Based的样本利用效率更高.</li>
+</ul>
+<h2 id="Model-Based-RL"><a href="#Model-Based-RL" class="headerlink" title="Model-Based RL"></a>Model-Based RL</h2><ul>
+<li>Pure Planning: 只根据已知的Model进行plan</li>
+<li>Expert Iteration: 有$\pi_\theta(a|s)$, 会产生一些样本, 然后用Monte Carlo Tree Search等方法在Model中搜索以提供一个更好的action, 来训练$\pi_\theta(a|s)$. 例子有EXIT, AlphaZero等</li>
+<li>Data Augmentation for Model-Free Mothods: 使用Model-Free的RL方法, 但使用基于model生成的样本增强训练数据(MBVE) 或 只是用虚拟生成的数据(World Models)来training in the dream</li>
+<li>Embedding Planning Loops into Policies: 选择何时plan何时使用$\pi_\theta(a|s)$, 例如I2A.</li>
+</ul>
 <h1 id="Part-3-Intro-to-Policy-Optimization"><a href="#Part-3-Intro-to-Policy-Optimization" class="headerlink" title="Part 3: Intro to Policy Optimization"></a>Part 3: Intro to Policy Optimization</h1><h1 id="DDPG-Deep-Deterministic-Policy-Gradient"><a href="#DDPG-Deep-Deterministic-Policy-Gradient" class="headerlink" title="DDPG Deep Deterministic Policy Gradient"></a>DDPG Deep Deterministic Policy Gradient</h1><p>在该文档中对DDPG介绍的很简单, 基本上就是按照链式求导法则讲的. 因为这个系列文档中没有Actor Critic的内容, 所以实际上先讲了下Actor Critic的原理.</p>
-<p>原文中The Q-Learning Side of DDPG实际上讲的是AC框架中Critic, Critic的作用是来估计$Q(s,a)$, 我们用参数$\phi$来估计$Q$, 即有$Q_\phi(s,a)$, 加上Bellman最优方程: </p>
-<script type="math/tex; mode=display">Q^*(s,a) = \mathop{E}\limits_{s' \sim P} \left[r(s,a) + \gamma \max_{a'} Q^*(s', a')\right]</script><p>, 使用这个作为更准确$Q$提供训练信号, 最后使用MSE作为Loss, 则得到最终的Loss函数:</p>
-<script type="math/tex; mode=display">
-L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
-    \Bigg( Q_{\phi}(s,a) - \left(r + \gamma (1 - d) \max_{a'} Q_{\phi}(s',a') \right) \Bigg)^2
-    \right]</script><p>这就是Q-learning以及AC框架中Critic的Loss形式. 在DQN中为了稳定训练引入Replay Buffer和Target Networks.<br>这个地方文档中在You Should Know里写了为什么可以用old experiences, 就是无论多过时的$s,a,r,s’,d$都应该遵循Bellman方程, 但实际上因为前面还有个求期望, 所以Replay Buffer也不能太大, 要不然old policy的$s,a,r,s’,d$的分布可能和现在的policy的$s,a,r,s’,d$分布是不一致的.<br>第二个问题为什么要使用Target Network, 文档里说的很简单, 就是说$r + \gamma (1 - d) \max<em>{a’} Q</em>{\phi}(s’,a’)$和$\phi$有关, 不用的话训练不稳定. 对此我产生一个问题是使用semi-gradient更新确实有问题, 但我可以对整个Loss重新求梯度做为更新的参数啊, 为啥非得引入target network呢? <u><i>对此, Sutton的书里说如果Td-target是静态的可以保证收敛, 但如果是动态的不能保证收敛, [待查阅]</i></u>&lt;/i&gt;<br>所以最终的Loss为:</p>
-<script type="math/tex; mode=display">
-L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
-    \Bigg( Q_{\phi}(s,a) - \left(r + \gamma (1 - d) Q_{\phi_{\text{targ}}}(s', \mu_{\theta_{\text{targ}}}(s')) \right) \Bigg)^2
-    \right],</script><p>加下来说的The Policy Learning Side of DDPG, 实际上就是AC中的Actor, 在DDPG中, 应用链式求导法则即可.<br>由于DDPG是确定性的, 无法像SPG一样天然的包含探索, 所以需要加入噪声, 原论文中说加入time-correlated OU noise, 但更新的研究证明加入mean-zero Gaussian noise就非常好了.<br>算法整体的伪代码如下所示:<br><img src="/images/RL/DDPG.png" alt="DDPG"></p>
+<h2 id="Critic"><a href="#Critic" class="headerlink" title="Critic"></a>Critic</h2><p>原文中The Q-Learning Side of DDPG实际上讲的是AC框架中Critic, Critic的作用是来估计$Q(s,a)$, 我们用参数$\phi$来估计$Q$, 即有$Q_\phi(s,a)$, 加上Bellman最优方程: </p>
+<script type="math/tex; mode=display">Q^*(s,a) = \mathop{E}\limits_{s' \sim P} \left[r(s,a) + \gamma \max_{a'} Q^*(s', a')\right]</script><p>实际上是一种自举(bootstrapping)的方法, 往后多看一步对$Q^*(s,a)$的估计更准确一些, 使用两者的差作为训练信号, 及TD-error $\delta$</p>
+<script type="math/tex; mode=display">\delta = Q_{\phi}(s,a) - \left(r + \gamma (1 - d) \max_{a'} Q_{\phi}(s',a') \right)</script><p>其中$d$表示该episode是否结束. 以最小化TD-error为目标, 使用MSE作为metric, 得到最终的Loss函数:</p>
+<script type="math/tex; mode=display">L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[\delta ^2 \right]</script><p>这就是Q-learning以及AC框架中Critic的Loss形式. 在DQN中为了稳定训练引入Replay Buffer和Target Networks.<br>这个地方文档中在You Should Know里写了为什么可以用old experiences, 就是无论多过时的$(s,a,r,s’,d)$都应该遵循Bellman方程, <del>但实际上因为前面还有个求期望, 所以Replay Buffer也不能太大, 要不然old policy的$(s,a,r,s’,d)$的分布可能和现在的policy的$(s,a,r,s’,d)$分布是不一致的. </del> —&gt; 这一点之前的理解是有问题的, 如果policy产生了变化, 即对应$s_1$的action可能不再是$a_1$而是$a_2$, 但是对于$Q(s,a)$来说是针对两个不同的值并不会产生混淆, 但由于近期之内都不会需要$Q(s_1,a_1)$了, 会让训练速度变慢, 所以Replay Buffer不能太大. 而Replay Buffer不能太小的原因是没法很好的拟合均值操作, 容易过拟合.</p>
+<p>第二个问题为什么要使用Target Network, 文档里说的很简单, 就是说$r + \gamma (1 - d) \max_{a’} Q_{\phi}(s’,a’)$和$\phi$有关, 不用的话训练不稳定. 对此我产生一个问题是使用semi-gradient更新确实有问题, 但我可以对整个Loss重新求梯度做为更新的参数啊, 为啥非得引入target network呢? <u><em>对此, Sutton的书里说如果Td-target是静态的可以保证收敛, 但如果是动态的不能保证收敛.</em></u>  </p>
+<h2 id="Actor"><a href="#Actor" class="headerlink" title="Actor"></a>Actor</h2><p>加下来说的The Policy Learning Side of DDPG, 实际上就是AC中的Actor. 可以看到, 在$\delta$中, 有一个求$\max$的操作, 显然对于连续的情况无法高效的实现, 在DDPG中的选择是直接训练得到一个确定性的policy使得$\mu_\theta(s)$即为最优的action, 这样就可以直接应用链式求导法则来求$\theta$的梯度即可.</p>
+<p>由于DDPG是确定性的, 无法像SPG一样天然的包含探索, 所以需要加入噪声, 原论文中说加入time-correlated OU noise, 但更新的研究证明加入mean-zero Gaussian noise就非常好了. </p>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>算法整体的伪代码如下所示:<br><img src="/images/RL/DDPG.png" alt="DDPG"></p>
 <h2 id="Key-Notes"><a href="#Key-Notes" class="headerlink" title="Key Notes"></a>Key Notes</h2><ol>
 <li>DDPG和DQN一样, 是off policy的, 需要Replay Buffer</li>
 <li>DDPG因为用到$\frac{\partial Q(s,a)}{\partial a}$ 所以要求$a$是连续的</li>
 <li>DDPG的主要算法思想即链式求导法则</li>
+<li>需要注意的是训练Critic和训练Actor使用的样本是不一样的, 训练Critic时使用的是Replay Buffer中的$(s,a,r,s’,d)$元组, 而训练Actor的时候只使用$s$, 通过$\max{Q(s,\mu_\theta(s))}$来更新Policy.</li>
 </ol>
+<h1 id="Soft-Actor-Critic"><a href="#Soft-Actor-Critic" class="headerlink" title="Soft Actor-Critic"></a>Soft Actor-Critic</h1><h1 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h1><ul>
+<li>[√] 为什么Policy Optimization大多数用on policy的, 而value based的方法大部分是off policy的?<br>和师兄讨论后的理解:<br>Policy Optimization 的方法要优化现在的Policy, 自然不能使用以前Policy产生的$(s,a,r,s’,d)$元组, 因为分布不一样了.<br>Value Based的方法可以使用以前Policy产生的样本的原因在于参见<a href="#Critic">DDPG中关于Critic的描述</a></li>
+<li>[] 学到$V^*(s)$后如何转化为policy</li>
+</ul>
 
       
     </div>
@@ -715,7 +757,7 @@ L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -824,9 +866,7 @@ L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -982,7 +1022,7 @@ L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1-Key-Concepts-in-RL"><span class="nav-number">1.</span> <span class="nav-text">Part 1: Key Concepts in RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stochastic-Policies"><span class="nav-number">1.1.</span> <span class="nav-text">Stochastic Policies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#categorical-policies"><span class="nav-number">1.1.1.</span> <span class="nav-text">categorical policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diagonal-Gaussian-Policies"><span class="nav-number">1.1.2.</span> <span class="nav-text">Diagonal Gaussian Policies</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reward-and-Return"><span class="nav-number">1.2.</span> <span class="nav-text">Reward and Return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-Functions"><span class="nav-number">1.3.</span> <span class="nav-text">Value Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bellman-Equations"><span class="nav-number">1.4.</span> <span class="nav-text">Bellman Equations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage-Functions"><span class="nav-number">1.5.</span> <span class="nav-text">Advantage Functions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-2-Kinds-of-RL-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Part 2: Kinds of RL Algorithms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-3-Intro-to-Policy-Optimization"><span class="nav-number">3.</span> <span class="nav-text">Part 3: Intro to Policy Optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDPG-Deep-Deterministic-Policy-Gradient"><span class="nav-number">4.</span> <span class="nav-text">DDPG Deep Deterministic Policy Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Notes"><span class="nav-number">4.1.</span> <span class="nav-text">Key Notes</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1-Key-Concepts-in-RL"><span class="nav-number">1.</span> <span class="nav-text">Part 1: Key Concepts in RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Policies"><span class="nav-number">1.1.</span> <span class="nav-text">Policies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stochastic-Policies"><span class="nav-number">1.1.1.</span> <span class="nav-text">Stochastic Policies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#categorical-policies"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">categorical policies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Diagonal-Gaussian-Policies"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Diagonal Gaussian Policies</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trajectories"><span class="nav-number">1.2.</span> <span class="nav-text">Trajectories</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reward-and-Return"><span class="nav-number">1.3.</span> <span class="nav-text">Reward and Return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-RL-Problem"><span class="nav-number">1.4.</span> <span class="nav-text">The RL Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-Functions"><span class="nav-number">1.5.</span> <span class="nav-text">Value Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bellman-Equations"><span class="nav-number">1.6.</span> <span class="nav-text">Bellman Equations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage-Functions"><span class="nav-number">1.7.</span> <span class="nav-text">Advantage Functions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-2-Kinds-of-RL-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Part 2: Kinds of RL Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Based-vs-Model-Free"><span class="nav-number">2.1.</span> <span class="nav-text">Model-Based vs Model-Free</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-to-learn-and-how-to-learn"><span class="nav-number">2.2.</span> <span class="nav-text">what to learn and how to learn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trade-offs"><span class="nav-number">2.2.1.</span> <span class="nav-text">Trade-offs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Based-RL"><span class="nav-number">2.3.</span> <span class="nav-text">Model-Based RL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-3-Intro-to-Policy-Optimization"><span class="nav-number">3.</span> <span class="nav-text">Part 3: Intro to Policy Optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDPG-Deep-Deterministic-Policy-Gradient"><span class="nav-number">4.</span> <span class="nav-text">DDPG Deep Deterministic Policy Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Critic"><span class="nav-number">4.1.</span> <span class="nav-text">Critic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor"><span class="nav-number">4.2.</span> <span class="nav-text">Actor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪代码"><span class="nav-number">4.3.</span> <span class="nav-text">伪代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Notes"><span class="nav-number">4.4.</span> <span class="nav-text">Key Notes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Soft-Actor-Critic"><span class="nav-number">5.</span> <span class="nav-text">Soft Actor-Critic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Questions"><span class="nav-number">6.</span> <span class="nav-text">Questions</span></a></li></ol></div>
             
 
           </div>
@@ -1022,7 +1062,7 @@ L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   
 
   
@@ -1031,7 +1071,7 @@ L(\phi, {\mathcal D}) = \mathop{E}\limits_{(s,a,r,s',d) \sim {\mathcal D}}\left[
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:48</span>
   
 </div>
 
