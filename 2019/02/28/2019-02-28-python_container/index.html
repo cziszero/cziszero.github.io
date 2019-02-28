@@ -98,20 +98,28 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="CZ&#39;s blog">
-<meta property="og:url" content="http://cziszero.github.io/archives/2015/index.html">
+  <meta name="description" content="以前刷题都是使用C++, 最近觉着用Python写起来更简单一些, 但一直那Python当脚本用, 对Python里面各种数据类型的内部实现及时间复杂度反而不是很熟悉, 所以查了下比较常用的几个数据类型的内部实现, 总结如下. listlist这个名字比较具有迷惑性, 其实python中的list实际上是一个动态数组, 相当于c++中的vector. key notes 对于一个具有N个元素的列表">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中list set dict deque PriorityQueue的实现及各种操作时间复杂度">
+<meta property="og:url" content="http://cziszero.github.io/2019/02/28/2019-02-28-python_container/index.html">
 <meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="以前刷题都是使用C++, 最近觉着用Python写起来更简单一些, 但一直那Python当脚本用, 对Python里面各种数据类型的内部实现及时间复杂度反而不是很熟悉, 所以查了下比较常用的几个数据类型的内部实现, 总结如下. listlist这个名字比较具有迷惑性, 其实python中的list实际上是一个动态数组, 相当于c++中的vector. key notes 对于一个具有N个元素的列表">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cziszero.github.io/images/python/deque.png">
+<meta property="og:image" content="http://cziszero.github.io/images/python/dict.jpg">
+<meta property="og:updated_time" content="2019-02-28T17:19:18.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CZ&#39;s blog">
+<meta name="twitter:title" content="Python中list set dict deque PriorityQueue的实现及各种操作时间复杂度">
+<meta name="twitter:description" content="以前刷题都是使用C++, 最近觉着用Python写起来更简单一些, 但一直那Python当脚本用, 对Python里面各种数据类型的内部实现及时间复杂度反而不是很熟悉, 所以查了下比较常用的几个数据类型的内部实现, 总结如下. listlist这个名字比较具有迷惑性, 其实python中的list实际上是一个动态数组, 相当于c++中的vector. key notes 对于一个具有N个元素的列表">
+<meta name="twitter:image" content="http://cziszero.github.io/images/python/deque.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://cziszero.github.io/archives/2015/">
+  <link rel="canonical" href="http://cziszero.github.io/2019/02/28/2019-02-28-python_container/">
 
 
 
@@ -121,7 +129,7 @@
   };
 </script>
 
-  <title>归档 | CZ's blog</title>
+  <title>Python中list set dict deque PriorityQueue的实现及各种操作时间复杂度 | CZ's blog</title>
   
 
 
@@ -179,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,7 +276,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -297,25 +305,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -362,602 +351,286 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cziszero.github.io/2019/02/28/2019-02-28-python_container/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h2 class="post-title" itemprop="name headline">Python中list set dict deque PriorityQueue的实现及各种操作时间复杂度<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2019-02-28-python_container.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-28T00:00:00+08:00">2019-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 01:19:18" itemprop="dateModified" datetime="2019-03-01T01:19:18+08:00">2019-03-01</time>
+              
+            
+          </span>
+
           
-        不错! 目前共计 76 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
 
-      
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2015">2015</h2>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/12/26/2015-12-26-javaNote/" itemprop="url">
+          
             
-              <span itemprop="name">java学习笔记</span>
             
-          </a>
-        
-      </h3>
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/02/28/2019-02-28-python_container/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/28/2019-02-28-python_container/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-12-26T00:00:00+08:00" content="2015-12-26">
-          12-26
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
+            <div class="post-symbolscount">
+              
 
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/11/26/2015-11-26-windowsUse/" itemprop="url">
-            
-              <span itemprop="name">windows下一些常用软件的配置</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-11-26T00:00:00+08:00" content="2015-11-26">
-          11-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/11/10/2015-11-10-luojialuntan/" itemprop="url">
-            
-              <span itemprop="name">真正敢想</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-11-10T00:00:00+08:00" content="2015-11-10">
-          11-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>以前刷题都是使用C++, 最近觉着用Python写起来更简单一些, 但一直那Python当脚本用, 对Python里面各种数据类型的内部实现及时间复杂度反而不是很熟悉, 所以查了下比较常用的几个数据类型的内部实现, 总结如下.</p>
+<h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><p>list这个名字比较具有迷惑性, 其实python中的list实际上是一个动态数组, 相当于c++中的vector.</p>
+<h2 id="key-notes"><a href="#key-notes" class="headerlink" title="key notes"></a>key notes</h2><ul>
+<li>对于一个具有N个元素的列表，当一次Append操作发生时，新列表要分配多少内存（额外M个元素，需多分配一个元素存储长度）呢？答案是：<code>M = (N &gt;&gt; 3) + (N &lt;9 ? 3 : 6) + 1</code></li>
+</ul>
+<h2 id="key-notes-1"><a href="#key-notes-1" class="headerlink" title="key notes"></a>key notes</h2><ul>
+<li>自带一个inplace的排序方法<code>sort</code>, 其算法是<a href="https://mp.weixin.qq.com/s?__biz=MzI2MTY0OTg2Nw==&amp;mid=2247483816&amp;idx=1&amp;sn=079af3d70efcb68efa7400f09decb59c&amp;chksm=ea56650cdd21ec1ace7c8fd168d62feb636e4b32f9a4d90329fe479489d8e7a70e612df8920b&amp;token=2074049324&amp;lang=zh_CN#rd" target="_blank" rel="noopener">timsort</a>, <a href="/docs/backup/timsort.pdf">防挂备份</a>, 是一种稳定的排序方法, 简单的说就是混用插入排序与归并排序，二分搜索等算法，亮点是充分利用待排序数据可能部分有序的事实，并且依据待排序数据内容动态改变排序策略——选择性进行归并以及galloping. 知乎上有位答主概括的很好了, <a href="https://www.zhihu.com/question/23928138/answer/562890458" target="_blank" rel="noopener">引用</a>如下:  <blockquote>
+<p>完善的基本工作过程是：<br>1.扫描数组，确定其中的单调上升段和严格单调下降段，将严格下降段反转。我们将这样的段称之为run。<br>2.定义最小run长度，短于此的run通过插入排序合并为长度高于最小run长度；<br>3.反复归并一些相邻run，过程中需要避免归并长度相差很大的run，直至整个排序完成；<br>4.如何避免归并长度相差很大run呢， 依次将run压入栈中，若栈顶run X，run Y，run Z 的长度违反了X&gt;Y+Z 或 Y&gt;Z 则Y run与较小长度的run合并，并再次放入栈中。 依据这个法则，能够尽量使得大小相同的run合并，以提高性能。注意Timsort是稳定排序故只有相邻的run才能归并。<br>5.Merge操作还可以辅之以galloping，具体细节可以自行研究。</p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+<h1 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h1><p>deque位于<code>collections</code>模块中, 使用需要<code>from collections import deque</code>.<br>内部实现为一个分段数组，容器中的元素分段存放在一个个大小固定的数组中，此外容器还需要维护一个存放这些数组首地址的索引数组, 其示意图如下图所示:<br><img src="/images/python/deque.png" alt="deque"></p>
+<h2 id="key-notes-2"><a href="#key-notes-2" class="headerlink" title="key notes"></a>key notes</h2><ul>
+<li>初始化deque的时候可以给他传一个参数maxlen，如果deque中的元素超过maxlen的值，那么就会从deque中的一边去删除元素，也就是deque始终保持maxlen最大长度的元素，如果超过了就会自动把以前的元素弹出.</li>
+<li>deque不支持切片操作</li>
+<li>由其实现可以得知其随机索引要比list慢</li>
+</ul>
+<h1 id="set-dict"><a href="#set-dict" class="headerlink" title="set/dict"></a>set/dict</h1><p>python中的set和dict都是基于hash的实现, 这个是人尽皆知的事情, 重点是如何分配hash表的长度(如何适应数据的不断增长)以及使用什么碰撞策略.<br>其示意图如下所示:<br><img src="/images/python/dict.jpg" alt="dict"><br>其处理碰撞的策略即为开放寻址法(Open addressing), 生成一个二次探测序列(quadratic probing sequence)依次探测.<br>其hash表大小最初为8, 存储(k,v)对时即存在<code>hash(k) &amp; (len-1)</code>的位置, 使用超过了总容量的2/3时，分配一个长度更大的数组，同时将旧表中的条目复制到新的表中。数组长度调整后的长度不小于活动槽数量的4倍，即<code>minused = 24 = 4*ma_used</code>。而当活动槽的数量非常大（大于50000）时，调整后长度应不小于活动槽数量的2倍，即<code>2*ma_used</code>。 详细请探究这个<a href="http://www.laurentluce.com/posts/python-dictionary-implementation/" target="_blank" rel="noopener">blog</a>, <a href="http://python.jobbole.com/85040/" target="_blank" rel="noopener">中文版</a>, <a href="/docs/backup/python_dict.pdf">防挂备份</a></p>
+<h1 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h1><p><code>heappq</code>模块和<code>queue.PriorityQueue</code>类, <code>PriorityQueue</code>只是对<code>heappq</code>中各种操作的简单封装, 还有个很大的问题是无法将一个非堆用函数的方式调整为一个堆, 不过可以使用<code>heappg.heapify()</code>调整好后赋给<code>PriorityQueue</code>实例的<code>queue</code>成员.</p>
+<h1 id="各种操作时间复杂度"><a href="#各种操作时间复杂度" class="headerlink" title="各种操作时间复杂度"></a>各种操作时间复杂度</h1><p>其实知道内部实现之后各种操作的时间复杂度很容易就知道了, 下面附上python的官方说明, <a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">TimeComplexity</a></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/11/04/2015-11-04-CompilerBottomUp/" itemprop="url">
-            
-              <span itemprop="name">自底向上的语法分析</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-11-04T00:00:00+08:00" content="2015-11-04">
-          11-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/11/01/2015-11-01-CompilerTopdown/" itemprop="url">
-            
-              <span itemprop="name">自顶向下的语法分析 LL(1)</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-11-01T00:00:00+08:00" content="2015-11-01">
-          11-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/10/30/2015-10-30-CompilerLexer/" itemprop="url">
-            
-              <span itemprop="name">词法分析 RE DFA 与 NFA</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-10-30T00:00:00+08:00" content="2015-10-30">
-          10-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/10/02/2015-10-02-flex/" itemprop="url">
-            
-              <span itemprop="name">正则&Flex</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-10-02T00:00:00+08:00" content="2015-10-02">
-          10-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/19/2015-09-30-install&config/" itemprop="url">
-            
-              <span itemprop="name">各种常用软件的安装和配置</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-19T00:00:00+08:00" content="2015-09-19">
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/19/2015-09-19-ComputerNet_English2Chinese/" itemprop="url">
-            
-              <span itemprop="name">计算机网络之中英术语对照表</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-19T00:00:00+08:00" content="2015-09-19">
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/19/2015-09-19-ComputerNet_DataLinkLayer/" itemprop="url">
-            
-              <span itemprop="name">计算机网络学习之数据链路层</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-19T00:00:00+08:00" content="2015-09-19">
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/19/2015-09-19-C++note/" itemprop="url">
-            
-              <span itemprop="name">C++学习笔记</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-19T00:00:00+08:00" content="2015-09-19">
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/14/2015-09-14-Clanguage/" itemprop="url">
-            
-              <span itemprop="name">C语言中的一些问题</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-14T00:00:00+08:00" content="2015-09-14">
-          09-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/11/2015-09-11-theDeathOfPC/" itemprop="url">
-            
-              <span itemprop="name">PC之死</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-11T00:00:00+08:00" content="2015-09-11">
-          09-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/09/11/2015-09-11-cmd/" itemprop="url">
-            
-              <span itemprop="name">cmd常用命令</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-09-11T00:00:00+08:00" content="2015-09-11">
-          09-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/08/26/2015-08-26-thanks/" itemprop="url">
-            
-              <span itemprop="name">鸣谢</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-08-26T00:00:00+08:00" content="2015-08-26">
-          08-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/08/17/2015-08-27-shadowvpn/" itemprop="url">
-            
-              <span itemprop="name">shadowvpn使用方法</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
-          08-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/16/2019-02-16-OpenAIspinningup/" rel="next" title="OpenAI Spinning Up 阅读笔记">
+                <i class="fa fa-chevron-left"></i> OpenAI Spinning Up 阅读笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -977,8 +650,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1218,6 +900,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#list"><span class="nav-number">1.</span> <span class="nav-text">list</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#key-notes"><span class="nav-number">1.1.</span> <span class="nav-text">key notes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-notes-1"><span class="nav-number">1.2.</span> <span class="nav-text">key notes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deque"><span class="nav-number">2.</span> <span class="nav-text">deque</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#key-notes-2"><span class="nav-number">2.1.</span> <span class="nav-text">key notes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#set-dict"><span class="nav-number">3.</span> <span class="nav-text">set/dict</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PriorityQueue"><span class="nav-number">4.</span> <span class="nav-text">PriorityQueue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种操作时间复杂度"><span class="nav-number">5.</span> <span class="nav-text">各种操作时间复杂度</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -1372,6 +1071,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
 
   
 
@@ -1385,9 +1088,28 @@
   <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com/count.js" async></script>
 
 
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cziszero.github.io/2019/02/28/2019-02-28-python_container/";
+    this.page.identifier = "2019/02/28/2019-02-28-python_container/";
+    this.page.title = 'Python中list set dict deque PriorityQueue的实现及各种操作时间复杂度';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
 
 
 
+
+
+  
 
 
   
