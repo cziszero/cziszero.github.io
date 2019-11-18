@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="趁着给女票解决一个问题的时候复习一下参数估计，根据《概率论与数理统计》第7章编写。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-27T15:10:00.628Z">
+<meta property="og:updated_time" content="2019-03-01T11:37:02.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="参数估计">
 <meta name="twitter:description" content="趁着给女票解决一个问题的时候复习一下参数估计，根据《概率论与数理统计》第7章编写。">
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-27 23:10:00" itemprop="dateModified" datetime="2019-02-27T23:10:00+08:00">2019-02-27</time>
+                <time title="修改时间：2019-03-01 19:37:02" itemprop="dateModified" datetime="2019-03-01T19:37:02+08:00">2019-03-01</time>
               
             
           </span>
@@ -533,56 +533,52 @@
       
 
       
-        <h1 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h1><p>数理统计的基本问题就是根据样本所提供的信息，对总体的分布或者分布的数字特征等做出统计判断。<br>参数估计是这样一类问题，其总体所服从的分布类型是知道的，而他的某些参数确实位置的。<br>对于这一类问题，想要确定总体的分布，关键是构造合理的方法将这些参数估计出来。</p>
-<h2 id="点估计"><a href="#点估计" class="headerlink" title="点估计"></a>点估计</h2><p><strong>概念</strong>：构造一个合适的统计量并将其观察值作为参数的估计值。</p>
-<h3 id="矩估计法"><a href="#矩估计法" class="headerlink" title="矩估计法"></a>矩估计法</h3><p><strong>原理</strong>：当样本容量n趋向于无穷时，样本的r阶矩依概率收敛于总体的r阶矩。</p>
-<p><strong>方法</strong>：用样本的r阶矩代替总体的r阶矩。</p>
+        <p>数理统计的基本问题就是根据样本所提供的信息，对总体的分布或者分布的数字特征等做出统计判断。参数估计是这样一类问题，其总体所服从的分布类型是已知的，而他的某些参数是为止的。对于这一类问题，想要确定总体的分布，关键是构造合理的方法将这些参数估计出来。</p>
+<h1 id="点估计"><a href="#点估计" class="headerlink" title="点估计"></a>点估计</h1><p><strong>概念</strong>：构造一个合适的统计量并将其观察值作为参数的估计值。</p>
+<h2 id="矩估计法"><a href="#矩估计法" class="headerlink" title="矩估计法"></a>矩估计法</h2><p><strong>原理</strong>：当样本容量n趋向于无穷时，样本的$r$阶矩依概率收敛于总体的$r$阶矩。</p>
+<p><strong>方法</strong>：用样本的$r$阶矩代替总体的$r$阶矩。</p>
 <p><strong>注意</strong>：</p>
 <ul>
-<li><p>期望不存在时无法使用。</p>
-</li>
-<li><p>有时矩估计的结果不唯一。此时的原则是尽量使用低阶矩。</p>
-</li>
+<li>期望不存在时无法使用。</li>
+<li>有时矩估计的结果不唯一。此时的原则是尽量使用低阶矩。</li>
 </ul>
-<h3 id="最大似然估计法"><a href="#最大似然估计法" class="headerlink" title="最大似然估计法"></a>最大似然估计法</h3><p><strong>原理</strong>：随机实验时有若干个可能的结果，如果在一次试验中结果A发生，而导致结果A发生的原因很多，<br>在分析导致结果A发生的原因时，我们更愿相信使结果A发生概率最大的原因为导致A发生的真实原因。</p>
+<h2 id="最大似然估计法"><a href="#最大似然估计法" class="headerlink" title="最大似然估计法"></a>最大似然估计法</h2><p><strong>原理</strong>：随机实验时有若干个可能的结果，如果在一次试验中结果A发生，而导致结果A发生的原因很多，在分析导致结果A发生的原因时，我们更愿相信使结果A发生概率最大的原因为导致A发生的真实原因。</p>
 <p><strong>公式</strong>：</p>
 <ul>
 <li>似然函数 $L(\theta;x_i)$</li>
-<li>最大似然估计：$max(L(\theta;x_i)) of \theta$</li>
+<li>最大似然估计：$\arg \max_\theta(L(\theta;x_i))$</li>
 <li>似然方程：$d(ln(L(\theta)))=0$</li>
 </ul>
-<p><strong>理解</strong>：似然函数可以看成有了结果（X）之后，此结果是由原因（$\theta$）导致的可能性的一种度量。</p>
+<p><strong>理解</strong>：似然函数可以看成有了结果X之后，此结果是由原因$\theta$导致的可能性的一种度量。</p>
 <p><strong>注意</strong>：</p>
 <ul>
 <li>并不是任何情况下最大似然估计都存在，即使存在也未必唯一。</li>
-<li>最大似然估计与矩估计的结果也不一定是相等的。常见的正态分布，泊松分布，伯努利分布，<br>其最大似然估计和矩估计是一致的，均匀分布是不一致的。</li>
-<li>最大似然估计的不变性:若$\hat{\theta}$是总体分布中未知参数$\theta$的最大似然估计，<br>则$g(\hat{\theta})$也是$g(\theta)$的最大似然估计。</li>
+<li>最大似然估计与矩估计的结果也不一定是相等的。常见的正态分布，泊松分布，伯努利分布，其最大似然估计和矩估计是一致的，均匀分布是不一致的。</li>
+<li>最大似然估计的不变性:若$\hat{\theta}$是总体分布中未知参数$\theta$的最大似然估计，则$g(\hat{\theta})$也是$g(\theta)$的最大似然估计。</li>
 </ul>
-<h2 id="估计量的优良性准则"><a href="#估计量的优良性准则" class="headerlink" title="估计量的优良性准则"></a>估计量的优良性准则</h2><h3 id="相合性"><a href="#相合性" class="headerlink" title="相合性"></a>相合性</h3><p>样本容量越来越大时，$\hat{\theta}$越来越接近$\theta$真值。</p>
-<p><strong>定义</strong>：n-&gt;oo时，$\theta$估计量依概率收敛于$\theta$真值，则称$\theta$估计量时$\theta$相合估计量（一致估计量）。</p>
+<h1 id="估计量的优良性准则"><a href="#估计量的优良性准则" class="headerlink" title="估计量的优良性准则"></a>估计量的优良性准则</h1><h2 id="相合性"><a href="#相合性" class="headerlink" title="相合性"></a>相合性</h2><p>样本容量越来越大时，$\hat{\theta}$越来越接近$\theta$真值。</p>
+<p><strong>定义</strong>：$n\rightarrow\infty$时，$\theta$ 估计量依概率收敛于 $\theta$ 真值，则称 $\theta$ 估计量是 $\theta$ 相合估计量（一致估计量）。</p>
 <p><strong>不变性</strong>：相合性具备不变性。</p>
 <p><strong>意义</strong>：估计所必须具备的最基本的性质。</p>
-<h3 id="无偏性"><a href="#无偏性" class="headerlink" title="无偏性"></a>无偏性</h3><p>$\hat{\theta}$的均值离$\theta$的真值越近越好，即$E(\hat{\theta})=\theta$。</p>
+<h2 id="无偏性"><a href="#无偏性" class="headerlink" title="无偏性"></a>无偏性</h2><p>$\hat{\theta}$ 的均值离 $\theta$ 的真值越近越好，即 $E(\hat{\theta})=\theta$ 。</p>
 <p><strong>定义</strong>：无偏估计量，渐进无偏估计量</p>
 <p><strong>不变性</strong>：无偏估计不具有不变性</p>
 <p><strong>意义</strong>：在大量重复该估计时，多次估计的平均值给出可以任意接近真值的估计，即无系统偏差（$E(\hat{\theta})-\theta$）</p>
 <p><strong>注意</strong>：可能没有无偏估计量，也可能有多个不同的无偏估计量。</p>
-<h3 id="有效性于C-R不等式"><a href="#有效性于C-R不等式" class="headerlink" title="有效性于C-R不等式"></a>有效性于C-R不等式</h3><p>$\hat{\theta}$围绕$\theta$真值波动的范围越小越好。即$D(\hat{\theta})$越小越好</p>
+<h2 id="有效性于C-R不等式"><a href="#有效性于C-R不等式" class="headerlink" title="有效性于C-R不等式"></a>有效性于C-R不等式</h2><p>$\hat{\theta}$ 围绕 $\theta$ 真值波动的范围越小越好。即 $D(\hat{\theta})$ 越小越好</p>
 <p><strong>定义</strong>：</p>
 <ul>
-<li><p>C-R不等式(Cramer-Rao)不等式：$D(\hat{\theta})&gt;=1/(nI(\theta))$。指明了$\hat{\theta}$方差的下界。<br>  $I(\theta)$表示了单个样本$x_i$所包含的关于$\theta$的信息量，$nI(\theta)$则表示样本总信息量，随着样本容量n增大，<br>  样本包含的总信息量成线性递增。称$I(\theta)$为费希尔信息量(Fisher information)。</p>
-</li>
-<li><p>有效估计量（到达下界），渐进有效估计量（趋向下界）</p>
-</li>
+<li>C-R不等式(Cramer-Rao)不等式：$D(\hat{\theta}) \geq \frac{1}{nI(\theta)}$。指明了 $\hat{\theta}$ 方差的下界。<br>  $I(\theta)$ 表示了单个样本 $x_i$ 所包含的关于 $\theta$ 的信息量，$nI(\theta)$ 则表示样本总信息量，随着样本容量n增大，<br>  样本包含的总信息量成线性递增。称$I(\theta)$为费希尔信息量(Fisher information)。</li>
+<li>有效估计量（到达下界），渐进有效估计量（趋向下界）</li>
 </ul>
 <p><strong>注意</strong>：可能不存在有效估计，此时所有无偏估计中方差最小的成为一致最小方差无偏估计</p>
-<h2 id="区间估计"><a href="#区间估计" class="headerlink" title="区间估计"></a>区间估计</h2><p>点估计实际上给出了未知参数的真值的近似值，但人们通常不以得到近似值为满足，还希望知道其误差，即要求更确切地<br>知道近似值地精确程度（亦即近似值地取值范围）。故对未知参数$\theta$，除了求出他的点估计，我们还希望估计出一个范围，<br>并希望知道这个范围包含未知参数真值地可靠程度。</p>
+<h1 id="区间估计"><a href="#区间估计" class="headerlink" title="区间估计"></a>区间估计</h1><p>点估计实际上给出了未知参数的真值的近似值，但人们通常不以得到近似值为满足，还希望知道其误差，即要求更确切地知道近似值地精确程度（亦即近似值地取值范围）。故对未知参数 $\theta$ ，除了求出他的点估计，我们还希望估计出一个范围，并希望知道这个范围包含未知参数真值地可靠程度。</p>
 <p><strong>概念</strong>：置信区间，置信度（置信水平）</p>
-<p><strong>含义</strong>：置信区间地长度刻画了区间估计地精度，置信度则表达了置信区间包含参数真值的可信度。</p>
+<p><strong>含义</strong>：置信区间的长度刻画了区间估计的精度，置信度则表达了置信区间包含参数真值的可信度。</p>
 <hr>
-<p>————-以下内容未深入看————-</p>
+<p>以下内容未深入看</p>
 <p>求法：枢轴量</p>
-<h2 id="正态总体均值与方差的区间估计"><a href="#正态总体均值与方差的区间估计" class="headerlink" title="正态总体均值与方差的区间估计"></a>正态总体均值与方差的区间估计</h2><ul>
+<h1 id="正态总体均值与方差的区间估计"><a href="#正态总体均值与方差的区间估计" class="headerlink" title="正态总体均值与方差的区间估计"></a>正态总体均值与方差的区间估计</h1><ul>
 <li><p>正态总体均值的区间估计</p>
 <ul>
 <li><p>单个正态总体的情形</p>
@@ -598,7 +594,7 @@
 <li><p>正态总体方差的区间估计</p>
 </li>
 </ul>
-<h2 id="单侧置信区间"><a href="#单侧置信区间" class="headerlink" title="单侧置信区间"></a>单侧置信区间</h2>
+<h1 id="单侧置信区间"><a href="#单侧置信区间" class="headerlink" title="单侧置信区间"></a>单侧置信区间</h1>
       
     </div>
 
@@ -634,8 +630,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/09/2017-03-09-DSforREviaPCNN/" rel="next" title="Distant Supervision for Relation Extraction via Piecewise CNN论文阅读笔记">
-                <i class="fa fa-chevron-left"></i> Distant Supervision for Relation Extraction via Piecewise CNN论文阅读笔记
+              <a href="/2017/03/09/2017-03-09-HypothesisTesting/" rel="next" title="假设检验">
+                <i class="fa fa-chevron-left"></i> 假设检验
               </a>
             
           </div>
@@ -644,8 +640,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/2017-03-15-EasyProblemGuide/" rel="prev" title="WOJ水题指南">
-                WOJ水题指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/15/2017-03-15-使用Python基于SMTP发送邮件/" rel="prev" title="使用Python基于SMTP发送邮件">
+                使用Python基于SMTP发送邮件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -825,7 +821,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -906,7 +924,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -957,7 +985,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参数估计"><span class="nav-number">1.</span> <span class="nav-text">参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#点估计"><span class="nav-number">1.1.</span> <span class="nav-text">点估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩估计法"><span class="nav-number">1.1.1.</span> <span class="nav-text">矩估计法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大似然估计法"><span class="nav-number">1.1.2.</span> <span class="nav-text">最大似然估计法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#估计量的优良性准则"><span class="nav-number">1.2.</span> <span class="nav-text">估计量的优良性准则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相合性"><span class="nav-number">1.2.1.</span> <span class="nav-text">相合性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无偏性"><span class="nav-number">1.2.2.</span> <span class="nav-text">无偏性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有效性于C-R不等式"><span class="nav-number">1.2.3.</span> <span class="nav-text">有效性于C-R不等式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区间估计"><span class="nav-number">1.3.</span> <span class="nav-text">区间估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正态总体均值与方差的区间估计"><span class="nav-number">1.4.</span> <span class="nav-text">正态总体均值与方差的区间估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单侧置信区间"><span class="nav-number">1.5.</span> <span class="nav-text">单侧置信区间</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#点估计"><span class="nav-number">1.</span> <span class="nav-text">点估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩估计法"><span class="nav-number">1.1.</span> <span class="nav-text">矩估计法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大似然估计法"><span class="nav-number">1.2.</span> <span class="nav-text">最大似然估计法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#估计量的优良性准则"><span class="nav-number">2.</span> <span class="nav-text">估计量的优良性准则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相合性"><span class="nav-number">2.1.</span> <span class="nav-text">相合性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无偏性"><span class="nav-number">2.2.</span> <span class="nav-text">无偏性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有效性于C-R不等式"><span class="nav-number">2.3.</span> <span class="nav-text">有效性于C-R不等式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#区间估计"><span class="nav-number">3.</span> <span class="nav-text">区间估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正态总体均值与方差的区间估计"><span class="nav-number">4.</span> <span class="nav-text">正态总体均值与方差的区间估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单侧置信区间"><span class="nav-number">5.</span> <span class="nav-text">单侧置信区间</span></a></li></ol></div>
             
 
           </div>
@@ -997,7 +1025,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">185k</span>
+    <span title="站点总字数">202k</span>
   
 
   
@@ -1006,7 +1034,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:48</span>
+    <span title="站点阅读时长">3:04</span>
   
 </div>
 

@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="7MEuBrfWJg">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/favicon.png?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Containers Collection Python3 Built-in function Python Math Python itertools Algorithms not in place inplace partition sort bisect Set Operations Heap Operation Min/Max Others     Containers    容器 do">
+<meta name="keywords" content="算法和数据结构,C&#x2F;C++,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL 和 Python中built in的算法和容器">
+<meta property="og:url" content="http://cziszero.github.io/2018/12/31/2018-12-31-BuiltinFuncCon/index.html">
+<meta property="og:site_name" content="CZ&#39;s blog">
+<meta property="og:description" content="Containers Collection Python3 Built-in function Python Math Python itertools Algorithms not in place inplace partition sort bisect Set Operations Heap Operation Min/Max Others     Containers    容器 do">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-18T12:20:27.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STL 和 Python中built in的算法和容器">
+<meta name="twitter:description" content="Containers Collection Python3 Built-in function Python Math Python itertools Algorithms not in place inplace partition sort bisect Set Operations Heap Operation Min/Max Others     Containers    容器 do">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cziszero.github.io/2018/12/31/2018-12-31-BuiltinFuncCon/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>STL 和 Python中built in的算法和容器 | CZ's blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?917bc843e06f7c7076865cf53467e27f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间线">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/timeline.html" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>时间线</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cziszero.github.io/2018/12/31/2018-12-31-BuiltinFuncCon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cziszero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">STL 和 Python中built in的算法和容器<a href="https://github.com/cziszero/Blog_Sources/tree/master/source/_posts/2018-12-31-BuiltinFuncCon.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-31 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00+08:00">2018-12-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-18 20:20:27" itemprop="dateModified" datetime="2019-11-18T20:20:27+08:00">2019-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法和数据结构/" itemprop="url" rel="index"><span itemprop="name">算法和数据结构</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法和数据结构/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法和数据结构/C-C/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/12/31/2018-12-31-BuiltinFuncCon/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/2018-12-31-BuiltinFuncCon/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="#containers">Containers</a></li>
+<li><a href="#collection">Collection</a></li>
+<li><a href="#python3-built-in-function">Python3 Built-in function</a></li>
+<li><a href="#python-math">Python Math</a></li>
+<li><a href="#python-itertools">Python itertools</a></li>
+<li><a href="#algorithms">Algorithms</a><ul>
+<li><a href="#not-in-place">not in place</a></li>
+<li><a href="#inplace">inplace</a></li>
+<li><a href="#partition">partition</a></li>
+<li><a href="#sort">sort</a></li>
+<li><a href="#bisect">bisect</a></li>
+<li><a href="#set-operations">Set Operations</a></li>
+<li><a href="#heap-operation">Heap Operation</a></li>
+<li><a href="#minmax">Min/Max</a></li>
+<li><a href="#others">Others</a></li>
+<li><a href="#numeric"><numeric></numeric></a></li>
+</ul>
+</li>
+</ul>
+<h1 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">容器</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">vector</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">list</td>
+</tr>
+<tr>
+<td style="text-align:center">deque</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">list</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">stack</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">queue</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">map</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">set</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">unordered_set</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">set</td>
+</tr>
+<tr>
+<td style="text-align:center">unordered_map</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">dict</td>
+</tr>
+<tr>
+<td style="text-align:center">bitset</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">string</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">str</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a><a href="https://docs.python.org/zh-cn/3/library/collections.html" target="_blank" rel="noopener">Collection</a></h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:center">doc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">deque</td>
+<td style="text-align:center">类似列表(list)的容器，实现了在两端快速添加(append)和弹出(pop)</td>
+</tr>
+<tr>
+<td style="text-align:center">defaultdict</td>
+<td style="text-align:center">字典的子类，提供了一个工厂函数，为字典查询提供一个默认值</td>
+</tr>
+<tr>
+<td style="text-align:center">Counter</td>
+<td style="text-align:center">字典的子类，提供了可哈希对象的计数功能</td>
+</tr>
+<tr>
+<td style="text-align:center">namedtuple()</td>
+<td style="text-align:center">创建命名元组子类的工厂函数</td>
+</tr>
+<tr>
+<td style="text-align:center">ChainMap</td>
+<td style="text-align:center">类似字典(dict)的容器类，将多个映射集合到一个视图里面</td>
+</tr>
+<tr>
+<td style="text-align:center">OrderedDict</td>
+<td style="text-align:center">字典的子类，保存了他们被添加的顺序</td>
+</tr>
+<tr>
+<td style="text-align:center">UserDict</td>
+<td style="text-align:center">封装了字典对象，简化了字典子类化</td>
+</tr>
+<tr>
+<td style="text-align:center">UserList</td>
+<td style="text-align:center">封装了列表对象，简化了列表子类化</td>
+</tr>
+<tr>
+<td style="text-align:center">UserString</td>
+<td style="text-align:center">封装了列表对象，简化了字符串子类化</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Python3-Built-in-function"><a href="#Python3-Built-in-function" class="headerlink" title="Python3 Built-in function"></a><a href="https://docs.python.org/zh-cn/3.7/library/functions.html" target="_blank" rel="noopener">Python3 Built-in function</a></h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">sign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">abs</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">all</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">any</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">hex</td>
+<td style="text-align:center">转为字符串表示的16进制数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">bin</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">oct</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">next</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">divmod</td>
+<td style="text-align:center">div &amp; mod</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">sorted</td>
+<td style="text-align:center">stable</td>
+<td style="text-align:center">sorted(iterable, key=None, reverse=False)</td>
+</tr>
+<tr>
+<td style="text-align:center">isinstance</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">isinstance(object, classinfo)</td>
+</tr>
+<tr>
+<td style="text-align:center">filter</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">filter(function, iterable)</td>
+</tr>
+<tr>
+<td style="text-align:center">map</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">map(func, *iterables)</td>
+</tr>
+<tr>
+<td style="text-align:center">reversed</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">complex</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">ord</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">chr</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">frozenset</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">zip</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">zip([iterable, …])/zip(*)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Python-Math"><a href="#Python-Math" class="headerlink" title="Python Math"></a>Python Math</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">sign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">factorial</td>
+<td style="text-align:center">阶乘</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Python-itertools"><a href="#Python-itertools" class="headerlink" title="Python itertools"></a><a href="https://docs.python.org/zh-cn/3.7/library/itertools.html#itertools.permutations" target="_blank" rel="noopener">Python itertools</a></h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">sign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">permutations</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">product</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">combinations</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">combinations_with_replacement</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">accumulate</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h1><h2 id="not-in-place"><a href="#not-in-place" class="headerlink" title="not in place"></a>not in place</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">for_each</td>
+<td style="text-align:center">将一个函数应用于某一范围的元素</td>
+<td style="text-align:center">map</td>
+</tr>
+<tr>
+<td style="text-align:center">find/find_if</td>
+<td style="text-align:center">查找满足特定条件的第一个元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">find_end</td>
+<td style="text-align:center">查找一定范围内最后出现的元素序列</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">find_first_of</td>
+<td style="text-align:center">查找一定范围内最后出现的元素序列</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">adjacent_find</td>
+<td style="text-align:center">查找彼此相邻的两个相同（或其它的关系）的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">count/count_if</td>
+<td style="text-align:center">返回满足特定条件的元素的数量</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">mismatch</td>
+<td style="text-align:center">查找两个范围第一个不同元素的位置</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">equal</td>
+<td style="text-align:center">确定两个元素集合是否是相同的</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">search</td>
+<td style="text-align:center">查找一个元素区间</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">search_n</td>
+<td style="text-align:center">查找一个元素区间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="inplace"><a href="#inplace" class="headerlink" title="inplace"></a>inplace</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">copy</td>
+<td style="text-align:center">将某一范围的元素复制到一个新的位置</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">copy_backward</td>
+<td style="text-align:center">按从后往前的顺序复制一个范围内的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">swap</td>
+<td style="text-align:center">将所有满足特定条件的元素替换为另一个值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">swap_ranges</td>
+<td style="text-align:center">交换两个范围的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">iter_swap</td>
+<td style="text-align:center">交换两个迭代器所指向的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">transform</td>
+<td style="text-align:center">将一个函数应用于某一范围的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">replace/replace_if</td>
+<td style="text-align:center">将所有满足特定条件的元素替换为另一个值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">replace_copy/replace_copy_if</td>
+<td style="text-align:center">复制一个范围内的元素，并将满足特定条件的元素替换为另一个值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">fill</td>
+<td style="text-align:center">将一个值赋给一个范围内的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">fill_n</td>
+<td style="text-align:center">将一个值赋给一定数目的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">generate</td>
+<td style="text-align:center">将函数的结果保存于一个范围内</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">generate_n</td>
+<td style="text-align:center">保存函数的N次运行结果</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">remove/remove_if</td>
+<td style="text-align:center">删除满足特定条件的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">remove_copy/remove_copy_if</td>
+<td style="text-align:center">复制一个范围内不满足特定条件的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">unique</td>
+<td style="text-align:center">删除区间内连续重复的元素</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">unique_copy</td>
+<td style="text-align:center">删除区间内连续重复的元素并复制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">reverse</td>
+<td style="text-align:center">将区间内的元素颠倒顺序</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">reverse_copy</td>
+<td style="text-align:center">将区间内的元素颠倒顺序并复制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">rotate</td>
+<td style="text-align:center">将区间内的元素旋转</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">rotate_copy</td>
+<td style="text-align:center">将区间内的元素旋转并复制</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">random_shuffle</td>
+<td style="text-align:center">将范围内的元素随机重新排序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="partition"><a href="#partition" class="headerlink" title="partition"></a>partition</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">partition</td>
+<td style="text-align:center">把一个区间的元素分为两组</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">stable_partition</td>
+<td style="text-align:center">将元素分为两组，同时保留其相对顺序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sort</td>
+<td style="text-align:center">将区间排序</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">stable_sort</td>
+<td style="text-align:center">将区间内的元素排序，同时保持相等的元素之间的顺序</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">partial_sort</td>
+<td style="text-align:center">将区间内较小的N个元素排序</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">partial_sort_copy</td>
+<td style="text-align:center">对区间内的元素进行复制并部分排序</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">nth_element</td>
+<td style="text-align:center">将给定的区间部分排序，确保区间被给定的元素划分</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="bisect"><a href="#bisect" class="headerlink" title="bisect"></a>bisect</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">lower_bound</td>
+<td style="text-align:center">二分查找操作（在已排序范围上）</td>
+<td style="text-align:center">bisect.bisect_left</td>
+</tr>
+<tr>
+<td style="text-align:center">upper_bound</td>
+<td style="text-align:center">返回指向第一个大于给定值的元素的迭代器</td>
+<td style="text-align:center">bisect.bisect_right</td>
+</tr>
+<tr>
+<td style="text-align:center">equal_range</td>
+<td style="text-align:center">返回匹配特定键值的元素区间</td>
+<td style="text-align:center">\</td>
+</tr>
+<tr>
+<td style="text-align:center">binary_search</td>
+<td style="text-align:center">判断一个元素是否在区间内</td>
+<td style="text-align:center">\</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Set-Operations"><a href="#Set-Operations" class="headerlink" title="Set Operations"></a>Set Operations</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">merge</td>
+<td style="text-align:center">合并两个已排序的区间</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">inplace_merge</td>
+<td style="text-align:center">就地合并两个有序的区间</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">includes</td>
+<td style="text-align:center">如果一个集合是另外一个集合的子集则返回true</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">set_union</td>
+<td style="text-align:center">计算两个集合的并集</td>
+<td style="text-align:center">`</td>
+<td>`</td>
+</tr>
+<tr>
+<td style="text-align:center">set_intersection</td>
+<td style="text-align:center">计算两个集合的交集</td>
+<td style="text-align:center"><code>&amp;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">set_difference</td>
+<td style="text-align:center">计算两个集合的差集</td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td style="text-align:center">set_symmetric_difference</td>
+<td style="text-align:center">计算两个集合的对称差</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Heap-Operation"><a href="#Heap-Operation" class="headerlink" title="Heap Operation"></a>Heap Operation</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center"><a href="https://docs.python.org/zh-cn/3.7/library/heapq.html" target="_blank" rel="noopener">python heapq</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">push_heap</td>
+<td style="text-align:center">将元素加入到堆</td>
+<td style="text-align:center">heapq.heappush(heap, item)</td>
+</tr>
+<tr>
+<td style="text-align:center">pop_heap</td>
+<td style="text-align:center">将堆中的最大元素删除</td>
+<td style="text-align:center">heapq.heappop(heap)</td>
+</tr>
+<tr>
+<td style="text-align:center">make_heap</td>
+<td style="text-align:center">根据区间内的元素创建出一个堆</td>
+<td style="text-align:center">heapq.heapify(x)</td>
+</tr>
+<tr>
+<td style="text-align:center">sort_heap</td>
+<td style="text-align:center">将堆变成一个排好序的区间</td>
+<td style="text-align:center">\</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">先插入后弹出一个</td>
+<td style="text-align:center">heapq.heappushpop(heap, item)</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">先弹出后插入一个</td>
+<td style="text-align:center">heapq.heapreplace(heap, item)</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">用堆merge多个有序列表</td>
+<td style="text-align:center">heapq.merge(*iterables, key=None, reverse=False)</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">n largest</td>
+<td style="text-align:center">heapq.nlargest(n, heap, key=None)</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">n smallest</td>
+<td style="text-align:center">heapq.nsmallest(n, heap, key=None)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Min-Max"><a href="#Min-Max" class="headerlink" title="Min/Max"></a>Min/Max</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">min</td>
+<td style="text-align:center">返回两个元素中的较大者</td>
+<td style="text-align:center">min</td>
+</tr>
+<tr>
+<td style="text-align:center">max</td>
+<td style="text-align:center">返回两个元素中的较大者</td>
+<td style="text-align:center">max</td>
+</tr>
+<tr>
+<td style="text-align:center">min_element</td>
+<td style="text-align:center">返回区间内的最小元素</td>
+<td style="text-align:center">min</td>
+</tr>
+<tr>
+<td style="text-align:center">max_element</td>
+<td style="text-align:center">返回区间内的最大元素</td>
+<td style="text-align:center">max</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">lexicographical_compare</td>
+<td style="text-align:center">如果按字典顺序一个区间小于另一个区间，返回true</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">next_permutation</td>
+<td style="text-align:center">按字典顺序产生区间内元素下一个较大的排列组合</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">prev_permutation</td>
+<td style="text-align:center">按字典顺序产生区间内元素下一个较小的排列组合</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id><a href="#" class="headerlink" title></a><numeric></numeric></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STL</th>
+<th style="text-align:center">doc</th>
+<th style="text-align:center">python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">accumulate</td>
+<td style="text-align:center">计算区间内元素的和</td>
+<td style="text-align:center">sum</td>
+</tr>
+<tr>
+<td style="text-align:center">inner_product</td>
+<td style="text-align:center">计算两个区间元素的内积</td>
+<td style="text-align:center"><code>sum(map(lambda x,y: x*y,a,b))</code></td>
+</tr>
+<tr>
+<td style="text-align:center">adjacent_difference</td>
+<td style="text-align:center">计算区间内相邻元素之间的差</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">partial_sum</td>
+<td style="text-align:center">计算区间内元素的部分和</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法和数据结构/" rel="tag"># 算法和数据结构</a>
+          
+            <a href="/tags/C-C/" rel="tag"># C/C++</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/2018-12-31-AlgorithmCatalog/" rel="next" title="常用算法题目分类">
+                <i class="fa fa-chevron-left"></i> 常用算法题目分类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/31/2018-12-31-AlgorithmDP/" rel="prev" title="常用算法-动态规划">
+                常用算法-动态规划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="cziszero">
+            
+              <p class="site-author-name" itemprop="name">cziszero</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cziszero" title="GitHub &rarr; https://github.com/cziszero" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Containers"><span class="nav-number">1.</span> <span class="nav-text">Containers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection"><span class="nav-number">2.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python3-Built-in-function"><span class="nav-number">3.</span> <span class="nav-text">Python3 Built-in function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Math"><span class="nav-number">4.</span> <span class="nav-text">Python Math</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-itertools"><span class="nav-number">5.</span> <span class="nav-text">Python itertools</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithms"><span class="nav-number">6.</span> <span class="nav-text">Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#not-in-place"><span class="nav-number">6.1.</span> <span class="nav-text">not in place</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inplace"><span class="nav-number">6.2.</span> <span class="nav-text">inplace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#partition"><span class="nav-number">6.3.</span> <span class="nav-text">partition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort"><span class="nav-number">6.4.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bisect"><span class="nav-number">6.5.</span> <span class="nav-text">bisect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-Operations"><span class="nav-number">6.6.</span> <span class="nav-text">Set Operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Operation"><span class="nav-number">6.7.</span> <span class="nav-text">Heap Operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Min-Max"><span class="nav-number">6.8.</span> <span class="nav-text">Min/Max</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Others"><span class="nav-number">6.9.</span> <span class="nav-text">Others</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">6.10.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cziszero</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">202k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">3:04</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://cziszero-github-io.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cziszero.github.io/2018/12/31/2018-12-31-BuiltinFuncCon/";
+    this.page.identifier = "2018/12/31/2018-12-31-BuiltinFuncCon/";
+    this.page.title = 'STL 和 Python中built in的算法和容器';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cziszero-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.0"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.0"></script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

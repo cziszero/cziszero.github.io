@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="CZ&#39;s blog">
 <meta property="og:description" content="趁着给女票解决一个问题的时候复习一下假设检验。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-27T15:09:41.230Z">
+<meta property="og:updated_time" content="2019-03-01T11:43:35.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="假设检验">
 <meta name="twitter:description" content="趁着给女票解决一个问题的时候复习一下假设检验。">
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-27 23:09:41" itemprop="dateModified" datetime="2019-02-27T23:09:41+08:00">2019-02-27</time>
+                <time title="修改时间：2019-03-01 19:43:35" itemprop="dateModified" datetime="2019-03-01T19:43:35+08:00">2019-03-01</time>
               
             
           </span>
@@ -533,13 +533,13 @@
       
 
       
-        <p>基本任务是，在总体的分布函数完全未知或者只知形式不知参数的情况下，为了推断总体的某些性质，<br>首先提出某些关于总体的假设，然后根据样本提供的信息对所提出的假设做出“是”或“否”的结论性论断。</p>
+        <p>基本任务是，在总体的分布函数完全未知或者只知形式不知参数的情况下，为了推断总体的某些性质，首先提出某些关于总体的假设，然后根据样本提供的信息对所提出的假设做出“是”或“否”的结论性论断。</p>
 <h1 id="假设检验的基本思想、概念与方法"><a href="#假设检验的基本思想、概念与方法" class="headerlink" title="假设检验的基本思想、概念与方法"></a>假设检验的基本思想、概念与方法</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>实际推断原理，即小概率时间在一次试验中不会发生。</p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
 <li><strong>原假设$H_0$，备选假设$H_1$</strong>。<ul>
-<li><strong>奈曼-皮尔逊范式(Neyman-Pearson)</strong>:在控制第一类错误概率$\alpha$的前提下，尽量犯使第二类错误的概率$\beta$尽量小。 因此，原假设$H_0$使被保护的，只有条件足够强时才拒绝$H_0$,因此原假设的提出必须经过慎重考虑，一般情况下不可轻易拒绝。</li>
-<li><strong>显著性水平$\alpha$</strong>:在某个样本上做估计，犯第一类错误的概率$\alpha$称为该检验法$W$的显著性水平。</li>
-<li><strong>检验水平</strong>：显著性水平的上确界$sup\{\alpha\}$称为检验水平。</li>
+<li><strong>奈曼-皮尔逊范式(Neyman-Pearson)</strong>: 在控制第一类错误概率 $\alpha$ 的前提下，尽量犯使第二类错误的概率 $\beta$ 尽量小。 因此，原假设 $H_0$ 是被保护的，只有条件足够强时才拒绝 $H_0$, 因此原假设的提出必须经过慎重考虑，一般情况下不可轻易拒绝。</li>
+<li><strong>显著性水平$\alpha$</strong>: 在某个样本上做估计，犯第一类错误的概率 $\alpha$ 称为该检验法 $W$ 的显著性水平。</li>
+<li><strong>检验水平</strong>：显著性水平的上确界 $sup\{\alpha\}$ 称为检验水平。</li>
 <li><strong>简单假设和复合假设</strong>：当$\Theta_0$或者$\Theta_1$为单点集即$H_0$或者$H_1$是一个分布而不是一族分布，则称为简单假设，<br>否则称为复合假设。</li>
 <li><strong>参数假设检验和非参数假设检验</strong>：参数假设检验即对未知参数提出假设，再根据样本进行检验。非参数假设检验例如对未知分布的假设，检验两个分布是否相同（女票的问题即是这类问题，检验元话语在两个语料库中的分布是否相同以得到是否有使用差异的结论），是否独立等。</li>
 </ul>
@@ -558,24 +558,18 @@
 <h3 id="p值法"><a href="#p值法" class="headerlink" title="p值法"></a>p值法</h3><p><strong>步骤</strong></p>
 <ol>
 <li>1~2步于临界值法相同。</li>
-<li>计算满足$H_0$时,对于样本$T$的观察值<br>$t_0$，</li>
+<li>计算满足$H_0$时,对于样本$T$的观察值  $t_0$，</li>
 <li>计算出$p={\sup \limits_{\theta\in{\Theta}_0} P_{\theta}(T&gt;t_0)}$</li>
 <li>对于给定的显著性水平$\alpha$，如果出现$p&lt;\alpha$，则拒绝$H_0$，否则接受。</li>
 </ol>
 <p><strong>直观含义</strong><br>$p$描述了原假设成立时，出现比观测到的情况更极端的概率。</p>
 <h1 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h1><h2 id="对数似然比检验"><a href="#对数似然比检验" class="headerlink" title="对数似然比检验"></a>对数似然比检验</h2><p>这个就是女票的问题。重新表述下问题：现有两个语料库A和B，现想要探究某个词w在语料库A和B中的分布是否相同。<br>对数似然比的方法由Ted Dunning在<a href="../docs/HypothesisTesting/Accurate_Methods_for_the_Statistics_of_Surprise_and_Coincidence.pdf">Accurate Methods for the Statistics of Surprise and Coincidence</a>中提出。下面重新回顾一下。Comparing Corpora using Frequency Profiling</p>
 <h3 id="对数似然比检验的概念"><a href="#对数似然比检验的概念" class="headerlink" title="对数似然比检验的概念"></a>对数似然比检验的概念</h3><p>对于两个假设可信程度的指标，一个比较自然的度量是两个假设的似然比。<br>由此引出似然比检验的方法。<br>对于在假设$H_0$和<br>$H_1$上的似然比：</p>
-<p>$L_{\Theta_0}(x)=\sup_{\theta\in\Theta_0}f(x,\theta)$</p>
-<p>$L_{\Theta_1}(x)=\sup_{\theta\in\Theta_1}f(x,\theta)$</p>
-<p>考虑其比值</p>
-<p>${\lambda}=\frac{L_{\Theta_0}(x)}{L_{\Theta_1}(x)}$</p>
-<p>如此比值较大，则说明真参数在$\Theta_0$<br>内的可能性更大，我们倾向于则接受$H_0$，反之亦然。<br>在实际中，常使用$L_{\Theta}(x)$代替分母<br>${L_{\Theta_1}(x)$来方便计算。</p>
+<script type="math/tex; mode=display">L_{\Theta_0}(x)=\sup_{\theta\in\Theta_0}f(x,\theta)</script><script type="math/tex; mode=display">L_{\Theta_1}(x)=\sup_{\theta\in\Theta_1}f(x,\theta)</script><p>考虑其比值</p>
+<script type="math/tex; mode=display">{\lambda}=\frac{L_{\Theta_0}(x)}{L_{\Theta_1}(x)}</script><p>如此比值较大，则说明真参数在$\Theta_0$内的可能性更大，我们倾向于则接受$H_0$，反之亦然。<br>在实际中，常使用 $L_{\Theta}(x)$代替分母 $L_{\Theta_1}(x)$来方便计算。</p>
 <p>此即为次然比检验的直观理解，详细定义参见<a href="../docs/HypothesisTesting/HypothesisTesting_zhangweiping.pdf">附件</a></p>
 <h3 id="Accurate-Methods-for-the-Statistics-of-Surprise-and-Coincidence笔记"><a href="#Accurate-Methods-for-the-Statistics-of-Surprise-and-Coincidence笔记" class="headerlink" title="Accurate Methods for the Statistics of Surprise and Coincidence笔记"></a>Accurate Methods for the Statistics of Surprise and Coincidence笔记</h3><ol>
-<li><blockquote>
-<p>以前使用asymptotic normality assumptions（渐进正态分布假设），但该假设在rare events（罕见事件）中能力不足，</p>
-</blockquote>
-</li>
+<li>以前使用asymptotic normality assumptions（渐进正态分布假设），但该假设在rare events（罕见事件）中能力不足，</li>
 </ol>
 <p>然而真实文本中有很多rare events（例如只出现了几次的词语）。相似比检验在相对较小的样本上有更好的结果。<br>感觉应该是${\chi}^2$检验在rare events时出现问题，因为${\chi}^2$检验要求频数要&gt;5，总量要大于10(一说40)，<br>下面列举了${\chi}^2$检验的前提：<a href="https://cos.name/cn/topic/408990/" target="_blank" rel="noopener">来源</a></p>
 <ul>
@@ -643,8 +637,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/24/2017-01-24-CRT/" rel="next" title="长久以来关于CRT显示器的一些问题">
-                <i class="fa fa-chevron-left"></i> 长久以来关于CRT显示器的一些问题
+              <a href="/2017/03/09/2017-03-09-DSforREviaPCNN/" rel="next" title="Distant Supervision for Relation Extraction via Piecewise CNN论文阅读笔记">
+                <i class="fa fa-chevron-left"></i> Distant Supervision for Relation Extraction via Piecewise CNN论文阅读笔记
               </a>
             
           </div>
@@ -653,8 +647,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/09/2017-03-09-DSforREviaPCNN/" rel="prev" title="Distant Supervision for Relation Extraction via Piecewise CNN论文阅读笔记">
-                Distant Supervision for Relation Extraction via Piecewise CNN论文阅读笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/09/2017-03-09-ParameterEstimation/" rel="prev" title="参数估计">
+                参数估计 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -834,7 +828,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -915,7 +931,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1006,7 +1032,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">185k</span>
+    <span title="站点总字数">202k</span>
   
 
   
@@ -1015,7 +1041,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:48</span>
+    <span title="站点阅读时长">3:04</span>
   
 </div>
 
